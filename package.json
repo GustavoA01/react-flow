@@ -10,6 +10,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@custom-react-hooks/use-media-query": "^1.5.1",
     "@google/genai": "^1.28.0",
     "@radix-ui/react-avatar": "^1.1.10",
     "@radix-ui/react-progress": "^1.1.7",
@@ -27,7 +28,8 @@
     "react-markdown": "^10.1.0",
     "react-router-dom": "^7.9.4",
     "tailwind-merge": "^3.3.1",
-    "tailwindcss": "^4.1.16"
+    "tailwindcss": "^4.1.16",
+    "vaul": "^1.1.2"
   },
   "devDependencies": {
     "@eslint/js": "^9.36.0",

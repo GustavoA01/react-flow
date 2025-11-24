@@ -1,12 +1,3 @@
-import {
-  Card,
-  CardHeader,
-  CardTitle,
-  CardDescription,
-  CardContent,
-  CardFooter,
-} from "@/components/ui/card"
-import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
 import { Input } from "@/components/ui/input"
 import { Button } from "@/components/ui/button"
 import { SendIcon } from "lucide-react"
@@ -14,15 +5,21 @@ import { useForm } from "react-hook-form"
 import { generateContent } from "@/services/googleConfig"
 import { useState } from "react"
 import ReactMarkdown from "react-markdown"
+import { Skeleton } from "./ui/skeleton"
+import { DrawerDescription, DrawerTitle } from "./ui/drawer"
+
+type MessageType = { role: "user" | "assistant"; content: string }
 
 export const Chat = () => {
-  const { register, handleSubmit } = useForm<{ message: string }>()
+  const { register, handleSubmit, reset } = useForm<{ message: string }>()
   const [isLoading, setIsLoading] = useState(false)
-  const [messages, setMessages] = useState<
-    { role: "user" | "assistant"; content: string }[]
-  >([])
+  const [messages, setMessages] = useState<MessageType[]>([])
 
   const onSubmit = async (data: { message: string }) => {
+    reset({
+      message: "",
+    })
+
     setIsLoading(true)
     try {
       const response = await generateContent(data.message)
@@ -39,69 +36,54 @@ export const Chat = () => {
   }
 
   return (
-    <Card className="w-full min-h-130 h-130">
-      <CardHeader>
-        <CardTitle>Gerador de atividades</CardTitle>
-        <CardDescription>Crie atividades usando o chat</CardDescription>
-      </CardHeader>
-      <CardContent className="flex-1 space-y-4 overflow-y-auto overflow-x-hidden flex flex-col">
-          {messages.map((message, index) =>
-            message.role === "user" ? (
-              <div key={index} className="flex items-center gap-2">
-                <Avatar className="self-start">
-                  <AvatarFallback>{"U"}</AvatarFallback>
-                  <AvatarImage src={"https://github.com/GustavoA01.png"} />
-                  <p>Você</p>
-                </Avatar>
-                <p>{message.content}</p>
-              </div>
-            ) : (
-              <div key={index} className="flex flex-wrap items-center gap-2">
-                <Avatar className="self-start">
-                  <AvatarFallback>{"A"}</AvatarFallback>
-                  <AvatarImage src={"https://github.com/shadcn.png"} />
-                </Avatar>
-                <ReactMarkdown
-                  components={{
-                    code(props) {
-                      const { children, ...rest } = props
-                      return (
-                        <code {...rest} className={"prose prose-sm max-w-none"}>
-                          {children}
-                        </code>
-                      )
-                    },
-                  }}
-                >
-                  {message.content}
-                </ReactMarkdown>
-              </div>
-            )
-          )}
-          {isLoading && (
-            <div className="flex items-center gap-2">
-              <Avatar>
-                <AvatarFallback>{"A"}</AvatarFallback>
-                <AvatarImage src={"https://github.com/shadcn.png"} />
-              </Avatar>
-              <p>Gerando resposta...</p>
+    <div className="w-full min-h-130 flex-1 pb-6 flex flex-col">
+      <div className="p-4">
+        <DrawerTitle>Gerador de atividades</DrawerTitle>
+        <DrawerDescription>Crie atividades usando o chat</DrawerDescription>
+      </div>
+
+      <div className="flex-1 space-y-4 py-4 overflow-y-auto overflow-x-hidden flex flex-col px-4 inset-shadow-[0_4px_8px_-4px_rgba(0,0,0,0.2)]">
+        {messages.map((message, index) =>
+          message.role === "user" ? (
+            <div key={index} className="self-end bg-gray-200 p-2 rounded-md">
+              <p className="">{message.content}</p>
             </div>
-          )}
-      </CardContent>
-      <CardFooter className="space-x-2">
-        <Input
-          className="overflow-y-auto"
-          placeholder="Digite sua mensagem"
-          {...register("message")}
-        />
-        <Button
-          className="cursor-pointer"
-          type="submit"
-          onClick={handleSubmit(onSubmit)}
-        >
+          ) : (
+            <div key={index} className="self-start bg-gray-100 p-2 rounded-md">
+              <ReactMarkdown
+                components={{
+                  code(props) {
+                    const { children, ...rest } = props
+                    return (
+                      <code {...rest} className={"prose prose-sm max-w-none"}>
+                        {children}
+                      </code>
+                    )
+                  },
+                }}
+              >
+                {message.content}
+              </ReactMarkdown>
+            </div>
+          )
+        )}
+
+        {isLoading && (
+          <Skeleton className="flex items-center gap-2 p-4 max-md:w-full">
+            <p>Gerando resposta...</p>
+          </Skeleton>
+        )}
+      </div>
+
+      <form
+        onSubmit={handleSubmit(onSubmit)}
+        className=" flex px-2 pt-4 space-x-2 border-t rounded-md shadow-[0_-4px_8px_-4px_rgba(0,0,0,0.2)]"
+      >
+        <Input placeholder="Digite sua mensagem" {...register("message")} />
+        <Button className="cursor-pointer" type="submit">
           <SendIcon />
         </Button>
-      </CardFooter>
-    </Card>
+      </form>
+    </div>
   )
 }
