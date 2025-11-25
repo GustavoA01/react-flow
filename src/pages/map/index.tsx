@@ -12,6 +12,8 @@ import { PhaseNode } from "../../components/PhaseNode"
 import { edgesPhases } from "../../constants/edges"
 import { nodesLastPosition, nodesPhases } from "../../constants/nodes"
 import { CustomEdge } from "../../components/CustomEdge"
+import { RankTable } from "@/components/RankTable"
+import { useMediaQuery } from "@custom-react-hooks/use-media-query"
 
 const nodeTypes = {
   phase: PhaseNode,
@@ -33,6 +35,7 @@ const extend: CoordinateExtent = [
 ]
 
 export const Map = () => {
+  const isDesktop = useMediaQuery("(min-width: 640px)")
   const [nodes, setNodes] = useState(nodesPhases)
   const [edges, setEdges] = useState(edgesPhases)
 
@@ -56,6 +59,8 @@ export const Map = () => {
 
   return (
     <div style={{ width: "100vw", height: "100vh" }}>
+      {isDesktop && <RankTable />}
+
       <ReactFlow
         nodes={nodes}
         edges={edges}
@@ -83,7 +88,7 @@ export const Map = () => {
           zoomable
           position="top-right"
           className="mr-4 mb-4 hidden sm:block"
-          nodeClassName="bg-blue-500"
+          nodeClassName=""
         />
       </ReactFlow>
     </div>

@@ -6,7 +6,7 @@ import { Chat } from "./Chat"
 
 export const Header = () => {
   const { pathname } = useLocation()
-  const isDesktop = useMediaQuery("(min-width: 600px)")
+  const isDesktop = useMediaQuery("(min-width: 640px)")
 
   return (
     <header className="bg-primary text-white p-4">
