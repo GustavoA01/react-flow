@@ -18,13 +18,13 @@ const nodeTypes = {
 }
 
 const edgeTypes = {
-  'custom-edge': CustomEdge,
+  "custom-edge": CustomEdge,
 }
 
-export const points = 30
+export const points = 40
 
-const horizontalLimit = 1100
-const verticalBottomLimit = 300
+const horizontalLimit = 600
+const verticalBottomLimit = 500
 
 const extend: CoordinateExtent = [
   [-horizontalLimit, nodesLastPosition], // Permite arrastar um pouco para a esquerda [minX, minY]
@@ -48,8 +48,14 @@ export const Map = () => {
     []
   )
 
+  const unlockedPhases = nodes.filter((node) => node.data.minPoints <= points)
+  const currentNode =
+    unlockedPhases.length > 0
+      ? unlockedPhases[unlockedPhases.length - 1]
+      : nodes[0]
+
   return (
-    <div style={{ width: "100vw", height: "100vh"}}>
+    <div style={{ width: "100vw", height: "100vh" }}>
       <ReactFlow
         nodes={nodes}
         edges={edges}
@@ -60,15 +66,17 @@ export const Map = () => {
         maxZoom={1.3}
         minZoom={0.5}
         translateExtent={extend}
-        nodeTypes={nodeTypes}       
+        nodeTypes={nodeTypes}
         edgeTypes={edgeTypes}
         fitView
-        fitViewOptions={{ 
-          nodes: [{ id: '1' }],
-          zoom: 1,
-          maxZoom: 0.8,
-          minZoom: 0.5,
-        } as FitViewOptions}
+        fitViewOptions={
+          {
+            nodes: [{ id: currentNode.id }],
+            zoom: 0.8,
+            maxZoom: 0.8,
+            minZoom: 0.5,
+          } as FitViewOptions
+        }
       >
         <MiniMap
           pannable

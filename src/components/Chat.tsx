@@ -1,4 +1,3 @@
-import { Input } from "@/components/ui/input"
 import { Button } from "@/components/ui/button"
 import { SendIcon } from "lucide-react"
 import { useForm } from "react-hook-form"
@@ -7,6 +6,7 @@ import { useState } from "react"
 import ReactMarkdown from "react-markdown"
 import { Skeleton } from "./ui/skeleton"
 import { DrawerDescription, DrawerTitle } from "./ui/drawer"
+import { Textarea } from "./ui/textarea"
 
 type MessageType = { role: "user" | "assistant"; content: string }
 
@@ -36,7 +36,7 @@ export const Chat = () => {
   }
 
   return (
-    <div className="w-full min-h-130 flex-1 pb-6 flex flex-col">
+    <div className="w-full min-h-140 flex-1 pb-6 flex flex-col">
       <div className="p-4">
         <DrawerTitle>Gerador de atividades</DrawerTitle>
         <DrawerDescription>Crie atividades usando o chat</DrawerDescription>
@@ -77,10 +77,17 @@ export const Chat = () => {
 
       <form
         onSubmit={handleSubmit(onSubmit)}
-        className=" flex px-2 pt-4 space-x-2 border-t rounded-md shadow-[0_-4px_8px_-4px_rgba(0,0,0,0.2)]"
+        className="flex px-2 pt-4 space-x-2 border-t rounded-md shadow-[0_-4px_8px_-4px_rgba(0,0,0,0.2)]"
       >
-        <Input placeholder="Digite sua mensagem" {...register("message")} />
-        <Button className="cursor-pointer" type="submit">
+        <Textarea
+          className="resize-none focus:ring-0 min-h-10 border-0 flex-1 focus:outline-none shadow-none"
+          placeholder="Crie perguntas de três níveis sobre..."
+          {...register("message")}
+        />
+        <Button
+          className="cursor-pointer mt-auto rounded-full w-10 h-10"
+          type="submit"
+        >
           <SendIcon />
         </Button>
       </form>

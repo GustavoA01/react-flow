@@ -5,7 +5,8 @@ export const HeaderLayout = () => {
   return (
     <div className="flex flex-col h-screen overflow-hidden">
       <Header />
-      <main className="">
+      
+      <main>
         <Outlet />
       </main>
     </div>

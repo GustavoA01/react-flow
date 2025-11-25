@@ -1,17 +1,39 @@
 import { BaseEdge, getBezierPath } from "@xyflow/react";
 
-export function CustomEdge(props) {
-  const [edgePath] = getBezierPath(props);
+export function CustomEdge({
+  sourceX,
+  sourceY,
+  targetX,
+  targetY,
+  sourcePosition,
+  targetPosition,
+  markerEnd,
+  sourceHandleId,
+  targetHandleId,
+  selectable,   
+  deletable,    
+  pathOptions,  
+  ...rest
+}:any) {
+  const [edgePath] = getBezierPath({
+    sourceX,
+    sourceY,
+    sourcePosition,
+    targetX,
+    targetY,
+    targetPosition,
+  });
 
   return (
-    <BaseEdge 
-      path={edgePath} 
-      {...props}
+    <BaseEdge
+      path={edgePath}
+      markerEnd={markerEnd}
+      {...rest}
       style={{
-        stroke: '#8B4513', 
-        strokeWidth: 4,      
-        strokeDasharray: '10 5' // Traço (10px de linha, 5px de espaço)
-      }} 
+        stroke: '#8B4513',
+        strokeWidth: 4,
+        strokeDasharray: '10 5',
+      }}
     />
   );
 }
