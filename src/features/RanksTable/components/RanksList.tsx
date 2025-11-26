@@ -20,7 +20,7 @@ export const RanksList = ({ ranks }: RanksListProps) => {
           const isTopRanks = [1, 2, 3].includes(position)
 
           return (
-            <TableRow key={position} className="h-15">
+            <TableRow key={position} className="h-15 font-montserrat">
               <TableCell className="text-center w-10 font-bold text-gray-400">
                 {isTopRanks ? topRanksIcons[position - 1] : `${position}°`}
               </TableCell>

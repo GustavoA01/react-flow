@@ -13,7 +13,7 @@ type ModalHeaderProps = {
 export const ModalHeader = ({ level, concluded }: ModalHeaderProps) => {
   return (
     <DialogHeader className="flex items-center">
-      <DialogTitle className="font-bold text-white">Nível {level}</DialogTitle>
+      <DialogTitle className="font-bold text-white font-montserrat">Nível {level}</DialogTitle>
       <div
         className={`${
           concluded
@@ -29,7 +29,7 @@ export const ModalHeader = ({ level, concluded }: ModalHeaderProps) => {
       </div>
 
       <DialogDescription
-        className={`text-white text-xs font-bold ${
+        className={`text-white text-xs font-fredoka font-semibold ${
           concluded ? "bg-green-500" : "bg-blue-800"
         } py-1 px-4 rounded-full`}
       >

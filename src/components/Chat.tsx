@@ -77,10 +77,10 @@ export const Chat = () => {
 
       <form
         onSubmit={handleSubmit(onSubmit)}
-        className="flex px-2 pt-4 space-x-2 border-t pb-[calc(env(safe-area-inset-bottom)+16px)] rounded-md shadow-[0_-4px_8px_-4px_rgba(0,0,0,0.2)]"
+        className="flex px-2 pt-4 space-x-2 border-t max-md:pb-[calc(env(safe-area-inset-bottom)+16px)] rounded-md shadow-[0_-4px_8px_-4px_rgba(0,0,0,0.2)]"
       >
         <Textarea
-          className="resize-none focus:ring-0 min-h-10 border-0 flex-1 focus:outline-none shadow-none"
+          className="resize-none focus:ring-0 min-h-10 border-0 focus:outline-none shadow-none"
           placeholder="Crie perguntas de três níveis sobre..."
           {...register("message")}
         />
