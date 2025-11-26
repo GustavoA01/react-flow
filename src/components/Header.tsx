@@ -11,7 +11,7 @@ export const Header = () => {
   return (
     <header className="bg-primary text-white p-4">
       <div className="flex justify-between items-center">
-        <h1>React Flow</h1>
+        <h1>Beira Linha Play</h1>
 
         <div className="flex items-center gap-8">
           {pathname === "/activities" ? (
@@ -25,9 +25,13 @@ export const Header = () => {
               </DrawerContent>
             </Drawer>
           ) : null}
-          
-          <Link to="/activities">Exercícios</Link>
-          <Link to="/">Mapa</Link>
+
+          <Link to="/activities" className="hidden sm:block">
+            Exercícios
+          </Link>
+          <Link to="/" className="hidden sm:block">
+            Mapa
+          </Link>
         </div>
       </div>
     </header>

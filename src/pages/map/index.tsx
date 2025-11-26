@@ -12,7 +12,7 @@ import { PhaseNode } from "../../components/PhaseNode"
 import { edgesPhases } from "../../constants/edges"
 import { nodesLastPosition, nodesPhases } from "../../constants/nodes"
 import { CustomEdge } from "../../components/CustomEdge"
-import { RankTable } from "@/components/RankTable"
+import { RankTable } from "@/features/RanksTable/container/RanksTable"
 import { useMediaQuery } from "@custom-react-hooks/use-media-query"
 
 const nodeTypes = {
@@ -74,6 +74,7 @@ export const Map = () => {
         nodeTypes={nodeTypes}
         edgeTypes={edgeTypes}
         fitView
+        proOptions={{hideAttribution:true}}
         fitViewOptions={
           {
             nodes: [{ id: currentNode.id }],

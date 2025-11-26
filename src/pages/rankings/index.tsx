@@ -1,5 +1,9 @@
+import { RankTable } from "@/features/RanksTable/container/RanksTable"
+
 export const Rankings = () => {
   return (
-    <div>teste</div>
+    <div>
+      <RankTable />
+    </div>
   )
 }
