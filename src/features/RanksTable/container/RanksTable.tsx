@@ -27,7 +27,7 @@ export const RankTable = () => {
       className="sm:max-h-64 fixed m-5 z-50 flex flex-col w-80 bg-white border rounded-md shadow-lg"
     >
       <RankTableHeader />
-      <div className="sm:max-h-64 overflow-y-auto min-h-0 bg-white border rounded-md ">
+      <div className="ranking-bar sm:max-h-64 overflow-y-auto min-h-0 bg-white border rounded-b-md">
         <RanksList ranks={ranks} />
       </div>
     </div>

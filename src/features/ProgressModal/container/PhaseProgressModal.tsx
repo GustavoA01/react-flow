@@ -21,6 +21,7 @@ export const PhaseProgressModal = ({
 
   return (
     <DialogContent
+      showCloseButton={false}
       className={`${
         progress === 100
           ? "bg-linear-to-l from-green-500 to-emerald-600"

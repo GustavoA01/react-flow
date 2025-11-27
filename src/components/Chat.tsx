@@ -1,5 +1,5 @@
 import { Button } from "@/components/ui/button"
-import { SendIcon } from "lucide-react"
+import { SendHorizonal } from "lucide-react"
 import { useForm } from "react-hook-form"
 import { generateContent } from "@/services/googleConfig"
 import { useState } from "react"
@@ -88,7 +88,7 @@ export const Chat = () => {
           className="cursor-pointer mt-auto rounded-full w-10 h-10 "
           type="submit"
         >
-          <SendIcon />
+          <SendHorizonal />
         </Button>
       </form>
     </div>

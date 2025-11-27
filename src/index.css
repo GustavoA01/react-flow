@@ -4,13 +4,25 @@
 @custom-variant dark (&:is(.dark *));
 
 @theme {
-  --color-primary:#2D5586 ;
-  --color-primary-light: #3A6EA5;
-  --color-primary-dark: #103666;
-  
-  --font-sans: 'Roboto', sans-serif;
-  --font-fredoka: 'Fredoka', sans-serif;
-  --font-montserrat: 'Montserrat', sans-serif;
+  --color-primary: #2d5586;
+  --color-primary-light: #3a6ea5;
+  --color-primary-dark: #1A488E;
+
+  --font-sans: "Roboto", sans-serif;
+  --font-fredoka: "Fredoka", sans-serif;
+  --font-montserrat: "Montserrat", sans-serif;
+}
+
+body {
+  .ranking-bar::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+  }
+
+  .ranking-bar::-webkit-scrollbar-thumb {
+    background-color: var(--color-primary-dark);
+    border-radius: 4px;
+  }
 }
 
 @theme inline {

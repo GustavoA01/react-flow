@@ -2,7 +2,7 @@ import { RankTable } from "@/features/RanksTable/container/RanksTable"
 
 export const Rankings = () => {
   return (
-    <div>
+    <div className="flex justify-center">
       <RankTable />
     </div>
   )

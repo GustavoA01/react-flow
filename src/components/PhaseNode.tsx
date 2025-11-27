@@ -5,11 +5,11 @@ import { useState } from "react"
 import { Dialog } from "./ui/dialog"
 import { PhaseProgressModal } from "../features/ProgressModal/container/PhaseProgressModal"
 
-export function PhaseNode({
-  data,
-}: {
+type PhaseNodeProps = {
   data: { icon: string; id: string; minPoints: number }
-}) {
+}
+
+export const PhaseNode = ({ data }: PhaseNodeProps) => {
   const [openDialog, setCloseDialog] = useState(false)
   const { minPoints } = data
 
@@ -43,12 +43,10 @@ export function PhaseNode({
           className={`pointer-events-none absolute inset-0 rounded-full ${shineClass}`}
         />
 
-        {/* ícone central */}
         <div className="absolute inset-0 flex items-center justify-center">
           <Icon size={32} className={`${iconClassName} drop-shadow-sm`} />
         </div>
 
-        {/* handles invisíveis */}
         <Handle
           type="source"
           position={Position.Top}

@@ -14,9 +14,12 @@ import { nodesLastPosition, nodesPhases } from "../../constants/nodes"
 import { CustomEdge } from "../../components/CustomEdge"
 import { RankTable } from "@/features/RanksTable/container/RanksTable"
 import { useMediaQuery } from "@custom-react-hooks/use-media-query"
+import BackgroundNode from "@/components/BackgroundNode"
+import { backgroundNodes } from "@/constants/nodesBackgorund"
 
 const nodeTypes = {
   phase: PhaseNode,
+  background: BackgroundNode,
 }
 
 const edgeTypes = {
@@ -34,9 +37,11 @@ const extend: CoordinateExtent = [
   // O maxY na verdade é o máximo para baixo e minY é o máximo para cima
 ]
 
+const initialNodes = [...backgroundNodes, ...nodesPhases]
+
 export const Map = () => {
   const isDesktop = useMediaQuery("(min-width: 640px)")
-  const [nodes, setNodes] = useState(nodesPhases)
+  const [nodes, setNodes] = useState(initialNodes)
   const [edges, setEdges] = useState(edgesPhases)
 
   const onNodesChange = useCallback(
@@ -74,7 +79,7 @@ export const Map = () => {
         nodeTypes={nodeTypes}
         edgeTypes={edgeTypes}
         fitView
-        proOptions={{hideAttribution:true}}
+        proOptions={{ hideAttribution: true }}
         fitViewOptions={
           {
             nodes: [{ id: currentNode.id }],
@@ -89,7 +94,10 @@ export const Map = () => {
           zoomable
           position="top-right"
           className="mr-4 mb-4 hidden sm:block"
-          nodeClassName=""
+          nodeColor={(node) =>
+            node.type === "background" ? "transparent" : "#2D5586"
+          }
+          nodeBorderRadius={10}
         />
       </ReactFlow>
     </div>

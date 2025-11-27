@@ -11,7 +11,9 @@ export const Header = () => {
   return (
     <header className="bg-primary text-white p-4">
       <div className="flex justify-between items-center">
-        <h1 className="font-semibold font-montserrat">Beira Linha Play</h1>
+        <h1 className="font-semibold font-montserrat">
+          <Link to="/">Beira Linha Play</Link>
+        </h1>
 
         <div className="flex items-center gap-8">
           {pathname === "/activities" ? (
