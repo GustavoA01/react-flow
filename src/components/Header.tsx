@@ -1,12 +1,12 @@
 import { Link, useLocation } from "react-router-dom"
-import { useMediaQuery } from "@custom-react-hooks/use-media-query"
 import { Drawer, DrawerContent, DrawerTrigger } from "./ui/drawer"
 import { MessageCircle } from "lucide-react"
 import { Chat } from "../features/Chat/container/Chat"
+import { useMediaDevice } from "@/hooks/useMediaDevice"
 
 export const Header = () => {
   const { pathname } = useLocation()
-  const isDesktop = useMediaQuery("(min-width: 640px)")
+  const { isDesktop } = useMediaDevice()
 
   return (
     <header className="flex justify-between items-center bg-primary text-white p-4">

@@ -1,5 +1,11 @@
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+} from "@/components/ui/accordion"
 import { RankTableHeader } from "@/features/RanksTable/components/RankTableHeader"
 import { RanksList } from "@/features/RanksTable/components/RanksList"
+import { useMediaDevice } from "@/hooks/useMediaDevice"
 
 const ranks = [
   { position: 1, name: "Gustavo Aguiar", points: 100 },
@@ -21,15 +27,37 @@ const ranks = [
 ]
 
 export const RankTable = () => {
+  const { isDesktop } = useMediaDevice()
+
+  if (!isDesktop) {
+    return (
+      <div
+        style={{ maxHeight: "calc(100dvh - 180px)" }}
+        className="fixed m-5 z-50 flex flex-col w-80 bg-white border rounded-md shadow-lg"
+      >
+        <RankTableHeader />
+        <div className="flex-1 overflow-y-auto min-h-0 bg-white border-t rounded-b-md">
+          <RanksList ranks={ranks} />
+        </div>
+      </div>
+    )
+  }
+
   return (
     <div
       style={{ maxHeight: "calc(100dvh - 180px)" }}
       className="sm:max-h-64 fixed m-5 z-50 flex flex-col w-80 bg-white border rounded-md shadow-lg"
     >
-      <RankTableHeader />
-      <div className="sm:max-h-56 overflow-y-auto ranking-bar min-h-0 bg-white border rounded-b-md">
-        <RanksList ranks={ranks} />
-      </div>
+      <Accordion type="single" defaultValue="ranking" collapsible>
+        <AccordionItem value="ranking">
+          <RankTableHeader />
+          <AccordionContent className="p-0">
+            <div className="sm:max-h-56 overflow-y-auto ranking-bar min-h-0 bg-white border rounded-b-md">
+              <RanksList ranks={ranks} />
+            </div>
+          </AccordionContent>
+        </AccordionItem>
+      </Accordion>
     </div>
   )
 }

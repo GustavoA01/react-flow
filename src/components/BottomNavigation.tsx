@@ -4,7 +4,7 @@ import { Link, useLocation } from "react-router-dom"
 const buttons = [
   {
     icon: <NotebookPen />,
-    to: "/activities",
+    to: "/cursos",
   },
   {
     icon: <Map />,

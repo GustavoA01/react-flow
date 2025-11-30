@@ -41,6 +41,24 @@ export const nodesPhases = [
     position: { x: 90, y: -1250 },
     data: { id: "6", minPoints: 70 },
   },
+  {
+    id: "8",
+    type: "phase",
+    position: { x: 0, y: -1500 },
+    data: { id: "8", minPoints: 80 },
+  },
+  {
+    id: "9",
+    type: "phase",
+    position: { x: 80, y: -1750 },
+    data: { id: "9", minPoints: 90 },
+  },
+  {
+    id: "10",
+    type: "phase",
+    position: { x: -80, y: -2000 },
+    data: { id: "10", minPoints: 100 },
+  },
 ]
 
 export const nodesLastPosition =

@@ -1,5 +1,5 @@
-import img1Puc from '../assets/map-background/fundo1-puc.svg';
-import img1SaoGabriel from '../assets/map-background/fundo1-estacao-sao-gabriel.svg';
+import img1Puc from '../assets/map-background/fundo1-puc.webp';
+import img1SaoGabriel from '../assets/map-background/fundo1-estacao-sao-gabriel.webp';
 
 export const backgroundNodes = [
   {

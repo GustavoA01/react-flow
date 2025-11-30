@@ -13,9 +13,9 @@ import { edgesPhases } from "../../constants/edges"
 import { nodesLastPosition, nodesPhases } from "../../constants/nodes"
 import { CustomEdge } from "../../components/CustomEdge"
 import { RankTable } from "@/features/RanksTable/container/RanksTable"
-import { useMediaQuery } from "@custom-react-hooks/use-media-query"
 import BackgroundNode from "@/components/BackgroundNode"
 import { backgroundNodes } from "@/constants/nodesBackgorund"
+import { useMediaDevice } from "@/hooks/useMediaDevice"
 
 const nodeTypes = {
   phase: PhaseNode,
@@ -28,7 +28,7 @@ const edgeTypes = {
 
 export const points = 40
 
-const horizontalLimit = 600
+const horizontalLimit = 1500
 const verticalBottomLimit = 500
 
 const extend: CoordinateExtent = [
@@ -40,7 +40,7 @@ const extend: CoordinateExtent = [
 const initialNodes = [...backgroundNodes, ...nodesPhases]
 
 export const Map = () => {
-  const isDesktop = useMediaQuery("(min-width: 640px)")
+  const {isDesktop} = useMediaDevice()
   const [nodes, setNodes] = useState(initialNodes)
   const [edges, setEdges] = useState(edgesPhases)
 
