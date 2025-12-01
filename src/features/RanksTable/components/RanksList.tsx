@@ -26,7 +26,7 @@ export const RanksList = ({ ranks }: RanksListProps) => {
               </TableCell>
 
               <TableCell
-                className={`font-semibold ${
+                className={`font-semibold max-w-40 truncate ${
                   isTopRanks ? "text-black" : "text-zinc-600"
                 }`}
               >

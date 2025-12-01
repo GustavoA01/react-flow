@@ -34,7 +34,7 @@ export const Chat = () => {
 
   return (
     <div className="w-full min-h-140 flex-1 pb-6 flex flex-col">
-      <div className="p-4">
+      <div className="p-4 shadow-[0_4px_8px_-4px_rgba(0,0,0,0.2)]">
         <DrawerTitle>Gerador de atividades</DrawerTitle>
         <DrawerDescription>Crie atividades usando o chat</DrawerDescription>
       </div>

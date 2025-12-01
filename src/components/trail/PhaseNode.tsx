@@ -1,17 +1,13 @@
 import { Star, Check } from "lucide-react"
 import { Handle, Position } from "@xyflow/react"
-import { points } from "../pages/map"
+import { points } from "../../pages/map"
 import { useState } from "react"
-import { Dialog } from "./ui/dialog"
-import { PhaseProgressModal } from "../features/ProgressModal/container/PhaseProgressModal"
+import { Dialog } from "../ui/dialog"
+import { PhaseProgressModal } from "../../features/ProgressModal/container/PhaseProgressModal"
+import type { PhaseNodeProps } from "@/data/types/reactFlow"
 
-type PhaseNodeProps = {
-  data: { id: string; minPoints: number }
-}
-
-export const PhaseNode = ({ data }: PhaseNodeProps) => {
+export const PhaseNode = ({ id, data: { minPoints } }: PhaseNodeProps) => {
   const [openDialog, setCloseDialog] = useState(false)
-  const { id, minPoints } = data
 
   const isLocked = points < minPoints
 

@@ -15,7 +15,7 @@ const ranks = [
   { position: 5, name: "Carlos Souza", points: 60 },
   { position: 6, name: "Mariana Lima", points: 50 },
   { position: 7, name: "Pedro Alves", points: 40 },
-  { position: 8, name: "Juliana Fernandes", points: 30 },
+  { position: 8, name: "Juliana Fernandes Moreira Cardoso", points: 30 },
   { position: 9, name: "Rafael Gomes", points: 20 },
   { position: 10, name: "Fernanda Rocha", points: 10 },
   { position: 11, name: "Lucas Martins", points: 5 },

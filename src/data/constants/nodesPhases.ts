@@ -1,4 +1,6 @@
-export const nodesPhases = [
+import type { PhaseNodeType } from "@/data/types/reactFlow"
+
+export const nodesPhases: PhaseNodeType[] = [
   {
     id: "1",
     type: "phase",

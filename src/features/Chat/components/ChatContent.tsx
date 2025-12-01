@@ -8,7 +8,7 @@ type ChatContentProps = {
 
 export const ChatContent = ({ messages, isLoading }: ChatContentProps) => {
   return (
-    <div className="flex-1 space-y-4 py-4 overflow-y-auto overflow-x-hidden flex flex-col px-4 inset-shadow-[0_4px_8px_-4px_rgba(0,0,0,0.2)]">
+    <div className="flex-1 space-y-4 py-4 overflow-y-auto overflow-x-hidden flex flex-col px-4 ">
       {messages.map((message, index) =>
         message.role === "user" ? (
           <div key={index} className="self-end bg-gray-200 p-2 rounded-md">
