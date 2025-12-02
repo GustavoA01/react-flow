@@ -7,12 +7,12 @@ export const CoursePage = () => {
   const { paddingXlScreens } = useMediaDevice()
 
   return (
-    <div className=" flex flex-col h-dvh overflow-hidden">
+    <div className="flex flex-col h-dvh overflow-hidden">
       <CourseHeader />
 
       <motion.div
         layoutScroll
-        className={`flex flex-col custom-bar large-bar px-2 -mt-10  overflow-y-auto sm:px-8 pb-4 ${paddingXlScreens}`}
+        className={`flex flex-col custom-bar sm:large-bar px-2 -mt-10 overflow-y-auto sm:px-8 pb-4 ${paddingXlScreens}`}
       >
         <ModuleCard />
         <ModuleCard />

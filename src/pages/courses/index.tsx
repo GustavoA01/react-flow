@@ -6,11 +6,15 @@ export const Courses = () => {
   const navigate = useNavigate()
 
   return (
-    <div className="p-4">
+    <div className="flex flex-col p-4 sm:p-8 h-dvh custom-bar sm:large-bar overflow-hidden">
       <CoursesHeader />
 
-      <div className="flex mt-8 space-x-8 space-y-4 max-md:flex-col">
-        <CourseCard onClick={() => navigate('/curso')}/>
+      <div className="flex flex-col sm:grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 mt-4 pt-2 sm:mt-8 overflow-y-auto overflow-x-hidden space-x-8 space-y-4">
+        <CourseCard onClick={() => navigate("/curso")} />
+        <CourseCard onClick={() => navigate("/curso")} />
+        <CourseCard onClick={() => navigate("/curso")} />
+        <CourseCard onClick={() => navigate("/curso")} />
+        <CourseCard onClick={() => navigate("/curso")} />
       </div>
     </div>
   )
