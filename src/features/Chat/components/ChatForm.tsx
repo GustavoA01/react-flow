@@ -29,7 +29,7 @@ export const ChatForm = ({ onSubmit, register, isLoading }: ChatFormProps) => {
         }
       />
       <Button
-        className="cursor-pointer mt-auto rounded-full w-10 h-10 "
+        className="mt-auto rounded-full w-10 h-10 "
         type="submit"
       >
         {isLoading ? <Spinner /> : <SendHorizonal />}

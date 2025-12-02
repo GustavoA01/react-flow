@@ -27,7 +27,7 @@ export const RankTableHeader = () => {
         {isDesktop && (
           <AccordionTrigger
             showChevrDownIcon={false}
-            className="hover:bg-primary-dark/10 transition-all ease-in px-3 py-2 items-end border-none cursor-pointer"
+            className="hover:bg-primary-dark/10 transition-all ease-in px-3 py-2 items-end border-none"
           >
             <ChevronDown
               size={18}

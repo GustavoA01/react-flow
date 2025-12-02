@@ -52,7 +52,7 @@ export const RankTable = () => {
         <AccordionItem value="ranking">
           <RankTableHeader />
           <AccordionContent className="p-0">
-            <div className="sm:max-h-56 overflow-y-auto ranking-bar min-h-0 bg-white border rounded-b-md">
+            <div className="sm:max-h-56 overflow-y-auto custom-bar min-h-0 bg-white border rounded-b-md">
               <RanksList ranks={ranks} />
             </div>
           </AccordionContent>

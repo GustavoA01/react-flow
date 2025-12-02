@@ -21,7 +21,7 @@ export const RankFilters = ({ selected, setSelected }: RankFiltersProps) => {
     <Select value={selected} onValueChange={setSelected} defaultValue="Geral">
       <SelectTrigger
         showChevrDownIcon={false}
-        className="cursor-pointer hover:bg-primary-dark/10 transition-all ease-in shadow-none border-none flex w-10 items-end"
+        className="hover:bg-primary-dark/10 transition-all ease-in shadow-none border-none flex w-10 items-end"
       >
         <ChevronsUpDown className="text-blue-200" />
       </SelectTrigger>

@@ -17,7 +17,7 @@ export const Header = () => {
         <div className="flex items-center gap-8">
           {pathname === "/cursos" ? (
             <Drawer direction={isDesktop ? "right" : "bottom"} snapPoints={[1]}>
-              <DrawerTrigger className="cursor-pointer">
+              <DrawerTrigger>
                 <MessageCircle size={18} />
               </DrawerTrigger>
 

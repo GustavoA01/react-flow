@@ -16,14 +16,22 @@
 }
 
 body {
-  .ranking-bar::-webkit-scrollbar {
+  button, a{
+    cursor: pointer;
+  }
+
+  .custom-bar::-webkit-scrollbar {
     width: 8px;
     height: 8px;
   }
 
-  .ranking-bar::-webkit-scrollbar-thumb {
+  .custom-bar::-webkit-scrollbar-thumb {
     background-color: var(--color-primary-dark);
     border-radius: 4px;
+  }
+
+  .large-bar::-webkit-scrollbar {
+    width: 10px;
   }
 }
 

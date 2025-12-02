@@ -10,7 +10,7 @@ export const ModalFooter = ({ concluded }: { concluded: boolean }) => {
       </p>
 
       <DialogClose
-        className={`flex font-fredoka justify-center mx-auto font-medium py-4 rounded-md w-40 border bg-cyan-50 cursor-pointer hover:bg-zinc-100`}
+        className={`flex font-fredoka justify-center mx-auto font-medium py-4 rounded-md w-40 border bg-cyan-50 hover:bg-zinc-100`}
       >
         {concluded ? "Legal!" : "Continuar"}
       </DialogClose>

@@ -14,7 +14,7 @@ export const CoursesHeader = () => {
       </div>
 
       <div>
-        <Button className="cursor-pointer max-sm:w-10 ">
+        <Button className="max-sm:w-10 ">
           <Plus />
           <p className="max-sm:hidden">Adicionar Curso</p>
         </Button>
