@@ -1,7 +1,8 @@
 import { Separator } from "@/components/ui/separator"
 import { Badge } from "../../../components/ui/badge"
 import { Card } from "../../../components/ui/card"
-import { Circle, Folder, Notebook } from "lucide-react"
+import { Folder, Notebook } from "lucide-react"
+import { DescriptionCircle } from "@/components/DescriptionCircle"
 
 type CourseCardProps = {
   onClick: () => void
@@ -22,13 +23,7 @@ export const CourseCard = ({ onClick }: CourseCardProps) => {
           Matemática
         </h1>
 
-        <p className="flex items-center text-zinc-500 text-xs sm:text-sm">
-          <span className="line-clamp-1">Prof. Davi Martins </span>
-          <span className="p-0 mx-1">
-            <Circle size={4} fill="gray" />
-          </span>{" "}
-          <span className="line-clamp-1">45 alunos</span>
-        </p>
+        <DescriptionCircle left="5 módulos" right="23 Ativ." fill="gray" />
       </header>
 
       <Separator />

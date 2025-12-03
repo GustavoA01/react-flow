@@ -1,5 +1,6 @@
 import { GoBack } from "@/components/GoBack"
 import { Button } from "@/components/ui/button"
+import { Card } from "@/components/ui/card"
 import { Progress } from "@/components/ui/progress"
 import { useMediaDevice } from "@/hooks/useMediaDevice"
 import { Plus } from "lucide-react"
@@ -40,10 +41,12 @@ export const CourseHeader = () => {
         </Button>
       </div>
 
-      <div className="mt-4 p-4  space-y-1 bg-blue-900/50 border border-blue-onSurface/30 rounded-lg w-full text-sm">
+      <Card className="mt-4 p-4 gap-3 bg-blue-900/50 border border-blue-onSurface/30 rounded-lg w-full text-sm">
         <div className="flex justify-between text-center">
-          <p className="text-blue-onSurface font-bold">Progresso do Curso</p>
-          <p className="text-white">50%</p>
+          <p className="text-blue-onSurface font-bold text-xs sm:text-sm">
+            Progresso do Curso
+          </p>
+          <p className="text-white text-xs sm:text-sm">50%</p>
         </div>
 
         <Progress
@@ -51,7 +54,7 @@ export const CourseHeader = () => {
           className="bg-primary-dark"
           value={50}
         />
-      </div>
+      </Card>
     </header>
   )
 }

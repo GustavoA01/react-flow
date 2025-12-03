@@ -7,7 +7,7 @@
   --color-primary: #2d5586;
   --color-blue-puc: #103666;
   --color-primary-light: #3a6ea5;
-  --color-primary-dark: #1A488E;
+  --color-primary-dark: #1a488e;
   --color-blue-onSurface: var(--color-blue-200);
 
   --font-sans: "Roboto", sans-serif;
@@ -18,8 +18,15 @@
 body {
   overflow: hidden;
 
-  button, a{
+  h1,
+  h2 {
+    user-select: none;
+  }
+
+  button,
+  a {
     cursor: pointer;
+    user-select: none;
   }
 
   .custom-bar::-webkit-scrollbar {
@@ -41,8 +48,8 @@ body {
   }
 
   .scrollbar-hidden {
-    scrollbar-width: none; 
-    -ms-overflow-style: none; 
+    scrollbar-width: none;
+    -ms-overflow-style: none;
   }
 }
 

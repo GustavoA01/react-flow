@@ -10,7 +10,7 @@ export const Header = () => {
 
   return (
     <header className="flex justify-between items-center bg-primary text-white p-4">
-        <h1 className="font-semibold font-montserrat">
+        <h1 className="font-semibold select-none font-montserrat">
           <Link to="/">Beira Linha Play</Link>
         </h1>
 

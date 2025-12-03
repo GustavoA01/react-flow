@@ -7,12 +7,12 @@ export const GoBack = () => {
   const navigate = useNavigate()
 
   return (
-    <div
+    <button
       onClick={() => navigate(-1)}
-      className="flex gap-2 items-center font-semibold hover:text-blue-100 max-sm:text-sm cursor-pointer"
+      className="flex gap-2 items-center select-none font-semibold hover:text-blue-100 max-sm:text-sm cursor-pointer"
     >
       <ChevronLeft size={!isDesktop ? 18 : 24} />
       <p>Voltar</p>
-    </div>
+    </button>
   )
 }
