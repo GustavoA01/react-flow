@@ -9,12 +9,10 @@ export const Courses = () => {
     <div className="flex flex-col p-4 sm:p-8 h-dvh custom-bar sm:large-bar overflow-hidden">
       <CoursesHeader />
 
-      <div className="flex flex-col sm:grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 mt-4 pt-2 sm:mt-8 overflow-y-auto overflow-x-hidden space-x-8 space-y-4">
-        <CourseCard onClick={() => navigate("/curso")} />
-        <CourseCard onClick={() => navigate("/curso")} />
-        <CourseCard onClick={() => navigate("/curso")} />
-        <CourseCard onClick={() => navigate("/curso")} />
-        <CourseCard onClick={() => navigate("/curso")} />
+      <div className="flex flex-col scrollbar-hidden overflow-y-auto md:grid md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-6 mt-4 sm:mt-8 pb-18 pt-2 gap-4">
+        {[...Array(8)].map((_, index) => (
+          <CourseCard key={index} onClick={() => navigate("/curso")} />
+        ))}
       </div>
     </div>
   )

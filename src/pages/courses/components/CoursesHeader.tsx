@@ -3,7 +3,7 @@ import { Plus } from "lucide-react"
 
 export const CoursesHeader = () => {
   return (
-    <header className="flex justify-between gap-4">
+    <header className="flex justify-between items-center gap-4">
       <div>
         <h1 className="font-fredoka text-primary-dark font-semibold md:text-2xl text-xl">
           Cursos

@@ -17,6 +17,7 @@
 
 body {
   overflow: hidden;
+
   button, a{
     cursor: pointer;
   }
@@ -33,6 +34,15 @@ body {
 
   .large-bar::-webkit-scrollbar {
     width: 10px;
+  }
+
+  .scrollbar-hidden::-webkit-scrollbar {
+    display: none;
+  }
+
+  .scrollbar-hidden {
+    scrollbar-width: none; 
+    -ms-overflow-style: none; 
   }
 }
 

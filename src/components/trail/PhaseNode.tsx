@@ -24,7 +24,7 @@ export const PhaseNode = ({ id, data: { minPoints } }: PhaseNodeProps) => {
     <>
       <div
         onClick={() => setCloseDialog(true)}
-        className="relative w-20 h-20 rounded-full select-none drop-shadow-lg transition-transform hover:scale-105 cursor-pointer"
+        className="relative w-20 h-20 rounded-full select-none drop-shadow-lg transition-all ease-in hover:scale-105 cursor-pointer"
       >
         {/* camada de base */}
         <div className={`absolute inset-0 rounded-full ${baseBgClass}`} />

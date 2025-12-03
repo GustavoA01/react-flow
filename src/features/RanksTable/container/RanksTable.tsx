@@ -36,7 +36,7 @@ export const RankTable = () => {
         className="fixed m-5 z-50 flex flex-col w-80 bg-white border rounded-md shadow-lg"
       >
         <RankTableHeader />
-        <div className="flex-1 overflow-y-auto min-h-0 bg-white border-t rounded-b-md">
+        <div className="flex-1 scrollbar-hidden overflow-y-auto min-h-0 bg-white rounded-b-md">
           <RanksList ranks={ranks} />
         </div>
       </div>

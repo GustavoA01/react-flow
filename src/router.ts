@@ -4,6 +4,7 @@ import { Map } from "./pages/map"
 import { HeaderLayout } from "./layouts/HeaderLayout"
 import { Rankings } from "./pages/rankings"
 import { CoursePage } from "./pages/course"
+import { Activities } from "./pages/activities"
 
 export const Router = createBrowserRouter([
   {
@@ -26,6 +27,10 @@ export const Router = createBrowserRouter([
   },
   {
     path: "/curso",
-    Component: CoursePage
-  }
+    Component: CoursePage,
+  },
+  {
+    path: "/atividades",
+    Component: Activities,
+  },
 ])
