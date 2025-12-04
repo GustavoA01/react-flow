@@ -1,8 +1,9 @@
 import { createBrowserRouter } from "react-router-dom"
-import { Courses } from "./pages/courses"
-import { Map } from "./pages/map"
 import { HeaderLayout } from "./layouts/HeaderLayout"
+import { Map } from "./pages/map"
+import { Courses } from "./pages/courses"
 import { Rankings } from "./pages/rankings"
+import { MedalsPage } from "./pages/medals"
 import { CoursePage } from "./pages/course"
 import { Activities } from "./pages/activities"
 
@@ -22,6 +23,10 @@ export const Router = createBrowserRouter([
       {
         path: "/rankings",
         Component: Rankings,
+      },
+      {
+        path: "/medalhas",
+        Component: MedalsPage,
       },
     ],
   },

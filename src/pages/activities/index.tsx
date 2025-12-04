@@ -10,9 +10,11 @@ export const Activities = () => {
       <ActivitiesHeader />
 
       <div
-        className={`flex flex-col gap-4 overflow-auto h-40 px-2 sm:px-8 ${paddingXlScreens}`}
+        className={`flex flex-col pt-4 pb-4 custom-bar gap-4 overflow-auto  px-2 sm:px-8 ${paddingXlScreens}`}
       >
-        <ActivityCard/>
+        {[...Array(12)].map((_, index) => (
+          <ActivityCard key={index} />
+        ))}
       </div>
     </div>
   )

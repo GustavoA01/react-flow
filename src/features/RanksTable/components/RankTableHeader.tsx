@@ -16,7 +16,7 @@ export const RankTableHeader = () => {
         </div>
 
         <div>
-          <p className="text-white font-bold font-montserrat">Ranking</p>
+          <h1 className="text-white font-bold font-montserrat">Ranking</h1>
           <p className="text-blue-200 font-semibold text-sm">{selected}</p>
         </div>
       </div>

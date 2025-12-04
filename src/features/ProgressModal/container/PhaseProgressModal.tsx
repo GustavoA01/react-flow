@@ -23,7 +23,7 @@ export const PhaseProgressModal = ({
     <DialogContent
       showCloseButton={false}
       className={`${
-        progress === 100
+        concluded
           ? "bg-linear-to-l from-green-500 to-emerald-600"
           : "bg-linear-to-r from-blue-400 to-indigo-500"
       }`}

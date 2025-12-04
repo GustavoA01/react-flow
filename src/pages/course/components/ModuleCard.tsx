@@ -1,13 +1,5 @@
 import { DescriptionCircle } from "@/components/DescriptionCircle"
-import {
-  Item,
-  ItemActions,
-  ItemContent,
-  ItemDescription,
-  ItemTitle,
-} from "@/components/ui/item"
-import { CardTitle } from "@/features/Card/components/CardTitle"
-import { CompositionCard } from "@/features/Card/container/CompositionCard"
+import { Card } from "@/components/ui/card"
 import { Check, ChevronRight } from "lucide-react"
 import { motion } from "motion/react"
 
@@ -24,36 +16,23 @@ export const ModuleCard = ({ onClick }: ModuleCardProps) => {
         once: false,
         margin: "-150px 0px -150px 0px",
       }}
-      transition={{ duration: 0.3 }}
+      transition={{  duration: 0.3 }}
       onClick={onClick}
     >
-      <CompositionCard.Root>
-        <CompositionCard.ContentContainer>
+      <Card className="group flex flex-row justify-between items-center py-4 pl-2 pr-4 cursor-pointer mt-4 shadow-sm hover:shadow-md transition-all ease-in">
+        <div className="flex items-center gap-4 pl-2">
           <div className="p-2 bg-green-100 group-hover:bg-green-400 rounded-full transition-colors ease-in">
             <Check className="group-hover:text-white text-green-400 transition-colors ease-in" />
           </div>
-
           <div>
-            <CardTitle title="Introdução" />
-
+            <h2 className="font-semibold sm:text-lg text-zinc-600">
+              Introdução
+            </h2>
             <DescriptionCircle left="3/3 Atividades" right="100%" />
           </div>
-        </CompositionCard.ContentContainer>
-
+        </div>
         <ChevronRight size={16} className="text-zinc-400" />
-      </CompositionCard.Root>
-      {/* <Item>
-        <ItemContent className={`group flex flex-row justify-between items-center py-4 pl-2 pr-4 cursor-pointer mt-4 shadow-sm hover:shadow-md transition-all ease-in`}>
-          
-          <ItemTitle>Introdução</ItemTitle>
-          <ItemDescription>
-            <DescriptionCircle left="3/3 Atividades" right="100%" />
-          </ItemDescription>
-        </ItemContent>
-          <ItemActions>
-            <ChevronRight size={16} className="text-zinc-400" />
-          </ItemActions>
-      </Item> */}
+      </Card>
     </motion.div>
   )
 }

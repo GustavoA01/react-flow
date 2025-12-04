@@ -8,7 +8,8 @@ export const CoursesHeader = () => {
         <h1 className="font-fredoka text-primary-dark font-semibold md:text-2xl text-xl">
           Cursos
         </h1>
-        <p className="text-zinc-500 text-sm sm:text-base">
+        
+        <p className="text-zinc-500 text-sm sm:text-base select-none">
           Selecione a disciplina que você monitora para adicionar atividades
         </p>
       </div>
