@@ -7,7 +7,7 @@ import { Chat } from "./Chat"
 export const ChatDrawer = () => {
   const { pathname } = useLocation()
   const { isDesktop } = useMediaDevice()
-  console.log(isDesktop)
+
   return (
     <>
       {pathname === "/cursos" ? (
