@@ -1,26 +1,67 @@
-import { BookOpen, CircleStar, LogOut, Map } from "lucide-react"
+import { Bell, BookOpen, CircleStar, LogOut, Map, UserPen } from "lucide-react"
 import { DrawerNavHeader } from "../components/DrawerNavHeader"
 import { DrawerSection } from "../components/DrawerSection"
-
-const headerAcademicItems = [
-  { name: "Cursos", path: "/cursos", icon: BookOpen },
-]
-
-const headerConquestItems = [
-  { name: "Mapa", path: "/", icon: Map },
-  { name: "Medalhas", path: "/medalhas", icon: CircleStar },
-]
-
-const configurationItems = [
-  { name: "Sair", path: "/", icon: LogOut },
-]
 
 type DrawerNavigationProps = {
   pathName: string
   setOpenDrawer: React.Dispatch<React.SetStateAction<boolean>>
+  setOpenDialog: React.Dispatch<React.SetStateAction<boolean>>
 }
 
-export const DrawerNavigation = ({ pathName, setOpenDrawer }: DrawerNavigationProps) => {
+export const DrawerNavigation = ({
+  pathName,
+  setOpenDrawer,
+  setOpenDialog,
+}: DrawerNavigationProps) => {
+
+  const headerAcademicItems = [
+    {
+      label: "Cursos",
+      path: "/cursos",
+      icon: BookOpen,
+      onClick: () => setOpenDrawer(false),
+    },
+  ]
+
+  const headerConquestItems = [
+    {
+      label: "Mapa",
+      path: "/",
+      icon: Map,
+      onClick: () => setOpenDrawer(false),
+    },
+    {
+      label: "Medalhas",
+      path: "/medalhas",
+      icon: CircleStar,
+      onClick: () => setOpenDrawer(false),
+    },
+  ]
+
+  const configurationItems = [
+    {
+      label: "Minha conta",
+      path: "/",
+      icon: UserPen,
+      onClick: () => setOpenDrawer(false),
+    },
+    {
+      label: "Notificações",
+      path: "/",
+      icon: Bell,
+      onClick: () => setOpenDrawer(false),
+    },
+    {
+      label: "Sair",
+      path: "/",
+      icon: LogOut,
+      onClick: () => {
+        setOpenDrawer(false)
+        setOpenDialog(true)
+      },
+    },
+  ]
+
   return (
     <>
       <DrawerNavHeader />
@@ -30,21 +71,18 @@ export const DrawerNavigation = ({ pathName, setOpenDrawer }: DrawerNavigationPr
           title="ACADÊMICO"
           sectionItens={headerAcademicItems}
           pathName={pathName}
-          onCloseDrawer={() => setOpenDrawer(false)}
         />
 
         <DrawerSection
           title="CONQUISTAS"
           sectionItens={headerConquestItems}
           pathName={pathName}
-          onCloseDrawer={() => setOpenDrawer(false)}
         />
 
         <DrawerSection
           title="CONFIGURAÇÕES"
           sectionItens={configurationItems}
           pathName={pathName}
-          onCloseDrawer={() => setOpenDrawer(false)}
         />
       </nav>
     </>

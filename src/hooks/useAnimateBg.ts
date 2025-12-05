@@ -10,14 +10,13 @@ export const useAnimateBg = () => {
         await animate(
           scope.current,
           {
-            backgroundColor: ["#6128a3", "#3a6ea5", "#6128a3"],
+            backgroundColor: ["#6128a3", "#3a6ea5", "#0284c7", "#6128a3"],
           },
           {
             duration: 6,
             repeat: Infinity,
             repeatType: "loop",
             ease: "linear",
-          
           }
         )
       }
@@ -26,5 +25,5 @@ export const useAnimateBg = () => {
     animeBg()
   }, [scope, animate])
 
-  return {scope}
+  return { scope }
 }

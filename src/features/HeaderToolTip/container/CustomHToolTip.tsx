@@ -6,7 +6,11 @@ import {
 import { ChevronDown } from "lucide-react"
 import { AnimateContent } from "./AnimateContent"
 
-export const CustomHtoolTip = () => {
+export const CustomHtoolTip = ({
+  setOpenDialog,
+}: {
+  setOpenDialog: () => void
+}) => {
   return (
     <Tooltip>
       <TooltipTrigger className="hidden sm:flex py-2 gap-2 font-montserrat items-center">
@@ -14,8 +18,12 @@ export const CustomHtoolTip = () => {
         <ChevronDown size={16} />
       </TooltipTrigger>
 
-      <TooltipContent side="bottom" className="p-0 border-none bg-transparent select-none">
-        <AnimateContent />
+      <TooltipContent
+        removeArrow
+        side="bottom"
+        className="p-0 border-none bg-transparent select-none"
+      >
+        <AnimateContent setOpenDialog={setOpenDialog} />
       </TooltipContent>
     </Tooltip>
   )

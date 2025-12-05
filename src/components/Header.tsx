@@ -3,6 +3,8 @@ import { Button } from "./ui/button"
 import { DrawerNavButton } from "@/features/DrawerNavigation/container/DrawerNavButton"
 import { ChatDrawer } from "@/features/Chat/container/ChatDrawer"
 import { CustomHtoolTip } from "@/features/HeaderToolTip/container/CustomHToolTip"
+import { LogoutDialog } from "./LogoutDialog"
+import { useState } from "react"
 
 const headerItems = [
   { name: "Cursos", path: "/cursos" },
@@ -11,6 +13,7 @@ const headerItems = [
 
 export const Header = () => {
   const { pathname } = useLocation()
+  const [openDialog, setOpenDialog] = useState(false)
 
   return (
     <header className="flex justify-between items-center bg-primary text-white p-4 sm:px-8">
@@ -20,7 +23,7 @@ export const Header = () => {
 
       <div className="flex items-center gap-2">
         <ChatDrawer />
-        <CustomHtoolTip />
+        <CustomHtoolTip setOpenDialog={() => setOpenDialog(true)} />
         {headerItems.map(({ name, path }) => (
           <Button
             key={path}
@@ -35,6 +38,7 @@ export const Header = () => {
         ))}
         <DrawerNavButton />
       </div>
+      <LogoutDialog openDialog={openDialog} setOpenDialog={setOpenDialog} />
     </header>
   )
 }
