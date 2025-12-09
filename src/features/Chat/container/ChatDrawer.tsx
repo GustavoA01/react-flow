@@ -1,12 +1,12 @@
-import { Drawer, DrawerContent, DrawerTrigger } from "@/components/ui/drawer"
-import { useMediaDevice } from "@/hooks/useMediaDevice"
-import { MessageCircle } from "lucide-react"
-import { useLocation } from "react-router-dom"
-import { Chat } from "./Chat"
+import { Drawer, DrawerContent, DrawerTrigger } from "@/components/ui/drawer";
+import { useMediaDevice } from "@/hooks/useMediaDevice";
+import { MessageCircle } from "lucide-react";
+import { useLocation } from "react-router-dom";
+import { Chat } from "./Chat";
 
 export const ChatDrawer = () => {
-  const { pathname } = useLocation()
-  const { isDesktop } = useMediaDevice()
+  const { pathname } = useLocation();
+  const { isDesktop } = useMediaDevice();
 
   return (
     <>
@@ -26,5 +26,5 @@ export const ChatDrawer = () => {
         </Drawer>
       ) : null}
     </>
-  )
-}
+  );
+};

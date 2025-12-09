@@ -1,5 +1,3 @@
 export const MedalsPage = () => {
-  return (
-    <div>Medalhas</div>
-  )
-}
+  return <div>Medalhas</div>;
+};

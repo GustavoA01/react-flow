@@ -1,23 +1,23 @@
-import { Table, TableBody, TableCell, TableRow } from "@/components/ui/table"
-import { Crown, Medal } from "lucide-react"
-import { ChessQueen } from "./ChessQueen"
+import { Table, TableBody, TableCell, TableRow } from "@/components/ui/table";
+import { Crown, Medal } from "lucide-react";
+import { ChessQueen } from "./ChessQueen";
 
 type RanksListProps = {
-  ranks: { position: number; name: string; points: number }[]
-}
+  ranks: { position: number; name: string; points: number }[];
+};
 
 const topRanksIcons = [
   <Crown className="text-emerald-500 fill-emerald-500" />,
   <ChessQueen color="gray" />,
   <Medal className="text-amber-700" />,
-]
+];
 
 export const RanksList = ({ ranks }: RanksListProps) => {
   return (
     <Table>
       <TableBody>
         {ranks.map(({ position, points, name }) => {
-          const isTopRanks = [1, 2, 3].includes(position)
+          const isTopRanks = [1, 2, 3].includes(position);
 
           return (
             <TableRow key={position} className="h-12 font-montserrat">
@@ -44,9 +44,9 @@ export const RanksList = ({ ranks }: RanksListProps) => {
                 <span className="font-semibold text-zinc-400">xp</span>
               </TableCell>
             </TableRow>
-          )
+          );
         })}
       </TableBody>
     </Table>
-  )
-}
+  );
+};

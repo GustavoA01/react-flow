@@ -1,12 +1,12 @@
-import { GoBack } from "@/components/GoBack"
-import { Card } from "@/components/ui/card"
-import { NewButton } from "@/components/ui/NewButton"
-import { Progress } from "@/components/ui/progress"
-import { DrawerNavButton } from "@/features/DrawerNavigation/container/DrawerNavButton"
-import { useMediaDevice } from "@/hooks/useMediaDevice"
+import { GoBack } from "@/components/GoBack";
+import { Card } from "@/components/ui/card";
+import { NewButton } from "@/components/ui/NewButton";
+import { Progress } from "@/components/ui/progress";
+import { DrawerNavButton } from "@/features/DrawerNavigation/container/DrawerNavButton";
+import { useMediaDevice } from "@/hooks/useMediaDevice";
 
 export const CourseHeader = () => {
-  const { paddingXlScreens } = useMediaDevice()
+  const { paddingXlScreens } = useMediaDevice();
 
   return (
     <header
@@ -44,5 +44,5 @@ export const CourseHeader = () => {
         />
       </Card>
     </header>
-  )
-}
+  );
+};

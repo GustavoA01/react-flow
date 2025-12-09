@@ -1,11 +1,11 @@
-import { DescriptionCircle } from "@/components/DescriptionCircle"
-import { Card } from "@/components/ui/card"
-import { Check, ChevronRight } from "lucide-react"
-import { motion } from "motion/react"
+import { DescriptionCircle } from "@/components/DescriptionCircle";
+import { Card } from "@/components/ui/card";
+import { Check, ChevronRight } from "lucide-react";
+import { motion } from "motion/react";
 
 type ModuleCardProps = {
-  onClick: () => void
-}
+  onClick: () => void;
+};
 
 export const ModuleCard = ({ onClick }: ModuleCardProps) => {
   return (
@@ -16,7 +16,7 @@ export const ModuleCard = ({ onClick }: ModuleCardProps) => {
         once: false,
         margin: "-150px 0px -150px 0px",
       }}
-      transition={{  duration: 0.3 }}
+      transition={{ duration: 0.3 }}
       onClick={onClick}
     >
       <Card className="group flex flex-row justify-between items-center py-4 pl-2 pr-4 cursor-pointer mt-4 shadow-sm hover:shadow-md transition-all ease-in">
@@ -34,5 +34,5 @@ export const ModuleCard = ({ onClick }: ModuleCardProps) => {
         <ChevronRight size={16} className="text-zinc-400" />
       </Card>
     </motion.div>
-  )
-}
+  );
+};

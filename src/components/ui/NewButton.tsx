@@ -1,10 +1,10 @@
-import { Plus } from "lucide-react"
-import { Button } from "./button"
+import { Plus } from "lucide-react";
+import { Button } from "./button";
 
 type NewButtonProps = {
-  text: string
-  onClick: () => void
-}
+  text: string;
+  onClick: () => void;
+};
 
 export const NewButton = ({ text, onClick }: NewButtonProps) => {
   return (
@@ -15,5 +15,5 @@ export const NewButton = ({ text, onClick }: NewButtonProps) => {
       <p className="hidden sm:block">{text}</p>{" "}
       <Plus className="sm:hidden rounded-full" />
     </Button>
-  )
-}
+  );
+};

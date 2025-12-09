@@ -1,23 +1,23 @@
-import { DialogContent } from "../../../components/ui/dialog"
-import { ModalHeader } from "../components/ModalHeader"
-import { BarProgress } from "../components/BarProgress"
-import { ModalFooter } from "../components/ModalFooter"
+import { DialogContent } from "../../../components/ui/dialog";
+import { ModalHeader } from "../components/ModalHeader";
+import { BarProgress } from "../components/BarProgress";
+import { ModalFooter } from "../components/ModalFooter";
 
 type PhaseProgressModalProps = {
-  id: string
-  points: number
-  minPoints: number
-}
+  id: string;
+  points: number;
+  minPoints: number;
+};
 
 export const PhaseProgressModal = ({
   id,
   points,
   minPoints,
 }: PhaseProgressModalProps) => {
-  let progress = Math.round((points / minPoints) * 100)
-  progress = progress > 100 ? 100 : progress
+  let progress = Math.round((points / minPoints) * 100);
+  progress = progress > 100 ? 100 : progress;
 
-  const concluded = progress === 100
+  const concluded = progress === 100;
 
   return (
     <DialogContent
@@ -40,5 +40,5 @@ export const PhaseProgressModal = ({
         <ModalFooter concluded={concluded} />
       </div>
     </DialogContent>
-  )
-}
+  );
+};

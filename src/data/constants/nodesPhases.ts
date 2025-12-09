@@ -1,4 +1,4 @@
-import type { PhaseNodeType } from "@/data/types/reactFlow"
+import type { PhaseNodeType } from "@/data/types/reactFlow";
 
 export const nodesPhases: PhaseNodeType[] = [
   {
@@ -61,7 +61,7 @@ export const nodesPhases: PhaseNodeType[] = [
     position: { x: -80, y: -2000 },
     data: { id: "10", minPoints: 100 },
   },
-]
+];
 
 export const nodesLastPosition =
-  nodesPhases[nodesPhases.length - 1].position.y - 200
+  nodesPhases[nodesPhases.length - 1].position.y - 200;

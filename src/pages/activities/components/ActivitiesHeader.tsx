@@ -1,12 +1,12 @@
-import { DescriptionCircle } from "@/components/DescriptionCircle"
-import { GoBack } from "@/components/GoBack"
-import { NewButton } from "@/components/ui/NewButton"
-import { Progress } from "@/components/ui/progress"
-import { DrawerNavButton } from "@/features/DrawerNavigation/container/DrawerNavButton"
-import { useMediaDevice } from "@/hooks/useMediaDevice"
+import { DescriptionCircle } from "@/components/DescriptionCircle";
+import { GoBack } from "@/components/GoBack";
+import { NewButton } from "@/components/ui/NewButton";
+import { Progress } from "@/components/ui/progress";
+import { DrawerNavButton } from "@/features/DrawerNavigation/container/DrawerNavButton";
+import { useMediaDevice } from "@/hooks/useMediaDevice";
 
 export const ActivitiesHeader = () => {
-  const { paddingXlScreens } = useMediaDevice()
+  const { paddingXlScreens } = useMediaDevice();
 
   return (
     <header
@@ -15,7 +15,7 @@ export const ActivitiesHeader = () => {
       <div className="flex justify-between items-center text-blue-onSurface">
         <GoBack />
 
-        <DrawerNavButton/>
+        <DrawerNavButton />
       </div>
 
       <h1 className="font-fredoka text-white font-semibold md:text-4xl text-3xl mt-4 mb-2">
@@ -29,7 +29,7 @@ export const ActivitiesHeader = () => {
           fill="blue-onSurface"
           textColor="blue-onSurface"
         />
-        
+
         <NewButton text="Nova Atividade" onClick={() => {}} />
       </div>
 
@@ -42,5 +42,5 @@ export const ActivitiesHeader = () => {
         <p className="text-xs sm:text-sm text-green-300 font-semibold">40%</p>
       </div>
     </header>
-  )
-}
+  );
+};

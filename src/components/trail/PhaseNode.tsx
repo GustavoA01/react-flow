@@ -1,24 +1,24 @@
-import { Star, Check } from "lucide-react"
-import { Handle, Position } from "@xyflow/react"
-import { points } from "../../pages/map"
-import { useState } from "react"
-import { Dialog } from "../ui/dialog"
-import { PhaseProgressModal } from "../../features/ProgressModal/container/PhaseProgressModal"
-import type { PhaseNodeProps } from "@/data/types/reactFlow"
+import { Star, Check } from "lucide-react";
+import { Handle, Position } from "@xyflow/react";
+import { points } from "../../pages/map";
+import { useState } from "react";
+import { Dialog } from "../ui/dialog";
+import { PhaseProgressModal } from "../../features/ProgressModal/container/PhaseProgressModal";
+import type { PhaseNodeProps } from "@/data/types/reactFlow";
 
 export const PhaseNode = ({ id, data: { minPoints } }: PhaseNodeProps) => {
-  const [openDialog, setCloseDialog] = useState(false)
+  const [openDialog, setCloseDialog] = useState(false);
 
-  const isLocked = points < minPoints
+  const isLocked = points < minPoints;
 
-  const baseBgClass = isLocked ? "bg-primary" : "bg-green-500"
-  const shineClass = "bg-gradient-to-b from-white/40 to-transparent opacity-70"
+  const baseBgClass = isLocked ? "bg-primary" : "bg-green-500";
+  const shineClass = "bg-gradient-to-b from-white/40 to-transparent opacity-70";
   const overlayGradientClass = isLocked
     ? "bg-primaryring-1 ring-inset ring-black/10"
-    : "bg-gradient-to-b from-green-500/80 to-green-500 ring-1 ring-inset ring-black/10"
+    : "bg-gradient-to-b from-green-500/80 to-green-500 ring-1 ring-inset ring-black/10";
 
-  const Icon = isLocked ? Star : Check
-  const iconClassName = isLocked ? "text-white" : "text-green-900"
+  const Icon = isLocked ? Star : Check;
+  const iconClassName = isLocked ? "text-white" : "text-green-900";
 
   return (
     <>
@@ -61,5 +61,5 @@ export const PhaseNode = ({ id, data: { minPoints } }: PhaseNodeProps) => {
         <PhaseProgressModal points={points} minPoints={minPoints} id={id} />
       </Dialog>
     </>
-  )
-}
+  );
+};

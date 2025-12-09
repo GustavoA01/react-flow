@@ -5,9 +5,9 @@ import {
   ItemDescription,
   ItemMedia,
   ItemTitle,
-} from "@/components/ui/item"
-import { Badge } from "@/components/ui/badge"
-import { Check } from "lucide-react"
+} from "@/components/ui/item";
+import { Badge } from "@/components/ui/badge";
+import { Check } from "lucide-react";
 
 export const ActivityCard = () => {
   return (
@@ -31,5 +31,5 @@ export const ActivityCard = () => {
         </Badge>
       </ItemActions>
     </Item>
-  )
-}
+  );
+};

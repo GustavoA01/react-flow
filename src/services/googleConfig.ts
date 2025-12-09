@@ -15,5 +15,6 @@ export async function generateContent(content: string) {
       },
     },
   });
+
   return response.text;
 }

@@ -10,4 +10,4 @@ export const edgesPhases: PhaseEdgeType[] = [
   { id: "7-8", source: "7", target: "8", type: "custom-edge" },
   { id: "8-9", source: "8", target: "9", type: "custom-edge" },
   { id: "9-10", source: "9", target: "10", type: "custom-edge" },
-]
+];

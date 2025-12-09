@@ -1,10 +1,10 @@
-import { Skeleton } from "@/components/ui/skeleton"
-import ReactMarkdown from "react-markdown"
+import { Skeleton } from "@/components/ui/skeleton";
+import ReactMarkdown from "react-markdown";
 
 type ChatContentProps = {
-  messages: { role: "user" | "assistant"; content: string }[]
-  isLoading: boolean
-}
+  messages: { role: "user" | "assistant"; content: string }[];
+  isLoading: boolean;
+};
 
 export const ChatContent = ({ messages, isLoading }: ChatContentProps) => {
   return (
@@ -19,19 +19,19 @@ export const ChatContent = ({ messages, isLoading }: ChatContentProps) => {
             <ReactMarkdown
               components={{
                 code(props) {
-                  const { children, ...rest } = props
+                  const { children, ...rest } = props;
                   return (
                     <code {...rest} className={"prose prose-sm max-w-none"}>
                       {children}
                     </code>
-                  )
+                  );
                 },
               }}
             >
               {message.content}
             </ReactMarkdown>
           </div>
-        )
+        ),
       )}
 
       {isLoading && (
@@ -40,5 +40,5 @@ export const ChatContent = ({ messages, isLoading }: ChatContentProps) => {
         </Skeleton>
       )}
     </div>
-  )
-}
+  );
+};

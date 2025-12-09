@@ -1,10 +1,10 @@
-import { Progress } from "@/components/ui/progress"
+import { Progress } from "@/components/ui/progress";
 
 type BarProgressProps = {
-  minPoints: number
-  points: number
-  progress: number
-}
+  minPoints: number;
+  points: number;
+  progress: number;
+};
 
 export const BarProgress = ({
   minPoints,
@@ -31,5 +31,5 @@ export const BarProgress = ({
         }
       />
     </div>
-  )
-}
+  );
+};

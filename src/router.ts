@@ -1,11 +1,11 @@
-import { createBrowserRouter } from "react-router-dom"
-import { HeaderLayout } from "./layouts/HeaderLayout"
-import { Map } from "./pages/map"
-import { Courses } from "./pages/courses"
-import { Rankings } from "./pages/rankings"
-import { MedalsPage } from "./pages/medals"
-import { CoursePage } from "./pages/course"
-import { Activities } from "./pages/activities"
+import { createBrowserRouter } from "react-router-dom";
+import { HeaderLayout } from "./layouts/HeaderLayout";
+import { Map } from "./pages/map";
+import { Courses } from "./pages/courses";
+import { Rankings } from "./pages/rankings";
+import { MedalsPage } from "./pages/medals";
+import { CoursePage } from "./pages/course";
+import { Activities } from "./pages/activities";
 
 export const Router = createBrowserRouter([
   {
@@ -38,4 +38,4 @@ export const Router = createBrowserRouter([
     path: "/atividades",
     Component: Activities,
   },
-])
+]);

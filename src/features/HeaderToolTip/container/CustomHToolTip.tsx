@@ -2,14 +2,14 @@ import {
   Tooltip,
   TooltipContent,
   TooltipTrigger,
-} from "@/components/ui/tooltip"
-import { ChevronDown } from "lucide-react"
-import { AnimateContent } from "./AnimateContent"
+} from "@/components/ui/tooltip";
+import { ChevronDown } from "lucide-react";
+import { AnimateContent } from "./AnimateContent";
 
 export const CustomHtoolTip = ({
   setOpenDialog,
 }: {
-  setOpenDialog: () => void
+  setOpenDialog: () => void;
 }) => {
   return (
     <Tooltip>
@@ -26,5 +26,5 @@ export const CustomHtoolTip = ({
         <AnimateContent setOpenDialog={setOpenDialog} />
       </TooltipContent>
     </Tooltip>
-  )
-}
+  );
+};

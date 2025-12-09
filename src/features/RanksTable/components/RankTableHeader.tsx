@@ -1,12 +1,12 @@
-import { ChevronDown, Trophy } from "lucide-react"
-import { RankFilters } from "./RankFilters"
-import { useState } from "react"
-import { AccordionTrigger } from "@/components/ui/accordion"
-import { useMediaDevice } from "@/hooks/useMediaDevice"
+import { ChevronDown, Trophy } from "lucide-react";
+import { RankFilters } from "./RankFilters";
+import { useState } from "react";
+import { AccordionTrigger } from "@/components/ui/accordion";
+import { useMediaDevice } from "@/hooks/useMediaDevice";
 
 export const RankTableHeader = () => {
-  const { isDesktop } = useMediaDevice()
-  const [selected, setSelected] = useState("Geral")
+  const { isDesktop } = useMediaDevice();
+  const [selected, setSelected] = useState("Geral");
 
   return (
     <header className="flex items-center justify-between select-none pl-2 pr-4 pt-2 pb-2 bg-primary-light rounded-md shrink-0">
@@ -37,5 +37,5 @@ export const RankTableHeader = () => {
         )}
       </div>
     </header>
-  )
-}
+  );
+};

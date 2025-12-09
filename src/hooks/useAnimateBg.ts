@@ -1,8 +1,8 @@
-import { useAnimate } from "motion/react"
-import { useEffect } from "react"
+import { useAnimate } from "motion/react";
+import { useEffect } from "react";
 
 export const useAnimateBg = () => {
-  const [scope, animate] = useAnimate()
+  const [scope, animate] = useAnimate();
 
   useEffect(() => {
     const animeBg = async () => {
@@ -10,20 +10,20 @@ export const useAnimateBg = () => {
         await animate(
           scope.current,
           {
-            backgroundColor: ["#0284c7", "#3a6ea5", "#6128a3", "#0284c7"],
+            backgroundColor: ["#3a6ea5", "#0284c7", "#6128a3", "#3a6ea5"],
           },
           {
-            duration: 4,
+            duration: 5,
             repeat: Infinity,
             repeatType: "loop",
             ease: "linear",
-          }
-        )
+          },
+        );
       }
-    }
+    };
 
-    animeBg()
-  }, [scope, animate])
+    animeBg();
+  }, [scope, animate]);
 
-  return { scope }
-}
+  return { scope };
+};

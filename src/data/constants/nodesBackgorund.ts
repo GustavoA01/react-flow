@@ -1,6 +1,6 @@
-import type { BackgorundNodeType } from "@/data/types/reactFlow"
-import img1Puc from "@/assets/map-background/fundo1-puc.webp"
-import img1SaoGabriel from "@/assets/map-background/fundo1-estacao-sao-gabriel.webp"
+import type { BackgorundNodeType } from "@/data/types/reactFlow";
+import img1Puc from "@/assets/map-background/fundo1-puc.webp";
+import img1SaoGabriel from "@/assets/map-background/fundo1-estacao-sao-gabriel.webp";
 
 export const backgroundNodes: BackgorundNodeType[] = [
   {
@@ -33,4 +33,4 @@ export const backgroundNodes: BackgorundNodeType[] = [
     draggable: false,
     selectable: false,
   },
-]
+];

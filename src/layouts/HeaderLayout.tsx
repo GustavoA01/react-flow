@@ -1,6 +1,6 @@
-import { BottomNavigation } from "@/components/BottomNavigation"
-import { Header } from "../components/Header"
-import { Outlet } from "react-router-dom"
+import { BottomNavigation } from "@/components/BottomNavigation";
+import { Header } from "../components/Header";
+import { Outlet } from "react-router-dom";
 
 export const HeaderLayout = () => {
   return (
@@ -9,5 +9,5 @@ export const HeaderLayout = () => {
       <Outlet />
       <BottomNavigation />
     </div>
-  )
-}
+  );
+};

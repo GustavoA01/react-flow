@@ -1,6 +1,6 @@
-import type { BackgroundNodeProps } from "@/data/types/reactFlow"
-import { Handle, Position } from "@xyflow/react"
-import { memo } from "react"
+import type { BackgroundNodeProps } from "@/data/types/reactFlow";
+import { Handle, Position } from "@xyflow/react";
+import { memo } from "react";
 
 const BackgroundNode = ({
   id,
@@ -11,11 +11,7 @@ const BackgroundNode = ({
       className="relative"
       style={{ width: width, height: height, pointerEvents: "none" }}
     >
-      <img
-        src={image}
-        alt={alt}
-        className="w-full h-full object-cover"
-      />
+      <img src={image} alt={alt} className="w-full h-full object-cover" />
 
       <Handle
         id={`${id}-top`}
@@ -30,7 +26,7 @@ const BackgroundNode = ({
         className="hidden"
       />
     </div>
-  )
-}
+  );
+};
 
-export default memo(BackgroundNode)
+export default memo(BackgroundNode);

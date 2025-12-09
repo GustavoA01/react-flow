@@ -1,4 +1,4 @@
-import { DialogClose } from "@/components/ui/dialog"
+import { DialogClose } from "@/components/ui/dialog";
 
 export const ModalFooter = ({ concluded }: { concluded: boolean }) => {
   return (
@@ -15,5 +15,5 @@ export const ModalFooter = ({ concluded }: { concluded: boolean }) => {
         {concluded ? "Legal!" : "Continuar"}
       </DialogClose>
     </>
-  )
-}
+  );
+};

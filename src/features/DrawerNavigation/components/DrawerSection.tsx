@@ -1,16 +1,16 @@
-import { Button } from "@/components/ui/button"
-import { Link } from "react-router-dom"
+import { Button } from "@/components/ui/button";
+import { Link } from "react-router-dom";
 
 type DrawerSectionProps = {
-  title: string
-  pathName: string
+  title: string;
+  pathName: string;
   sectionItens: {
-    label: string
-    path: string
-    icon: React.ComponentType<{ size: number; className?: string }>
-    onClick: () => void
-  }[]
-}
+    label: string;
+    path: string;
+    icon: React.ComponentType<{ size: number; className?: string }>;
+    onClick: () => void;
+  }[];
+};
 
 export const DrawerSection = ({
   title,
@@ -43,7 +43,7 @@ export const DrawerSection = ({
                 />
                 <p>{label}</p>
               </Link>
-            )
+            );
           } else {
             return (
               <Button
@@ -54,10 +54,10 @@ export const DrawerSection = ({
                 <Icon className="text-zinc-400" size={20} />
                 <p>{label}</p>
               </Button>
-            )
+            );
           }
         })}
       </div>
     </section>
-  )
-}
+  );
+};

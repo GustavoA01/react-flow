@@ -1,9 +1,9 @@
-import { CourseCard } from "@/pages/courses/components/CourseCard"
-import { CoursesHeader } from "./components/CoursesHeader"
-import { useNavigate } from "react-router-dom"
+import { CourseCard } from "@/pages/courses/components/CourseCard";
+import { CoursesHeader } from "./components/CoursesHeader";
+import { useNavigate } from "react-router-dom";
 
 export const Courses = () => {
-  const navigate = useNavigate()
+  const navigate = useNavigate();
 
   return (
     <div className="flex flex-col p-4 sm:p-8 h-dvh custom-bar sm:large-bar overflow-hidden">
@@ -15,5 +15,5 @@ export const Courses = () => {
         ))}
       </div>
     </div>
-  )
-}
+  );
+};

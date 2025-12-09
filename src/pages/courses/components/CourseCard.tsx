@@ -1,12 +1,12 @@
-import { Separator } from "@/components/ui/separator"
-import { Badge } from "../../../components/ui/badge"
-import { Card } from "../../../components/ui/card"
-import { Folder, Notebook } from "lucide-react"
-import { DescriptionCircle } from "@/components/DescriptionCircle"
+import { Separator } from "@/components/ui/separator";
+import { Badge } from "../../../components/ui/badge";
+import { Card } from "../../../components/ui/card";
+import { Folder, Notebook } from "lucide-react";
+import { DescriptionCircle } from "@/components/DescriptionCircle";
 
 type CourseCardProps = {
-  onClick: () => void
-}
+  onClick: () => void;
+};
 
 export const CourseCard = ({ onClick }: CourseCardProps) => {
   return (
@@ -40,5 +40,5 @@ export const CourseCard = ({ onClick }: CourseCardProps) => {
         </div>
       </div>
     </Card>
-  )
-}
+  );
+};

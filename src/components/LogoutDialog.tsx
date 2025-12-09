@@ -1,11 +1,18 @@
-import { DialogTitle } from "@radix-ui/react-dialog"
-import { Dialog, DialogClose, DialogContent, DialogFooter } from "./ui/dialog"
-import { Button } from "./ui/button"
+import { DialogTitle } from "@radix-ui/react-dialog";
+import { Button } from "./ui/button";
+import {
+  Dialog,
+  DialogClose,
+  DialogContent,
+  DialogDescription,
+  DialogFooter,
+  DialogHeader,
+} from "./ui/dialog";
 
 type LogoutDialogProps = {
-  openDialog: boolean
-  setOpenDialog: React.Dispatch<React.SetStateAction<boolean>>
-}
+  openDialog: boolean;
+  setOpenDialog: React.Dispatch<React.SetStateAction<boolean>>;
+};
 
 export const LogoutDialog = ({
   openDialog,
@@ -14,9 +21,13 @@ export const LogoutDialog = ({
   return (
     <Dialog open={openDialog} onOpenChange={setOpenDialog}>
       <DialogContent>
-        <DialogTitle className="text-zinc-500">
-          Deseja mesmo sair da sua conta?
-        </DialogTitle>
+        <DialogHeader>
+          <DialogTitle>Deseja mesmo sair da sua conta?</DialogTitle>
+
+          <DialogDescription>
+            Você será redirecionado para a tela de login.
+          </DialogDescription>
+        </DialogHeader>
 
         <DialogFooter>
           <DialogClose asChild>
@@ -28,5 +39,5 @@ export const LogoutDialog = ({
         </DialogFooter>
       </DialogContent>
     </Dialog>
-  )
-}
+  );
+};

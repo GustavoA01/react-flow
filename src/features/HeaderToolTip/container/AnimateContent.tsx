@@ -1,15 +1,15 @@
-import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
-import { Button } from "@/components/ui/button"
-import { useAnimateBg } from "@/hooks/useAnimateBg"
-import { LogOut } from "lucide-react"
-import { Link } from "react-router-dom"
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+import { Button } from "@/components/ui/button";
+import { useAnimateBg } from "@/hooks/useAnimateBg";
+import { LogOut } from "lucide-react";
+import { Link } from "react-router-dom";
 
 export const AnimateContent = ({
   setOpenDialog,
 }: {
-  setOpenDialog: () => void
+  setOpenDialog: () => void;
 }) => {
-  const { scope } = useAnimateBg()
+  const { scope } = useAnimateBg();
 
   return (
     <div className="flex space-x-6 rounded-md p-4" ref={scope}>
@@ -54,5 +54,5 @@ export const AnimateContent = ({
         ))}
       </div>
     </div>
-  )
-}
+  );
+};

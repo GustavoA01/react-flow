@@ -2,18 +2,20 @@ import {
   DialogDescription,
   DialogHeader,
   DialogTitle,
-} from "@/components/ui/dialog"
-import { Medal, TrainFront } from "lucide-react"
+} from "@/components/ui/dialog";
+import { Medal, TrainFront } from "lucide-react";
 
 type ModalHeaderProps = {
-  level: string
-  concluded: boolean
-}
+  level: string;
+  concluded: boolean;
+};
 
 export const ModalHeader = ({ level, concluded }: ModalHeaderProps) => {
   return (
     <DialogHeader className="flex items-center">
-      <DialogTitle className="font-bold text-white font-montserrat">Nível {level}</DialogTitle>
+      <DialogTitle className="font-bold text-white font-montserrat">
+        Nível {level}
+      </DialogTitle>
       <div
         className={`${
           concluded
@@ -36,5 +38,5 @@ export const ModalHeader = ({ level, concluded }: ModalHeaderProps) => {
         {concluded ? "Concluído" : "Em progresso"}
       </DialogDescription>
     </DialogHeader>
-  )
-}
+  );
+};

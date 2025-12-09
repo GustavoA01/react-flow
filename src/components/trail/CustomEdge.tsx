@@ -10,11 +10,11 @@ export function CustomEdge({
   markerEnd,
   sourceHandleId,
   targetHandleId,
-  selectable,   
-  deletable,    
-  pathOptions,  
+  selectable,
+  deletable,
+  pathOptions,
   ...rest
-}:any) {
+}: any) {
   const [edgePath] = getBezierPath({
     sourceX,
     sourceY,
@@ -30,9 +30,9 @@ export function CustomEdge({
       markerEnd={markerEnd}
       {...rest}
       style={{
-        stroke: '#8B4513',
+        stroke: "#8B4513",
         strokeWidth: 4,
-        strokeDasharray: '10 5',
+        strokeDasharray: "10 5",
       }}
     />
   );

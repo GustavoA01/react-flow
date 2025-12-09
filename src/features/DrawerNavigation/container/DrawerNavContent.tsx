@@ -1,19 +1,18 @@
-import { Bell, BookOpen, CircleStar, LogOut, Map, UserPen } from "lucide-react"
-import { DrawerNavHeader } from "../components/DrawerNavHeader"
-import { DrawerSection } from "../components/DrawerSection"
+import { Bell, BookOpen, CircleStar, LogOut, Map, UserPen } from "lucide-react";
+import { DrawerNavHeader } from "../components/DrawerNavHeader";
+import { DrawerSection } from "../components/DrawerSection";
 
 type DrawerNavigationProps = {
-  pathName: string
-  setOpenDrawer: React.Dispatch<React.SetStateAction<boolean>>
-  setOpenDialog: React.Dispatch<React.SetStateAction<boolean>>
-}
+  pathName: string;
+  setOpenDrawer: React.Dispatch<React.SetStateAction<boolean>>;
+  setOpenDialog: React.Dispatch<React.SetStateAction<boolean>>;
+};
 
 export const DrawerNavigation = ({
   pathName,
   setOpenDrawer,
   setOpenDialog,
 }: DrawerNavigationProps) => {
-
   const headerAcademicItems = [
     {
       label: "Cursos",
@@ -21,7 +20,7 @@ export const DrawerNavigation = ({
       icon: BookOpen,
       onClick: () => setOpenDrawer(false),
     },
-  ]
+  ];
 
   const headerConquestItems = [
     {
@@ -36,7 +35,7 @@ export const DrawerNavigation = ({
       icon: CircleStar,
       onClick: () => setOpenDrawer(false),
     },
-  ]
+  ];
 
   const configurationItems = [
     {
@@ -56,11 +55,11 @@ export const DrawerNavigation = ({
       path: "/",
       icon: LogOut,
       onClick: () => {
-        setOpenDrawer(false)
-        setOpenDialog(true)
+        setOpenDrawer(false);
+        setOpenDialog(true);
       },
     },
-  ]
+  ];
 
   return (
     <>
@@ -86,5 +85,5 @@ export const DrawerNavigation = ({
         />
       </nav>
     </>
-  )
-}
+  );
+};

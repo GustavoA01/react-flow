@@ -2,10 +2,10 @@ import {
   Accordion,
   AccordionContent,
   AccordionItem,
-} from "@/components/ui/accordion"
-import { RankTableHeader } from "@/features/RanksTable/components/RankTableHeader"
-import { RanksList } from "@/features/RanksTable/components/RanksList"
-import { useMediaDevice } from "@/hooks/useMediaDevice"
+} from "@/components/ui/accordion";
+import { RankTableHeader } from "@/features/RanksTable/components/RankTableHeader";
+import { RanksList } from "@/features/RanksTable/components/RanksList";
+import { useMediaDevice } from "@/hooks/useMediaDevice";
 
 const ranks = [
   { position: 1, name: "Gustavo Aguiar", points: 100 },
@@ -24,10 +24,10 @@ const ranks = [
   { position: 14, name: "Camila Nunes", points: 0 },
   { position: 15, name: "Diego Barros", points: 0 },
   { position: 16, name: "Elisa Moreira", points: 0 },
-]
+];
 
 export const RankTable = () => {
-  const { isDesktop } = useMediaDevice()
+  const { isDesktop } = useMediaDevice();
 
   if (!isDesktop) {
     return (
@@ -40,7 +40,7 @@ export const RankTable = () => {
           <RanksList ranks={ranks} />
         </div>
       </div>
-    )
+    );
   }
 
   return (
@@ -59,5 +59,5 @@ export const RankTable = () => {
         </AccordionItem>
       </Accordion>
     </div>
-  )
-}
+  );
+};
