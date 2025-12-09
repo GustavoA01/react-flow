@@ -17,7 +17,10 @@ export const CoursePage = () => {
         className={`flex flex-col custom-bar sm:large-bar px-2 -mt-10 overflow-y-auto sm:px-8 pb-4 ${paddingXlScreens}`}
       >
         {[...Array(10)].map((_, index) => (
-          <ModuleCard key={index} onClick={() => navigate("/atividades")} />
+          <ModuleCard
+            key={index}
+            onClick={() => navigate("/cursos/curso/atividades")}
+          />
         ))}
       </motion.div>
     </div>

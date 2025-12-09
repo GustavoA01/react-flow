@@ -6,7 +6,7 @@ import {
 import { ChevronDown } from "lucide-react";
 import { AnimateContent } from "./AnimateContent";
 
-export const CustomHtoolTip = ({
+export const UserToolTip = ({
   setOpenDialog,
 }: {
   setOpenDialog: () => void;
@@ -21,7 +21,7 @@ export const CustomHtoolTip = ({
       <TooltipContent
         removeArrow
         side="bottom"
-        className="p-0 border-none bg-transparent select-none"
+        className="p-0 border-none bg-transparent select-none mr-8"
       >
         <AnimateContent setOpenDialog={setOpenDialog} />
       </TooltipContent>

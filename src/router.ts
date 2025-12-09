@@ -31,11 +31,11 @@ export const Router = createBrowserRouter([
     ],
   },
   {
-    path: "/curso",
+    path: "/cursos/curso",
     Component: CoursePage,
   },
   {
-    path: "/atividades",
+    path: "/cursos/curso/atividades",
     Component: Activities,
   },
 ]);

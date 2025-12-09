@@ -11,7 +11,7 @@ export const Courses = () => {
 
       <div className="flex flex-col scrollbar-hidden overflow-y-auto md:grid md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-6 mt-4 sm:mt-8 pb-18 pt-2 gap-4">
         {[...Array(8)].map((_, index) => (
-          <CourseCard key={index} onClick={() => navigate("/curso")} />
+          <CourseCard key={index} onClick={() => navigate("/cursos/curso")} />
         ))}
       </div>
     </div>

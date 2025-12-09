@@ -6,7 +6,7 @@ type NewButtonProps = {
   onClick: () => void;
 };
 
-export const NewButton = ({ text, onClick }: NewButtonProps) => {
+export const NewButtonFloat = ({ text, onClick }: NewButtonProps) => {
   return (
     <Button
       onClick={onClick}

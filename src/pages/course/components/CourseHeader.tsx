@@ -1,8 +1,7 @@
-import { GoBack } from "@/components/GoBack";
+import { CourseSharedHeader } from "@/components/CourseSharedHeader";
 import { Card } from "@/components/ui/card";
-import { NewButton } from "@/components/ui/NewButton";
+import { NewButtonFloat } from "@/components/ui/NewButtonFloat";
 import { Progress } from "@/components/ui/progress";
-import { DrawerNavButton } from "@/features/DrawerNavigation/container/DrawerNavButton";
 import { useMediaDevice } from "@/hooks/useMediaDevice";
 
 export const CourseHeader = () => {
@@ -12,10 +11,7 @@ export const CourseHeader = () => {
     <header
       className={`px-4 pt-4 sm:px-8 sm:pt-8 bg-blue-puc rounded-b-4xl pb-18 ${paddingXlScreens}`}
     >
-      <div className="flex justify-between items-center text-blue-onSurface">
-        <GoBack />
-        <DrawerNavButton />
-      </div>
+      <CourseSharedHeader />
 
       <h1 className="font-fredoka text-white font-semibold md:text-4xl text-3xl mt-4 mb-2">
         Matemática
@@ -26,7 +22,7 @@ export const CourseHeader = () => {
           Professor Davi Martins
         </p>
 
-        <NewButton text="Novo Módulo" onClick={() => {}} />
+        <NewButtonFloat text="Novo Módulo" onClick={() => {}} />
       </div>
 
       <Card className="mt-4 p-4 gap-3 bg-blue-900/50 border border-blue-onSurface/30 rounded-lg w-full text-sm">

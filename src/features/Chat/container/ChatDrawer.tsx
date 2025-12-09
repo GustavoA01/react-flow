@@ -11,7 +11,7 @@ export const ChatDrawer = () => {
   return (
     <>
       {pathname === "/cursos" ? (
-        <Drawer direction={isDesktop ? "right" : "bottom"} snapPoints={[1]}>
+        <Drawer direction={isDesktop ? "right" : "bottom"}>
           <DrawerTrigger
             className={
               "sm:py-2 px-2 rounded-md text-md font-montserrat hover:bg-primary-dark transition-all ease-in"

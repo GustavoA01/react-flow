@@ -63,5 +63,5 @@ export const nodesPhases: PhaseNodeType[] = [
   },
 ];
 
-export const nodesLastPosition =
-  nodesPhases[nodesPhases.length - 1].position.y - 200;
+const nodeLastIndex = nodesPhases[nodesPhases.length - 1];
+export const nodesLastPosition = nodeLastIndex.position.y - 200;

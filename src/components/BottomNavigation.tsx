@@ -21,7 +21,11 @@ export const BottomNavigation = () => {
   const { pathname } = useLocation();
 
   return (
-    <div className="fixed bottom-3 items-center w-50 self-center rounded-full gap-6 bg-white shadow-md py-2 flex justify-center sm:hidden">
+    <motion.div
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1, transition: { duration: 0.3, ease: "easeIn" } }}
+      className="fixed bottom-3 items-center w-50 self-center rounded-full gap-6 bg-white shadow-md py-2 flex justify-center sm:hidden"
+    >
       {buttons.map((button) => {
         const selected = pathname === button.to;
 
@@ -41,6 +45,6 @@ export const BottomNavigation = () => {
           </motion.div>
         );
       })}
-    </div>
+    </motion.div>
   );
 };
