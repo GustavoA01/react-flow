@@ -1,7 +1,6 @@
 import { Link, useLocation } from "react-router-dom";
 import { Button } from "./ui/button";
 import { DrawerNavButton } from "@/features/DrawerNavigation/container/DrawerNavButton";
-import { ChatDrawer } from "@/features/Chat/container/ChatDrawer";
 import { UserToolTip } from "@/features/HeaderToolTip/container/UserToolTip";
 import { LogoutDialog } from "./LogoutDialog";
 import { useState } from "react";
@@ -22,7 +21,6 @@ export const Header = () => {
       </h1>
 
       <div className="flex items-center gap-2">
-        <ChatDrawer />
         <UserToolTip setOpenDialog={() => setOpenDialog(true)} />
         {headerItems.map(({ name, path }) => (
           <Button

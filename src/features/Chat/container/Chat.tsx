@@ -40,7 +40,9 @@ export const Chat = () => {
     <div className="flex flex-col w-full min-h-140 flex-1 pb-6">
       <DrawerHeader className="shadow-[0_4px_8px_-4px_rgba(0,0,0,0.2)]">
         <DrawerTitle>Gerador de atividades</DrawerTitle>
-        <DrawerDescription>Crie atividades usando o chat</DrawerDescription>
+        <DrawerDescription>
+          Crie atividades rapidamente usando o chat
+        </DrawerDescription>
       </DrawerHeader>
 
       <ChatContent messages={messages} isLoading={isLoading} />

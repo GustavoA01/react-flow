@@ -4,7 +4,11 @@ import { NewButtonFloat } from "@/components/ui/NewButtonFloat";
 import { Progress } from "@/components/ui/progress";
 import { useMediaDevice } from "@/hooks/useMediaDevice";
 
-export const ActivitiesHeader = () => {
+export const ActivitiesHeader = ({
+  setOpenActivityDialog,
+}: {
+  setOpenActivityDialog: (open: boolean) => void;
+}) => {
   const { paddingXlScreens } = useMediaDevice();
 
   return (
@@ -25,7 +29,10 @@ export const ActivitiesHeader = () => {
           textColor="blue-onSurface"
         />
 
-        <NewButtonFloat text="Nova Atividade" onClick={() => {}} />
+        <NewButtonFloat
+          text="Nova Atividade"
+          onClick={() => setOpenActivityDialog(true)}
+        />
       </div>
 
       <div className="flex items-center gap-2 mt-5 px-2 py-1 border rounded-full bg-blue-900/50 border-blue-onSurface/30">

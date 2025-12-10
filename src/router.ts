@@ -6,6 +6,7 @@ import { Rankings } from "./pages/rankings";
 import { MedalsPage } from "./pages/medals";
 import { CoursePage } from "./pages/course";
 import { Activities } from "./pages/activities";
+import { NewActivity } from "./pages/new-activity";
 
 export const Router = createBrowserRouter([
   {
@@ -37,5 +38,9 @@ export const Router = createBrowserRouter([
   {
     path: "/cursos/curso/atividades",
     Component: Activities,
+  },
+  {
+    path: "/cursos/curso/atividades/nova-atividade",
+    Component: NewActivity,
   },
 ]);
