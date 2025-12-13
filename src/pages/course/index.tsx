@@ -5,7 +5,7 @@ import { motion } from "motion/react";
 import { useNavigate } from "react-router-dom";
 
 export const CoursePage = () => {
-  const { paddingXlScreens } = useMediaDevice();
+  const { padding2XlScreens } = useMediaDevice();
   const navigate = useNavigate();
 
   return (
@@ -14,7 +14,7 @@ export const CoursePage = () => {
 
       <motion.div
         layoutScroll
-        className={`flex flex-col custom-bar sm:large-bar px-2 -mt-10 overflow-y-auto sm:px-8 pb-4 ${paddingXlScreens}`}
+        className={`flex flex-col custom-bar sm:large-bar px-2 -mt-10 overflow-y-auto sm:px-8 pb-4 ${padding2XlScreens}`}
       >
         {[...Array(10)].map((_, index) => (
           <ModuleCard

@@ -5,11 +5,11 @@ import { Progress } from "@/components/ui/progress";
 import { useMediaDevice } from "@/hooks/useMediaDevice";
 
 export const CourseHeader = () => {
-  const { paddingXlScreens } = useMediaDevice();
+  const { padding2XlScreens } = useMediaDevice();
 
   return (
     <header
-      className={`px-4 pt-4 sm:px-8 sm:pt-8 bg-blue-puc rounded-b-4xl pb-18 ${paddingXlScreens}`}
+      className={`px-4 pt-4 sm:px-8 sm:pt-8 bg-blue-puc rounded-b-4xl pb-18 ${padding2XlScreens}`}
     >
       <CourseSharedHeader />
 

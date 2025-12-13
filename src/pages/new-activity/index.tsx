@@ -11,7 +11,7 @@ import { XpInput } from "./components/Form/XpInput";
 import { Header } from "./components/Header";
 
 export const NewActivity = () => {
-  const { paddingXlScreens } = useMediaDevice();
+  const { padding2XlScreens } = useMediaDevice();
   const [localStorageActivityData, setLocalStorageActivityData] =
     useState<NewActivityFormType | null>(null);
   const [isTwoAlternatives, setIsTwoAlternatives] = useState(false);
@@ -26,7 +26,7 @@ export const NewActivity = () => {
     <div>
       <Header activityName={localStorageActivityData?.activityName ?? ""} />
 
-      <form className={`p-4 ${paddingXlScreens} space-y-4`}>
+      <form className={`p-4 ${padding2XlScreens} space-y-4`}>
         <Card className="px-4 text-zinc-500 font-semibold pt-0">
           <FormHeader
             isTwoAlternatives={isTwoAlternatives}
