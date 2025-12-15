@@ -9,11 +9,11 @@ export const ActivitiesHeader = ({
 }: {
   setOpenActivityDialog: (open: boolean) => void;
 }) => {
-  const { paddingXlScreens } = useMediaDevice();
+  const { padding2XlScreens } = useMediaDevice();
 
   return (
     <header
-      className={`px-4 pt-4 sm:px-8 sm:pt-8 bg-blue-puc rounded-b-4xl pb-10 ${paddingXlScreens}`}
+      className={`px-4 pt-4 sm:px-8 sm:pt-8 bg-blue-puc rounded-b-4xl pb-10 ${padding2XlScreens}`}
     >
       <CourseSharedHeader />
 
