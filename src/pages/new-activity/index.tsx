@@ -18,7 +18,7 @@ export const NewActivity = () => {
   }, []);
 
   return (
-    <div className="flex flex-col h-screen">
+    <div className="flex flex-col h-dvh">
       <Header
         activityName={
           localStorageActivityData?.activityName ?? "Atividade não encontrada"

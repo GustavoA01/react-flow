@@ -1,4 +1,12 @@
-import { Bell, BookOpen, CircleStar, LogOut, Map, UserPen } from "lucide-react";
+import {
+  Bell,
+  BookOpen,
+  CircleStar,
+  LogOut,
+  Map,
+  Trophy,
+  UserPen,
+} from "lucide-react";
 import { DrawerNavHeader } from "../components/DrawerNavHeader";
 import { DrawerSection } from "../components/DrawerSection";
 
@@ -27,6 +35,12 @@ export const DrawerNavigation = ({
       label: "Mapa",
       path: "/",
       icon: Map,
+      onClick: () => setOpenDrawer(false),
+    },
+    {
+      label: "Rankings",
+      path: "/rankings",
+      icon: Trophy,
       onClick: () => setOpenDrawer(false),
     },
     {
