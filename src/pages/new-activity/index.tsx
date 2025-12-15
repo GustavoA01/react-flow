@@ -1,20 +1,15 @@
-import { Card } from "@/components/ui/card";
-import { Label } from "@/components/ui/label";
-import { Textarea } from "@/components/ui/textarea";
 import type { NewActivityFormType } from "@/data/schemas/activities";
 import { useMediaDevice } from "@/hooks/useMediaDevice";
 import { useEffect, useState } from "react";
-import { FormHeader } from "./components/Form/FormHeader";
-import { InputOptions } from "./components/Form/InputOptions";
-import { Badge } from "@/components/ui/badge";
-import { XpInput } from "./components/Form/XpInput";
 import { Header } from "./components/Header";
+import { QuestionCard } from "./components/Form/QuestionCard";
+import { FormFooter } from "./components/Form/FormFooter";
 
 export const NewActivity = () => {
   const { paddingXlScreens } = useMediaDevice();
+
   const [localStorageActivityData, setLocalStorageActivityData] =
     useState<NewActivityFormType | null>(null);
-  const [isTwoAlternatives, setIsTwoAlternatives] = useState(false);
 
   useEffect(() => {
     const data = localStorage.getItem("newActivityData");
@@ -23,43 +18,30 @@ export const NewActivity = () => {
   }, []);
 
   return (
-    <div>
-      <Header activityName={localStorageActivityData?.activityName ?? ""} />
+    <div className="flex flex-col h-screen">
+      <Header
+        activityName={
+          localStorageActivityData?.activityName ?? "Atividade não encontrada"
+        }
+      />
 
-      <form className={`p-4 ${paddingXlScreens} space-y-4`}>
-        <Card className="px-4 text-zinc-500 font-semibold pt-0">
-          <FormHeader
-            isTwoAlternatives={isTwoAlternatives}
-            setTwoALternatives={setIsTwoAlternatives}
-          />
-
-          <div className="space-y-2 ">
-            <Label>ENUNCIADO</Label>
-            <Textarea
-              placeholder="Escreva a pergunta..."
-              className="placeholder:text-zinc-700 max-sm:text-xs focus:ring-2 focus:outline-none focus:ring-blue-100 focus:border-blue-400 bg-zinc-50 resize-none max-h-fit shadow-none"
-            />
-          </div>
-
-          <XpInput />
-
-          <div className="space-y-2">
-            <div className="flex space-x-2">
-              <Label>ALTERNATIVAS </Label>
-              <Badge className="text-xs bg-green-200 text-green-700 py-1 px-2 rounded-md font-semibold flex items-center gap-1">
-                Defina a correta
-              </Badge>
-            </div>
-
-            <div className="space-y-2 sm:grid grid-cols-2 sm:gap-4 sm:space-y-0">
-              {Array.from({ length: !isTwoAlternatives ? 4 : 2 }).map(
-                (_, index) => (
-                  <InputOptions key={index} />
-                ),
-              )}
-            </div>
-          </div>
-        </Card>
+      <form
+        className={`p-4 space-y-4 overflow-y-auto min-h-0 custom-bar sm:large-bar ${paddingXlScreens}`}
+      >
+        {localStorageActivityData ? (
+          <>
+            {Array.from({
+              length: localStorageActivityData.qtdQuestions,
+            }).map((_, index) => (
+              <QuestionCard key={index} questionNumber={index + 1} />
+            ))}
+            <FormFooter />
+          </>
+        ) : (
+          <p className="mt-5 text-center font-semibold text-zinc-500 sm:text-xl">
+            Atividade não encontrada
+          </p>
+        )}
       </form>
     </div>
   );

@@ -1,22 +1,26 @@
+import { RadioGroupItem } from "@/components/ui/radio-group";
 import { Textarea } from "@/components/ui/textarea";
-import { Toggle } from "@/components/ui/toggle";
-import { Circle } from "lucide-react";
 
-export const InputOptions = () => {
+type InputOptionsProps = {
+  alternativeNumber: number;
+  questionNumber: number;
+};
+
+export const InputOptions = ({
+  alternativeNumber,
+  questionNumber,
+}: InputOptionsProps) => {
   return (
-    <div className="flex items-center space-x-1">
-      <Toggle
+    <div className="flex items-center space-x-2">
+      <RadioGroupItem
         id="correctAnswer"
-        aria-label="Toggle cicle"
-        className="data-[state=on]:bg-transparent data-[state=on]:*:[svg]:fill-blue-onSurface data-[state=on]:*:[svg]:stroke-blue-500"
-        size="sm"
-      >
-        <Circle className="text-green-700" />
-      </Toggle>
+        value={`id-question-${questionNumber}-alternative-${alternativeNumber}`}
+      />
 
       <Textarea
-        id="alternativeA"
-        className="resize-none focus:ring-0 min-h-10 focus:outline-none shadow-none"
+        id={`question-${questionNumber}-alternative-${alternativeNumber}`}
+        placeholder={`Alternativa ${alternativeNumber}`}
+        className="resize-none placeholder:text-zinc-400 placeholder:max-sm:text-xs focus:ring-0 min-h-10 focus:outline-none shadow-none transition-all max-sm:text-sm bg-zinc-50"
       />
     </div>
   );

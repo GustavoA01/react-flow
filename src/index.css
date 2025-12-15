@@ -37,10 +37,12 @@ body {
   .custom-bar::-webkit-scrollbar-thumb {
     background-color: var(--color-primary-dark);
     border-radius: 4px;
+    cursor: pointer;
   }
 
   .large-bar::-webkit-scrollbar {
     width: 10px;
+    cursor: pointer;
   }
 
   .scrollbar-hidden::-webkit-scrollbar {

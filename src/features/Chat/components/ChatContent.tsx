@@ -15,7 +15,10 @@ export const ChatContent = ({ messages, isLoading }: ChatContentProps) => {
             <p className="">{message.content}</p>
           </div>
         ) : (
-          <div key={index} className="self-start bg-gray-100 p-2 rounded-md">
+          <div
+            key={index}
+            className="self-start bg-gray-100 p-2 rounded-md select-text"
+          >
             <ReactMarkdown
               components={{
                 code(props) {

@@ -11,8 +11,8 @@ export const GoBack = () => {
       onClick={() => navigate(-1)}
       className="flex gap-2 items-center select-none font-semibold hover:text-blue-100 max-sm:text-sm cursor-pointer"
     >
-      <ChevronLeft size={!isDesktop ? 18 : 24} />
-      <p>Voltar</p>
+      <ChevronLeft size={!isDesktop ? 20 : 24} />
+      <p className="hidden sm:block">Voltar</p>
     </button>
   );
 };
