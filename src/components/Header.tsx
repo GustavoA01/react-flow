@@ -1,9 +1,9 @@
-import { Link, useLocation } from "react-router-dom";
 import { Button } from "./ui/button";
 import { DrawerNavButton } from "@/features/DrawerNavigation/container/DrawerNavButton";
 import { UserToolTip } from "@/features/HeaderToolTip/container/UserToolTip";
 import { LogoutDialog } from "./LogoutDialog";
 import { useState } from "react";
+import { Link, useLocation } from "@tanstack/react-router";
 
 const headerItems = [
   { name: "Cursos", path: "/cursos" },

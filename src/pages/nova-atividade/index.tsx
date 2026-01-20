@@ -1,11 +1,12 @@
 import type { NewActivityFormType } from "@/data/schemas/activities";
 import { useMediaDevice } from "@/hooks/useMediaDevice";
 import { useEffect, useState } from "react";
-import { Header } from "./components/Header";
-import { QuestionCard } from "./components/Form/QuestionCard";
-import { FormFooter } from "./components/Form/FormFooter";
+import { Header } from "./-components/Header";
+import { QuestionCard } from "./-components/Form/QuestionCard";
+import { FormFooter } from "./-components/Form/FormFooter";
+import { createFileRoute } from "@tanstack/react-router";
 
-export const NewActivity = () => {
+const NewActivityPage = () => {
   const { padding2XlScreens } = useMediaDevice();
 
   const [localStorageActivityData, setLocalStorageActivityData] =
@@ -46,3 +47,8 @@ export const NewActivity = () => {
     </div>
   );
 };
+
+export const Route = createFileRoute("/nova-atividade/")({
+  loader: () => "Hello World",
+  component: NewActivityPage,
+});

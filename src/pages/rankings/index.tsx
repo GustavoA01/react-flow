@@ -1,9 +1,12 @@
 import { RankTable } from "@/features/RanksTable/container/RanksTable";
+import { createFileRoute } from "@tanstack/react-router";
 
-export const Rankings = () => {
+const Rankings = () => {
   return (
     <div className="flex justify-center">
       <RankTable />
     </div>
   );
 };
+
+export const Route = createFileRoute("/rankings/")({ component: Rankings });

@@ -1,6 +1,6 @@
 import { useMediaDevice } from "@/hooks/useMediaDevice";
+import { useNavigate } from "@tanstack/react-router";
 import { ChevronLeft } from "lucide-react";
-import { useNavigate } from "react-router-dom";
 
 export const GoBack = () => {
   const { isDesktop } = useMediaDevice();

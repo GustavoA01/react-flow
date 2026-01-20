@@ -1,10 +1,11 @@
-import { ActivitiesHeader } from "./components/ActivitiesHeader";
+import { createFileRoute } from "@tanstack/react-router";
+import { ActivitiesHeader } from "./-components/ActivitiesHeader";
 import { useMediaDevice } from "@/hooks/useMediaDevice";
-import { ActivityCard } from "./components/ActivityCard";
+import { ActivityCard } from "./-components/ActivityCard";
 import { useState } from "react";
-import { NewActivityDialog } from "./components/NewActivityDialog";
+import { NewActivityDialog } from "./-components/NewActivityDialog";
 
-export const Activities = () => {
+const Activities = () => {
   const { padding2XlScreens } = useMediaDevice();
   const [openActivityDialog, setOpenActivityDialog] = useState(false);
 
@@ -29,3 +30,5 @@ export const Activities = () => {
     </>
   );
 };
+
+export const Route = createFileRoute("/atividades/")({ component: Activities });

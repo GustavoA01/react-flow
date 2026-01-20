@@ -1,5 +1,5 @@
+import { Link, useLocation } from "@tanstack/react-router";
 import { Map, NotebookPen, Trophy } from "lucide-react";
-import { Link, useLocation } from "react-router-dom";
 import { motion } from "motion/react";
 
 const buttons = [

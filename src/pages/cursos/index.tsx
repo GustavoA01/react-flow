@@ -1,8 +1,9 @@
-import { CourseCard } from "@/pages/courses/components/CourseCard";
-import { CoursesHeader } from "./components/CoursesHeader";
+import { createFileRoute } from "@tanstack/react-router";
+import { CourseCard } from "@/pages/cursos/-components/CourseCard";
+import { CoursesHeader } from "./-components/CoursesHeader";
 import { useNavigate } from "react-router-dom";
 
-export const Courses = () => {
+const Courses = () => {
   const navigate = useNavigate();
 
   return (
@@ -17,3 +18,5 @@ export const Courses = () => {
     </div>
   );
 };
+
+export const Route = createFileRoute("/cursos/")({ component: Courses });

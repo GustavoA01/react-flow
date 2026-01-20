@@ -5,9 +5,9 @@ import {
 } from "@/data/schemas/activities";
 import { FormProvider, useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { useNavigate } from "react-router-dom";
 import { Header } from "./Header";
 import { Form } from "./Form";
+import { useNavigate } from "@tanstack/react-router";
 
 type NewActivityDialogProps = {
   openActivityDialog: boolean;

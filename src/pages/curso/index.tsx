@@ -1,10 +1,10 @@
+import { createFileRoute, useNavigate } from "@tanstack/react-router";
 import { useMediaDevice } from "@/hooks/useMediaDevice";
-import { CourseHeader } from "./components/CourseHeader";
-import { ModuleCard } from "./components/ModuleCard";
+import { CourseHeader } from "./-components/CourseHeader";
+import { ModuleCard } from "./-components/ModuleCard";
 import { motion } from "motion/react";
-import { useNavigate } from "react-router-dom";
 
-export const CoursePage = () => {
+const CoursePage = () => {
   const { padding2XlScreens } = useMediaDevice();
   const navigate = useNavigate();
 
@@ -26,3 +26,5 @@ export const CoursePage = () => {
     </div>
   );
 };
+
+export const Route = createFileRoute("/curso/")({ component: CoursePage });

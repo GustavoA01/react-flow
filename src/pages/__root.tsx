@@ -1,8 +1,9 @@
 import { BottomNavigation } from "@/components/BottomNavigation";
-import { Header } from "../components/Header";
-import { Outlet, useLocation } from "@tanstack/react-router";
+import { Header } from "@/components/Header";
+import { createRootRoute, Outlet, useLocation } from "@tanstack/react-router";
+import { TanStackRouterDevtools } from "@tanstack/react-router-devtools";
 
-export const HeaderLayout = () => {
+const RootLayout = () => {
   const { pathname } = useLocation();
 
   const bottomNavRoutes = ["/", "/cursos", "/rankings"];
@@ -13,6 +14,9 @@ export const HeaderLayout = () => {
       <Header />
       <Outlet />
       {shouldShowBottomNav && <BottomNavigation />}
+      <TanStackRouterDevtools />
     </div>
   );
 };
+
+export const Route = createRootRoute({ component: RootLayout });

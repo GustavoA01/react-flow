@@ -1,9 +1,9 @@
 import { DrawerNavigation } from "@/features/DrawerNavigation/container/DrawerNavContent";
 import { Drawer, DrawerContent, DrawerTrigger } from "@/components/ui/drawer";
 import { Menu } from "lucide-react";
-import { useLocation } from "react-router-dom";
 import { useState } from "react";
 import { LogoutDialog } from "@/components/LogoutDialog";
+import { useLocation } from "@tanstack/react-router";
 
 export const DrawerNavButton = () => {
   const [openDrawer, setOpenDrawer] = useState(false);
