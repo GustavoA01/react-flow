@@ -36,7 +36,7 @@ export const NewActivityDialog = ({
     }
 
     localStorage.setItem("newActivityData", JSON.stringify(activityData));
-    navigate("/cursos/curso/atividades/nova-atividade");
+    navigate({ to: "/nova-atividade" });
   };
 
   return (

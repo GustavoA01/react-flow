@@ -1,4 +1,3 @@
-// src/App.tsx
 import { RouterProvider, createRouter } from "@tanstack/react-router";
 import { routeTree } from "./route-tree.gen";
 

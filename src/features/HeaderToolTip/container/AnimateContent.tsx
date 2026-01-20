@@ -1,8 +1,8 @@
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Button } from "@/components/ui/button";
 import { useAnimateBg } from "@/hooks/useAnimateBg";
+import { Link } from "@tanstack/react-router";
 import { LogOut } from "lucide-react";
-import { Link } from "react-router-dom";
 
 export const AnimateContent = ({
   setOpenDialog,

@@ -1,7 +1,6 @@
-import { createFileRoute } from "@tanstack/react-router";
-import { CourseCard } from "@/pages/cursos/-components/CourseCard";
+import { createFileRoute, useNavigate } from "@tanstack/react-router";
+import { CourseCard } from "@/pages/_main.cursos/-components/CourseCard";
 import { CoursesHeader } from "./-components/CoursesHeader";
-import { useNavigate } from "react-router-dom";
 
 const Courses = () => {
   const navigate = useNavigate();
@@ -12,11 +11,11 @@ const Courses = () => {
 
       <div className="flex flex-col scrollbar-hidden overflow-y-auto md:grid md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-6 mt-4 sm:mt-8 pb-18 pt-2 gap-4">
         {[...Array(8)].map((_, index) => (
-          <CourseCard key={index} onClick={() => navigate("/cursos/curso")} />
+          <CourseCard key={index} onClick={() => navigate({ to: "/curso" })} />
         ))}
       </div>
     </div>
   );
 };
 
-export const Route = createFileRoute("/cursos/")({ component: Courses });
+export const Route = createFileRoute("/_main/cursos/")({ component: Courses });

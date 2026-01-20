@@ -4,4 +4,6 @@ const MedalsPage = () => {
   return <div>Medalhas</div>;
 };
 
-export const Route = createFileRoute("/medalhas/")({ component: MedalsPage });
+export const Route = createFileRoute("/_main/medalhas")({
+  component: MedalsPage,
+});

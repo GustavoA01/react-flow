@@ -19,7 +19,7 @@ const CoursePage = () => {
         {[...Array(10)].map((_, index) => (
           <ModuleCard
             key={index}
-            onClick={() => navigate("/cursos/curso/atividades")}
+            onClick={() => navigate({ to: "/curso/atividades" })}
           />
         ))}
       </motion.div>

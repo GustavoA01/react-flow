@@ -9,22 +9,17 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from "./pages/__root";
-import { Route as IndexRouteImport } from "./pages/index";
-import { Route as RankingsIndexRouteImport } from "./pages/rankings/index";
+import { Route as MainRouteImport } from "./pages/_main";
 import { Route as NovaAtividadeIndexRouteImport } from "./pages/nova-atividade/index";
-import { Route as MedalhasIndexRouteImport } from "./pages/medalhas/index";
-import { Route as CursosIndexRouteImport } from "./pages/cursos/index";
 import { Route as CursoIndexRouteImport } from "./pages/curso/index";
-import { Route as AtividadesIndexRouteImport } from "./pages/atividades/index";
+import { Route as MainIndexRouteImport } from "./pages/_main.index";
+import { Route as MainRankingsRouteImport } from "./pages/_main.rankings";
+import { Route as MainMedalhasRouteImport } from "./pages/_main.medalhas";
+import { Route as CursoAtividadesIndexRouteImport } from "./pages/curso/atividades/index";
+import { Route as MainCursosIndexRouteImport } from "./pages/_main.cursos/index";
 
-const IndexRoute = IndexRouteImport.update({
-  id: "/",
-  path: "/",
-  getParentRoute: () => rootRouteImport,
-} as any);
-const RankingsIndexRoute = RankingsIndexRouteImport.update({
-  id: "/rankings/",
-  path: "/rankings/",
+const MainRoute = MainRouteImport.update({
+  id: "/_main",
   getParentRoute: () => rootRouteImport,
 } as any);
 const NovaAtividadeIndexRoute = NovaAtividadeIndexRouteImport.update({
@@ -32,109 +27,111 @@ const NovaAtividadeIndexRoute = NovaAtividadeIndexRouteImport.update({
   path: "/nova-atividade/",
   getParentRoute: () => rootRouteImport,
 } as any);
-const MedalhasIndexRoute = MedalhasIndexRouteImport.update({
-  id: "/medalhas/",
-  path: "/medalhas/",
-  getParentRoute: () => rootRouteImport,
-} as any);
-const CursosIndexRoute = CursosIndexRouteImport.update({
-  id: "/cursos/",
-  path: "/cursos/",
-  getParentRoute: () => rootRouteImport,
-} as any);
 const CursoIndexRoute = CursoIndexRouteImport.update({
   id: "/curso/",
   path: "/curso/",
   getParentRoute: () => rootRouteImport,
 } as any);
-const AtividadesIndexRoute = AtividadesIndexRouteImport.update({
-  id: "/atividades/",
-  path: "/atividades/",
+const MainIndexRoute = MainIndexRouteImport.update({
+  id: "/",
+  path: "/",
+  getParentRoute: () => MainRoute,
+} as any);
+const MainRankingsRoute = MainRankingsRouteImport.update({
+  id: "/rankings",
+  path: "/rankings",
+  getParentRoute: () => MainRoute,
+} as any);
+const MainMedalhasRoute = MainMedalhasRouteImport.update({
+  id: "/medalhas",
+  path: "/medalhas",
+  getParentRoute: () => MainRoute,
+} as any);
+const CursoAtividadesIndexRoute = CursoAtividadesIndexRouteImport.update({
+  id: "/curso/atividades/",
+  path: "/curso/atividades/",
   getParentRoute: () => rootRouteImport,
+} as any);
+const MainCursosIndexRoute = MainCursosIndexRouteImport.update({
+  id: "/cursos/",
+  path: "/cursos/",
+  getParentRoute: () => MainRoute,
 } as any);
 
 export interface FileRoutesByFullPath {
-  "/": typeof IndexRoute;
-  "/atividades/": typeof AtividadesIndexRoute;
+  "/": typeof MainIndexRoute;
+  "/medalhas": typeof MainMedalhasRoute;
+  "/rankings": typeof MainRankingsRoute;
   "/curso/": typeof CursoIndexRoute;
-  "/cursos/": typeof CursosIndexRoute;
-  "/medalhas/": typeof MedalhasIndexRoute;
   "/nova-atividade/": typeof NovaAtividadeIndexRoute;
-  "/rankings/": typeof RankingsIndexRoute;
+  "/cursos/": typeof MainCursosIndexRoute;
+  "/curso/atividades/": typeof CursoAtividadesIndexRoute;
 }
 export interface FileRoutesByTo {
-  "/": typeof IndexRoute;
-  "/atividades": typeof AtividadesIndexRoute;
+  "/medalhas": typeof MainMedalhasRoute;
+  "/rankings": typeof MainRankingsRoute;
+  "/": typeof MainIndexRoute;
   "/curso": typeof CursoIndexRoute;
-  "/cursos": typeof CursosIndexRoute;
-  "/medalhas": typeof MedalhasIndexRoute;
   "/nova-atividade": typeof NovaAtividadeIndexRoute;
-  "/rankings": typeof RankingsIndexRoute;
+  "/cursos": typeof MainCursosIndexRoute;
+  "/curso/atividades": typeof CursoAtividadesIndexRoute;
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport;
-  "/": typeof IndexRoute;
-  "/atividades/": typeof AtividadesIndexRoute;
+  "/_main": typeof MainRouteWithChildren;
+  "/_main/medalhas": typeof MainMedalhasRoute;
+  "/_main/rankings": typeof MainRankingsRoute;
+  "/_main/": typeof MainIndexRoute;
   "/curso/": typeof CursoIndexRoute;
-  "/cursos/": typeof CursosIndexRoute;
-  "/medalhas/": typeof MedalhasIndexRoute;
   "/nova-atividade/": typeof NovaAtividadeIndexRoute;
-  "/rankings/": typeof RankingsIndexRoute;
+  "/_main/cursos/": typeof MainCursosIndexRoute;
+  "/curso/atividades/": typeof CursoAtividadesIndexRoute;
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath;
   fullPaths:
     | "/"
-    | "/atividades/"
+    | "/medalhas"
+    | "/rankings"
     | "/curso/"
-    | "/cursos/"
-    | "/medalhas/"
     | "/nova-atividade/"
-    | "/rankings/";
+    | "/cursos/"
+    | "/curso/atividades/";
   fileRoutesByTo: FileRoutesByTo;
   to:
-    | "/"
-    | "/atividades"
-    | "/curso"
-    | "/cursos"
     | "/medalhas"
+    | "/rankings"
+    | "/"
+    | "/curso"
     | "/nova-atividade"
-    | "/rankings";
+    | "/cursos"
+    | "/curso/atividades";
   id:
     | "__root__"
-    | "/"
-    | "/atividades/"
+    | "/_main"
+    | "/_main/medalhas"
+    | "/_main/rankings"
+    | "/_main/"
     | "/curso/"
-    | "/cursos/"
-    | "/medalhas/"
     | "/nova-atividade/"
-    | "/rankings/";
+    | "/_main/cursos/"
+    | "/curso/atividades/";
   fileRoutesById: FileRoutesById;
 }
 export interface RootRouteChildren {
-  IndexRoute: typeof IndexRoute;
-  AtividadesIndexRoute: typeof AtividadesIndexRoute;
+  MainRoute: typeof MainRouteWithChildren;
   CursoIndexRoute: typeof CursoIndexRoute;
-  CursosIndexRoute: typeof CursosIndexRoute;
-  MedalhasIndexRoute: typeof MedalhasIndexRoute;
   NovaAtividadeIndexRoute: typeof NovaAtividadeIndexRoute;
-  RankingsIndexRoute: typeof RankingsIndexRoute;
+  CursoAtividadesIndexRoute: typeof CursoAtividadesIndexRoute;
 }
 
 declare module "@tanstack/react-router" {
   interface FileRoutesByPath {
-    "/": {
-      id: "/";
-      path: "/";
+    "/_main": {
+      id: "/_main";
+      path: "";
       fullPath: "/";
-      preLoaderRoute: typeof IndexRouteImport;
-      parentRoute: typeof rootRouteImport;
-    };
-    "/rankings/": {
-      id: "/rankings/";
-      path: "/rankings";
-      fullPath: "/rankings/";
-      preLoaderRoute: typeof RankingsIndexRouteImport;
+      preLoaderRoute: typeof MainRouteImport;
       parentRoute: typeof rootRouteImport;
     };
     "/nova-atividade/": {
@@ -144,20 +141,6 @@ declare module "@tanstack/react-router" {
       preLoaderRoute: typeof NovaAtividadeIndexRouteImport;
       parentRoute: typeof rootRouteImport;
     };
-    "/medalhas/": {
-      id: "/medalhas/";
-      path: "/medalhas";
-      fullPath: "/medalhas/";
-      preLoaderRoute: typeof MedalhasIndexRouteImport;
-      parentRoute: typeof rootRouteImport;
-    };
-    "/cursos/": {
-      id: "/cursos/";
-      path: "/cursos";
-      fullPath: "/cursos/";
-      preLoaderRoute: typeof CursosIndexRouteImport;
-      parentRoute: typeof rootRouteImport;
-    };
     "/curso/": {
       id: "/curso/";
       path: "/curso";
@@ -165,24 +148,65 @@ declare module "@tanstack/react-router" {
       preLoaderRoute: typeof CursoIndexRouteImport;
       parentRoute: typeof rootRouteImport;
     };
-    "/atividades/": {
-      id: "/atividades/";
-      path: "/atividades";
-      fullPath: "/atividades/";
-      preLoaderRoute: typeof AtividadesIndexRouteImport;
+    "/_main/": {
+      id: "/_main/";
+      path: "/";
+      fullPath: "/";
+      preLoaderRoute: typeof MainIndexRouteImport;
+      parentRoute: typeof MainRoute;
+    };
+    "/_main/rankings": {
+      id: "/_main/rankings";
+      path: "/rankings";
+      fullPath: "/rankings";
+      preLoaderRoute: typeof MainRankingsRouteImport;
+      parentRoute: typeof MainRoute;
+    };
+    "/_main/medalhas": {
+      id: "/_main/medalhas";
+      path: "/medalhas";
+      fullPath: "/medalhas";
+      preLoaderRoute: typeof MainMedalhasRouteImport;
+      parentRoute: typeof MainRoute;
+    };
+    "/curso/atividades/": {
+      id: "/curso/atividades/";
+      path: "/curso/atividades";
+      fullPath: "/curso/atividades/";
+      preLoaderRoute: typeof CursoAtividadesIndexRouteImport;
       parentRoute: typeof rootRouteImport;
+    };
+    "/_main/cursos/": {
+      id: "/_main/cursos/";
+      path: "/cursos";
+      fullPath: "/cursos/";
+      preLoaderRoute: typeof MainCursosIndexRouteImport;
+      parentRoute: typeof MainRoute;
     };
   }
 }
 
+interface MainRouteChildren {
+  MainMedalhasRoute: typeof MainMedalhasRoute;
+  MainRankingsRoute: typeof MainRankingsRoute;
+  MainIndexRoute: typeof MainIndexRoute;
+  MainCursosIndexRoute: typeof MainCursosIndexRoute;
+}
+
+const MainRouteChildren: MainRouteChildren = {
+  MainMedalhasRoute: MainMedalhasRoute,
+  MainRankingsRoute: MainRankingsRoute,
+  MainIndexRoute: MainIndexRoute,
+  MainCursosIndexRoute: MainCursosIndexRoute,
+};
+
+const MainRouteWithChildren = MainRoute._addFileChildren(MainRouteChildren);
+
 const rootRouteChildren: RootRouteChildren = {
-  IndexRoute: IndexRoute,
-  AtividadesIndexRoute: AtividadesIndexRoute,
+  MainRoute: MainRouteWithChildren,
   CursoIndexRoute: CursoIndexRoute,
-  CursosIndexRoute: CursosIndexRoute,
-  MedalhasIndexRoute: MedalhasIndexRoute,
   NovaAtividadeIndexRoute: NovaAtividadeIndexRoute,
-  RankingsIndexRoute: RankingsIndexRoute,
+  CursoAtividadesIndexRoute: CursoAtividadesIndexRoute,
 };
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

@@ -114,4 +114,4 @@ const Map = () => {
   );
 };
 
-export const Route = createFileRoute("/")({ component: Map });
+export const Route = createFileRoute("/_main/")({ component: Map });

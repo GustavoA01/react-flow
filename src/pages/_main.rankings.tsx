@@ -9,4 +9,6 @@ const Rankings = () => {
   );
 };
 
-export const Route = createFileRoute("/rankings/")({ component: Rankings });
+export const Route = createFileRoute("/_main/rankings")({
+  component: Rankings,
+});

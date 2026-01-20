@@ -4,7 +4,7 @@ import { useState } from "react";
 import { Dialog } from "../ui/dialog";
 import { PhaseProgressModal } from "../../features/ProgressModal/container/PhaseProgressModal";
 import type { PhaseNodeProps } from "@/data/types/reactFlow";
-import { points } from "@/pages";
+import { points } from "@/pages/_main.index";
 
 export const PhaseNode = ({ id, data: { minPoints } }: PhaseNodeProps) => {
   const [openDialog, setCloseDialog] = useState(false);

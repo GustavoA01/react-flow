@@ -1,14 +1,14 @@
 import { useMediaDevice } from "@/hooks/useMediaDevice";
-import { useNavigate } from "@tanstack/react-router";
+import { useRouter } from "@tanstack/react-router";
 import { ChevronLeft } from "lucide-react";
 
 export const GoBack = () => {
   const { isDesktop } = useMediaDevice();
-  const navigate = useNavigate();
+  const router = useRouter();
 
   return (
     <button
-      onClick={() => navigate(-1)}
+      onClick={() => router.history.back()}
       className="flex gap-2 items-center select-none font-semibold hover:text-blue-100 max-sm:text-sm cursor-pointer"
     >
       <ChevronLeft size={!isDesktop ? 20 : 24} />
