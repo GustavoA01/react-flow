@@ -24,8 +24,11 @@ export const Form = ({ onSubmit }: FormProps) => {
             className="placeholder:max-sm:text-sm"
           />
 
-          {errors.activityName && (
-            <ErrorFormMessage message={errors.activityName.message!} />
+          {errors.activityName && errors.activityName.message && (
+            <ErrorFormMessage
+              showMessage={!!errors.activityName}
+              message={errors.activityName.message}
+            />
           )}
         </div>
 
@@ -39,8 +42,11 @@ export const Form = ({ onSubmit }: FormProps) => {
             })}
           />
 
-          {errors.qtdQuestions && (
-            <ErrorFormMessage message={errors.qtdQuestions.message!} />
+          {errors.qtdQuestions && errors.qtdQuestions.message && (
+            <ErrorFormMessage
+              showMessage={!!errors.qtdQuestions}
+              message={errors.qtdQuestions!.message!}
+            />
           )}
         </div>
       </div>

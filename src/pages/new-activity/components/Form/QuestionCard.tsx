@@ -8,12 +8,19 @@ import { InputOptions } from "./InputOptions";
 import { motion } from "framer-motion";
 import { useState } from "react";
 import { RadioGroup } from "@/components/ui/radio-group";
+import { useFormContext } from "react-hook-form";
+import type { QuestionFormType } from "@/data/schemas/activities";
+import { ErrorFormMessage } from "@/components/ErrorFormMessage";
 
 export const QuestionCard = ({
   questionNumber,
 }: {
   questionNumber: number;
 }) => {
+  const {
+    register,
+    formState: { errors },
+  } = useFormContext<QuestionFormType>();
   const [isTwoAlternatives, setIsTwoAlternatives] = useState(false);
   const [correctALternative, setCorrectAlternative] = useState<string>("");
 
@@ -28,10 +35,18 @@ export const QuestionCard = ({
       <div className="space-y-2 ">
         <Label>ENUNCIADO</Label>
         <Textarea
+          {...register(`statement`)}
           placeholder="Escreva a pergunta..."
           className="placeholder:text-zinc-400 max-sm:text-xs focus:ring-2 focus:outline-none focus:ring-blue-100 focus:border-blue-400 bg-zinc-50 resize-none max-h-fit shadow-none"
         />
       </div>
+
+      {errors.statement && errors.statement.message && (
+        <ErrorFormMessage
+          message={errors.statement.message}
+          showMessage={!!errors.statement}
+        />
+      )}
 
       <XpInput />
 
