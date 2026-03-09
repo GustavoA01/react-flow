@@ -75,7 +75,11 @@ export const Map = () => {
 
   return (
     <div style={{ width: "100vw", height: "100vh" }}>
-      {isDesktop && <RankTable />}
+      {isDesktop && (
+        <div className="container mx-auto">
+          <RankTable />
+        </div>
+      )}
 
       <ReactFlow
         nodes={nodes}

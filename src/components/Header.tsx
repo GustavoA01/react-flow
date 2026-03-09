@@ -21,7 +21,7 @@ export const Header = () => {
           <Link to="/">Beira Linha Play</Link>
         </h1>
 
-        <div className="flex items-center gap-2">
+        <nav className="flex items-center gap-2">
           <UserToolTip setOpenDialog={() => setOpenDialog(true)} />
           {headerItems.map(({ name, path }) => (
             <Button
@@ -36,7 +36,7 @@ export const Header = () => {
             </Button>
           ))}
           <DrawerNavButton />
-        </div>
+        </nav>
         <LogoutDialog openDialog={openDialog} setOpenDialog={setOpenDialog} />
       </div>
     </header>

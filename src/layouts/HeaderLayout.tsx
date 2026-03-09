@@ -9,7 +9,7 @@ export const HeaderLayout = () => {
   const shouldShowBottomNav = bottomNavRoutes.includes(pathname);
 
   return (
-    <div className="flex flex-col h-screen">
+    <div className="flex flex-col h-dvh">
       <Header />
       <Outlet />
       {shouldShowBottomNav && <BottomNavigation />}
