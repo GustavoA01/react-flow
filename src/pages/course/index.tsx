@@ -1,11 +1,24 @@
-import { useMediaDevice } from "@/hooks/useMediaDevice";
 import { CourseHeader } from "./components/CourseHeader";
 import { ModuleCard } from "./components/ModuleCard";
 import { motion } from "motion/react";
 import { useNavigate } from "react-router-dom";
 
+const containerVariants = {
+  hidden: { opacity: 0 },
+  show: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.05,
+    },
+  },
+};
+
+const itemVariants = {
+  hidden: { opacity: 0, y: 15 },
+  show: { opacity: 1, y: 0 },
+};
+
 export const CoursePage = () => {
-  const { padding2XlScreens } = useMediaDevice();
   const navigate = useNavigate();
 
   return (
@@ -13,15 +26,20 @@ export const CoursePage = () => {
       <CourseHeader />
 
       <motion.div
-        layoutScroll
-        className={`flex flex-col custom-bar sm:large-bar px-2 -mt-10 overflow-y-auto sm:px-8 pb-4 ${padding2XlScreens}`}
+        variants={containerVariants}
+        initial="hidden"
+        animate="show"
+        className={`flex-1 min-h-0 custom-bar sm:large-bar -mt-10 overflow-y-auto pb-4 container mx-auto px-4 sm:px-6 lg:px-8`}
       >
-        {[...Array(10)].map((_, index) => (
-          <ModuleCard
-            key={index}
-            onClick={() => navigate("/cursos/curso/atividades")}
-          />
-        ))}
+        <div className="flex flex-col  pb-20">
+          {[...Array(10)].map((_, index) => (
+            <motion.div key={index} variants={itemVariants}>
+              <ModuleCard
+                onClick={() => navigate("/cursos/curso/atividades")}
+              />
+            </motion.div>
+          ))}
+        </div>
       </motion.div>
     </div>
   );

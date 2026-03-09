@@ -5,7 +5,7 @@ import { useState } from "react";
 import { NewActivityDialog } from "./components/NewActivityDialog";
 
 export const Activities = () => {
-  const { padding2XlScreens } = useMediaDevice();
+  const { containerClassName } = useMediaDevice();
   const [openActivityDialog, setOpenActivityDialog] = useState(false);
 
   return (
@@ -14,7 +14,7 @@ export const Activities = () => {
         <ActivitiesHeader setOpenActivityDialog={setOpenActivityDialog} />
 
         <div
-          className={`flex flex-col pt-4 pb-4 custom-bar gap-4 overflow-auto px-2 sm:px-8 ${padding2XlScreens}`}
+          className={`flex flex-col max-sm:pb-20 custom-bar gap-4 overflow-auto ${containerClassName}`}
         >
           {[...Array(12)].map((_, index) => (
             <ActivityCard key={index} />

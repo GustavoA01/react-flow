@@ -47,6 +47,7 @@ export const DrawerSection = ({
           } else {
             return (
               <Button
+                key={label}
                 onClick={onClick}
                 variant="ghost"
                 className={`flex justify-start items-center text-base font-normal space-x-2 text-zinc-600`}

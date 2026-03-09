@@ -9,7 +9,7 @@ export const DrawerNavHeader = () => {
     <DrawerHeader ref={scope} className="flex flex-col bg-primary gap-4 p-4">
       <Avatar className="w-20 h-20">
         <AvatarImage src="https://github.com/shadcn.png" alt="@shadcn" />
-        <AvatarFallback>CN</AvatarFallback>
+        <AvatarFallback>GA</AvatarFallback>
       </Avatar>
 
       <div className="flex flex-col space-y-1">

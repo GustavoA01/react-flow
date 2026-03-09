@@ -15,28 +15,30 @@ export const Header = () => {
   const [openDialog, setOpenDialog] = useState(false);
 
   return (
-    <header className="flex justify-between items-center bg-primary text-white p-4 sm:px-8">
-      <h1 className="font-semibold select-none font-montserrat">
-        <Link to="/">Beira Linha Play</Link>
-      </h1>
+    <header className=" bg-primary text-white">
+      <div className="flex justify-between items-center px-4 py-6 container mx-auto sm:px-6 lg:px-8">
+        <h1 className="font-semibold select-none font-montserrat">
+          <Link to="/">Beira Linha Play</Link>
+        </h1>
 
-      <div className="flex items-center gap-2">
-        <UserToolTip setOpenDialog={() => setOpenDialog(true)} />
-        {headerItems.map(({ name, path }) => (
-          <Button
-            key={path}
-            className={`hidden sm:block text-md font-montserrat hover:bg-primary-dark/50 transition-all ease-in ${
-              pathname === path ? "text-white" : "text-zinc-300"
-            }`}
-          >
-            <Link key={name} to={path}>
-              {name}
-            </Link>
-          </Button>
-        ))}
-        <DrawerNavButton />
+        <div className="flex items-center gap-2">
+          <UserToolTip setOpenDialog={() => setOpenDialog(true)} />
+          {headerItems.map(({ name, path }) => (
+            <Button
+              key={path}
+              className={`hidden sm:block text-md font-montserrat hover:bg-primary-dark/50 transition-all ease-in ${
+                pathname === path ? "text-white" : "text-zinc-300"
+              }`}
+            >
+              <Link key={name} to={path}>
+                {name}
+              </Link>
+            </Button>
+          ))}
+          <DrawerNavButton />
+        </div>
+        <LogoutDialog openDialog={openDialog} setOpenDialog={setOpenDialog} />
       </div>
-      <LogoutDialog openDialog={openDialog} setOpenDialog={setOpenDialog} />
     </header>
   );
 };

@@ -1,13 +1,10 @@
 import type { NewActivityFormType } from "@/data/schemas/activities";
-import { useMediaDevice } from "@/hooks/useMediaDevice";
 import { useEffect, useState } from "react";
 import { Header } from "./components/Header";
 import { QuestionCard } from "./components/Form/QuestionCard";
 import { FormFooter } from "./components/Form/FormFooter";
 
 export const NewActivity = () => {
-  const { padding2XlScreens } = useMediaDevice();
-
   const [localStorageActivityData, setLocalStorageActivityData] =
     useState<NewActivityFormType | null>(null);
 
@@ -25,9 +22,7 @@ export const NewActivity = () => {
         }
       />
 
-      <form
-        className={`p-4 space-y-4 overflow-y-auto min-h-0 custom-bar sm:large-bar ${padding2XlScreens}`}
-      >
+      <form className="p-4 space-y-4 overflow-y-auto min-h-0 custom-bar sm:large-bar container mx-auto">
         {localStorageActivityData ? (
           <>
             {Array.from({
