@@ -8,7 +8,7 @@ export const DrawerNavHeader = () => {
   return (
     <DrawerHeader ref={scope} className="flex flex-col bg-primary gap-4 p-4">
       <Avatar className="w-20 h-20">
-        <AvatarImage src="https://github.com/shadcn.png" alt="@shadcn" />
+        <AvatarImage src="https://github.com/shadcn.png" alt="avatar-img" />
         <AvatarFallback>GA</AvatarFallback>
       </Avatar>
 

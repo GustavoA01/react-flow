@@ -15,7 +15,7 @@ export const AnimateContent = ({
     <div className="flex space-x-6 rounded-md p-4" ref={scope}>
       <div className="flex flex-col items-center gap-2">
         <Avatar className="w-20 h-20">
-          <AvatarImage src="https://github.com/shadcn.png" alt="@shadcn" />
+          <AvatarImage src="https://github.com/shadcn.png" alt="avatar-img" />
           <AvatarFallback>GA</AvatarFallback>
         </Avatar>
         <p className="text-green-400 text-xs font-semibold">1125 xp</p>

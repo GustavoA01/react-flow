@@ -30,7 +30,7 @@ export const RanksList = ({ ranks }: RanksListProps) => {
 
               <TableCell>
                 <Avatar>
-                  <AvatarImage src={userImgAvatar || ""} alt="@shadcn" />
+                  <AvatarImage src={userImgAvatar || ""} alt="avatar-img" />
                   <AvatarFallback>GA</AvatarFallback>
                 </Avatar>
               </TableCell>
