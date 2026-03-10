@@ -1,6 +1,7 @@
 import { Table, TableBody, TableCell, TableRow } from "@/components/ui/table";
 import { Crown, Medal } from "lucide-react";
 import { ChessQueen } from "./ChessQueen";
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 
 type RanksListProps = {
   ranks: { position: number; name: string; points: number }[];
@@ -11,6 +12,8 @@ const topRanksIcons = [
   <ChessQueen color="gray" />,
   <Medal className="text-amber-700" />,
 ];
+
+const userImgAvatar = "";
 
 export const RanksList = ({ ranks }: RanksListProps) => {
   return (
@@ -23,6 +26,13 @@ export const RanksList = ({ ranks }: RanksListProps) => {
             <TableRow key={position} className="h-12 font-montserrat">
               <TableCell className="text-center w-10 font-bold text-gray-400">
                 {isTopRanks ? topRanksIcons[position - 1] : `${position}°`}
+              </TableCell>
+
+              <TableCell>
+                <Avatar>
+                  <AvatarImage src={userImgAvatar || ""} alt="@shadcn" />
+                  <AvatarFallback>GA</AvatarFallback>
+                </Avatar>
               </TableCell>
 
               <TableCell
