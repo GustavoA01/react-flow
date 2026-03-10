@@ -1,31 +1,12 @@
-import {
-  questionFormSchema,
-  type NewActivityFormType,
-  type QuestionFormType,
-} from "@/data/schemas/activities";
-import { useEffect, useState } from "react";
-import { Header } from "./components/Header";
-import { QuestionCard } from "./components/Form/QuestionCard";
-import { FormFooter } from "./components/Form/FormFooter";
-import { FormProvider, useForm } from "react-hook-form";
-import { zodResolver } from "@hookform/resolvers/zod";
+import { Header } from "../../features/QuestionsForm/components/Header";
+import { QuestionCard } from "../../features/QuestionsForm/container/QuestionCard";
+import { FormFooter } from "../../features/QuestionsForm/components/FormFooter";
+import { FormProvider } from "react-hook-form";
+import { useNewActivity } from "@/features/QuestionsForm/hooks/useNewActivity";
 
 export const NewActivity = () => {
-  const methods = useForm<QuestionFormType>({
-    resolver: zodResolver(questionFormSchema),
-  });
-  const [localStorageActivityData, setLocalStorageActivityData] =
-    useState<NewActivityFormType | null>(null);
-
-  useEffect(() => {
-    const data = localStorage.getItem("newActivityData");
-    const newActivityData = data ? JSON.parse(data) : null;
-    setLocalStorageActivityData(newActivityData);
-  }, []);
-
-  const handleCreateActivity = (data: QuestionFormType) => {
-    console.log(data);
-  };
+  const { fields, localStorageActivityData, handleCreateActivity, methods } =
+    useNewActivity();
 
   return (
     <div className="flex flex-col h-dvh">
@@ -42,10 +23,8 @@ export const NewActivity = () => {
         >
           {localStorageActivityData ? (
             <>
-              {Array.from({
-                length: localStorageActivityData.qtdQuestions,
-              }).map((_, index) => (
-                <QuestionCard key={index} questionNumber={index + 1} />
+              {fields.map((field, index) => (
+                <QuestionCard key={field.id} questionNumber={index + 1} />
               ))}
               <FormFooter />
             </>

@@ -13,19 +13,21 @@ export const InputOptions = ({
   questionNumber,
 }: InputOptionsProps) => {
   const { register } = useFormContext<QuestionFormType>();
+
   return (
     <div className="flex items-center space-x-2">
       <RadioGroupItem
-        id="correctAnswer"
-        value={`id-question-${questionNumber}-alternative-${alternativeNumber}`}
-        {...register(`alternatives.${alternativeNumber - 1}.isCorrect`)}
+        id={`q${questionNumber}-alt${alternativeNumber}`}
+        value={`id-question-${questionNumber - 1}-alternative-${alternativeNumber}`}
       />
 
       <Textarea
-        id={`question-${questionNumber}-alternative-${alternativeNumber}`}
-        placeholder={`Alternativa ${alternativeNumber}`}
+        id={`question-${questionNumber - 1}-alternative-${alternativeNumber}`}
+        placeholder={`Alternativa ${alternativeNumber + 1}`}
         className="resize-none placeholder:text-zinc-400 placeholder:max-sm:text-xs focus:ring-0 min-h-10 focus:outline-none shadow-none transition-all max-sm:text-sm bg-zinc-50"
-        {...register(`alternatives.${alternativeNumber - 1}.text`)}
+        {...register(
+          `questions.${questionNumber - 1}.alternatives.${alternativeNumber}.text`,
+        )}
       />
     </div>
   );

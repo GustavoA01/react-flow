@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom";
 
 export const FormFooter = () => {
   const navigate = useNavigate();
+
   return (
     <div className="flex flex-col sm:flex-row w-full sm:justify-end gap-2">
       <Button

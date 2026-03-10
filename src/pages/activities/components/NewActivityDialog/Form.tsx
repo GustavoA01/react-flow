@@ -25,10 +25,7 @@ export const Form = ({ onSubmit }: FormProps) => {
           />
 
           {errors.activityName && errors.activityName.message && (
-            <ErrorFormMessage
-              showMessage={!!errors.activityName}
-              message={errors.activityName.message}
-            />
+            <ErrorFormMessage message={errors.activityName.message} />
           )}
         </div>
 
@@ -43,10 +40,7 @@ export const Form = ({ onSubmit }: FormProps) => {
           />
 
           {errors.qtdQuestions && errors.qtdQuestions.message && (
-            <ErrorFormMessage
-              showMessage={!!errors.qtdQuestions}
-              message={errors.qtdQuestions!.message!}
-            />
+            <ErrorFormMessage message={errors.qtdQuestions!.message!} />
           )}
         </div>
       </div>

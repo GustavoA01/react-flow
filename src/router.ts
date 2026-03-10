@@ -14,7 +14,7 @@ export const Router = createBrowserRouter([
     Component: HeaderLayout,
     children: [
       {
-        path: "/",
+        index: true,
         Component: Map,
       },
       {
