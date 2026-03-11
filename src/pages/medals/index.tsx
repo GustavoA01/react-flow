@@ -1,21 +1,22 @@
-import { CircleQuestionMark } from "lucide-react";
+import { UnkknownMedal } from "./components/UnknownMedal";
+import { WonMedal } from "./components/WonMedal";
 
 export const MedalsPage = () => {
   return (
-    <div className="container mx-auto mt-8 px-4 sm:px-8 flex flex-col items-center">
-      <h1 className="font-semibold font-montserrat text-lg text-zinc-800">
-        Veja suas conquistas e selecione uma medalha como foto de perfil!
+    <div className="container mx-auto mt-8 px-4 sm:px-8 flex flex-col items-center overflow-y-auto custom-bar">
+      <h1 className="font-bold font-fredoka text-3xl text-primary-dark">
+        Galeria de Medalhas
       </h1>
 
-      <div className="mt-8 flex flex-wrap gap-4 self-center">
-        {[...Array(10)].map((_, i) => (
-          <button>
-            <CircleQuestionMark
-              key={i}
-              className="w-15 h-15 text-zinc-400 hover:text-red-500 transition-colors duration-300"
-            />
-            <p className="text-muted-foreground text-center text-sm">20 xp</p>
-          </button>
+      <h2 className="font-medium my-4 text-zinc-500">
+        Selecione uma medalha alcançada para usar como foto de perfil.
+      </h2>
+
+      <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-8 mt-4 pb-6 mx-auto">
+        <WonMedal />
+
+        {[...Array(14)].map((_, i) => (
+          <UnkknownMedal key={i} />
         ))}
       </div>
     </div>

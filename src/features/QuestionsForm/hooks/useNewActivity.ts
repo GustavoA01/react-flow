@@ -52,10 +52,17 @@ export const useNewActivity = () => {
       };
     });
 
+    const totalXp = questionsFormatted.reduce(
+      (acc, question) => question.xp + acc,
+      0,
+    );
+
     const activityData = {
       ...localStorageActivityData,
+      totalXp,
       questions: questionsFormatted,
     };
+
     console.log(activityData);
   };
 

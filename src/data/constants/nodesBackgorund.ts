@@ -1,6 +1,8 @@
 import type { BackgorundNodeType } from "@/data/types/reactFlow";
 import img1Puc from "@/assets/map-background/fundo1-puc.webp";
 import img1SaoGabriel from "@/assets/map-background/fundo1-estacao-sao-gabriel.webp";
+import img2OuroMinas from "@/assets/map-background/fundo2-ouro-minas.webp";
+import img2MinasShopping from "@/assets/map-background/fundo2-minas-shopping.webp";
 
 export const backgroundNodes: BackgorundNodeType[] = [
   {
@@ -26,6 +28,36 @@ export const backgroundNodes: BackgorundNodeType[] = [
       id: "1",
       alt: "Imagem de fundo Estação São Gabriel",
       image: img1SaoGabriel,
+      width: 1920,
+      height: 2800,
+    },
+    zIndex: -10,
+    draggable: false,
+    selectable: false,
+  },
+  {
+    id: "bg-img2-minas-shopping",
+    type: "background",
+    position: { x: -1920, y: -4599 },
+    data: {
+      id: "1",
+      alt: "Imagem de fundo Minas Shopping",
+      image: img2MinasShopping,
+      width: 2000,
+      height: 2800,
+    },
+    zIndex: -10,
+    draggable: false,
+    selectable: false,
+  },
+  {
+    id: "bg-img2-ouro-minas",
+    type: "background",
+    position: { x: 78, y: -4599 },
+    data: {
+      id: "1",
+      alt: "Imagem de fundo Ouro Minas",
+      image: img2OuroMinas,
       width: 1920,
       height: 2800,
     },

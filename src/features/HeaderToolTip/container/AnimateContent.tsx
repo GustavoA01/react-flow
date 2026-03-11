@@ -3,6 +3,7 @@ import { Button } from "@/components/ui/button";
 import { useAnimateBg } from "@/hooks/useAnimateBg";
 import { LogOut } from "lucide-react";
 import { Link } from "react-router-dom";
+import Espadas from "@/assets/Espadas.jpg";
 
 export const AnimateContent = ({
   setOpenDialog,
@@ -15,7 +16,7 @@ export const AnimateContent = ({
     <div className="flex space-x-6 rounded-md p-4" ref={scope}>
       <div className="flex flex-col items-center gap-2">
         <Avatar className="w-20 h-20">
-          <AvatarImage src="https://github.com/shadcn.png" alt="avatar-img" />
+          <AvatarImage src={Espadas} alt="avatar-img" />
           <AvatarFallback>GA</AvatarFallback>
         </Avatar>
         <p className="text-green-400 text-xs font-semibold">1125 xp</p>
