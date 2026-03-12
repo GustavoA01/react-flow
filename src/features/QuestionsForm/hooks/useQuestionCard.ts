@@ -6,7 +6,6 @@ export const useQuestionCard = () => {
   const {
     register,
     setValue,
-    getValues,
     formState: { errors },
   } = useFormContext<QuestionFormType>();
   const [isTwoAlternatives, setIsTwoAlternatives] = useState(false);
@@ -37,10 +36,8 @@ export const useQuestionCard = () => {
     toggleAlternatives,
     isTwoAlternatives,
     correctALternative,
-    getValues,
     errors,
     register,
-    setValue,
     setCorrectAlternative,
   };
 };

@@ -1,4 +1,4 @@
-import { UnkknownMedal } from "./components/UnknownMedal";
+import { UnknownMedal } from "./components/UnknownMedal";
 import { WonMedal } from "./components/WonMedal";
 
 export const MedalsPage = () => {
@@ -16,7 +16,7 @@ export const MedalsPage = () => {
         <WonMedal />
 
         {[...Array(14)].map((_, i) => (
-          <UnkknownMedal key={i} />
+          <UnknownMedal key={i} />
         ))}
       </div>
     </div>
