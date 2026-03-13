@@ -44,15 +44,12 @@ export const AnimateContent = ({
         >
           <Link to="/medalhas">Minha conta</Link>
         </Button>
-        {[...Array(4)].map((_, index) => (
-          <Button
-            key={index}
-            variant="ghost"
-            className="hover:text-white font-montserrat hover:bg-primary-dark/50 transition-all ease-in"
-          >
-            <Link to="/medalhas">Medalhas</Link>
-          </Button>
-        ))}
+        <Button
+          variant="ghost"
+          className="hover:text-white font-montserrat hover:bg-primary-dark/50 transition-all ease-in"
+        >
+          <Link to="/medalhas">Medalhas</Link>
+        </Button>
       </div>
     </div>
   );
