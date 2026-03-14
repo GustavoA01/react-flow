@@ -36,19 +36,25 @@ export const AnimateContent = ({
           variant="ghost"
           className="hover:text-white font-montserrat hover:bg-primary-dark/50 transition-all ease-in"
         >
-          <Link to="/medalhas">Notificações</Link>
+          <Link to="/medalhas" title="Notificações">
+            Notificações
+          </Link>
         </Button>
         <Button
           variant="ghost"
           className="hover:text-white font-montserrat hover:bg-primary-dark/50 transition-all ease-in"
         >
-          <Link to="/medalhas">Minha conta</Link>
+          <Link to="/medalhas" title="Acessar conta">
+            Minha conta
+          </Link>
         </Button>
         <Button
           variant="ghost"
           className="hover:text-white font-montserrat hover:bg-primary-dark/50 transition-all ease-in"
         >
-          <Link to="/medalhas">Medalhas</Link>
+          <Link to="/medalhas" title="Ver Medalhas">
+            Medalhas
+          </Link>
         </Button>
       </div>
     </div>
