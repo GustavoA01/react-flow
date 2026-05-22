@@ -13,6 +13,11 @@ export const newActivitySchema = z.object({
     .max(10, 'O número máximo de perguntas é 10'),
 });
 
+const alternativeSchema = z.object({
+  text: z.string().trim().min(1, 'O texto da alternativa é obrigatório'),
+  isCorrect: z.boolean(),
+});
+
 export const questionFormSchema = z.object({
   questions: z.array(
     z.object({
@@ -25,15 +30,7 @@ export const questionFormSchema = z.object({
         .min(1, 'Defina a quantidade de XP')
         .max(3, 'XP máximo é 3'),
       alternatives: z
-        .array(
-          z.object({
-            text: z
-              .string()
-              .trim()
-              .min(1, 'O texto da alternativa é obrigatório'),
-            isCorrect: z.boolean(),
-          })
-        )
+        .array(alternativeSchema)
         .min(2, 'A pergunta deve ter pelo menos 2 alternativas')
         .max(4, 'A pergunta deve ter no máximo 4 alternativas')
         .refine((alts) => alts.some((alt) => alt.isCorrect === true), {

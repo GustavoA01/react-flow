@@ -1,21 +1,6 @@
-import { Map, NotebookPen, Trophy } from 'lucide-react';
 import { Link, useLocation } from 'react-router-dom';
 import { motion } from 'motion/react';
-
-const buttons = [
-  {
-    icon: <NotebookPen />,
-    to: '/cursos',
-  },
-  {
-    icon: <Map />,
-    to: '/',
-  },
-  {
-    icon: <Trophy />,
-    to: '/rankings',
-  },
-];
+import { bottomNavigateButtons } from '@/data/constants';
 
 export const BottomNavigation = () => {
   const { pathname } = useLocation();
@@ -26,11 +11,11 @@ export const BottomNavigation = () => {
       animate={{ opacity: 1, y: 0 }}
       className="fixed bottom-6 items-center w-50 left-1/2 -translate-x-1/2 rounded-full gap-6 bg-white shadow-md py-2 flex justify-center sm:hidden"
     >
-      {buttons.map(({ icon, to }) => {
-        const selected = pathname === to;
+      {bottomNavigateButtons.map((button) => {
+        const selected = pathname === button.to;
 
         return (
-          <Link key={to} to={to} className="relative">
+          <Link key={button.to} to={button.to} className="relative">
             <motion.div
               initial={false}
               className={`rounded-full ${selected && 'text-white p-3'}`}
@@ -42,7 +27,7 @@ export const BottomNavigation = () => {
                 y: selected ? -3 : 0,
               }}
             >
-              {icon}
+              <button.icon />
             </motion.div>
           </Link>
         );

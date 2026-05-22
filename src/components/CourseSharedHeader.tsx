@@ -8,11 +8,11 @@ export const CourseSharedHeader = () => {
   const [openDialog, setOpenDialog] = useState(false);
 
   return (
-    <div className="flex justify-between items-center text-blue-onSurface">
+    <section className="flex justify-between items-center text-blue-onSurface">
       <GoBack />
       <UserToolTip setOpenDialog={() => setOpenDialog(true)} />
       <DrawerNavButton />
       <LogoutDialog openDialog={openDialog} setOpenDialog={setOpenDialog} />
-    </div>
+    </section>
   );
 };

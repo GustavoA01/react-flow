@@ -4,11 +4,7 @@ import { DrawerNavButton } from '@/features/DrawerNavigation/container/DrawerNav
 import { UserToolTip } from '@/features/HeaderToolTip/container/UserToolTip';
 import { LogoutDialog } from './LogoutDialog';
 import { useState } from 'react';
-
-const headerItems = [
-  { name: 'Cursos', path: '/cursos' },
-  { name: 'Mapa', path: '/' },
-];
+import { headerItems } from '@/data/constants';
 
 export const Header = () => {
   const { pathname } = useLocation();

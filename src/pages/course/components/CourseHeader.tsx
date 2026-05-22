@@ -1,6 +1,6 @@
 import { CourseSharedHeader } from '@/components/CourseSharedHeader';
 import { Card } from '@/components/ui/card';
-import { NewButtonFloat } from '@/components/ui/NewButtonFloat';
+import { NewButtonFloat } from '@/components/NewButtonFloat';
 import { Progress } from '@/components/ui/progress';
 
 export const CourseHeader = () => {
