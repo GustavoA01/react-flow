@@ -1,7 +1,7 @@
-import { DescriptionCircle } from "@/components/DescriptionCircle";
-import { Card } from "@/components/ui/card";
-import { Check, ChevronRight } from "lucide-react";
-import { motion } from "motion/react";
+import { DescriptionCircle } from '@/components/DescriptionCircle';
+import { Card } from '@/components/ui/card';
+import { Check, ChevronRight } from 'lucide-react';
+import { motion } from 'motion/react';
 
 type ModuleCardProps = {
   onClick: () => void;
@@ -14,7 +14,7 @@ export const ModuleCard = ({ onClick }: ModuleCardProps) => {
       whileInView={{ scale: [0.9, 1], opacity: [0, 1] }}
       viewport={{
         once: false,
-        margin: "-150px 0px -150px 0px",
+        margin: '-150px 0px -150px 0px',
       }}
       transition={{ duration: 0.3 }}
       onClick={onClick}

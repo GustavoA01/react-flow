@@ -1,8 +1,8 @@
-import { ActivitiesHeader } from "./components/ActivitiesHeader";
-import { useMediaDevice } from "@/hooks/useMediaDevice";
-import { ActivityCard } from "./components/ActivityCard";
-import { useState } from "react";
-import { NewActivityDialog } from "./components/NewActivityDialog";
+import { ActivitiesHeader } from './components/ActivitiesHeader';
+import { useMediaDevice } from '@/hooks/useMediaDevice';
+import { ActivityCard } from './components/ActivityCard';
+import { useState } from 'react';
+import { NewActivityDialog } from './components/NewActivityDialog';
 
 export const Activities = () => {
   const { containerClassName } = useMediaDevice();

@@ -1,8 +1,8 @@
-import { CourseCard } from "@/pages/courses/components/CourseCard";
-import { CoursesHeader } from "./components/CoursesHeader";
-import { useNavigate } from "react-router-dom";
-import { useMediaDevice } from "@/hooks/useMediaDevice";
-import { motion } from "framer-motion";
+import { CourseCard } from '@/pages/courses/components/CourseCard';
+import { CoursesHeader } from './components/CoursesHeader';
+import { useNavigate } from 'react-router-dom';
+import { useMediaDevice } from '@/hooks/useMediaDevice';
+import { motion } from 'framer-motion';
 
 export const Courses = () => {
   const { containerClassName } = useMediaDevice();
@@ -22,7 +22,7 @@ export const Courses = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: index * 0.1, duration: 0.3 }}
           >
-            <CourseCard onClick={() => navigate("/cursos/curso")} />
+            <CourseCard onClick={() => navigate('/cursos/curso')} />
           </motion.div>
         ))}
       </div>

@@ -1,8 +1,8 @@
-import { ErrorFormMessage } from "@/components/ErrorFormMessage";
-import { Input } from "@/components/ui/input";
-import { Footer } from "./Footer";
-import { useFormContext } from "react-hook-form";
-import { type NewActivityFormType } from "@/data/schemas/activities";
+import { ErrorFormMessage } from '@/components/ErrorFormMessage';
+import { Input } from '@/components/ui/input';
+import { Footer } from './Footer';
+import { useFormContext } from 'react-hook-form';
+import { type NewActivityFormType } from '@/data/schemas/activities';
 
 type FormProps = {
   onSubmit: () => void;
@@ -19,7 +19,7 @@ export const Form = ({ onSubmit }: FormProps) => {
       <div className="space-y-3">
         <div>
           <Input
-            {...register("activityName")}
+            {...register('activityName')}
             placeholder="Nome da atividade"
             className="placeholder:max-sm:text-sm"
           />
@@ -34,7 +34,7 @@ export const Form = ({ onSubmit }: FormProps) => {
             placeholder="Max: 5"
             type="number"
             className="placeholder:max-sm:text-sm"
-            {...register("qtdQuestions", {
+            {...register('qtdQuestions', {
               setValueAs: (value) => Number(value),
             })}
           />

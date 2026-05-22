@@ -1,0 +1,15 @@
+node_modules
+.vscode
+.idea
+.next
+.vercel
+package.json
+next.config.js
+.eslintrc 
+.prettierrc.json 
+next-env.d.ts
+coverage
+*.js
+*.json
+tsconfig.json
+README.md

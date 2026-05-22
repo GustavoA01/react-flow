@@ -1,11 +1,11 @@
-import { BottomNavigation } from "@/components/BottomNavigation";
-import { Header } from "../components/Header";
-import { Outlet, useLocation } from "react-router-dom";
+import { BottomNavigation } from '@/components/BottomNavigation';
+import { Header } from '../components/Header';
+import { Outlet, useLocation } from 'react-router-dom';
 
 export const HeaderLayout = () => {
   const { pathname } = useLocation();
 
-  const bottomNavRoutes = ["/", "/cursos", "/rankings"];
+  const bottomNavRoutes = ['/', '/cursos', '/rankings'];
   const shouldShowBottomNav = bottomNavRoutes.includes(pathname);
 
   return (

@@ -1,11 +1,11 @@
-import { Card } from "@/components/ui/card";
-import { FormCardHeader } from "../components/FormCardHeader";
-import { Label } from "@/components/ui/label";
-import { Textarea } from "@/components/ui/textarea";
-import { XpInput } from "../components/XpInput";
-import { ErrorFormMessage } from "@/components/ErrorFormMessage";
-import { useQuestionCard } from "../hooks/useQuestionCard";
-import { Alternatives } from "../components/Alternatives";
+import { Card } from '@/components/ui/card';
+import { FormCardHeader } from '../components/FormCardHeader';
+import { Label } from '@/components/ui/label';
+import { Textarea } from '@/components/ui/textarea';
+import { XpInput } from '../components/XpInput';
+import { ErrorFormMessage } from '@/components/ErrorFormMessage';
+import { useQuestionCard } from '../hooks/useQuestionCard';
+import { Alternatives } from '../components/Alternatives';
 
 export const QuestionCard = ({
   questionNumber,
@@ -41,7 +41,7 @@ export const QuestionCard = ({
       {errors.questions?.[questionNumber - 1]?.statement?.message && (
         <ErrorFormMessage
           message={
-            errors.questions[questionNumber - 1]?.statement?.message ?? ""
+            errors.questions[questionNumber - 1]?.statement?.message ?? ''
           }
         />
       )}
@@ -49,7 +49,7 @@ export const QuestionCard = ({
       <XpInput questionNumber={questionNumber} />
       {errors.questions?.[questionNumber - 1]?.xp?.message && (
         <ErrorFormMessage
-          message={errors.questions[questionNumber - 1]?.xp?.message ?? ""}
+          message={errors.questions[questionNumber - 1]?.xp?.message ?? ''}
         />
       )}
 

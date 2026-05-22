@@ -1,11 +1,11 @@
-import { ErrorFormMessage } from "@/components/ErrorFormMessage";
-import { Badge } from "@/components/ui/badge";
-import { Label } from "@/components/ui/label";
-import { RadioGroup } from "@/components/ui/radio-group";
-import type { QuestionFormType } from "@/data/schemas/activities";
-import { useFormContext } from "react-hook-form";
-import { motion } from "framer-motion";
-import { InputOptions } from "./InputOptions";
+import { ErrorFormMessage } from '@/components/ErrorFormMessage';
+import { Badge } from '@/components/ui/badge';
+import { Label } from '@/components/ui/label';
+import { RadioGroup } from '@/components/ui/radio-group';
+import type { QuestionFormType } from '@/data/schemas/activities';
+import { useFormContext } from 'react-hook-form';
+import { motion } from 'framer-motion';
+import { InputOptions } from './InputOptions';
 
 type AlternativesProps = {
   isTwoAlternatives: boolean;
@@ -49,14 +49,14 @@ export const Alternatives = ({
 
                 const questionIdx = questionNumber - 1;
                 const alternatives = getValues(
-                  `questions.${questionIdx}.alternatives`,
+                  `questions.${questionIdx}.alternatives`
                 );
 
                 alternatives.forEach((_, altIdx) => {
                   const isCurrent = altIdx === index;
                   setValue(
                     `questions.${questionIdx}.alternatives.${altIdx}.isCorrect`,
-                    isCurrent,
+                    isCurrent
                   );
                 });
               }}
@@ -72,7 +72,7 @@ export const Alternatives = ({
               <ErrorFormMessage
                 message={
                   errors.questions?.[questionNumber - 1]?.alternatives?.[index]
-                    ?.text?.message ?? ""
+                    ?.text?.message ?? ''
                 }
               />
             )}
@@ -83,7 +83,7 @@ export const Alternatives = ({
       {errors.questions?.[questionNumber - 1]?.alternatives?.message && (
         <ErrorFormMessage
           message={
-            errors.questions?.[questionNumber - 1]?.alternatives?.message ?? ""
+            errors.questions?.[questionNumber - 1]?.alternatives?.message ?? ''
           }
         />
       )}

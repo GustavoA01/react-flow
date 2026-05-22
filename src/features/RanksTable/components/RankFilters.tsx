@@ -3,11 +3,11 @@ import {
   SelectContent,
   SelectItem,
   SelectTrigger,
-} from "@/components/ui/select";
-import { ChevronsUpDown } from "lucide-react";
-import { useMediaDevice } from "@/hooks/useMediaDevice";
+} from '@/components/ui/select';
+import { ChevronsUpDown } from 'lucide-react';
+import { useMediaDevice } from '@/hooks/useMediaDevice';
 
-const items = ["Geral", "Programação", "Matemática e programação avançada"];
+const items = ['Geral', 'Programação', 'Matemática e programação avançada'];
 
 type RankFiltersProps = {
   selected: string;
@@ -27,7 +27,7 @@ export const RankFilters = ({ selected, setSelected }: RankFiltersProps) => {
       </SelectTrigger>
 
       <SelectContent
-        align={isDesktop ? "center" : "end"}
+        align={isDesktop ? 'center' : 'end'}
         className="font-fredoka p-0"
       >
         {items.map((value) => (
@@ -36,8 +36,8 @@ export const RankFilters = ({ selected, setSelected }: RankFiltersProps) => {
             value={value}
             className={` py-1 pl-2 border-l-4 border-transparent rounded-l-none [&>span:first-child]:hidden ${
               selected === value
-                ? "font-semibold border-l-primary border-l-4"
-                : "hover:border-l-gray-300 hover:border-l-4"
+                ? 'font-semibold border-l-primary border-l-4'
+                : 'hover:border-l-gray-300 hover:border-l-4'
             }`}
           >
             {value}

@@ -1,6 +1,6 @@
-import { Button } from "@/components/ui/button";
-import { Save } from "lucide-react";
-import { useNavigate } from "react-router-dom";
+import { Button } from '@/components/ui/button';
+import { Save } from 'lucide-react';
+import { useNavigate } from 'react-router-dom';
 
 export const FormFooter = () => {
   const navigate = useNavigate();

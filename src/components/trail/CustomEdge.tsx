@@ -1,4 +1,4 @@
-import { BaseEdge, getBezierPath } from "@xyflow/react";
+import { BaseEdge, getBezierPath } from '@xyflow/react';
 
 export function CustomEdge({
   sourceX,
@@ -30,9 +30,9 @@ export function CustomEdge({
       markerEnd={markerEnd}
       {...rest}
       style={{
-        stroke: "#8B4513",
+        stroke: '#8B4513',
         strokeWidth: 4,
-        strokeDasharray: "10 5",
+        strokeDasharray: '10 5',
       }}
     />
   );

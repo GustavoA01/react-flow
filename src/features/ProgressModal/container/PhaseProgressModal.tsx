@@ -1,7 +1,7 @@
-import { DialogContent } from "../../../components/ui/dialog";
-import { ModalHeader } from "../components/ModalHeader";
-import { BarProgress } from "../components/BarProgress";
-import { ModalFooter } from "../components/ModalFooter";
+import { DialogContent } from '../../../components/ui/dialog';
+import { ModalHeader } from '../components/ModalHeader';
+import { BarProgress } from '../components/BarProgress';
+import { ModalFooter } from '../components/ModalFooter';
 
 type PhaseProgressModalProps = {
   id: string;
@@ -24,8 +24,8 @@ export const PhaseProgressModal = ({
       showCloseButton={false}
       className={`${
         concluded
-          ? "bg-linear-to-l from-green-500 to-emerald-600"
-          : "bg-linear-to-r from-blue-400 to-indigo-500"
+          ? 'bg-linear-to-l from-green-500 to-emerald-600'
+          : 'bg-linear-to-r from-blue-400 to-indigo-500'
       }`}
     >
       <ModalHeader level={id} concluded={concluded} />

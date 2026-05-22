@@ -1,6 +1,6 @@
-import { Card, CardContent, CardFooter } from "@/components/ui/card";
-import { CircleQuestionMark } from "lucide-react";
-import { motion } from "framer-motion";
+import { Card, CardContent, CardFooter } from '@/components/ui/card';
+import { CircleQuestionMark } from 'lucide-react';
+import { motion } from 'framer-motion';
 
 export const UnknownMedal = () => (
   <Card className="group opacity-70 border-dashed border-2 border-zinc-200 select-none cursor-pointer">
@@ -10,18 +10,18 @@ export const UnknownMedal = () => (
         className="text-2xl font-bold"
         style={{
           backgroundImage:
-            "linear-gradient(90deg, #9CA3AF 0%, #10B981 50%, #9CA3AF 100%)",
-          backgroundSize: "200% 100%",
-          WebkitBackgroundClip: "text",
-          backgroundClip: "text",
-          WebkitTextFillColor: "transparent",
+            'linear-gradient(90deg, #9CA3AF 0%, #10B981 50%, #9CA3AF 100%)',
+          backgroundSize: '200% 100%',
+          WebkitBackgroundClip: 'text',
+          backgroundClip: 'text',
+          WebkitTextFillColor: 'transparent',
         }}
-        initial={{ backgroundPosition: "100% 0%" }}
-        animate={{ backgroundPosition: "-100% 0%" }}
+        initial={{ backgroundPosition: '100% 0%' }}
+        animate={{ backgroundPosition: '-100% 0%' }}
         transition={{
           repeat: Infinity,
           duration: 2,
-          ease: "linear",
+          ease: 'linear',
           repeatDelay: 1,
         }}
       >

@@ -1,5 +1,5 @@
-import Tom from "@/assets/Espadas.jpg";
-import { Card, CardContent, CardFooter } from "@/components/ui/card";
+import Tom from '@/assets/Espadas.jpg';
+import { Card, CardContent, CardFooter } from '@/components/ui/card';
 
 export const WonMedal = () => (
   <Card className="group cursor-pointer hover:scale-105 hover:shadow-primary transition-all duration-300">

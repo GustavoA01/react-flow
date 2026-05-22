@@ -2,8 +2,8 @@ import {
   DialogDescription,
   DialogHeader,
   DialogTitle,
-} from "@/components/ui/dialog";
-import { Medal, TrainFront } from "lucide-react";
+} from '@/components/ui/dialog';
+import { Medal, TrainFront } from 'lucide-react';
 
 type ModalHeaderProps = {
   level: string;
@@ -19,8 +19,8 @@ export const ModalHeader = ({ level, concluded }: ModalHeaderProps) => {
       <div
         className={`${
           concluded
-            ? "bg-linear-to-l from-green-400 to-emerald-500"
-            : "bg-linear-to-r from-blue-400 to-indigo-400"
+            ? 'bg-linear-to-l from-green-400 to-emerald-500'
+            : 'bg-linear-to-r from-blue-400 to-indigo-400'
         } p-4 rounded-full `}
       >
         {concluded ? (
@@ -32,10 +32,10 @@ export const ModalHeader = ({ level, concluded }: ModalHeaderProps) => {
 
       <DialogDescription
         className={`text-white text-xs font-fredoka font-semibold ${
-          concluded ? "bg-green-500" : "bg-blue-800"
+          concluded ? 'bg-green-500' : 'bg-blue-800'
         } py-1 px-4 rounded-full`}
       >
-        {concluded ? "Concluído" : "Em progresso"}
+        {concluded ? 'Concluído' : 'Em progresso'}
       </DialogDescription>
     </DialogHeader>
   );

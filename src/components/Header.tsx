@@ -1,13 +1,13 @@
-import { Link, useLocation } from "react-router-dom";
-import { Button } from "./ui/button";
-import { DrawerNavButton } from "@/features/DrawerNavigation/container/DrawerNavButton";
-import { UserToolTip } from "@/features/HeaderToolTip/container/UserToolTip";
-import { LogoutDialog } from "./LogoutDialog";
-import { useState } from "react";
+import { Link, useLocation } from 'react-router-dom';
+import { Button } from './ui/button';
+import { DrawerNavButton } from '@/features/DrawerNavigation/container/DrawerNavButton';
+import { UserToolTip } from '@/features/HeaderToolTip/container/UserToolTip';
+import { LogoutDialog } from './LogoutDialog';
+import { useState } from 'react';
 
 const headerItems = [
-  { name: "Cursos", path: "/cursos" },
-  { name: "Mapa", path: "/" },
+  { name: 'Cursos', path: '/cursos' },
+  { name: 'Mapa', path: '/' },
 ];
 
 export const Header = () => {
@@ -27,7 +27,7 @@ export const Header = () => {
             <Button
               key={path}
               className={`hidden sm:block text-md font-montserrat hover:bg-primary-dark/50 transition-all ease-in ${
-                pathname === path ? "text-white" : "text-zinc-300"
+                pathname === path ? 'text-white' : 'text-zinc-300'
               }`}
             >
               <Link key={name} to={path}>

@@ -1,8 +1,8 @@
-import { UserToolTip } from "@/features/HeaderToolTip/container/UserToolTip";
-import { GoBack } from "./GoBack";
-import { DrawerNavButton } from "@/features/DrawerNavigation/container/DrawerNavButton";
-import { LogoutDialog } from "./LogoutDialog";
-import { useState } from "react";
+import { UserToolTip } from '@/features/HeaderToolTip/container/UserToolTip';
+import { GoBack } from './GoBack';
+import { DrawerNavButton } from '@/features/DrawerNavigation/container/DrawerNavButton';
+import { LogoutDialog } from './LogoutDialog';
+import { useState } from 'react';
 
 export const CourseSharedHeader = () => {
   const [openDialog, setOpenDialog] = useState(false);

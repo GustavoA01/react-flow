@@ -1,5 +1,5 @@
-import { DialogTitle } from "@radix-ui/react-dialog";
-import { Button } from "./ui/button";
+import { DialogTitle } from '@radix-ui/react-dialog';
+import { Button } from './ui/button';
 import {
   Dialog,
   DialogClose,
@@ -7,7 +7,7 @@ import {
   DialogDescription,
   DialogFooter,
   DialogHeader,
-} from "./ui/dialog";
+} from './ui/dialog';
 
 type LogoutDialogProps = {
   openDialog: boolean;

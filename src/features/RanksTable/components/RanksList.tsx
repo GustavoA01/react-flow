@@ -1,7 +1,7 @@
-import { Table, TableBody, TableCell, TableRow } from "@/components/ui/table";
-import { Crown, Medal } from "lucide-react";
-import { ChessQueen } from "./ChessQueen";
-import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+import { Table, TableBody, TableCell, TableRow } from '@/components/ui/table';
+import { Crown, Medal } from 'lucide-react';
+import { ChessQueen } from './ChessQueen';
+import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 
 type RanksListProps = {
   ranks: { position: number; name: string; points: number }[];
@@ -13,7 +13,7 @@ const topRanksIcons = [
   <Medal className="text-amber-700" />,
 ];
 
-const userImgAvatar = "";
+const userImgAvatar = '';
 
 export const RanksList = ({ ranks }: RanksListProps) => {
   return (
@@ -30,14 +30,14 @@ export const RanksList = ({ ranks }: RanksListProps) => {
 
               <TableCell>
                 <Avatar>
-                  <AvatarImage src={userImgAvatar || ""} alt="avatar-img" />
+                  <AvatarImage src={userImgAvatar || ''} alt="avatar-img" />
                   <AvatarFallback>GA</AvatarFallback>
                 </Avatar>
               </TableCell>
 
               <TableCell
                 className={`font-semibold max-w-40 truncate ${
-                  isTopRanks ? "text-black" : "text-zinc-600"
+                  isTopRanks ? 'text-black' : 'text-zinc-600'
                 }`}
               >
                 {name}
@@ -46,10 +46,10 @@ export const RanksList = ({ ranks }: RanksListProps) => {
               <TableCell className="text-center">
                 <span
                   className={`font-bold ${
-                    position === 1 ? "text-emerald-500" : "text-blue-600"
+                    position === 1 ? 'text-emerald-500' : 'text-blue-600'
                   }`}
                 >
-                  {points}{" "}
+                  {points}{' '}
                 </span>
                 <span className="font-semibold text-zinc-400">xp</span>
               </TableCell>

@@ -1,7 +1,7 @@
-import { CourseSharedHeader } from "@/components/CourseSharedHeader";
-import { DescriptionCircle } from "@/components/DescriptionCircle";
-import { NewButtonFloat } from "@/components/ui/NewButtonFloat";
-import { Progress } from "@/components/ui/progress";
+import { CourseSharedHeader } from '@/components/CourseSharedHeader';
+import { DescriptionCircle } from '@/components/DescriptionCircle';
+import { NewButtonFloat } from '@/components/ui/NewButtonFloat';
+import { Progress } from '@/components/ui/progress';
 
 export const ActivitiesHeader = ({
   setOpenActivityDialog,

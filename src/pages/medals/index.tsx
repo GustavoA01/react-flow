@@ -1,6 +1,6 @@
-import { UnknownMedal } from "./components/UnknownMedal";
-import { WonMedal } from "./components/WonMedal";
-import { motion } from "framer-motion";
+import { UnknownMedal } from './components/UnknownMedal';
+import { WonMedal } from './components/WonMedal';
+import { motion } from 'framer-motion';
 export const MedalsPage = () => {
   return (
     <div className="container mx-auto mt-8 px-4 sm:px-8 flex flex-col items-center overflow-y-auto custom-bar">

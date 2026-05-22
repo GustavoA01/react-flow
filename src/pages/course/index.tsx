@@ -1,7 +1,7 @@
-import { CourseHeader } from "./components/CourseHeader";
-import { ModuleCard } from "./components/ModuleCard";
-import { motion } from "motion/react";
-import { useNavigate } from "react-router-dom";
+import { CourseHeader } from './components/CourseHeader';
+import { ModuleCard } from './components/ModuleCard';
+import { motion } from 'motion/react';
+import { useNavigate } from 'react-router-dom';
 
 const containerVariants = {
   hidden: { opacity: 0 },
@@ -35,7 +35,7 @@ export const CoursePage = () => {
           {[...Array(10)].map((_, index) => (
             <motion.div key={index} variants={itemVariants}>
               <ModuleCard
-                onClick={() => navigate("/cursos/curso/atividades")}
+                onClick={() => navigate('/cursos/curso/atividades')}
               />
             </motion.div>
           ))}

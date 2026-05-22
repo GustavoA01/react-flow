@@ -1,5 +1,5 @@
-import { Button } from "@/components/ui/button";
-import { Link } from "react-router-dom";
+import { Button } from '@/components/ui/button';
+import { Link } from 'react-router-dom';
 
 type DrawerSectionProps = {
   title: string;
@@ -23,7 +23,7 @@ export const DrawerSection = ({
 
       <div className="flex flex-col gap-2">
         {sectionItens.map(({ label, path, icon: Icon, onClick }) => {
-          if (label !== "Sair") {
+          if (label !== 'Sair') {
             return (
               <Link
                 key={label}
@@ -31,13 +31,13 @@ export const DrawerSection = ({
                 onClick={onClick}
                 className={`flex pl-2 items-center py-2 space-x-4 ${
                   pathName === path
-                    ? "bg-blue-onSurface/50 rounded-md text-blue-500 font-semibold"
-                    : "text-zinc-600"
+                    ? 'bg-blue-onSurface/50 rounded-md text-blue-500 font-semibold'
+                    : 'text-zinc-600'
                 }`}
               >
                 <Icon
                   className={`${
-                    pathName === path ? "text-blue-500" : "text-zinc-400"
+                    pathName === path ? 'text-blue-500' : 'text-zinc-400'
                   }`}
                   size={20}
                 />

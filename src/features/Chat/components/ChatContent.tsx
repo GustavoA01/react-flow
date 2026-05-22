@@ -1,8 +1,8 @@
-import { Skeleton } from "@/components/ui/skeleton";
-import ReactMarkdown from "react-markdown";
+import { Skeleton } from '@/components/ui/skeleton';
+import ReactMarkdown from 'react-markdown';
 
 type ChatContentProps = {
-  messages: { role: "user" | "assistant"; content: string }[];
+  messages: { role: 'user' | 'assistant'; content: string }[];
   isLoading: boolean;
 };
 
@@ -10,7 +10,7 @@ export const ChatContent = ({ messages, isLoading }: ChatContentProps) => {
   return (
     <div className="flex-1 space-y-4 py-4 overflow-y-auto overflow-x-hidden flex flex-col px-4 ">
       {messages.map((message, index) =>
-        message.role === "user" ? (
+        message.role === 'user' ? (
           <div key={index} className="self-end bg-gray-200 p-2 rounded-md">
             <p className="">{message.content}</p>
           </div>
@@ -24,7 +24,7 @@ export const ChatContent = ({ messages, isLoading }: ChatContentProps) => {
                 code(props) {
                   const { children, ...rest } = props;
                   return (
-                    <code {...rest} className={"prose prose-sm max-w-none"}>
+                    <code {...rest} className={'prose prose-sm max-w-none'}>
                       {children}
                     </code>
                   );
@@ -34,7 +34,7 @@ export const ChatContent = ({ messages, isLoading }: ChatContentProps) => {
               {message.content}
             </ReactMarkdown>
           </div>
-        ),
+        )
       )}
 
       {isLoading && (

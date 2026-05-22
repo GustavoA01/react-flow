@@ -1,8 +1,8 @@
-import { Button } from "@/components/ui/button";
-import { Spinner } from "@/components/ui/spinner";
-import { Textarea } from "@/components/ui/textarea";
-import { SendHorizonal } from "lucide-react";
-import type { UseFormRegister } from "react-hook-form";
+import { Button } from '@/components/ui/button';
+import { Spinner } from '@/components/ui/spinner';
+import { Textarea } from '@/components/ui/textarea';
+import { SendHorizonal } from 'lucide-react';
+import type { UseFormRegister } from 'react-hook-form';
 
 type ChatFormProps = {
   onSubmit: (e: React.FormEvent<HTMLFormElement>) => void;
@@ -20,12 +20,12 @@ export const ChatForm = ({ onSubmit, register, isLoading }: ChatFormProps) => {
     >
       <Textarea
         disabled={isLoading}
-        {...register("message")}
+        {...register('message')}
         className="resize-none focus:ring-0 min-h-10 border-0 focus:outline-none shadow-none"
         placeholder={
           isLoading
-            ? "Aguarde a resposta..."
-            : "Crie perguntas de três níveis sobre..."
+            ? 'Aguarde a resposta...'
+            : 'Crie perguntas de três níveis sobre...'
         }
       />
       <Button className="mt-auto rounded-full w-10 h-10 " type="submit">

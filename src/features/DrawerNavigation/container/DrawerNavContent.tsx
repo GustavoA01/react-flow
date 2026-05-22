@@ -6,9 +6,9 @@ import {
   Map,
   Trophy,
   UserPen,
-} from "lucide-react";
-import { DrawerNavHeader } from "../components/DrawerNavHeader";
-import { DrawerSection } from "../components/DrawerSection";
+} from 'lucide-react';
+import { DrawerNavHeader } from '../components/DrawerNavHeader';
+import { DrawerSection } from '../components/DrawerSection';
 
 type DrawerNavigationProps = {
   pathName: string;
@@ -23,8 +23,8 @@ export const DrawerNavigation = ({
 }: DrawerNavigationProps) => {
   const headerAcademicItems = [
     {
-      label: "Cursos",
-      path: "/cursos",
+      label: 'Cursos',
+      path: '/cursos',
       icon: BookOpen,
       onClick: () => setOpenDrawer(false),
     },
@@ -32,20 +32,20 @@ export const DrawerNavigation = ({
 
   const headerConquestItems = [
     {
-      label: "Mapa",
-      path: "/",
+      label: 'Mapa',
+      path: '/',
       icon: Map,
       onClick: () => setOpenDrawer(false),
     },
     {
-      label: "Rankings",
-      path: "/rankings",
+      label: 'Rankings',
+      path: '/rankings',
       icon: Trophy,
       onClick: () => setOpenDrawer(false),
     },
     {
-      label: "Medalhas",
-      path: "/medalhas",
+      label: 'Medalhas',
+      path: '/medalhas',
       icon: CircleStar,
       onClick: () => setOpenDrawer(false),
     },
@@ -53,20 +53,20 @@ export const DrawerNavigation = ({
 
   const configurationItems = [
     {
-      label: "Minha conta",
-      path: "/",
+      label: 'Minha conta',
+      path: '/',
       icon: UserPen,
       onClick: () => setOpenDrawer(false),
     },
     {
-      label: "Notificações",
-      path: "/",
+      label: 'Notificações',
+      path: '/',
       icon: Bell,
       onClick: () => setOpenDrawer(false),
     },
     {
-      label: "Sair",
-      path: "/",
+      label: 'Sair',
+      path: '/',
       icon: LogOut,
       onClick: () => {
         setOpenDrawer(false);

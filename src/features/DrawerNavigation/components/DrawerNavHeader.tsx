@@ -1,6 +1,6 @@
-import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
-import { DrawerHeader, DrawerTitle } from "@/components/ui/drawer";
-import { useAnimateBg } from "@/hooks/useAnimateBg";
+import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
+import { DrawerHeader, DrawerTitle } from '@/components/ui/drawer';
+import { useAnimateBg } from '@/hooks/useAnimateBg';
 
 export const DrawerNavHeader = () => {
   const { scope } = useAnimateBg();

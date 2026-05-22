@@ -1,4 +1,4 @@
-import { RankTable } from "@/features/RanksTable/container/RanksTable";
+import { RankTable } from '@/features/RanksTable/container/RanksTable';
 
 export const Rankings = () => {
   return (

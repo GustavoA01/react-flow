@@ -1,25 +1,18 @@
-import { useState, useCallback } from "react";
 import {
   ReactFlow,
-  applyNodeChanges,
-  applyEdgeChanges,
   MiniMap,
   type CoordinateExtent,
   type FitViewOptions,
   type NodeTypes,
-} from "@xyflow/react";
-import "@xyflow/react/dist/style.css";
-import { PhaseNode } from "../../components/trail/PhaseNode";
-import { edgesPhases } from "../../data/constants/edges";
-import {
-  nodesLastPosition,
-  nodesPhases,
-} from "../../data/constants/nodesPhases";
-import { CustomEdge } from "../../components/trail/CustomEdge";
-import { RankTable } from "@/features/RanksTable/container/RanksTable";
-import BackgroundNode from "@/components/trail/BackgroundNode";
-import { backgroundNodes } from "@/data/constants/nodesBackgorund";
-import { useMediaDevice } from "@/hooks/useMediaDevice";
+} from '@xyflow/react';
+import '@xyflow/react/dist/style.css';
+import { PhaseNode } from '../../components/trail/PhaseNode';
+import { nodesLastPosition } from '../../data/constants/nodesPhases';
+import { CustomEdge } from '../../components/trail/CustomEdge';
+import { RankTable } from '@/features/RanksTable/container/RanksTable';
+import BackgroundNode from '@/components/trail/BackgroundNode';
+import { useMediaDevice } from '@/hooks/useMediaDevice';
+import { useMap } from '@/hooks/useMap';
 
 const nodeTypes: NodeTypes = {
   phase: PhaseNode,
@@ -27,54 +20,27 @@ const nodeTypes: NodeTypes = {
 };
 
 const edgeTypes = {
-  "custom-edge": CustomEdge,
+  'custom-edge': CustomEdge,
 };
-
-export const points = 40;
-
-const horizontalLimit = 1500;
-const verticalBottomLimit = 500;
-
-const extend: CoordinateExtent = [
-  [-horizontalLimit, nodesLastPosition], // Permite arrastar um pouco para a esquerda [minX, minY]
-  [horizontalLimit, verticalBottomLimit], // Permite arrastar até 2000px para a direita [maxX, maxY]
-  // O maxY na verdade é o máximo para baixo e minY é o máximo para cima
-];
-
-const initialNodes = [...backgroundNodes, ...nodesPhases];
 
 export const Map = () => {
   const { isDesktop } = useMediaDevice();
-  const [nodes, setNodes] = useState(initialNodes);
-  const [edges, setEdges] = useState(edgesPhases);
+  const { currentNode, edges, nodes, onEdgesChange, onNodesChange } = useMap();
+
+  const horizontalLimit = 1500;
+  const verticalBottomLimit = 500;
+
+  const extend: CoordinateExtent = [
+    [-horizontalLimit, nodesLastPosition], // Permite arrastar um pouco para a esquerda [minX, minY]
+    [horizontalLimit, verticalBottomLimit], // Permite arrastar até 1500px para a direita [maxX, maxY]
+    // O maxY na verdade é o máximo para baixo e minY é o máximo para cima
+  ];
 
   const miniMapStyles =
-    "mr-4 mb-4 hidden sm:block overflow-hidden b-1 rounded-sm border border-primary-light";
-
-  const onNodesChange = useCallback(
-    (changes) =>
-      setNodes((nodesSnapshot) => applyNodeChanges(changes, nodesSnapshot)),
-    [],
-  );
-
-  const onEdgesChange = useCallback(
-    (changes) =>
-      setEdges((edgesSnapshot) => applyEdgeChanges(changes, edgesSnapshot)),
-    [],
-  );
-
-  const unlockedPhases = nodes.filter((node) => {
-    if (node.type === "phase") {
-      return node.data.minPoints <= points;
-    }
-  });
-  const currentNode =
-    unlockedPhases.length > 0
-      ? unlockedPhases[unlockedPhases.length - 1]
-      : nodes[0];
+    'mr-4 mb-4 hidden sm:block overflow-hidden b-1 rounded-sm border border-primary-light';
 
   return (
-    <div style={{ width: "100vw", height: "100vh" }}>
+    <div style={{ width: '100vw', height: '100vh' }}>
       {isDesktop && (
         <div className="container mx-auto">
           <RankTable />
@@ -111,7 +77,7 @@ export const Map = () => {
           className={miniMapStyles}
           bgColor="transparent"
           nodeColor={({ type }) =>
-            type === "background" ? "transparent" : "#2D5586"
+            type === 'background' ? 'transparent' : '#2D5586'
           }
         />
       </ReactFlow>

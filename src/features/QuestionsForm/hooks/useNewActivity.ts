@@ -2,10 +2,10 @@ import {
   questionFormSchema,
   type NewActivityFormType,
   type QuestionFormType,
-} from "@/data/schemas/activities";
-import { zodResolver } from "@hookform/resolvers/zod";
-import { useEffect, useState } from "react";
-import { useFieldArray, useForm } from "react-hook-form";
+} from '@/data/schemas/activities';
+import { zodResolver } from '@hookform/resolvers/zod';
+import { useEffect, useState } from 'react';
+import { useFieldArray, useForm } from 'react-hook-form';
 
 export const useNewActivity = () => {
   const [localStorageActivityData, setLocalStorageActivityData] =
@@ -18,25 +18,25 @@ export const useNewActivity = () => {
 
   const { fields } = useFieldArray({
     control: methods.control,
-    name: "questions",
+    name: 'questions',
   });
 
   useEffect(() => {
-    const data = localStorage.getItem("newActivityData");
+    const data = localStorage.getItem('newActivityData');
     const newActivityData = data ? JSON.parse(data) : null;
     setLocalStorageActivityData(newActivityData);
 
     reset({
       questions: Array.from({ length: newActivityData.qtdQuestions ?? 0 }).map(
         () => ({
-          statement: "",
+          statement: '',
           alternatives: [
-            { text: "", isCorrect: false },
-            { text: "", isCorrect: false },
-            { text: "", isCorrect: false },
-            { text: "", isCorrect: false },
+            { text: '', isCorrect: false },
+            { text: '', isCorrect: false },
+            { text: '', isCorrect: false },
+            { text: '', isCorrect: false },
           ],
-        }),
+        })
       ),
     });
   }, [reset]);
@@ -44,7 +44,7 @@ export const useNewActivity = () => {
   const handleCreateActivity = (data: QuestionFormType) => {
     const questionsFormatted = data.questions.map((question) => {
       const filteredAlternatives = question.alternatives.filter(
-        (alt) => alt.text !== "ignore",
+        (alt) => alt.text !== 'ignore'
       );
       return {
         ...question,
@@ -54,7 +54,7 @@ export const useNewActivity = () => {
 
     const totalXp = questionsFormatted.reduce(
       (acc, question) => question.xp + acc,
-      0,
+      0
     );
 
     const activityData = {

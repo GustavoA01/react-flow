@@ -1,5 +1,5 @@
-@import "tailwindcss";
-@import "tw-animate-css";
+@import 'tailwindcss';
+@import 'tw-animate-css';
 
 @custom-variant dark (&:is(.dark *));
 
@@ -10,9 +10,9 @@
   --color-primary-dark: #1a488e;
   --color-blue-onSurface: var(--color-blue-200);
 
-  --font-sans: "Roboto", sans-serif;
-  --font-fredoka: "Fredoka", sans-serif;
-  --font-montserrat: "Montserrat", sans-serif;
+  --font-sans: 'Roboto', sans-serif;
+  --font-fredoka: 'Fredoka', sans-serif;
+  --font-montserrat: 'Montserrat', sans-serif;
 }
 
 body {

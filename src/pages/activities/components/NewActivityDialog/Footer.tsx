@@ -1,6 +1,6 @@
-import { Button } from "@/components/ui/button";
-import { DialogClose, DialogFooter } from "@/components/ui/dialog";
-import { ArrowRight } from "lucide-react";
+import { Button } from '@/components/ui/button';
+import { DialogClose, DialogFooter } from '@/components/ui/dialog';
+import { ArrowRight } from 'lucide-react';
 
 export const Footer = () => (
   <DialogFooter>

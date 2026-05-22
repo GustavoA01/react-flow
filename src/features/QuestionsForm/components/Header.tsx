@@ -1,5 +1,5 @@
-import { GoBack } from "@/components/GoBack";
-import { ChatDrawer } from "@/features/Chat/container/ChatDrawer";
+import { GoBack } from '@/components/GoBack';
+import { ChatDrawer } from '@/features/Chat/container/ChatDrawer';
 
 export const Header = ({ activityName }: { activityName: string }) => (
   <header className={` bg-primary p-4 text-blue-onSurface font-semibold`}>

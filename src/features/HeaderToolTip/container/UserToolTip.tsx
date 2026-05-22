@@ -2,9 +2,9 @@ import {
   Tooltip,
   TooltipContent,
   TooltipTrigger,
-} from "@/components/ui/tooltip";
-import { ChevronDown } from "lucide-react";
-import { AnimateContent } from "./AnimateContent";
+} from '@/components/ui/tooltip';
+import { ChevronDown } from 'lucide-react';
+import { AnimateContent } from './AnimateContent';
 
 export const UserToolTip = ({
   setOpenDialog,
