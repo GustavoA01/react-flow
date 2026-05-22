@@ -1,4 +1,9 @@
+import { CustomEdge } from '@/components/trail/CustomEdge';
 import type { PhaseEdgeType } from '@/data/types/reactFlow';
+
+export const edgeTypes = {
+  'custom-edge': CustomEdge,
+};
 
 export const edgesPhases: PhaseEdgeType[] = [
   { id: '1-2', source: '1', target: '2', type: 'custom-edge' },

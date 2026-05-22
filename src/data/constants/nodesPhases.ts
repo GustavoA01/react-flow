@@ -1,4 +1,12 @@
+import BackgroundNode from '@/components/trail/BackgroundNode';
+import { PhaseNode } from '@/components/trail/PhaseNode';
 import type { PhaseNodeType } from '@/data/types/reactFlow';
+import type { NodeTypes } from '@xyflow/react';
+
+export const nodeTypes: NodeTypes = {
+  phase: PhaseNode,
+  background: BackgroundNode,
+};
 
 export const nodesPhases: PhaseNodeType[] = [
   {
@@ -41,7 +49,7 @@ export const nodesPhases: PhaseNodeType[] = [
     id: '7',
     type: 'phase',
     position: { x: 90, y: -1250 },
-    data: { id: '6', minPoints: 70 },
+    data: { id: '7', minPoints: 70 },
   },
   {
     id: '8',
