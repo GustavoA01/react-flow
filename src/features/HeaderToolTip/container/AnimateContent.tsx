@@ -2,8 +2,14 @@ import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 import { Button } from '@/components/ui/button';
 import { useAnimateBg } from '@/hooks/useAnimateBg';
 import { LogOut } from 'lucide-react';
-import { Link } from 'react-router-dom';
 import Espadas from '@/assets/Espadas.jpg';
+import { ToolTipItem } from '../components/ToolTipItem';
+
+const temporaryItens = [
+  { label: 'Notificações', to: '/medalhas', title: 'Ver notificações' },
+  { label: 'Minha conta', to: '/medalhas', title: 'Acessar conta' },
+  { label: 'Medalhas', to: '/medalhas', title: 'Ver medalhas' },
+];
 
 export const AnimateContent = ({
   setOpenDialog,
@@ -22,8 +28,8 @@ export const AnimateContent = ({
         <p className="text-green-400 text-xs font-semibold">1125 xp</p>
 
         <Button
-          onClick={setOpenDialog}
           variant="ghost"
+          onClick={setOpenDialog}
           className="space-x-1 hover:text-white font-montserrat hover:bg-primary-dark/50 transition-all ease-in"
         >
           <LogOut />
@@ -32,30 +38,9 @@ export const AnimateContent = ({
       </div>
 
       <div className="grid grid-cols-2 gap-4">
-        <Button
-          variant="ghost"
-          className="hover:text-white font-montserrat hover:bg-primary-dark/50 transition-all ease-in"
-        >
-          <Link to="/medalhas" title="Notificações">
-            Notificações
-          </Link>
-        </Button>
-        <Button
-          variant="ghost"
-          className="hover:text-white font-montserrat hover:bg-primary-dark/50 transition-all ease-in"
-        >
-          <Link to="/medalhas" title="Acessar conta">
-            Minha conta
-          </Link>
-        </Button>
-        <Button
-          variant="ghost"
-          className="hover:text-white font-montserrat hover:bg-primary-dark/50 transition-all ease-in"
-        >
-          <Link to="/medalhas" title="Ver Medalhas">
-            Medalhas
-          </Link>
-        </Button>
+        {temporaryItens.map((item) => (
+          <ToolTipItem key={item.label} {...item} />
+        ))}
       </div>
     </div>
   );

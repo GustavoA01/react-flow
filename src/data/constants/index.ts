@@ -1,6 +1,6 @@
 import type { CoordinateExtent } from '@xyflow/react';
 import { nodesLastPosition } from './nodesPhases';
-import { Map, NotebookPen, Trophy } from 'lucide-react';
+import { Map as MapIcon, NotebookPen, Trophy } from 'lucide-react';
 
 const horizontalLimit = 1500;
 const verticalBottomLimit = 500;
@@ -22,7 +22,7 @@ export const bottomNavigateButtons = [
     to: '/cursos',
   },
   {
-    icon: Map,
+    icon: MapIcon,
     to: '/',
   },
   {
