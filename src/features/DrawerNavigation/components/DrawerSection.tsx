@@ -1,16 +1,6 @@
 import { Button } from '@/components/ui/button';
 import { Link } from 'react-router-dom';
-
-type DrawerSectionProps = {
-  title: string;
-  pathName: string;
-  sectionItens: {
-    label: string;
-    path: string;
-    icon: React.ComponentType<{ size: number; className?: string }>;
-    onClick: () => void;
-  }[];
-};
+import type { DrawerSectionProps } from '../types';
 
 export const DrawerSection = ({
   title,

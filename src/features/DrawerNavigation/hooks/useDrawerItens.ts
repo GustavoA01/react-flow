@@ -7,11 +7,7 @@ import {
   Trophy,
   UserPen,
 } from 'lucide-react';
-
-type useDrawerItensProps = {
-  setOpenDrawer: React.Dispatch<React.SetStateAction<boolean>>;
-  setOpenDialog: React.Dispatch<React.SetStateAction<boolean>>;
-};
+import type { useDrawerItensProps } from '../types';
 
 export const useDrawerItens = ({
   setOpenDrawer,
@@ -71,9 +67,20 @@ export const useDrawerItens = ({
     },
   ];
 
-  return {
-    headerAcademicItems,
-    headerConquestItems,
-    configurationItems,
-  };
+  const sections = [
+    {
+      title: 'ACADÊMICO',
+      items: headerAcademicItems,
+    },
+    {
+      title: 'CONQUISTAS',
+      items: headerConquestItems,
+    },
+    {
+      title: 'CONFIGURAÇÕES',
+      items: configurationItems,
+    },
+  ];
+
+  return sections;
 };

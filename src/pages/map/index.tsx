@@ -6,13 +6,11 @@ import {
 import '@xyflow/react/dist/style.css';
 import { nodeTypes } from '../../data/constants/nodesPhases';
 import { RankTable } from '@/features/RanksTable/container/RanksTable';
-import { useMediaDevice } from '@/hooks/useMediaDevice';
 import { useMap } from '@/hooks/useMap';
 import { edgeTypes } from '@/data/constants/edges';
 import { extend } from '@/data/constants';
 
 export const Map = () => {
-  const { isDesktop } = useMediaDevice();
   const { currentNode, edges, nodes, onEdgesChange, onNodesChange } = useMap();
 
   const miniMapStyles =
@@ -27,11 +25,9 @@ export const Map = () => {
 
   return (
     <div style={{ width: '100vw', height: '100vh' }}>
-      {isDesktop && (
-        <div className="container mx-auto">
-          <RankTable />
-        </div>
-      )}
+      <div className="hidden sm:flex container mx-auto">
+        <RankTable />
+      </div>
 
       <ReactFlow
         nodes={nodes}
