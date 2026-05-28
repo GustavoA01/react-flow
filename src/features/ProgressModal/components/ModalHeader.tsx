@@ -4,11 +4,7 @@ import {
   DialogTitle,
 } from '@/components/ui/dialog';
 import { Medal, TrainFront } from 'lucide-react';
-
-type ModalHeaderProps = {
-  level: string;
-  concluded: boolean;
-};
+import type { ModalHeaderProps } from '../types';
 
 export const ModalHeader = ({ level, concluded }: ModalHeaderProps) => {
   return (

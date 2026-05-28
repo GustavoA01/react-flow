@@ -5,14 +5,8 @@ import { RadioGroup } from '@/components/ui/radio-group';
 import type { QuestionFormType } from '@/data/schemas/activities';
 import { useFormContext } from 'react-hook-form';
 import { motion } from 'framer-motion';
-import { InputOptions } from './InputOptions';
-
-type AlternativesProps = {
-  isTwoAlternatives: boolean;
-  correctALternative: string;
-  setCorrectAlternative: (val: string) => void;
-  questionNumber: number;
-};
+import { InputOptions } from '../components/InputOptions';
+import type { AlternativesProps } from '../types';
 
 export const Alternatives = ({
   isTwoAlternatives,
@@ -25,6 +19,21 @@ export const Alternatives = ({
     getValues,
     formState: { errors },
   } = useFormContext<QuestionFormType>();
+
+  const onChangeAlternative = (val: string, index: number) => {
+    setCorrectAlternative(val);
+
+    const questionIdx = questionNumber - 1;
+    const alternatives = getValues(`questions.${questionIdx}.alternatives`);
+
+    alternatives.forEach((_, altIndex) => {
+      const isCurrent = altIndex === index;
+      setValue(
+        `questions.${questionIdx}.alternatives.${altIndex}.isCorrect`,
+        isCurrent
+      );
+    });
+  };
 
   return (
     <div className="space-y-2">
@@ -44,22 +53,7 @@ export const Alternatives = ({
           >
             <RadioGroup
               value={correctALternative}
-              onValueChange={(val) => {
-                setCorrectAlternative(val);
-
-                const questionIdx = questionNumber - 1;
-                const alternatives = getValues(
-                  `questions.${questionIdx}.alternatives`
-                );
-
-                alternatives.forEach((_, altIdx) => {
-                  const isCurrent = altIdx === index;
-                  setValue(
-                    `questions.${questionIdx}.alternatives.${altIdx}.isCorrect`,
-                    isCurrent
-                  );
-                });
-              }}
+              onValueChange={(val) => onChangeAlternative(val, index)}
             >
               <InputOptions
                 alternativeNumber={index}

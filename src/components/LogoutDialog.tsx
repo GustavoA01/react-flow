@@ -8,11 +8,7 @@ import {
   DialogFooter,
   DialogHeader,
 } from './ui/dialog';
-
-type LogoutDialogProps = {
-  openDialog: boolean;
-  setOpenDialog: React.Dispatch<React.SetStateAction<boolean>>;
-};
+import type { LogoutDialogProps } from '@/data/types/components';
 
 export const LogoutDialog = ({
   openDialog,

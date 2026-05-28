@@ -2,12 +2,7 @@ import { DialogContent } from '../../../components/ui/dialog';
 import { ModalHeader } from '../components/ModalHeader';
 import { BarProgress } from '../components/BarProgress';
 import { ModalFooter } from '../components/ModalFooter';
-
-type PhaseProgressModalProps = {
-  id: string;
-  points: number;
-  minPoints: number;
-};
+import type { PhaseProgressModalProps } from '../types';
 
 export const PhaseProgressModal = ({
   id,
@@ -32,9 +27,9 @@ export const PhaseProgressModal = ({
 
       <div className="bg-white p-4 rounded-md ">
         <BarProgress
-          minPoints={minPoints}
           points={points}
           progress={progress}
+          minPoints={minPoints}
         />
 
         <ModalFooter concluded={concluded} />

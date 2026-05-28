@@ -9,7 +9,7 @@ import {
 } from '@xyflow/react';
 import { edgesPhases } from '@/data/constants/edges';
 import type {
-  BackgorundNodeType,
+  BackgroundNodeType,
   PhaseEdgeType,
   PhaseNodeType,
 } from '@/data/types/reactFlow';
@@ -22,7 +22,7 @@ export const useMap = () => {
   const [edges, setEdges] = useState(edgesPhases);
 
   const onNodesChange = useCallback(
-    (changes: NodeChange<BackgorundNodeType | PhaseNodeType>[]) =>
+    (changes: NodeChange<BackgroundNodeType | PhaseNodeType>[]) =>
       setNodes((nodesSnapshot) => applyNodeChanges(changes, nodesSnapshot)),
     []
   );

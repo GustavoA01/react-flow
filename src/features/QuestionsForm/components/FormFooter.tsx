@@ -9,8 +9,8 @@ export const FormFooter = () => {
     <div className="flex flex-col sm:flex-row w-full sm:justify-end gap-2">
       <Button
         type="button"
-        className="max-sm:hidden"
         variant="outline"
+        className="max-sm:hidden"
         onClick={() => navigate(-1)}
       >
         Cancelar
@@ -23,8 +23,8 @@ export const FormFooter = () => {
 
       <Button
         type="button"
-        className="sm:hidden"
         variant="outline"
+        className="sm:hidden"
         onClick={() => navigate(-1)}
       >
         Cancelar

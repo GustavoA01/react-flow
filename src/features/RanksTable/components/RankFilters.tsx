@@ -6,13 +6,9 @@ import {
 } from '@/components/ui/select';
 import { ChevronsUpDown } from 'lucide-react';
 import { useMediaDevice } from '@/hooks/useMediaDevice';
+import type { RankFiltersProps } from '../types';
 
 const items = ['Geral', 'Programação', 'Matemática e programação avançada'];
-
-type RankFiltersProps = {
-  selected: string;
-  setSelected: (value: string) => void;
-};
 
 export const RankFilters = ({ selected, setSelected }: RankFiltersProps) => {
   const { isDesktop } = useMediaDevice();

@@ -2,10 +2,7 @@ import { Table, TableBody, TableCell, TableRow } from '@/components/ui/table';
 import { Crown, Medal } from 'lucide-react';
 import { ChessQueen } from './ChessQueen';
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
-
-type RanksListProps = {
-  ranks: { position: number; name: string; points: number }[];
-};
+import type { RanksListProps } from '../types';
 
 const topRanksIcons = [
   <Crown className="text-emerald-500 fill-emerald-500" />,

@@ -1,10 +1,10 @@
-import type { BackgorundNodeType } from '@/data/types/reactFlow';
 import img1Puc from '@/assets/map-background/fundo1-puc.webp';
 import img1SaoGabriel from '@/assets/map-background/fundo1-estacao-sao-gabriel.webp';
 import img2OuroMinas from '@/assets/map-background/fundo2-ouro-minas.webp';
 import img2MinasShopping from '@/assets/map-background/fundo2-minas-shopping.webp';
+import type { BackgroundNodeType } from '../types/reactFlow';
 
-export const backgroundNodes: BackgorundNodeType[] = [
+export const backgroundNodes: BackgroundNodeType[] = [
   {
     id: 'bg-img1-sao-gabriel',
     type: 'background',

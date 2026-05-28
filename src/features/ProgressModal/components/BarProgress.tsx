@@ -1,10 +1,5 @@
 import { Progress } from '@/components/ui/progress';
-
-type BarProgressProps = {
-  minPoints: number;
-  points: number;
-  progress: number;
-};
+import type { BarProgressProps } from '../types';
 
 export const BarProgress = ({
   minPoints,

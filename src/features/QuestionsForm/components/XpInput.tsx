@@ -13,9 +13,9 @@ export const XpInput = ({ questionNumber }: { questionNumber: number }) => {
         <Label>XP</Label>
         <div className="border w-30 flex items-center gap-2 px-2 py-1 rounded-md max-w-fit bg-zinc-50">
           <Input
+            type="number"
             placeholder="1 - 3"
             className="max-w-24 border-none shadow-none placeholder:text-zinc-400 max-sm:text-xs"
-            type="number"
             {...register(`questions.${questionNumber - 1}.xp`, {
               setValueAs: (value) => Number(value),
             })}

@@ -5,7 +5,7 @@ import { Textarea } from '@/components/ui/textarea';
 import { XpInput } from '../components/XpInput';
 import { ErrorFormMessage } from '@/components/ErrorFormMessage';
 import { useQuestionCard } from '../hooks/useQuestionCard';
-import { Alternatives } from '../components/Alternatives';
+import { Alternatives } from './Alternatives';
 
 export const QuestionCard = ({
   questionNumber,

@@ -1,24 +1,20 @@
-import { Star, Check } from 'lucide-react';
 import { Handle, Position } from '@xyflow/react';
-import { useState } from 'react';
 import { Dialog } from '../ui/dialog';
 import { PhaseProgressModal } from '../../features/ProgressModal/container/PhaseProgressModal';
 import type { PhaseNodeProps } from '@/data/types/reactFlow';
 import { points } from '@/hooks/useMap';
+import { usePhaseNode } from '@/hooks/usePhaseNode';
 
 export const PhaseNode = ({ id, data: { minPoints } }: PhaseNodeProps) => {
-  const [openDialog, setCloseDialog] = useState(false);
-
-  const isLocked = points < minPoints;
-
-  const baseBgClass = isLocked ? 'bg-primary' : 'bg-green-500';
-  const shineClass = 'bg-gradient-to-b from-white/40 to-transparent opacity-70';
-  const overlayGradientClass = isLocked
-    ? 'bg-primaryring-1 ring-inset ring-black/10'
-    : 'bg-gradient-to-b from-green-500/80 to-green-500 ring-1 ring-inset ring-black/10';
-
-  const Icon = isLocked ? Star : Check;
-  const iconClassName = isLocked ? 'text-white' : 'text-green-900';
+  const {
+    Icon,
+    openDialog,
+    setCloseDialog,
+    baseBgClass,
+    shineClass,
+    iconClassName,
+    overlayGradientClass,
+  } = usePhaseNode(minPoints);
 
   return (
     <>
@@ -45,20 +41,20 @@ export const PhaseNode = ({ id, data: { minPoints } }: PhaseNodeProps) => {
 
         <Handle
           type="source"
-          position={Position.Top}
           id={`${id}-top`}
+          position={Position.Top}
           className="opacity-0 w-2 h-2"
         />
         <Handle
           type="target"
-          position={Position.Bottom}
           id={`${id}-bottom`}
+          position={Position.Bottom}
           className="opacity-0 w-2 h-2"
         />
       </div>
 
       <Dialog open={openDialog} onOpenChange={setCloseDialog}>
-        <PhaseProgressModal points={points} minPoints={minPoints} id={id} />
+        <PhaseProgressModal id={id} points={points} minPoints={minPoints} />
       </Dialog>
     </>
   );

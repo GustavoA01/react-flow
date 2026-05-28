@@ -19,7 +19,7 @@ export type PhaseEdgeType = {
   type: string;
 };
 
-export type BackgorundNodeType = {
+export type BackgroundNodeType = {
   id: string;
   type: 'background';
   position: { x: number; y: number };
