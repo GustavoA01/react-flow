@@ -14,6 +14,9 @@ export const Form = ({ onSubmit }: FormProps) => {
     formState: { errors },
   } = useFormContext<NewActivityFormType>();
 
+  const showErrorFormMessage =
+    errors.activityName && errors.activityName.message;
+
   return (
     <form className="space-y-4" onSubmit={onSubmit}>
       <div className="space-y-3">
@@ -24,14 +27,16 @@ export const Form = ({ onSubmit }: FormProps) => {
             className="placeholder:max-sm:text-sm"
           />
 
-          {errors.activityName && errors.activityName.message && (
-            <ErrorFormMessage message={errors.activityName.message} />
+          {showErrorFormMessage && (
+            <ErrorFormMessage
+              message={errors.activityName?.message as string}
+            />
           )}
         </div>
 
         <div>
           <Input
-            placeholder="Max: 5"
+            placeholder="Max: 10"
             type="number"
             className="placeholder:max-sm:text-sm"
             {...register('qtdQuestions', {

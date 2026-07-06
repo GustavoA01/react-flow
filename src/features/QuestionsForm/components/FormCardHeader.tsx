@@ -21,7 +21,10 @@ export const FormCardHeader = ({
     <div className="flex items-center space-x-2">
       <Label className="text-[11px] sm:text-xs">4 OPÇÕES</Label>
       <Switch
-        onClick={() => toogleAlternatives(!isTwoAlternatives, questionNumber)}
+        checked={isTwoAlternatives}
+        onCheckedChange={(checked) =>
+          toogleAlternatives(checked, questionNumber)
+        }
       />
       <Label className="text-[11px] sm:text-xs">2 OPÇÕES</Label>
     </div>

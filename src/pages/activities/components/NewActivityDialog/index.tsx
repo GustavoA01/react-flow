@@ -31,9 +31,7 @@ export const NewActivityDialog = ({
     };
 
     const oldActivityData = localStorage.getItem('newActivityData');
-    if (oldActivityData) {
-      localStorage.removeItem('newActivityData');
-    }
+    if (oldActivityData) localStorage.removeItem('newActivityData');
 
     localStorage.setItem('newActivityData', JSON.stringify(activityData));
     navigate('/cursos/curso/atividades/nova-atividade');

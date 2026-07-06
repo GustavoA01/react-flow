@@ -1,5 +1,5 @@
 import { BottomNavigation } from '@/components/BottomNavigation';
-import { Header } from '../components/Header';
+import { Header } from '../Header';
 import { Outlet, useLocation } from 'react-router-dom';
 import { bottomNavigateButtons } from '@/data/constants';
 

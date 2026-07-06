@@ -9,7 +9,7 @@ export const PhaseNode = ({ id, data: { minPoints } }: PhaseNodeProps) => {
   const {
     Icon,
     openDialog,
-    setCloseDialog,
+    setOpenDialog,
     baseBgClass,
     shineClass,
     iconClassName,
@@ -19,7 +19,7 @@ export const PhaseNode = ({ id, data: { minPoints } }: PhaseNodeProps) => {
   return (
     <>
       <div
-        onClick={() => setCloseDialog(true)}
+        onClick={() => setOpenDialog(true)}
         className="relative w-20 h-20 rounded-full select-none drop-shadow-lg transition-all ease-in hover:scale-105 cursor-pointer"
       >
         {/* camada de base */}
@@ -53,7 +53,7 @@ export const PhaseNode = ({ id, data: { minPoints } }: PhaseNodeProps) => {
         />
       </div>
 
-      <Dialog open={openDialog} onOpenChange={setCloseDialog}>
+      <Dialog open={openDialog} onOpenChange={setOpenDialog}>
         <PhaseProgressModal id={id} points={points} minPoints={minPoints} />
       </Dialog>
     </>

@@ -13,27 +13,25 @@ import type { LogoutDialogProps } from '@/data/types/components';
 export const LogoutDialog = ({
   openDialog,
   setOpenDialog,
-}: LogoutDialogProps) => {
-  return (
-    <Dialog open={openDialog} onOpenChange={setOpenDialog}>
-      <DialogContent>
-        <DialogHeader>
-          <DialogTitle>Deseja mesmo sair da sua conta?</DialogTitle>
+}: LogoutDialogProps) => (
+  <Dialog open={openDialog} onOpenChange={setOpenDialog}>
+    <DialogContent>
+      <DialogHeader>
+        <DialogTitle>Deseja mesmo sair da sua conta?</DialogTitle>
 
-          <DialogDescription>
-            Você será redirecionado para a tela de login.
-          </DialogDescription>
-        </DialogHeader>
+        <DialogDescription>
+          Você será redirecionado para a tela de login.
+        </DialogDescription>
+      </DialogHeader>
 
-        <DialogFooter>
-          <DialogClose asChild>
-            <Button variant="outline">Cancelar</Button>
-          </DialogClose>
-          <DialogClose asChild>
-            <Button variant="destructive">Sair</Button>
-          </DialogClose>
-        </DialogFooter>
-      </DialogContent>
-    </Dialog>
-  );
-};
+      <DialogFooter>
+        <DialogClose asChild>
+          <Button variant="outline">Cancelar</Button>
+        </DialogClose>
+        <DialogClose asChild>
+          <Button variant="destructive">Sair</Button>
+        </DialogClose>
+      </DialogFooter>
+    </DialogContent>
+  </Dialog>
+);

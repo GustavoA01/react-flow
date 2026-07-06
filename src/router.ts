@@ -1,5 +1,5 @@
 import { createBrowserRouter } from 'react-router-dom';
-import { HeaderLayout } from './layouts/HeaderLayout';
+import { HeaderLayout } from './components/layouts/HeaderLayout';
 import { Map } from './pages/map';
 import { Courses } from './pages/courses';
 import { Rankings } from './pages/rankings';
@@ -18,15 +18,15 @@ export const Router = createBrowserRouter([
         Component: Map,
       },
       {
-        path: '/cursos',
+        path: 'cursos',
         Component: Courses,
       },
       {
-        path: '/rankings',
+        path: 'rankings',
         Component: Rankings,
       },
       {
-        path: '/medalhas',
+        path: 'medalhas',
         Component: MedalsPage,
       },
     ],

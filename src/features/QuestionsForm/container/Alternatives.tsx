@@ -20,17 +20,17 @@ export const Alternatives = ({
     formState: { errors },
   } = useFormContext<QuestionFormType>();
 
-  const onChangeAlternative = (val: string, index: number) => {
+  const onChangeAlternative = (val: string) => {
     setCorrectAlternative(val);
 
+    const index = Number(val.split('-').at(-1));
     const questionIdx = questionNumber - 1;
     const alternatives = getValues(`questions.${questionIdx}.alternatives`);
 
     alternatives.forEach((_, altIndex) => {
-      const isCurrent = altIndex === index;
       setValue(
         `questions.${questionIdx}.alternatives.${altIndex}.isCorrect`,
-        isCurrent
+        altIndex === index
       );
     });
   };
@@ -44,35 +44,38 @@ export const Alternatives = ({
         </Badge>
       </div>
 
-      <div className="space-y-2 sm:grid grid-cols-2 sm:gap-4 sm:space-y-0">
-        {Array.from({ length: !isTwoAlternatives ? 4 : 2 }).map((_, index) => (
-          <motion.div
-            key={index}
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1, transition: { duration: 0.3 } }}
-          >
-            <RadioGroup
-              value={correctALternative}
-              onValueChange={(val) => onChangeAlternative(val, index)}
-            >
-              <InputOptions
-                alternativeNumber={index}
-                questionNumber={questionNumber}
-              />
-            </RadioGroup>
+      <RadioGroup
+        value={correctALternative}
+        onValueChange={onChangeAlternative}
+      >
+        <div className="space-y-2 sm:grid grid-cols-2 sm:gap-4 sm:space-y-0">
+          {Array.from({ length: !isTwoAlternatives ? 4 : 2 }).map(
+            (_, index) => (
+              <motion.div
+                key={index}
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1, transition: { duration: 0.3 } }}
+              >
+                <InputOptions
+                  alternativeNumber={index}
+                  questionNumber={questionNumber}
+                />
 
-            {errors.questions?.[questionNumber - 1]?.alternatives?.[index]?.text
-              ?.message && (
-              <ErrorFormMessage
-                message={
-                  errors.questions?.[questionNumber - 1]?.alternatives?.[index]
-                    ?.text?.message ?? ''
-                }
-              />
-            )}
-          </motion.div>
-        ))}
-      </div>
+                {errors.questions?.[questionNumber - 1]?.alternatives?.[index]
+                  ?.text?.message && (
+                  <ErrorFormMessage
+                    message={
+                      errors.questions?.[questionNumber - 1]?.alternatives?.[
+                        index
+                      ]?.text?.message ?? ''
+                    }
+                  />
+                )}
+              </motion.div>
+            )
+          )}
+        </div>
+      </RadioGroup>
 
       {errors.questions?.[questionNumber - 1]?.alternatives?.message && (
         <ErrorFormMessage

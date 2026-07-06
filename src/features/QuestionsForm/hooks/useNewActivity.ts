@@ -23,12 +23,20 @@ export const useNewActivity = () => {
 
   useEffect(() => {
     const data = localStorage.getItem('newActivityData');
-    const newActivityData = data ? JSON.parse(data) : null;
-    setLocalStorageActivityData(newActivityData);
 
-    reset({
-      questions: Array.from({ length: newActivityData.qtdQuestions ?? 0 }).map(
-        () => ({
+    if (!data) {
+      setLocalStorageActivityData(null);
+      return;
+    }
+
+    try {
+      const newActivityData = JSON.parse(data) as NewActivityFormType;
+      setLocalStorageActivityData(newActivityData);
+
+      reset({
+        questions: Array.from({
+          length: newActivityData.qtdQuestions ?? 0,
+        }).map(() => ({
           statement: '',
           alternatives: [
             { text: '', isCorrect: false },
@@ -36,9 +44,12 @@ export const useNewActivity = () => {
             { text: '', isCorrect: false },
             { text: '', isCorrect: false },
           ],
-        })
-      ),
-    });
+        })),
+      });
+    } catch {
+      setLocalStorageActivityData(null);
+      localStorage.removeItem('newActivityData');
+    }
   }, [reset]);
 
   const handleCreateActivity = (data: QuestionFormType) => {
