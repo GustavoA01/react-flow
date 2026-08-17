@@ -3,6 +3,7 @@ import { Crown, Medal } from 'lucide-react';
 import { ChessQueen } from './ChessQueen';
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 import type { RanksListProps } from '../types';
+import { cn } from '@/lib/utils';
 
 const topRanksIcons = [
   <Crown className="text-emerald-500 fill-emerald-500" />,
@@ -33,20 +34,22 @@ export const RanksList = ({ ranks }: RanksListProps) => {
               </TableCell>
 
               <TableCell
-                className={`font-semibold max-w-40 truncate ${
+                className={cn(
+                  'font-semibold max-w-40 truncate',
                   isTopRanks ? 'text-black' : 'text-zinc-600'
-                }`}
+                )}
               >
                 {name}
               </TableCell>
 
               <TableCell className="text-center">
                 <span
-                  className={`font-bold ${
+                  className={cn(
+                    'font-bold',
                     position === 1 ? 'text-emerald-500' : 'text-blue-600'
-                  }`}
+                  )}
                 >
-                  {points}{' '}
+                  {points}
                 </span>
                 <span className="font-semibold text-zinc-400">xp</span>
               </TableCell>

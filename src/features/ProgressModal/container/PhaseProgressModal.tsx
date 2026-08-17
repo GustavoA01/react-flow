@@ -9,23 +9,21 @@ export const PhaseProgressModal = ({
   points,
   minPoints,
 }: PhaseProgressModalProps) => {
-  let progress = Math.round((points / minPoints) * 100);
-  progress = progress > 100 ? 100 : progress;
-
+  const progress = Math.min(100, Math.round((points / minPoints) * 100));
   const concluded = progress === 100;
 
   return (
     <DialogContent
       showCloseButton={false}
-      className={`${
+      className={
         concluded
           ? 'bg-linear-to-l from-green-500 to-emerald-600'
           : 'bg-linear-to-r from-blue-400 to-indigo-500'
-      }`}
+      }
     >
       <ModalHeader level={id} concluded={concluded} />
 
-      <div className="bg-white p-4 rounded-md ">
+      <div className="bg-white p-4 rounded-md">
         <BarProgress
           points={points}
           progress={progress}

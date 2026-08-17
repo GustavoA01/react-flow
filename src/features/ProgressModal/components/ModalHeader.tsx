@@ -5,6 +5,7 @@ import {
 } from '@/components/ui/dialog';
 import { Medal, TrainFront } from 'lucide-react';
 import type { ModalHeaderProps } from '../types';
+import { cn } from '@/lib/utils';
 
 export const ModalHeader = ({ level, concluded }: ModalHeaderProps) => (
   <DialogHeader className="flex items-center">
@@ -12,11 +13,12 @@ export const ModalHeader = ({ level, concluded }: ModalHeaderProps) => (
       Nível {level}
     </DialogTitle>
     <div
-      className={`${
+      className={cn(
+        'p-4 rounded-full',
         concluded
           ? 'bg-linear-to-l from-green-400 to-emerald-500'
           : 'bg-linear-to-r from-blue-400 to-indigo-400'
-      } p-4 rounded-full `}
+      )}
     >
       {concluded ? (
         <Medal size={32} className="text-white" />
@@ -26,9 +28,10 @@ export const ModalHeader = ({ level, concluded }: ModalHeaderProps) => (
     </div>
 
     <DialogDescription
-      className={`text-white text-xs font-fredoka font-semibold ${
+      className={cn(
+        'text-white text-xs font-fredoka font-semibold py-1 px-4 rounded-full',
         concluded ? 'bg-green-500' : 'bg-blue-800'
-      } py-1 px-4 rounded-full`}
+      )}
     >
       {concluded ? 'Concluído' : 'Em progresso'}
     </DialogDescription>

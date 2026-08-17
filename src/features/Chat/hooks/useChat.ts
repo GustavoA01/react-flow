@@ -5,14 +5,14 @@ import { useForm } from 'react-hook-form';
 type MessageType = { role: 'user' | 'assistant'; content: string };
 
 export const useChat = () => {
-  const methods = useForm<{ message: string }>();
+  const { register, handleSubmit, reset } = useForm<{ message: string }>();
   const [isLoading, setIsLoading] = useState(false);
   const [messages, setMessages] = useState<MessageType[]>([]);
 
-  const onSubmit = async (data: { message: string }) => {
+  const onSubmit = handleSubmit(async (data: { message: string }) => {
     const userMessage = data.message;
 
-    methods.reset({ message: '' });
+    reset({ message: '' });
     setIsLoading(true);
 
     try {
@@ -28,13 +28,12 @@ export const useChat = () => {
     } finally {
       setIsLoading(false);
     }
-  };
+  });
 
   return {
     messages,
     isLoading,
     onSubmit,
-    register: methods.register,
-    handleSubmit: methods.handleSubmit,
+    register,
   };
 };

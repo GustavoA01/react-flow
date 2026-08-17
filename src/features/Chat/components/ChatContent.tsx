@@ -9,6 +9,14 @@ type ChatContentProps = {
 export const ChatContent = ({ messages, isLoading }: ChatContentProps) => {
   return (
     <div className="flex-1 space-y-4 py-4 overflow-y-auto overflow-x-hidden flex flex-col px-4 ">
+      {messages.length === 0 && (
+        <div className="self-center">
+          <p className="text-sm text-gray-500">
+            Peça uma pergunta para o gerador de atividades
+          </p>
+        </div>
+      )}
+
       {messages.map((message, index) =>
         message.role === 'user' ? (
           <div key={index} className="self-end bg-gray-200 p-2 rounded-md">
