@@ -18,7 +18,7 @@ export const ChatDrawer = () => {
         <MessageCircle className="text-zinc-300" size={18} />
       </DrawerTrigger>
 
-      <DrawerContent className="max-sm:h-dvh max-sm:w-full">
+      <DrawerContent className="max-sm:h-dvh max-sm:w-full! max-sm:max-w-none!">
         <Chat />
       </DrawerContent>
     </Drawer>

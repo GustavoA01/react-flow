@@ -9,7 +9,7 @@ export const newActivitySchema = z.object({
   qtdQuestions: z
     .number()
     .min(1, 'Defina o número de perguntas')
-    .min(3, 'O número mínimo de perguntas é 3')
+    .min(1, 'O número mínimo de perguntas é 1')
     .max(10, 'O número máximo de perguntas é 10'),
 });
 

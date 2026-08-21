@@ -8,29 +8,38 @@ import {
 import { ChevronRight, Eraser } from 'lucide-react';
 
 type ChatHeaderProps = {
-  isDesktop: boolean;
   onClear: () => void;
 };
 
-export const ChatHeader = ({ isDesktop, onClear }: ChatHeaderProps) => (
-  <DrawerHeader className="shadow-[0_4px_8px_-4px_rgba(0,0,0,0.2)] max-sm:text-center">
-    <div className="flex items-center justify-between relative">
-      {!isDesktop && (
-        <DrawerClose asChild>
-          <Button size="icon" variant="ghost" aria-label="Fechar">
-            <ChevronRight />
-          </Button>
-        </DrawerClose>
-      )}
-      <DrawerTitle
-        className={isDesktop ? undefined : 'absolute left-1/2 -translate-x-1/2'}
+export const ChatHeader = ({ onClear }: ChatHeaderProps) => (
+  <DrawerHeader className="shadow-[0_4px_8px_-4px_rgba(0,0,0,0.2)]">
+    <div className="grid grid-cols-[2.5rem_1fr_2.5rem] items-start gap-1">
+      <DrawerClose asChild>
+        <Button
+          size="icon"
+          title="Fechar"
+          variant="ghost"
+          aria-label="Fechar"
+          className="rounded-full"
+        >
+          <ChevronRight size={24} />
+        </Button>
+      </DrawerClose>
+      <div className="flex min-w-0 flex-col items-center text-center">
+        <DrawerTitle>Gerador de atividades</DrawerTitle>
+        <DrawerDescription>
+          Crie atividades rapidamente usando IA
+        </DrawerDescription>
+      </div>
+      <Button
+        size="icon"
+        variant="outline"
+        onClick={onClear}
+        title="Limpar conversa"
+        className="justify-self-end rounded-full"
       >
-        Gerador de atividades
-      </DrawerTitle>
-      <Button onClick={onClear} size="icon" variant="outline" className={'max-sm:ml-auto'}>
-        <Eraser className="text-destructive" />
+        <Eraser />
       </Button>
     </div>
-    <DrawerDescription>Crie atividades rapidamente usando IA</DrawerDescription>
   </DrawerHeader>
 );
