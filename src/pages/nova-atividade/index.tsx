@@ -1,8 +1,8 @@
-import { Header } from '../../features/QuestionsForm/components/Header';
-import { QuestionCard } from '../../features/QuestionsForm/container/QuestionCard';
-import { FormFooter } from '../../features/QuestionsForm/components/FormFooter';
+import { Header } from './features/QuestionsForm/components/Header';
+import { QuestionCard } from './features/QuestionsForm/container/QuestionCard';
+import { FormFooter } from './features/QuestionsForm/components/FormFooter';
 import { FormProvider } from 'react-hook-form';
-import { useNewActivity } from '@/features/QuestionsForm/hooks/useNewActivity';
+import { useNewActivity } from './features/QuestionsForm/hooks/useNewActivity';
 
 export const NewActivity = () => {
   const { fields, localStorageActivityData, handleCreateActivity, methods } =

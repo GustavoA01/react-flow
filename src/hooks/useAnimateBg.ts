@@ -25,5 +25,5 @@ export const useAnimateBg = () => {
     animeBg();
   }, [scope, animate]);
 
-  return { scope };
+  return scope;
 };

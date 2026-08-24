@@ -1,4 +1,4 @@
-import { UserToolTip } from '@/features/HeaderToolTip/container/UserToolTip';
+import { UserMenu } from '@/features/UserMenu/container/UserMenu';
 import { GoBack } from './GoBack';
 import { DrawerNavButton } from '@/features/DrawerNavigation/container/DrawerNavButton';
 import { LogoutDialog } from './LogoutDialog';
@@ -10,7 +10,7 @@ export const CourseSharedHeader = () => {
   return (
     <section className="flex justify-between items-center text-blue-onSurface">
       <GoBack />
-      <UserToolTip setOpenDialog={() => setOpenDialog(true)} />
+      <UserMenu onLogout={() => setOpenDialog(true)} />
       <DrawerNavButton />
       <LogoutDialog openDialog={openDialog} setOpenDialog={setOpenDialog} />
     </section>

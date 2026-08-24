@@ -47,6 +47,15 @@ export const getCursoById = (id: string) =>
 export const getModuloById = (cursoId: string, moduloId: string) =>
   getCursoById(cursoId)?.modulos.find((modulo) => modulo.id === moduloId);
 
+export const getAtividadeById = (
+  cursoId: string,
+  moduloId: string,
+  atividadeId: string
+) =>
+  getModuloById(cursoId, moduloId)?.atividades.find(
+    (atividade) => atividade.id === atividadeId
+  );
+
 const moduloLimites: Modulo = {
   id: 'modulo-limites',
   nome: 'Limites',

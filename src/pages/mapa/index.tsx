@@ -2,26 +2,14 @@ import {
   ReactFlow,
   MiniMap,
   type FitViewOptions as FitViewOptionsType,
-  type CoordinateExtent,
 } from '@xyflow/react';
 import '@xyflow/react/dist/style.css';
-import { nodesLastPosition, nodeTypes } from './constants/nodesPhases';
+import { nodeTypes } from './constants/nodesPhases';
 import { RankTable } from '@/features/RanksTable/container/RanksTable';
 import { useMap } from './hooks/useMap';
 import { edgeTypes } from './constants/edges';
+import { extend, miniMapStyles } from './constants/sizeLimits';
 
-const horizontalLimit = 1500;
-const verticalBottomLimit = 500;
-
-const extend: CoordinateExtent = [
-  [-horizontalLimit, nodesLastPosition], // Permite arrastar um pouco para a esquerda [minX, minY]
-  [horizontalLimit, verticalBottomLimit], // Permite arrastar até 1500px para a direita [maxX, maxY]
-  // O maxY na verdade é o máximo para baixo e minY é o máximo para cima
-];
-
-const miniMapStyles =
-  'mr-4 mb-4 hidden sm:block overflow-hidden b-1 rounded-sm border border-primary-light';
-  
 export const Map = () => {
   const { currentNode, edges, nodes, onEdgesChange, onNodesChange } = useMap();
 

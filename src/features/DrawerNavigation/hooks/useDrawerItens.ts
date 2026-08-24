@@ -1,5 +1,4 @@
 import {
-  Bell,
   BookOpen,
   CircleStar,
   LogOut,
@@ -45,15 +44,9 @@ export const useDrawerItens = ({
 
   const configurationItems = [
     {
-      label: 'Minha conta',
+      label: 'Editar conta',
       path: '/',
       icon: UserPen,
-      onClick: () => setOpenDrawer(false),
-    },
-    {
-      label: 'Notificações',
-      path: '/',
-      icon: Bell,
       onClick: () => setOpenDrawer(false),
     },
     {

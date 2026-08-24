@@ -8,6 +8,7 @@ import { CoursePage } from './pages/curso';
 import { ModuloPage } from './pages/modulo';
 import { NewActivity } from './pages/nova-atividade';
 import { Home } from './pages/home';
+import { ManagementPage } from './pages/monitoramento';
 
 export const Router = createBrowserRouter([
   {
@@ -47,5 +48,9 @@ export const Router = createBrowserRouter([
   {
     path: '/cursos/:cursoId/modulos/:moduloId/nova-atividade',
     Component: NewActivity,
+  },
+  {
+    path: '/cursos/:cursoId/modulos/:moduloId/monitoramento/:atividadeId',
+    Component: ManagementPage,
   },
 ]);

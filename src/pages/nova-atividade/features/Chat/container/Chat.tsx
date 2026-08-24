@@ -1,5 +1,5 @@
-import { ChatContent } from '@/features/Chat/components/ChatContent';
-import { ChatForm } from '@/features/Chat/components/ChatForm';
+import { ChatContent } from '../components/ChatContent';
+import { ChatForm } from '../components/ChatForm';
 import { useChat } from '../hooks/useChat';
 import { ChatHeader } from '../components/ChatHeader';
 

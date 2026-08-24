@@ -17,12 +17,14 @@ type ActivityCardProps = {
   atividade: Atividade;
   tentativasUsadas: number;
   melhorPontuacao: number;
+  onClick: () => void;
 };
 
 export const ActivityCard = ({
   atividade,
   tentativasUsadas,
   melhorPontuacao,
+  onClick,
 }: ActivityCardProps) => {
   const xpTotal = xpDaAtividade(atividade);
   const perguntasLabel = `${atividade.quantQuestoes} ${atividade.quantQuestoes === 1 ? 'PERGUNTA' : 'PERGUNTAS'}`;
@@ -32,6 +34,7 @@ export const ActivityCard = ({
 
   return (
     <Item
+      onClick={onClick}
       className={cn(
         'border-2 rounded-lg hover:shadow-md transition-all duration-150 ease-in cursor-pointer',
         concluded ? 'border-green-200' : 'border-zinc-200'

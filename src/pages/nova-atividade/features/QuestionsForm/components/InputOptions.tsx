@@ -2,7 +2,11 @@ import { RadioGroupItem } from '@/components/ui/radio-group';
 import { Textarea } from '@/components/ui/textarea';
 import type { QuestionFormType } from '@/data/schemas/activities';
 import { useFormContext } from 'react-hook-form';
-import type { InputOptionsProps } from '../types';
+
+type InputOptionsProps = {
+  alternativeNumber: number;
+  questionNumber: number;
+};
 
 export const InputOptions = ({
   alternativeNumber,

@@ -1,0 +1,22 @@
+---
+description: Rotas, papéis e regras de domínio
+alwaysApply: true
+---
+
+# Rotas e domínio
+
+`Home` é a rota `index` (`/`), filha do `HeaderLayout`. Não existe `/home`. Ela redireciona o **monitor** para `/cursos` e mostra o **mapa** para o **aluno**. Provider de usuário envolve o app (`App.tsx`), não o array do router.
+
+URLs: `/cursos/:cursoId`, `/cursos/:cursoId/modulos/:moduloId`, `.../nova-atividade`. A pasta `curso` é o detalhe de um curso; `modulo` é o detalhe de um módulo (lista atividades).
+
+## Tentativas
+
+Não guardar ids de tentativa no `Aluno`. A relação está em `Tentativa` (`alunoId` + `atividadeId`). Máximo 2 por aluno/atividade (`MAX_TENTATIVAS`).
+
+Atividade **concluída** no card do aluno: `tentativas === 2` **ou** gabaritou (`melhorPontuacao >= XP total`). Só ter enviado (`> 0`) não é concluída.
+
+Lista de atividades vem do módulo; o status cruza com as tentativas do aluno logado.
+
+## Tipos
+
+Nomes do diagrama em `api.ts` (`Curso`, `Modulo`, `Atividade`). `position` do ranking é derivada na ordenação, não no mock. Date da API é `string` ISO.

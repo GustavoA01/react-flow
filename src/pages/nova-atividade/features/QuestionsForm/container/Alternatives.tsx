@@ -6,7 +6,13 @@ import type { QuestionFormType } from '@/data/schemas/activities';
 import { useFormContext } from 'react-hook-form';
 import { motion } from 'framer-motion';
 import { InputOptions } from '../components/InputOptions';
-import type { AlternativesProps } from '../types';
+
+type AlternativesProps = {
+  isTwoAlternatives: boolean;
+  correctALternative: string;
+  setCorrectAlternative: (val: string) => void;
+  questionNumber: number;
+};
 
 export const Alternatives = ({
   isTwoAlternatives,

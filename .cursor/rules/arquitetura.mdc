@@ -1,0 +1,25 @@
+---
+description: Arquitetura de pastas do Beira Linha Play
+alwaysApply: true
+---
+
+# Arquitetura
+
+- `src/components`: peças **globais** do app (Header, GoBack, `ui/`). Não dependem de uma página.
+- `src/features`: blocos **reutilizados em mais de uma página**. Separar em:
+  - `container/`: orquestra estado, dados e composição
+  - `components/`: burros, só recebem props e renderizam
+  - `hooks/`: lógica extraída do container
+- `src/pages`: uma pasta por rota, nome em **português** (`cursos`, `curso`, `modulo`, `nova-atividade`). O que só aquela tela usa fica em `pages/<rota>/features`, com `container/`, `components/` e `hooks/`.
+- `src/hooks`: hooks globais (`useMediaDevice`).
+- `src/data/types/api.ts`: modelo de domínio (diagrama de classes). Props de UI ficam **no componente que as usa**, sem pasta `types`.
+- `src/data/temporaryMocks`: dados fake até existir API.
+- `src/router.ts`: define as URLs. Pastas de `pages` não criam rota sozinhas (não é Next.js).
+
+## Onde colocar código novo
+
+- Usado em 2+ páginas → `src/features/`
+- Só numa tela → `pages/<tela>/features/`
+- Botão, dialog, layout genérico → `src/components`
+
+Hoje: `Chat` e `QuestionsForm` vivem em `pages/nova-atividade/features`. Monitoramento usa `pages/monitoramento/features`. `RanksTable`, `DrawerNavigation` e `UserMenu` ficam em `src/features`.

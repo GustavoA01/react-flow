@@ -3,7 +3,7 @@ import { useMediaDevice } from '@/hooks/useMediaDevice';
 import { ActivityCard } from './components/ActivityCard';
 import { useState } from 'react';
 import { NewActivityDialog } from './components/NewActivityDialog';
-import { useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import { getModuloById } from '@/data/temporaryMocks/cursos';
 import { contarTentativasDoAluno, melhorPontuacaoDoAluno } from '@/data/temporaryMocks/tentativas';
 import { CourseSharedHeader } from '@/components/CourseSharedHeader';
@@ -11,6 +11,7 @@ import { CourseSharedHeader } from '@/components/CourseSharedHeader';
 export const ModuloPage = () => {
   const { containerClassName } = useMediaDevice();
   const [openActivityDialog, setOpenActivityDialog] = useState(false);
+  const navigate = useNavigate();
   const { cursoId, moduloId } = useParams();
   const modulo =
     cursoId && moduloId ? getModuloById(cursoId, moduloId) : undefined;
@@ -45,6 +46,11 @@ export const ModuloPage = () => {
               atividade={atividade}
               tentativasUsadas={contarTentativasDoAluno(atividade.id)}
               melhorPontuacao={melhorPontuacaoDoAluno(atividade.id)}
+              onClick={() =>
+                navigate(
+                  `/cursos/${cursoId}/modulos/${moduloId}/monitoramento/${atividade.id}`
+                )
+              }
             />
           ))}
         </div>
