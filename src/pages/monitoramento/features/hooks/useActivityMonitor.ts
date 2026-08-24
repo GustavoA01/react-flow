@@ -73,6 +73,7 @@ export const useActivityMonitor = (activity: Atividade) => {
             )
           ).length
       );
+
       const correctAnswers = question.alternativas.reduce(
         (acc, alternative, alternativeIndex) => {
           return alternative.correta
@@ -81,6 +82,7 @@ export const useActivityMonitor = (activity: Atividade) => {
         },
         0
       );
+      
       const accuracyPercent =
         submissions === 0
           ? 0

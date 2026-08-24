@@ -5,7 +5,7 @@ import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 import { cn } from '@/lib/utils';
 import type { Aluno } from '@/data/types/api';
 
-export type RankItem = Pick<Aluno, 'id' | 'nome' | 'pontos'> & {
+export type RankItem = Pick<Aluno, 'id' | 'apelido' | 'pontos'> & {
   position: number;
 };
 
@@ -25,9 +25,9 @@ export const RanksList = ({ ranks }: RanksListProps) => {
   return (
     <Table>
       <TableBody>
-        {ranks.map(({ id, nome, pontos, position }) => {
+        {ranks.map(({ id, apelido, pontos, position }) => {
           const isTopRanks = [1, 2, 3].includes(position);
-          const iniciais = nome.slice(0, 2).toUpperCase();
+          const iniciais = apelido.slice(0, 2).toUpperCase();
 
           return (
             <TableRow key={id} className="h-12 font-montserrat">
@@ -48,7 +48,7 @@ export const RanksList = ({ ranks }: RanksListProps) => {
                   isTopRanks ? 'text-black' : 'text-zinc-600'
                 )}
               >
-                {nome}
+                {apelido}
               </TableCell>
 
               <TableCell className="text-center">

@@ -3,11 +3,12 @@ export type TipoUsuario = 'ALUNO' | 'MONITOR';
 type UsuarioBase = {
   id: string;
   nome: string;
-  senha:string;
+  senha: string;
 };
 
 export type Aluno = UsuarioBase & {
   tipo: 'ALUNO';
+  apelido: string;
   pontos: number;
   imagemPerfil: string;
   cursoIds: string[];

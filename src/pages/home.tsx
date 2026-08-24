@@ -5,6 +5,7 @@ import { Map } from './mapa';
 const alunoMock: Aluno = {
   id: '1',
   nome: 'John Doe',
+  apelido: 'John',
   senha: '123456',
   tipo: 'ALUNO',
   pontos: 0,
