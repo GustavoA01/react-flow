@@ -1,4 +1,5 @@
 import { DialogTitle } from '@radix-ui/react-dialog';
+import type { Dispatch, SetStateAction } from 'react';
 import { Button } from './ui/button';
 import {
   Dialog,
@@ -8,7 +9,11 @@ import {
   DialogFooter,
   DialogHeader,
 } from './ui/dialog';
-import type { LogoutDialogProps } from '@/data/types/components';
+
+type LogoutDialogProps = {
+  openDialog: boolean;
+  setOpenDialog: Dispatch<SetStateAction<boolean>>;
+};
 
 export const LogoutDialog = ({
   openDialog,

@@ -1,12 +1,13 @@
 import { createBrowserRouter } from 'react-router-dom';
 import { HeaderLayout } from './components/layouts/HeaderLayout';
-import { Map } from './pages/map';
-import { Courses } from './pages/courses';
+import { Map } from './pages/mapa';
+import { Courses } from './pages/cursos';
 import { Rankings } from './pages/rankings';
-import { MedalsPage } from './pages/medals';
-import { CoursePage } from './pages/course';
-import { Activities } from './pages/activities';
-import { NewActivity } from './pages/new-activity';
+import { MedalsPage } from './pages/medalhas';
+import { CoursePage } from './pages/curso';
+import { ModuloPage } from './pages/modulo';
+import { NewActivity } from './pages/nova-atividade';
+import { Home } from './pages/home';
 
 export const Router = createBrowserRouter([
   {
@@ -15,6 +16,10 @@ export const Router = createBrowserRouter([
     children: [
       {
         index: true,
+        Component: Home,
+      },
+      {
+        path: 'mapa',
         Component: Map,
       },
       {
@@ -32,15 +37,15 @@ export const Router = createBrowserRouter([
     ],
   },
   {
-    path: '/cursos/curso',
+    path: '/cursos/:cursoId',
     Component: CoursePage,
   },
   {
-    path: '/cursos/curso/atividades',
-    Component: Activities,
+    path: '/cursos/:cursoId/modulos/:moduloId',
+    Component: ModuloPage,
   },
   {
-    path: '/cursos/curso/atividades/nova-atividade',
+    path: '/cursos/:cursoId/modulos/:moduloId/nova-atividade',
     Component: NewActivity,
   },
 ]);

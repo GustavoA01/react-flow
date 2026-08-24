@@ -1,7 +1,12 @@
 import { ChevronDown, Trophy } from 'lucide-react';
 import { RankFilters } from './RankFilters';
 import { AccordionTrigger } from '@/components/ui/accordion';
-import type { RankTableHeaderProps } from '../types';
+
+type RankTableHeaderProps = {
+  selected: string;
+  setSelected: (value: string) => void;
+  isDesktop?: boolean;
+};
 
 export const RankTableHeader = ({
   selected,

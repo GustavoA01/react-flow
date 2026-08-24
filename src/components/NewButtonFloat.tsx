@@ -1,6 +1,10 @@
 import { Plus } from 'lucide-react';
 import { Button } from './ui/button';
-import type { NewButtonProps } from '@/data/types/components';
+
+type NewButtonProps = {
+  text: string;
+  onClick: () => void;
+};
 
 export const NewButtonFloat = ({ text, onClick }: NewButtonProps) => (
   <Button

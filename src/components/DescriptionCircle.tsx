@@ -1,5 +1,12 @@
-import type { DescriptionCircleProps } from '@/data/types/components';
 import { Circle } from 'lucide-react';
+
+type DescriptionCircleProps = {
+  right: string;
+  left: string;
+  className?: string;
+  textColor?: string;
+  fill?: string;
+};
 
 export const DescriptionCircle = ({
   right,

@@ -12,6 +12,12 @@ import { useState } from 'react';
 export const RankTable = () => {
   const { isDesktop } = useMediaDevice();
   const [selected, setSelected] = useState('Geral');
+  const ranks = [...temporaryRanks]
+    .sort((a, b) => b.pontos - a.pontos)
+    .map((rank, index) => ({
+      ...rank,
+      position: index + 1,
+    }));
 
   if (!isDesktop) {
     return (
@@ -21,7 +27,7 @@ export const RankTable = () => {
       >
         <RankTableHeader selected={selected} setSelected={setSelected} />
         <div className="flex-1 scrollbar-hidden overflow-y-auto min-h-0 bg-white rounded-b-md">
-          <RanksList ranks={temporaryRanks} />
+          <RanksList ranks={ranks} />
         </div>
       </div>
     );
@@ -41,7 +47,7 @@ export const RankTable = () => {
           />
           <AccordionContent className="p-0">
             <div className="max-h-56 overflow-y-auto custom-bar min-h-0 bg-white border rounded-b-md">
-              <RanksList ranks={temporaryRanks} />
+              <RanksList ranks={ranks} />
             </div>
           </AccordionContent>
         </AccordionItem>
