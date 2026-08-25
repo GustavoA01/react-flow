@@ -6,7 +6,7 @@ import {
 } from '@/components/ui/accordion';
 import { Badge } from '@/components/ui/badge';
 import { cn } from '@/lib/utils';
-import type { QuestionStatType } from '../hooks/useActivityMonitor';
+import type { QuestionStatType } from '../features/hooks/useActivityMonitor';
 import { IncorrectsPercent } from './IncorrectsPercent';
 
 type QuestionsAccordionPropsType = {

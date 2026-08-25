@@ -2,7 +2,7 @@ import { ModuloHeader } from './components/ModuloHeader';
 import { useMediaDevice } from '@/hooks/useMediaDevice';
 import { ActivityCard } from './components/ActivityCard';
 import { useState } from 'react';
-import { NewActivityDialog } from './components/NewActivityDialog';
+import { NewActivityDialog } from './features/NewActivityDialog/container/NewActivityDialog';
 import { useNavigate, useParams } from 'react-router-dom';
 import { getModuloById } from '@/data/temporaryMocks/cursos';
 import { contarTentativasDoAluno, melhorPontuacaoDoAluno } from '@/data/temporaryMocks/tentativas';

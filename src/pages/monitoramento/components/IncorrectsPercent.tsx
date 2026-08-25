@@ -1,5 +1,5 @@
 import { Progress } from '@/components/ui/progress';
-import type { AlternativeStatType } from '../hooks/useActivityMonitor';
+import type { AlternativeStatType } from '../features/hooks/useActivityMonitor';
 import { cn } from '@/lib/utils';
 
 export const IncorrectsPercent = ({ stat }: { stat: AlternativeStatType }) => (

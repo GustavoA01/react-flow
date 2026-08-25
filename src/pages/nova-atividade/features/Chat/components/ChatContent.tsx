@@ -6,50 +6,48 @@ type ChatContentProps = {
   isLoading: boolean;
 };
 
-export const ChatContent = ({ messages, isLoading }: ChatContentProps) => {
-  return (
-    <div className="flex-1 space-y-4 py-4 overflow-y-auto overflow-x-hidden flex flex-col px-4 ">
-      {messages.length === 0 && (
-        <div className="m-auto">
-          <p className="text-sm text-gray-500">
-            Peça uma pergunta para o gerador de atividades
-          </p>
+export const ChatContent = ({ messages, isLoading }: ChatContentProps) => (
+  <div className="flex-1 space-y-4 py-4 overflow-y-auto overflow-x-hidden flex flex-col px-4 ">
+    {messages.length === 0 && (
+      <div className="m-auto">
+        <p className="text-sm text-gray-500">
+          Peça uma pergunta para o gerador de atividades
+        </p>
+      </div>
+    )}
+
+    {messages.map((message, index) =>
+      message.role === 'user' ? (
+        <div key={index} className="self-end bg-gray-200 p-2 rounded-md">
+          <p className="">{message.content}</p>
         </div>
-      )}
-
-      {messages.map((message, index) =>
-        message.role === 'user' ? (
-          <div key={index} className="self-end bg-gray-200 p-2 rounded-md">
-            <p className="">{message.content}</p>
-          </div>
-        ) : (
-          <div
-            key={index}
-            className="self-start bg-gray-100 p-2 rounded-md select-text"
+      ) : (
+        <div
+          key={index}
+          className="self-start bg-gray-100 p-2 rounded-md select-text"
+        >
+          <ReactMarkdown
+            components={{
+              code(props) {
+                const { children, ...rest } = props;
+                return (
+                  <code {...rest} className={'prose prose-sm max-w-none'}>
+                    {children}
+                  </code>
+                );
+              },
+            }}
           >
-            <ReactMarkdown
-              components={{
-                code(props) {
-                  const { children, ...rest } = props;
-                  return (
-                    <code {...rest} className={'prose prose-sm max-w-none'}>
-                      {children}
-                    </code>
-                  );
-                },
-              }}
-            >
-              {message.content}
-            </ReactMarkdown>
-          </div>
-        )
-      )}
+            {message.content}
+          </ReactMarkdown>
+        </div>
+      )
+    )}
 
-      {isLoading && (
-        <Skeleton className="flex items-center gap-2 p-4 max-md:w-full">
-          <p>Gerando resposta...</p>
-        </Skeleton>
-      )}
-    </div>
-  );
-};
+    {isLoading && (
+      <Skeleton className="flex items-center gap-2 p-4 max-md:w-full">
+        <p>Gerando resposta...</p>
+      </Skeleton>
+    )}
+  </div>
+);

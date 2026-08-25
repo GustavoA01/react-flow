@@ -7,8 +7,8 @@ import {
 } from '@/components/ui/dialog';
 import { cn } from '@/lib/utils';
 import type { Atividade } from '@/data/types/api';
-import type { StudentRowType } from '../hooks/useActivityMonitor';
-import { alternativeLetter } from '../hooks/useActivityMonitor';
+import type { StudentRowType } from '../features/hooks/useActivityMonitor';
+import { alternativeLetter } from '../features/hooks/useActivityMonitor';
 
 type AttemptDialogPropsType = {
   activity: Atividade;

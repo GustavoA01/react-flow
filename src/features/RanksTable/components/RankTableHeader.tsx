@@ -1,5 +1,5 @@
 import { ChevronDown, Trophy } from 'lucide-react';
-import { RankFilters } from './RankFilters';
+import { RankFilters } from '../container/RankFilters';
 import { AccordionTrigger } from '@/components/ui/accordion';
 
 type RankTableHeaderProps = {

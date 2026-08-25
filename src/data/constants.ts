@@ -5,6 +5,7 @@ export const MAX_TENTATIVAS = 2;
 export const headerItems = [
   { name: 'Cursos', path: '/cursos' },
   { name: 'Mapa', path: '/' },
+  { name: 'Medalhas', path: '/medalhas' },
 ];
 
 export const bottomNavigateButtons = [

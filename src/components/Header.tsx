@@ -1,13 +1,10 @@
-import { Link, useLocation } from 'react-router-dom';
-import { Button } from './ui/button';
+import { Link } from 'react-router-dom';
 import { DrawerNavButton } from '@/features/DrawerNavigation/container/DrawerNavButton';
-import { UserMenu } from '@/features/UserMenu/container/UserMenu';
+import { HeaderDesktopNav } from './HeaderDesktopNav';
 import { LogoutDialog } from './LogoutDialog';
 import { useState } from 'react';
-import { headerItems } from '@/data/constants';
 
 export const Header = () => {
-  const { pathname } = useLocation();
   const [openDialog, setOpenDialog] = useState(false);
 
   return (
@@ -18,19 +15,7 @@ export const Header = () => {
         </h1>
 
         <nav className="flex items-center gap-2">
-          <UserMenu onLogout={() => setOpenDialog(true)} />
-          {headerItems.map(({ name, path }) => (
-            <Button
-              key={path}
-              className={`hidden sm:block text-md font-montserrat hover:bg-primary-dark/50 transition-all ease-in ${
-                pathname === path ? 'text-white' : 'text-zinc-300'
-              }`}
-            >
-              <Link key={name} to={path}>
-                {name}
-              </Link>
-            </Button>
-          ))}
+          <HeaderDesktopNav onLogout={() => setOpenDialog(true)} />
           <DrawerNavButton />
         </nav>
         <LogoutDialog openDialog={openDialog} setOpenDialog={setOpenDialog} />

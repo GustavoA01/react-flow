@@ -1,8 +1,8 @@
-import type { Aluno } from '@/data/types/api';
+import type { Usuario } from '@/data/types/api';
 import { Navigate } from 'react-router-dom';
 import { Map } from './mapa';
 
-const alunoMock: Aluno = {
+const userMock = {
   id: '1',
   nome: 'John Doe',
   apelido: 'John',
@@ -12,12 +12,10 @@ const alunoMock: Aluno = {
   imagemPerfil: '',
   cursoIds: [],
   medalhas: [],
-};
+} as Usuario;
 
 export const Home = () => {
-  // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-  //@ts-expect-error
-  if (alunoMock.tipo === 'MONITOR') return <Navigate to="/cursos" replace />;
+  if (userMock.tipo === 'MONITOR') return <Navigate to="/cursos" replace />;
 
   return <Map />;
 };

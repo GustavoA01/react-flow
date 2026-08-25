@@ -4,6 +4,7 @@ import { useNavigate } from 'react-router-dom';
 
 export const FormFooter = () => {
   const navigate = useNavigate();
+  const goBack = () => navigate(-1);
 
   return (
     <div className="flex flex-col sm:flex-row w-full sm:justify-end gap-2">
@@ -11,7 +12,7 @@ export const FormFooter = () => {
         type="button"
         variant="outline"
         className="max-sm:hidden"
-        onClick={() => navigate(-1)}
+        onClick={goBack}
       >
         Cancelar
       </Button>
@@ -25,7 +26,7 @@ export const FormFooter = () => {
         type="button"
         variant="outline"
         className="sm:hidden"
-        onClick={() => navigate(-1)}
+        onClick={goBack}
       >
         Cancelar
       </Button>

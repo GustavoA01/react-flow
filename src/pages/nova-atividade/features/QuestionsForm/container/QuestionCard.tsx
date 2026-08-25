@@ -32,8 +32,8 @@ export const QuestionCard = ({
       <div className="space-y-2 ">
         <Label>ENUNCIADO</Label>
         <Textarea
-          {...register(`questions.${questionNumber - 1}.statement`)}
           placeholder="Escreva a pergunta..."
+          {...register(`questions.${questionNumber - 1}.statement`)}
           className="placeholder:text-zinc-400 max-sm:text-xs focus:ring-2 focus:outline-none focus:ring-blue-100 focus:border-blue-400 bg-zinc-50 resize-none max-h-fit shadow-none"
         />
       </div>

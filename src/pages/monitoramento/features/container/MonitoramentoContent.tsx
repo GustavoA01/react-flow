@@ -5,11 +5,11 @@ import {
   type StudentRowType,
 } from '../hooks/useActivityMonitor';
 import type { Atividade } from '@/data/types/api';
-import { MonitorHeader } from '../components/MonitorHeader';
-import { SummaryCards } from '../components/SummaryCards';
-import { QuestionsAccordion } from '../components/QuestionsAccordion';
-import { StudentsTable } from '../components/StudentsTable';
-import { AttemptDialog } from '../components/AttemptDialog';
+import { MonitorHeader } from '../../components/MonitorHeader';
+import { SummaryCards } from '../../components/SummaryCards';
+import { QuestionsAccordion } from '../../components/QuestionsAccordion';
+import { StudentsTable } from '../../components/StudentsTable';
+import { AttemptDialog } from '../../components/AttemptDialog';
 
 type MonitoramentoContentPropsType = {
   activity: Atividade;

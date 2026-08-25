@@ -1,4 +1,4 @@
-import { UserMenu } from '@/features/UserMenu/container/UserMenu';
+import { HeaderDesktopNav } from './HeaderDesktopNav';
 import { GoBack } from './GoBack';
 import { DrawerNavButton } from '@/features/DrawerNavigation/container/DrawerNavButton';
 import { LogoutDialog } from './LogoutDialog';
@@ -10,8 +10,10 @@ export const CourseSharedHeader = () => {
   return (
     <section className="flex justify-between items-center text-blue-onSurface">
       <GoBack />
-      <UserMenu onLogout={() => setOpenDialog(true)} />
-      <DrawerNavButton />
+      <div className="flex items-center gap-2">
+        <HeaderDesktopNav onLogout={() => setOpenDialog(true)} />
+        <DrawerNavButton />
+      </div>
       <LogoutDialog openDialog={openDialog} setOpenDialog={setOpenDialog} />
     </section>
   );

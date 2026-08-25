@@ -1,80 +1,78 @@
-export type TipoUsuario = 'ALUNO' | 'MONITOR';
-
-type UsuarioBase = {
+interface UsuarioBase {
   id: string;
   nome: string;
   senha: string;
-};
+}
 
-export type Aluno = UsuarioBase & {
+export interface Aluno extends UsuarioBase {
   tipo: 'ALUNO';
   apelido: string;
   pontos: number;
   imagemPerfil: string;
   cursoIds: string[];
   medalhas: Medalha[];
-};
+}
 
-export type Monitor = UsuarioBase & {
+export interface Monitor extends UsuarioBase {
   tipo: 'MONITOR';
   cursoIds: string[];
-};
+}
 
 export type Usuario = Aluno | Monitor;
 
-export type Medalha = {
+export interface Medalha {
   id: string;
   imagemUrl: string;
   pontosMin: number;
-};
+}
 
-export type Curso = {
+export interface Curso {
   id: string;
   nome: string;
   codigoAcesso: string;
   modulos: Modulo[];
-};
+}
 
-export type Modulo = {
+export interface Modulo {
   id: string;
   nome: string;
   cursoId: string;
   atividades: Atividade[];
-};
+}
 
-export type Atividade = {
+export interface Atividade {
   id: string;
   titulo: string;
   quantQuestoes: number;
   moduloId: string;
   questoes: Questao[];
-};
+}
 
-export type Questao = {
+export interface Questao {
   id: string;
   enunciado: string;
   valor: number;
   alternativas: Alternativa[];
-};
+}
 
-export type Alternativa = {
+export interface Alternativa {
   id: string;
   descricao: string;
   correta: boolean;
-};
+}
 
-export type Tentativa = {
+export interface Tentativa {
   id: string;
   dataEnvio: string;
   pontuacaoObtida: number;
   alunoId: string;
   atividadeId: string;
   respostas: Resposta[];
-};
+}
 
-export type Resposta = {
+export interface Resposta {
   id: string;
   correta: boolean;
   questaoId: string;
   alternativaId: string;
-};
+}
