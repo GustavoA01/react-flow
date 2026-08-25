@@ -12,7 +12,7 @@ type HeaderDesktopNavPropsType = {
 const navLinkClass = (isActive?: boolean) =>
   cn(
     buttonVariants({ variant: 'ghost' }),
-    'text-md font-montserrat hover:bg-primary-dark/50 transition-all ease-in',
+    'text-md font-montserrat hover:text-white hover:bg-primary-dark/50 transition-all ease-in',
     isActive ? 'text-white' : 'text-zinc-300'
   );
 
@@ -43,7 +43,7 @@ export const HeaderDesktopNav = ({ onLogout }: HeaderDesktopNavPropsType) => {
         <Button
           variant="ghost"
           onClick={onLogout}
-          className="text-md font-montserrat hover:bg-primary-dark/50 transition-all ease-in text-zinc-300"
+          className="text-md font-montserrat hover:text-white hover:bg-primary-dark/50 transition-all ease-in text-zinc-300"
         >
           Sair
         </Button>
