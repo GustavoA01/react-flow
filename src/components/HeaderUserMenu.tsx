@@ -40,7 +40,7 @@ export const HeaderUserMenu = ({ onLogout }: HeaderUserMenuPropsType) => {
             }
             alt="Foto de perfil"
           />
-          <AvatarFallback>{initials}</AvatarFallback>
+          <AvatarFallback className='text-primary'>{initials}</AvatarFallback>
         </Avatar>
         <p>Olá, {greetingName}</p>
         <ChevronDown

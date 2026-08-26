@@ -63,11 +63,6 @@ export const RanksList = ({ ranks, loggedAlunoId }: RanksListProps) => {
               >
                 <span className="flex items-center gap-2 min-w-0">
                   <span className="truncate">{apelido}</span>
-                  {isLoggedAluno && (
-                    <span className="shrink-0 text-xs font-medium text-primary">
-                      você
-                    </span>
-                  )}
                 </span>
               </TableCell>
 
