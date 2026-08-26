@@ -5,7 +5,7 @@ import { useMediaDevice } from '@/hooks/useMediaDevice';
 import { motion } from 'framer-motion';
 import { temporaryCursos } from '@/data/temporaryMocks/cursos';
 
-export const Courses = () => {
+export const CoursesPage = () => {
   const { containerClassName } = useMediaDevice();
   const navigate = useNavigate();
 

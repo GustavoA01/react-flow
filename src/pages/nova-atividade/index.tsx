@@ -4,7 +4,7 @@ import { FormFooter } from './features/QuestionsForm/components/FormFooter';
 import { FormProvider } from 'react-hook-form';
 import { useNewActivity } from './features/QuestionsForm/hooks/useNewActivity';
 
-export const NewActivity = () => {
+export const NewActivityPage = () => {
   const { fields, localStorageActivityData, handleCreateActivity, methods } =
     useNewActivity();
 

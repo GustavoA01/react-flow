@@ -8,7 +8,7 @@ import { getModuloById } from '@/data/temporaryMocks/cursos';
 import { contarTentativasDoAluno, melhorPontuacaoDoAluno } from '@/data/temporaryMocks/tentativas';
 import { CourseSharedHeader } from '@/components/CourseSharedHeader';
 
-export const ModuloPage = () => {
+export const ModulePage = () => {
   const { containerClassName } = useMediaDevice();
   const [openActivityDialog, setOpenActivityDialog] = useState(false);
   const navigate = useNavigate();

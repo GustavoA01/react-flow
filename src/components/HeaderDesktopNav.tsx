@@ -1,9 +1,8 @@
 import { Link, useLocation } from 'react-router-dom';
-import { Button, buttonVariants } from './ui/button';
-import { Avatar, AvatarFallback, AvatarImage } from './ui/avatar';
+import { buttonVariants } from './ui/button';
 import { headerItems } from '@/data/constants';
-import Espadas from '@/assets/Espadas.jpg';
 import { cn } from '@/lib/utils';
+import { HeaderUserMenu } from './HeaderUserMenu';
 
 type HeaderDesktopNavPropsType = {
   onLogout: () => void;
@@ -31,22 +30,8 @@ export const HeaderDesktopNav = ({ onLogout }: HeaderDesktopNavPropsType) => {
         </Link>
       ))}
 
-      <div className="flex items-center gap-2 border-l border-white/20 pl-4 ml-2">
-        <Avatar className="size-8">
-          <AvatarImage src={Espadas} alt="Foto de perfil" />
-          <AvatarFallback>GA</AvatarFallback>
-        </Avatar>
-        <p className="font-montserrat mr-1">Olá, Gustavo</p>
-        <Link to="/" className={navLinkClass()}>
-          Editar
-        </Link>
-        <Button
-          variant="ghost"
-          onClick={onLogout}
-          className="text-md font-montserrat hover:text-white hover:bg-primary-dark/50 transition-all ease-in text-zinc-300"
-        >
-          Sair
-        </Button>
+      <div className="border-l border-white/20 pl-4 ml-2">
+        <HeaderUserMenu onLogout={onLogout} />
       </div>
     </div>
   );
