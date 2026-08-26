@@ -6,12 +6,12 @@ import {
   DialogTitle,
 } from '@/components/ui/dialog';
 import { cn } from '@/lib/utils';
-import type { Atividade } from '@/data/types/api';
+import type { AtividadeType } from '@/data/types/api';
 import type { StudentRowType } from '../features/hooks/useActivityMonitor';
 import { alternativeLetter } from '../features/hooks/useActivityMonitor';
 
 type AttemptDialogPropsType = {
-  activity: Atividade;
+  activity: AtividadeType;
   row: StudentRowType | null;
   onClose: () => void;
 };

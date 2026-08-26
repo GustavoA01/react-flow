@@ -2,11 +2,11 @@ import { CourseSharedHeader } from '@/components/CourseSharedHeader';
 import { DescriptionCircle } from '@/components/DescriptionCircle';
 import { NewButtonFloat } from '@/components/NewButtonFloat';
 import { Progress } from '@/components/ui/progress';
-import type { Modulo } from '@/data/types/api';
+import type { ModuloType } from '@/data/types/api';
 import { xpDoModulo } from '@/data/temporaryMocks/cursos';
 
 type ModuloHeaderProps = {
-  modulo: Modulo;
+  modulo: ModuloType;
   setOpenActivityDialog: (open: boolean) => void;
   isAluno: boolean;
   isMonitor: boolean;

@@ -5,20 +5,20 @@ import {
   useState,
   type ReactNode,
 } from 'react';
-import type { Aluno, Monitor, Usuario } from '@/data/types/api';
-import { mockLoggedUser } from '@/data/temporaryMocks/usuario';
+import type { AlunoType, MonitorType, UsuarioType } from '@/data/types/api';
+import { mockLoggedAluno } from '@/data/temporaryMocks/usuario';
 
-type SetUserType = (user: Usuario | null) => void;
+type SetUserType = (user: UsuarioType | null) => void;
 
 type UserContextType =
-  | { user: Aluno; setUser: SetUserType; isAluno: true; isMonitor: false }
-  | { user: Monitor; setUser: SetUserType; isAluno: false; isMonitor: true }
+  | { user: AlunoType; setUser: SetUserType; isAluno: true; isMonitor: false }
+  | { user: MonitorType; setUser: SetUserType; isAluno: false; isMonitor: true }
   | { user: null; setUser: SetUserType; isAluno: false; isMonitor: false };
 
 const UserContext = createContext<UserContextType | null>(null);
 
 export const UserProvider = ({ children }: { children: ReactNode }) => {
-  const [user, setUser] = useState<Usuario | null>(mockLoggedUser);
+  const [user, setUser] = useState<UsuarioType | null>(mockLoggedAluno);
 
   const value = useMemo((): UserContextType => {
     if (user?.tipo === 'ALUNO') {

@@ -1,9 +1,9 @@
 import { CourseSharedHeader } from '@/components/CourseSharedHeader';
 import { DescriptionCircle } from '@/components/DescriptionCircle';
-import type { Atividade } from '@/data/types/api';
+import type { AtividadeType } from '@/data/types/api';
 
 type MonitorHeaderPropsType = {
-  activity: Atividade;
+  activity: AtividadeType;
   totalXp: number;
 };
 

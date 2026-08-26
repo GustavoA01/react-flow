@@ -1,9 +1,11 @@
 import { Link, useLocation } from 'react-router-dom';
 import { motion } from 'motion/react';
-import { bottomNavigateButtons } from '@/data/constants';
+import { getBottomNavigateButtons } from '@/data/constants';
+import { useAuthUser } from '@/providers/UserProvider';
 
 export const BottomNavigation = () => {
   const { pathname } = useLocation();
+  const { isMonitor } = useAuthUser();
 
   return (
     <motion.nav
@@ -11,7 +13,7 @@ export const BottomNavigation = () => {
       animate={{ opacity: 1, y: 0 }}
       className="fixed bottom-6 items-center w-50 left-1/2 -translate-x-1/2 rounded-full gap-6 bg-white shadow-md py-2 flex justify-center sm:hidden"
     >
-      {bottomNavigateButtons.map((button) => {
+      {getBottomNavigateButtons(isMonitor).map((button) => {
         const selected = pathname === button.to;
 
         return (

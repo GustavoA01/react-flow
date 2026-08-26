@@ -1,6 +1,6 @@
-import type { Aluno } from '@/data/types/api';
+import type { AlunoType } from '@/data/types/api';
 
-export type RankAluno = Pick<Aluno, 'id' | 'nome' | 'apelido' | 'pontos'>;
+export type RankAluno = Pick<AlunoType, 'id' | 'nome' | 'apelido' | 'pontos'>;
 
 export const temporaryRanks: RankAluno[] = [
   { id: '1', nome: 'Gustavo Aguiar', apelido: 'Gu', pontos: 100 },

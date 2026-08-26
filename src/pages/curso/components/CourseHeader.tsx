@@ -2,10 +2,10 @@ import { CourseSharedHeader } from '@/components/CourseSharedHeader';
 import { Card } from '@/components/ui/card';
 import { NewButtonFloat } from '@/components/NewButtonFloat';
 import { Progress } from '@/components/ui/progress';
-import type { Curso } from '@/data/types/api';
+import type { CursoType } from '@/data/types/api';
 
 type CourseHeaderProps = {
-  curso: Curso;
+  curso: CursoType;
   isAluno: boolean;
   isMonitor: boolean;
 };

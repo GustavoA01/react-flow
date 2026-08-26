@@ -1,30 +1,30 @@
 import type {
-  Alternativa,
-  Atividade,
-  Curso,
-  Modulo,
-  Questao,
+  AlternativaType,
+  AtividadeType,
+  CursoType,
+  ModuloType,
+  QuestaoType,
 } from '@/data/types/api';
 
 const alternativa = (
   id: string,
   descricao: string,
   correta = false
-): Alternativa => ({ id, descricao, correta });
+): AlternativaType => ({ id, descricao, correta });
 
 const questao = (
   id: string,
   enunciado: string,
   valor: number,
-  alternativas: Alternativa[]
-): Questao => ({ id, enunciado, valor, alternativas });
+  alternativas: AlternativaType[]
+): QuestaoType => ({ id, enunciado, valor, alternativas });
 
 const atividade = (
   id: string,
   titulo: string,
   moduloId: string,
-  questoes: Questao[]
-): Atividade => ({
+  questoes: QuestaoType[]
+): AtividadeType => ({
   id,
   titulo,
   moduloId,
@@ -32,13 +32,13 @@ const atividade = (
   questoes,
 });
 
-export const xpDaAtividade = (item: Atividade) =>
+export const xpDaAtividade = (item: AtividadeType) =>
   item.questoes.reduce((total, q) => total + q.valor, 0);
 
-export const xpDoModulo = (modulo: Modulo) =>
+export const xpDoModulo = (modulo: ModuloType) =>
   modulo.atividades.reduce((total, item) => total + xpDaAtividade(item), 0);
 
-export const contarAtividadesDoCurso = (curso: Curso) =>
+export const contarAtividadesDoCurso = (curso: CursoType) =>
   curso.modulos.reduce((total, modulo) => total + modulo.atividades.length, 0);
 
 export const getCursoById = (id: string) =>
@@ -56,7 +56,7 @@ export const getAtividadeById = (
     (atividade) => atividade.id === atividadeId
   );
 
-const moduloLimites: Modulo = {
+const moduloLimites: ModuloType = {
   id: 'modulo-limites',
   nome: 'Limites',
   cursoId: 'curso-calculo-1',
@@ -90,7 +90,7 @@ const moduloLimites: Modulo = {
   ],
 };
 
-const moduloDerivadas: Modulo = {
+const moduloDerivadas: ModuloType = {
   id: 'modulo-derivadas',
   nome: 'Derivadas',
   cursoId: 'curso-calculo-1',
@@ -149,7 +149,7 @@ const moduloDerivadas: Modulo = {
   ],
 };
 
-const moduloIntegrais: Modulo = {
+const moduloIntegrais: ModuloType = {
   id: 'modulo-integrais',
   nome: 'Integrais',
   cursoId: 'curso-calculo-1',
@@ -178,7 +178,7 @@ const moduloIntegrais: Modulo = {
   ],
 };
 
-const moduloVariaveis: Modulo = {
+const moduloVariaveis: ModuloType = {
   id: 'modulo-variaveis',
   nome: 'Variáveis e tipos',
   cursoId: 'curso-prog-1',
@@ -207,7 +207,7 @@ const moduloVariaveis: Modulo = {
   ],
 };
 
-const moduloFuncoes: Modulo = {
+const moduloFuncoes: ModuloType = {
   id: 'modulo-funcoes',
   nome: 'Funções',
   cursoId: 'curso-prog-1',
@@ -235,7 +235,7 @@ const moduloFuncoes: Modulo = {
   ],
 };
 
-const moduloArrays: Modulo = {
+const moduloArrays: ModuloType = {
   id: 'modulo-arrays',
   nome: 'Arrays',
   cursoId: 'curso-prog-1',
@@ -256,7 +256,7 @@ const moduloArrays: Modulo = {
   ],
 };
 
-const moduloCinematica: Modulo = {
+const moduloCinematica: ModuloType = {
   id: 'modulo-cinematica',
   nome: 'Cinemática',
   cursoId: 'curso-fisica-1',
@@ -284,7 +284,7 @@ const moduloCinematica: Modulo = {
   ],
 };
 
-const moduloDinamica: Modulo = {
+const moduloDinamica: ModuloType = {
   id: 'modulo-dinamica',
   nome: 'Dinâmica',
   cursoId: 'curso-fisica-1',
@@ -312,7 +312,7 @@ const moduloDinamica: Modulo = {
   ],
 };
 
-const moduloModeloRelacional: Modulo = {
+const moduloModeloRelacional: ModuloType = {
   id: 'modulo-modelo-relacional',
   nome: 'Modelo relacional',
   cursoId: 'curso-bd-1',
@@ -341,7 +341,7 @@ const moduloModeloRelacional: Modulo = {
   ],
 };
 
-const moduloSql: Modulo = {
+const moduloSql: ModuloType = {
   id: 'modulo-sql',
   nome: 'SQL',
   cursoId: 'curso-bd-1',
@@ -382,7 +382,7 @@ const moduloSql: Modulo = {
   ],
 };
 
-export const temporaryCursos: Curso[] = [
+export const temporaryCursos: CursoType[] = [
   {
     id: 'curso-calculo-1',
     nome: 'Cálculo I',
@@ -413,10 +413,10 @@ export const temporaryCursos: Curso[] = [
   },
 ];
 
-export const temporaryModulos: Modulo[] = temporaryCursos.flatMap(
+export const temporaryModulos: ModuloType[] = temporaryCursos.flatMap(
   (curso) => curso.modulos
 );
 
-export const temporaryAtividades: Atividade[] = temporaryModulos.flatMap(
+export const temporaryAtividades: AtividadeType[] = temporaryModulos.flatMap(
   (modulo) => modulo.atividades
 );

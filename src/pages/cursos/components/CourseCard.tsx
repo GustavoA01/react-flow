@@ -2,12 +2,12 @@ import { Separator } from '@/components/ui/separator';
 import { Card } from '@/components/ui/card';
 import { Folder, Notebook } from 'lucide-react';
 import { DescriptionCircle } from '@/components/DescriptionCircle';
-import type { Curso } from '@/data/types/api';
+import type { CursoType } from '@/data/types/api';
 import { contarAtividadesDoCurso } from '@/data/temporaryMocks/cursos';
 import { cn } from '@/lib/utils';
 
 type CourseCardPropsType = {
-  curso: Curso;
+  curso: CursoType;
   monitorNome: string;
   locked?: boolean;
   onClick: () => void;

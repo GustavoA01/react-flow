@@ -1,78 +1,77 @@
-interface UsuarioBase {
+export interface UsuarioBaseType {
   id: string;
   nome: string;
   senha: string;
   cursoIds: string[];
-}
+};
 
-export interface Aluno extends UsuarioBase {
+export interface AlunoType extends UsuarioBaseType {
   tipo: 'ALUNO';
   apelido: string;
   pontos: number;
   imagemPerfil: string;
-  medalhas: Medalha[];
-}
+};
 
-export interface Monitor extends UsuarioBase {
+export interface MonitorType extends UsuarioBaseType {
   tipo: 'MONITOR';
-}
+};
 
-export type Usuario = Aluno | Monitor;
+export type UsuarioType = AlunoType | MonitorType;
 
-export interface Medalha {
+export interface MedalhaType {
   id: string;
   imagemUrl: string;
   pontosMin: number;
-}
+};
 
-export interface Curso {
+export interface CursoType {
   id: string;
   nome: string;
   codigoAcesso: string;
   monitorId: string;
-  modulos: Modulo[];
-}
+  modulos: ModuloType[];
+};
 
-export interface Modulo {
+export interface ModuloType {
   id: string;
   nome: string;
   cursoId: string;
-  atividades: Atividade[];
-}
+  atividades: AtividadeType[];
+};
 
-export interface Atividade {
+export interface AtividadeType {
   id: string;
   titulo: string;
   quantQuestoes: number;
   moduloId: string;
-  questoes: Questao[];
-}
+  questoes: QuestaoType[];
+};
 
-export interface Questao {
+export interface QuestaoType {
   id: string;
   enunciado: string;
   valor: number;
-  alternativas: Alternativa[];
-}
+  alternativas: AlternativaType[];
+};
 
-export interface Alternativa {
+export interface AlternativaType {
   id: string;
   descricao: string;
   correta: boolean;
-}
+};
 
-export interface Tentativa {
+export interface TentativaType {
   id: string;
   dataEnvio: string;
   pontuacaoObtida: number;
   alunoId: string;
   atividadeId: string;
-  respostas: Resposta[];
-}
+  respostas: RespostaType[];
+};
 
-export interface Resposta {
+export interface RespostaType {
   id: string;
   correta: boolean;
   questaoId: string;
   alternativaId: string;
-}
+};

@@ -3,11 +3,11 @@ import { Button } from '@/components/ui/button';
 import { Card } from '@/components/ui/card';
 import { Check, ChevronRight, Pencil, Trash2 } from 'lucide-react';
 import { motion } from 'motion/react';
-import type { Modulo } from '@/data/types/api';
+import type { ModuloType } from '@/data/types/api';
 import { xpDoModulo } from '@/data/temporaryMocks/cursos';
 
 type ModuleCardProps = {
-  modulo: Modulo;
+  modulo: ModuloType;
   isMonitor: boolean;
   onClick: () => void;
   onEdit: () => void;

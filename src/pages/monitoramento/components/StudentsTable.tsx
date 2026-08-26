@@ -7,11 +7,11 @@ import {
   TableRow,
 } from '@/components/ui/table';
 import { cn } from '@/lib/utils';
-import type { Atividade } from '@/data/types/api';
+import type { AtividadeType } from '@/data/types/api';
 import type { StudentRowType } from '../features/hooks/useActivityMonitor';
 
 type StudentsTablePropsType = {
-  activity: Atividade;
+  activity: AtividadeType;
   rows: StudentRowType[];
   onSelectStudent: (row: StudentRowType) => void;
 };

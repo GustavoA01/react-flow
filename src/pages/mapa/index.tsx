@@ -11,10 +11,11 @@ import { edgeTypes } from './constants/edges';
 import { extend, miniMapStyles } from './constants/sizeLimits';
 
 export const Map = () => {
-  const { currentNode, edges, nodes, onEdgesChange, onNodesChange } = useMap();
+  const { currentNode, edges, nodes, onEdgesChange, onNodesChange, isMonitor } =
+    useMap();
 
   const fitViewOptions = {
-    nodes: [{ id: currentNode.id }],
+    nodes: currentNode ? [{ id: currentNode.id }] : [],
     zoom: 0.8,
     maxZoom: 0.8,
     minZoom: 0.5,
@@ -33,6 +34,7 @@ export const Map = () => {
         onEdgesChange={onEdgesChange}
         nodesConnectable={false}
         nodesDraggable={false}
+        elementsSelectable={!isMonitor}
         maxZoom={1.3}
         minZoom={0.5}
         translateExtent={extend}

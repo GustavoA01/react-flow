@@ -79,7 +79,6 @@ Usuario --> TipoUsuario
 
 Usuario "0..*" -- "0..*" Curso : inscrito
 Monitor "1" -- "0..*" Curso : ministra
-Aluno "0..*" -- "0..*" Medalha : conquista
 
 Curso "1" *-- "0..*" Modulo
 Modulo "1" *-- "0..*" Atividade
@@ -91,6 +90,12 @@ Atividade "1" -- "0..*" Tentativa
 Tentativa "1" *-- "1..*" Resposta
 Resposta "0..*" --> "1" Questao
 Resposta "0..*" --> "1" Alternativa : escolhida
+
+note right of Medalha
+  Catálogo global. O aluno conquista
+  se pontos >= pontosMin (derivado
+  na leitura, não persistido no Aluno).
+end note
 
 note right of Tentativa
   Depende de 1 Aluno e 1 Atividade

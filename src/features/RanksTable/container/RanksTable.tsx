@@ -7,10 +7,13 @@ import { temporaryRanks } from '@/data/temporaryMocks/ranks';
 import { RankTableHeader } from '@/features/RanksTable/components/RankTableHeader';
 import { RanksList } from '@/features/RanksTable/components/RanksList';
 import { useMediaDevice } from '@/hooks/useMediaDevice';
+import { useAuthUser } from '@/providers/UserProvider';
 import { useState } from 'react';
 
 export const RankTable = () => {
   const { isDesktop } = useMediaDevice();
+  const auth = useAuthUser();
+  const loggedAlunoId = auth.isAluno ? auth.user.id : undefined;
   const [selected, setSelected] = useState('Geral');
   const ranks = [...temporaryRanks]
     .sort((a, b) => b.pontos - a.pontos)
@@ -27,7 +30,7 @@ export const RankTable = () => {
       >
         <RankTableHeader selected={selected} setSelected={setSelected} />
         <div className="flex-1 scrollbar-hidden overflow-y-auto min-h-0 bg-white rounded-b-md">
-          <RanksList ranks={ranks} />
+          <RanksList ranks={ranks} loggedAlunoId={loggedAlunoId} />
         </div>
       </div>
     );
@@ -47,7 +50,7 @@ export const RankTable = () => {
           />
           <AccordionContent className="p-0">
             <div className="max-h-56 overflow-y-auto custom-bar min-h-0 bg-white border rounded-b-md">
-              <RanksList ranks={ranks} />
+              <RanksList ranks={ranks} loggedAlunoId={loggedAlunoId} />
             </div>
           </AccordionContent>
         </AccordionItem>

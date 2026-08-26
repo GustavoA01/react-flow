@@ -6,12 +6,16 @@ import {
   Trophy,
   UserPen,
 } from 'lucide-react';
+import { mapPath } from '@/data/constants';
+import { useAuthUser } from '@/providers/UserProvider';
 import type { useDrawerItensProps } from '../types';
 
 export const useDrawerItens = ({
   setOpenDrawer,
   setOpenDialog,
 }: useDrawerItensProps) => {
+  const { isMonitor } = useAuthUser();
+
   const headerAcademicItems = [
     {
       label: 'Cursos',
@@ -24,7 +28,7 @@ export const useDrawerItens = ({
   const headerConquestItems = [
     {
       label: 'Mapa',
-      path: '/',
+      path: mapPath(isMonitor),
       icon: MapIcon,
       onClick: () => setOpenDrawer(false),
     },

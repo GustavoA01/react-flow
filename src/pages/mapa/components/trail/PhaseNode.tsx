@@ -1,15 +1,17 @@
 import { Handle, Position } from '@xyflow/react';
 import { PhaseProgressModal } from '@/pages/mapa/components/ProgressModal/PhaseProgressModal';
 import type { PhaseNodeProps } from '@/data/types/reactFlow';
-import { points } from '@/pages/mapa/hooks/useMap';
 import { usePhaseNode } from '@/pages/mapa/hooks/usePhaseNode';
 import { Dialog } from '@/components/ui/dialog';
+import { cn } from '@/lib/utils';
 
 export const PhaseNode = ({ id, data: { minPoints } }: PhaseNodeProps) => {
   const {
     Icon,
     openDialog,
     setOpenDialog,
+    isInteractive,
+    points,
     baseBgClass,
     shineClass,
     iconClassName,
@@ -19,18 +21,19 @@ export const PhaseNode = ({ id, data: { minPoints } }: PhaseNodeProps) => {
   return (
     <>
       <div
-        onClick={() => setOpenDialog(true)}
-        className="relative w-20 h-20 rounded-full select-none drop-shadow-lg transition-all ease-in hover:scale-105 cursor-pointer"
+        onClick={isInteractive ? () => setOpenDialog(true) : undefined}
+        className={cn(
+          'relative w-20 h-20 rounded-full select-none drop-shadow-lg',
+          isInteractive &&
+            'transition-all ease-in hover:scale-105 cursor-pointer'
+        )}
       >
-        {/* camada de base */}
         <div className={`absolute inset-0 rounded-full ${baseBgClass}`} />
 
-        {/* gradiente/anel superior para profundidade */}
         <div
           className={`absolute inset-0 bottom-[3px] rounded-full ${overlayGradientClass}`}
         />
 
-        {/* brilho superior */}
         <div
           className={`pointer-events-none absolute inset-0 rounded-full ${shineClass}`}
         />
@@ -53,9 +56,11 @@ export const PhaseNode = ({ id, data: { minPoints } }: PhaseNodeProps) => {
         />
       </div>
 
-      <Dialog open={openDialog} onOpenChange={setOpenDialog}>
-        <PhaseProgressModal id={id} points={points} minPoints={minPoints} />
-      </Dialog>
+      {isInteractive && (
+        <Dialog open={openDialog} onOpenChange={setOpenDialog}>
+          <PhaseProgressModal id={id} points={points} minPoints={minPoints} />
+        </Dialog>
+      )}
     </>
   );
 };

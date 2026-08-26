@@ -1,4 +1,4 @@
-import type { Resposta, Tentativa } from '@/data/types/api';
+import type { RespostaType, TentativaType } from '@/data/types/api';
 import { temporaryRanks } from './ranks';
 
 const resposta = (
@@ -6,15 +6,15 @@ const resposta = (
   questaoId: string,
   alternativaId: string,
   correta: boolean
-): Resposta => ({ id, questaoId, alternativaId, correta });
+): RespostaType => ({ id, questaoId, alternativaId, correta });
 
 const tentativa = (
   id: string,
   alunoId: string,
   atividadeId: string,
   pontuacaoObtida: number,
-  respostas: Resposta[] = []
-): Tentativa => ({
+  respostas: RespostaType[] = []
+): TentativaType => ({
   id,
   alunoId,
   atividadeId,
@@ -27,7 +27,7 @@ const alunoId = '1';
 
 export const alunosDaTurma = temporaryRanks.slice(0, 8);
 
-export const temporaryTentativas: Tentativa[] = [
+export const temporaryTentativas: TentativaType[] = [
   tentativa('tent-1', alunoId, 'atv-regras-derivacao', 5),
   tentativa('tent-2', alunoId, 'atv-regras-derivacao', 7),
   tentativa('tent-4', alunoId, 'atv-nocao-limite', 3),
@@ -86,7 +86,7 @@ export const tentativasDaAtividade = (atividadeId: string) =>
   temporaryTentativas.filter((item) => item.atividadeId === atividadeId);
 
 export const ultimaTentativaPorAluno = (atividadeId: string) => {
-  const porAluno = new Map<string, Tentativa>();
+  const porAluno = new Map<string, TentativaType>();
 
   tentativasDaAtividade(atividadeId).forEach((item) => {
     const atual = porAluno.get(item.alunoId);

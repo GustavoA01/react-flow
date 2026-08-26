@@ -1,8 +1,9 @@
 import { Link, useLocation } from 'react-router-dom';
 import { buttonVariants } from './ui/button';
-import { headerItems } from '@/data/constants';
+import { getHeaderItems } from '@/data/constants';
 import { cn } from '@/lib/utils';
 import { HeaderUserMenu } from './HeaderUserMenu';
+import { useAuthUser } from '@/providers/UserProvider';
 
 type HeaderDesktopNavPropsType = {
   onLogout: () => void;
@@ -17,10 +18,11 @@ const navLinkClass = (isActive?: boolean) =>
 
 export const HeaderDesktopNav = ({ onLogout }: HeaderDesktopNavPropsType) => {
   const { pathname } = useLocation();
+  const { isMonitor } = useAuthUser();
 
   return (
     <div className="hidden sm:flex items-center gap-2">
-      {headerItems.map(({ name, path }) => (
+      {getHeaderItems(isMonitor).map(({ name, path }) => (
         <Link
           key={name + path}
           to={path}

@@ -1,16 +1,18 @@
 import { Table, TableBody, TableCell, TableRow } from '@/components/ui/table';
 import { Crown, Medal } from 'lucide-react';
 import { ChessQueen } from './ChessQueen';
-import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
+import { Avatar, AvatarFallback } from '@/components/ui/avatar';
 import { cn } from '@/lib/utils';
-import type { Aluno } from '@/data/types/api';
+import type { AlunoType } from '@/data/types/api';
+import { useEffect, useRef } from 'react';
 
-type RankItem = Pick<Aluno, 'id' | 'apelido' | 'pontos'> & {
+type RankItem = Pick<AlunoType, 'id' | 'apelido' | 'pontos'> & {
   position: number;
 };
 
 type RanksListProps = {
   ranks: RankItem[];
+  loggedAlunoId?: string;
 };
 
 const topRanksIcons = [
@@ -19,51 +21,71 @@ const topRanksIcons = [
   <Medal className="text-amber-700" />,
 ];
 
-const userImgAvatar = '';
+export const RanksList = ({ ranks, loggedAlunoId }: RanksListProps) => {
+  const loggedRowRef = useRef<HTMLTableRowElement>(null);
 
-export const RanksList = ({ ranks }: RanksListProps) => (
-  <Table>
-    <TableBody>
-      {ranks.map(({ id, apelido, pontos, position }) => {
-        const isTopRanks = [1, 2, 3].includes(position);
-        const iniciais = apelido.slice(0, 2).toUpperCase();
+  useEffect(() => {
+    loggedRowRef.current?.scrollIntoView({ block: 'nearest', behavior: 'smooth' });
+  }, [loggedAlunoId]);
 
-        return (
-          <TableRow key={id} className="h-12 font-montserrat">
-            <TableCell className="text-center w-10 font-bold text-gray-400">
-              {isTopRanks ? topRanksIcons[position - 1] : `${position}°`}
-            </TableCell>
+  return (
+    <Table>
+      <TableBody>
+        {ranks.map(({ id, apelido, pontos, position }) => {
+          const isTopRanks = [1, 2, 3].includes(position);
+          const isLoggedAluno = id === loggedAlunoId;
+          const iniciais = apelido.slice(0, 2).toUpperCase();
 
-            <TableCell>
-              <Avatar>
-                <AvatarImage src={userImgAvatar || ''} alt="avatar-img" />
-                <AvatarFallback>{iniciais}</AvatarFallback>
-              </Avatar>
-            </TableCell>
-
-            <TableCell
+          return (
+            <TableRow
+              key={id}
+              ref={isLoggedAluno ? loggedRowRef : undefined}
               className={cn(
-                'font-semibold max-w-40 truncate',
-                isTopRanks ? 'text-black' : 'text-zinc-600'
+                'h-12 font-montserrat',
+                isLoggedAluno && 'bg-primary/10 hover:bg-primary/15'
               )}
             >
-              {apelido}
-            </TableCell>
+              <TableCell className="text-center w-10 font-bold text-gray-400">
+                {isTopRanks ? topRanksIcons[position - 1] : `${position}°`}
+              </TableCell>
 
-            <TableCell className="text-center">
-              <span
+              <TableCell>
+                <Avatar>
+                  <AvatarFallback>{iniciais}</AvatarFallback>
+                </Avatar>
+              </TableCell>
+
+              <TableCell
                 className={cn(
-                  'font-bold',
-                  position === 1 ? 'text-emerald-500' : 'text-blue-600'
+                  'font-semibold max-w-40',
+                  isTopRanks || isLoggedAluno ? 'text-black' : 'text-zinc-600'
                 )}
               >
-                {pontos}
-              </span>
-              <span className="font-semibold text-zinc-400">xp</span>
-            </TableCell>
-          </TableRow>
-        );
-      })}
-    </TableBody>
-  </Table>
-);
+                <span className="flex items-center gap-2 min-w-0">
+                  <span className="truncate">{apelido}</span>
+                  {isLoggedAluno && (
+                    <span className="shrink-0 text-xs font-medium text-primary">
+                      você
+                    </span>
+                  )}
+                </span>
+              </TableCell>
+
+              <TableCell className="text-center">
+                <span
+                  className={cn(
+                    'font-bold',
+                    position === 1 ? 'text-emerald-500' : 'text-blue-600'
+                  )}
+                >
+                  {pontos}
+                </span>
+                <span className="font-semibold text-zinc-400">xp</span>
+              </TableCell>
+            </TableRow>
+          );
+        })}
+      </TableBody>
+    </Table>
+  );
+};

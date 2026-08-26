@@ -1,18 +1,18 @@
-import type { Curso, Usuario } from "@/data/types/api";
+import type { CursoType, UsuarioType } from "@/data/types/api";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
-export const useCursos = (isAluno: boolean, user: Usuario) => {
+export const useCursos = (isAluno: boolean, user: UsuarioType) => {
   const navigate = useNavigate();
   const [openCodeDialog, setOpenCodeDialog] = useState(false);
-  const [selectedCourse, setSelectedCourse] = useState<Curso | null>(null);
+  const [selectedCourse, setSelectedCourse] = useState<CursoType | null>(null);
 
   const isLocked = (cursoId: string) =>
     isAluno && !user.cursoIds.includes(cursoId);
 
-  const openCourse = (curso: Curso) => navigate(`/cursos/${curso.id}`);
+  const openCourse = (curso: CursoType) => navigate(`/cursos/${curso.id}`);
 
-  const handleCourseClick = (curso: Curso) => {
+  const handleCourseClick = (curso: CursoType) => {
     if (!isLocked(curso.id)) {
       openCourse(curso);
       return;

@@ -8,13 +8,13 @@ import {
 } from '@/components/ui/item';
 import { Badge } from '@/components/ui/badge';
 import { Check } from 'lucide-react';
-import type { Atividade } from '@/data/types/api';
+import type { AtividadeType } from '@/data/types/api';
 import { xpDaAtividade } from '@/data/temporaryMocks/cursos';
 import { cn } from '@/lib/utils';
 import { MAX_TENTATIVAS } from '@/data/constants';
 
 type ActivityCardProps = {
-  atividade: Atividade;
+  atividade: AtividadeType;
   tentativasUsadas: number;
   melhorPontuacao: number;
   onClick: () => void;

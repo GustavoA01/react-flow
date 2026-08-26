@@ -13,10 +13,10 @@ import type {
   PhaseEdgeType,
   PhaseNodeType,
 } from '@/data/types/reactFlow';
-
-export const points = 40;
+import { useAuthUser } from '@/providers/UserProvider';
 
 export const useMap = () => {
+  const { user, isAluno, isMonitor } = useAuthUser();
   const initialNodes = [...backgroundNodes, ...nodesPhases];
   const [nodes, setNodes] = useState(initialNodes);
   const [edges, setEdges] = useState(edgesPhases);
@@ -33,14 +33,17 @@ export const useMap = () => {
     []
   );
 
-  const unlockedPhases = nodes.filter((node) => {
-    if (node.type === 'phase') return node.data.minPoints <= points;
-  });
+  const phaseNodes = nodes.filter(
+    (node): node is PhaseNodeType => node.type === 'phase'
+  );
+  const points = isAluno ? user.pontos : 0;
+  const unlockedPhases = phaseNodes.filter(
+    (node) => node.data.minPoints <= points
+  );
 
-  const currentNode =
-    unlockedPhases.length > 0
-      ? unlockedPhases[unlockedPhases.length - 1]
-      : nodes[0];
+  const currentNode = isMonitor
+    ? phaseNodes[0]
+    : (unlockedPhases.at(-1) ?? phaseNodes[0]);
 
   return {
     nodes,
@@ -48,5 +51,6 @@ export const useMap = () => {
     onNodesChange,
     onEdgesChange,
     currentNode,
+    isMonitor,
   };
 };
