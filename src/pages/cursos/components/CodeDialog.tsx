@@ -1,5 +1,3 @@
-import { useForm } from 'react-hook-form';
-import { zodResolver } from '@hookform/resolvers/zod';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import {
@@ -12,10 +10,7 @@ import {
   DialogTitle,
 } from '@/components/ui/dialog';
 import { ErrorFormMessage } from '@/components/ErrorFormMessage';
-import {
-  courseCodeSchema,
-  type CourseCodeFormType,
-} from '@/data/schemas/cursos';
+import { useCodeDialog } from '../hooks/useCodeDialog';
 
 type CodeDialogProps = {
   open: boolean;
@@ -28,30 +23,8 @@ export const CodeDialog = ({
   onOpenChange,
   onSubmit,
 }: CodeDialogProps) => {
-  const {
-    register,
-    handleSubmit,
-    reset,
-    setError,
-    formState: { errors },
-  } = useForm<CourseCodeFormType>({
-    resolver: zodResolver(courseCodeSchema),
-    defaultValues: { code: '' },
-  });
-
-  const handleOpenChange = (nextOpen: boolean) => {
-    if (!nextOpen) reset();
-    onOpenChange(nextOpen);
-  };
-
-  const submitCode = ({ code }: CourseCodeFormType) => {
-    const submitError = onSubmit(code);
-    if (submitError) {
-      setError('code', { message: submitError });
-      return;
-    }
-    handleOpenChange(false);
-  };
+  const { register, handleSubmit, errors, submitCode, handleOpenChange } =
+    useCodeDialog(onOpenChange, onSubmit);
 
   return (
     <Dialog open={open} onOpenChange={handleOpenChange}>

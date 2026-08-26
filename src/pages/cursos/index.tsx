@@ -1,46 +1,33 @@
-import { useState } from 'react';
 import { CourseCard } from '@/pages/cursos/components/CourseCard';
 import { CoursesHeader } from './components/CoursesHeader';
 import { CodeDialog } from './components/CodeDialog';
-import { useNavigate } from 'react-router-dom';
 import { useMediaDevice } from '@/hooks/useMediaDevice';
 import { motion } from 'framer-motion';
 import { temporaryCursos } from '@/data/temporaryMocks/cursos';
 import { getMonitorById } from '@/data/temporaryMocks/monitores';
-import type { Curso } from '@/data/types/api';
-
-const enrolledCourseIds = ['curso-calculo-1'];
+import { useCursos } from './hooks/useCursos';
+import { useAuthUser } from '@/providers/UserProvider';
+import { cn } from '@/lib/utils';
 
 export const CoursesPage = () => {
-  const navigate = useNavigate();
   const { containerClassName } = useMediaDevice();
-  const [openCodeDialog, setOpenCodeDialog] = useState(false);
-  const [selectedCourse, setSelectedCourse] = useState<Curso | null>(null);
-
-  const openCourse = (curso: Curso) => navigate(`/cursos/${curso.id}`);
-
-  const handleCourseClick = (curso: Curso) => {
-    if (enrolledCourseIds.includes(curso.id)) {
-      openCourse(curso);
-      return;
-    }
-    setSelectedCourse(curso);
-    setOpenCodeDialog(true);
-  };
-
-  const handleCodeSubmit = (code: string) => {
-    if (!selectedCourse) return 'Curso não encontrado';
-    if (code.toUpperCase() !== selectedCourse.codigoAcesso.toUpperCase()) {
-      return 'Código inválido';
-    }
-    openCourse(selectedCourse);
-  };
+  const { user, isAluno, isMonitor } = useAuthUser();
+  const {
+    openCodeDialog,
+    setOpenCodeDialog,
+    isLocked,
+    handleCourseClick,
+    handleCodeSubmit,
+  } = useCursos(isAluno, user);
 
   return (
     <div
-      className={`flex flex-col ${containerClassName} h-dvh custom-bar sm:large-bar overflow-hidden`}
+      className={cn(
+        'flex flex-col h-dvh custom-bar sm:large-bar overflow-hidden',
+        containerClassName
+      )}
     >
-      <CoursesHeader />
+      <CoursesHeader isMonitor={isMonitor} />
 
       <div className="flex flex-col scrollbar-hidden overflow-y-auto md:grid md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-6 mt-4 sm:mt-8 pb-18 pt-2 gap-4">
         {temporaryCursos.map((curso, index) => (
@@ -52,7 +39,9 @@ export const CoursesPage = () => {
           >
             <CourseCard
               curso={curso}
-              locked={!enrolledCourseIds.includes(curso.id)}
+              isMonitor={isMonitor}
+              locked={isLocked(curso.id)}
+              codCurso={curso.codigoAcesso}
               onClick={() => handleCourseClick(curso)}
               monitorNome={getMonitorById(curso.monitorId)?.nome ?? 'Monitor'}
             />

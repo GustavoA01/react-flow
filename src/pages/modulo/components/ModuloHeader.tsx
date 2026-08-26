@@ -5,13 +5,19 @@ import { Progress } from '@/components/ui/progress';
 import type { Modulo } from '@/data/types/api';
 import { xpDoModulo } from '@/data/temporaryMocks/cursos';
 
+type ModuloHeaderProps = {
+  modulo: Modulo;
+  setOpenActivityDialog: (open: boolean) => void;
+  isAluno: boolean;
+  isMonitor: boolean;
+};
+
 export const ModuloHeader = ({
   modulo,
   setOpenActivityDialog,
-}: {
-  modulo: Modulo;
-  setOpenActivityDialog: (open: boolean) => void;
-}) => {
+  isAluno,
+  isMonitor,
+}: ModuloHeaderProps) => {
   const atividadesCount = modulo.atividades.length;
   const atividadesLabel = `${atividadesCount} ${atividadesCount === 1 ? 'atividade' : 'atividades'}`;
 
@@ -26,26 +32,32 @@ export const ModuloHeader = ({
 
         <div className="flex justify-between items-center">
           <DescriptionCircle
-            left={atividadesLabel}
-            right={`${xpDoModulo(modulo)} XP`}
             fill="blue-onSurface"
             textColor="blue-onSurface"
+            left={atividadesLabel}
+            right={`${xpDoModulo(modulo)} XP`}
           />
 
-          <NewButtonFloat
-            text="Nova Atividade"
-            onClick={() => setOpenActivityDialog(true)}
-          />
+          {isMonitor && (
+            <NewButtonFloat
+              text="Nova Atividade"
+              onClick={() => setOpenActivityDialog(true)}
+            />
+          )}
         </div>
 
-        <div className="flex items-center gap-2 mt-5 px-2 py-1 border rounded-full bg-blue-900/50 border-blue-onSurface/30">
-          <Progress
-            value={40}
-            barColor="bg-green-300"
-            className="bg-primary-dark"
-          />
-          <p className="text-xs sm:text-sm text-green-300 font-semibold">40%</p>
-        </div>
+        {isAluno && (
+          <div className="flex items-center gap-2 mt-5 px-2 py-1 border rounded-full bg-blue-900/50 border-blue-onSurface/30">
+            <Progress
+              value={40}
+              barColor="bg-green-300"
+              className="bg-primary-dark"
+            />
+            <p className="text-xs sm:text-sm text-green-300 font-semibold">
+              40%
+            </p>
+          </div>
+        )}
       </div>
     </header>
   );

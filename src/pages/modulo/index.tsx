@@ -5,10 +5,16 @@ import { useState } from 'react';
 import { NewActivityDialog } from './features/NewActivityDialog/container/NewActivityDialog';
 import { useNavigate, useParams } from 'react-router-dom';
 import { getModuloById } from '@/data/temporaryMocks/cursos';
-import { contarTentativasDoAluno, melhorPontuacaoDoAluno } from '@/data/temporaryMocks/tentativas';
+import {
+  contarTentativasDoAluno,
+  melhorPontuacaoDoAluno,
+} from '@/data/temporaryMocks/tentativas';
 import { CourseSharedHeader } from '@/components/CourseSharedHeader';
+import { useAuthUser } from '@/providers/UserProvider';
+import { cn } from '@/lib/utils';
 
 export const ModulePage = () => {
+  const { isAluno, isMonitor } = useAuthUser();
   const { containerClassName } = useMediaDevice();
   const [openActivityDialog, setOpenActivityDialog] = useState(false);
   const navigate = useNavigate();
@@ -34,11 +40,16 @@ export const ModulePage = () => {
       <div className="flex flex-col h-dvh overflow-hidden">
         <ModuloHeader
           modulo={modulo}
+          isAluno={isAluno}
+          isMonitor={isMonitor}
           setOpenActivityDialog={setOpenActivityDialog}
         />
 
         <div
-          className={`flex flex-col max-sm:pb-20 custom-bar gap-4 overflow-auto ${containerClassName}`}
+          className={cn(
+            'flex flex-col max-sm:pb-20 custom-bar gap-4 overflow-auto',
+            containerClassName
+          )}
         >
           {modulo.atividades.map((atividade) => (
             <ActivityCard

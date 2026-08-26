@@ -7,6 +7,8 @@ alwaysApply: true
 
 `Home` é a rota `index` (`/`), filha do `HeaderLayout`. Não existe `/home`. Ela redireciona o **monitor** para `/cursos` e mostra o **mapa** para o **aluno**. Provider de usuário envolve o app (`App.tsx`), não o array do router.
 
+Rotas privadas são filhas de `RequireAuth` (`src/components/layouts`). Sem `user`, redireciona para `/login`. `/login` e `/cadastro` ficam fora da guarda.
+
 URLs: `/cursos/:cursoId`, `/cursos/:cursoId/modulos/:moduloId`, `.../nova-atividade`. A pasta `curso` é o detalhe de um curso; `modulo` é o detalhe de um módulo (lista atividades).
 
 ## Tentativas

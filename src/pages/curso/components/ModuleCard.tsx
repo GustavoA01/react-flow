@@ -1,16 +1,26 @@
 import { DescriptionCircle } from '@/components/DescriptionCircle';
+import { Button } from '@/components/ui/button';
 import { Card } from '@/components/ui/card';
-import { Check, ChevronRight } from 'lucide-react';
+import { Check, ChevronRight, Pencil, Trash2 } from 'lucide-react';
 import { motion } from 'motion/react';
 import type { Modulo } from '@/data/types/api';
 import { xpDoModulo } from '@/data/temporaryMocks/cursos';
 
 type ModuleCardProps = {
   modulo: Modulo;
+  isMonitor: boolean;
   onClick: () => void;
+  onEdit: () => void;
+  onDelete: () => void;
 };
 
-export const ModuleCard = ({ modulo, onClick }: ModuleCardProps) => {
+export const ModuleCard = ({
+  modulo,
+  isMonitor,
+  onClick,
+  onEdit,
+  onDelete,
+}: ModuleCardProps) => {
   const atividadesCount = modulo.atividades.length;
   const atividadesLabel = `${atividadesCount} ${atividadesCount === 1 ? 'atividade' : 'atividades'}`;
 
@@ -26,12 +36,12 @@ export const ModuleCard = ({ modulo, onClick }: ModuleCardProps) => {
       onClick={onClick}
     >
       <Card className="group flex flex-row justify-between items-center py-4 pl-2 pr-4 cursor-pointer mt-4 shadow-sm hover:shadow-md transition-all ease-in">
-        <div className="flex items-center gap-4 pl-2">
-          <div className="p-2 bg-green-100 group-hover:bg-green-400 rounded-full transition-colors ease-in">
+        <div className="flex items-center gap-4 pl-2 min-w-0">
+          <div className="p-2 bg-green-100 group-hover:bg-green-400 rounded-full transition-colors ease-in shrink-0">
             <Check className="group-hover:text-white text-green-400 transition-colors ease-in" />
           </div>
-          <div>
-            <h2 className="font-semibold sm:text-lg text-zinc-600">
+          <div className="min-w-0">
+            <h2 className="font-semibold sm:text-lg text-zinc-600 truncate">
               {modulo.nome}
             </h2>
             <DescriptionCircle
@@ -40,7 +50,41 @@ export const ModuleCard = ({ modulo, onClick }: ModuleCardProps) => {
             />
           </div>
         </div>
-        <ChevronRight size={16} className="text-zinc-400" />
+
+        <div className="flex items-center gap-0.5 shrink-0 ml-2">
+          {isMonitor ? (
+            <>
+              <Button
+                type="button"
+                variant="ghost"
+                size="icon-sm"
+                aria-label="Editar módulo"
+                className="rounded-full text-zinc-400 hover:text-primary hover:bg-primary/10"
+                onClick={(event) => {
+                  event.stopPropagation();
+                  onEdit();
+                }}
+              >
+                <Pencil />
+              </Button>
+              <Button
+                type="button"
+                variant="ghost"
+                size="icon-sm"
+                aria-label="Excluir módulo"
+                className="rounded-full text-zinc-400 hover:text-destructive hover:bg-destructive/10"
+                onClick={(event) => {
+                  event.stopPropagation();
+                  onDelete();
+                }}
+              >
+                <Trash2 />
+              </Button>
+            </>
+          ) : (
+            <ChevronRight size={16} className="text-zinc-400" />
+          )}
+        </div>
       </Card>
     </motion.div>
   );

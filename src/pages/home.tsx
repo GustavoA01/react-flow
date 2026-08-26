@@ -1,21 +1,9 @@
-import type { Usuario } from '@/data/types/api';
 import { Navigate } from 'react-router-dom';
 import { Map } from './mapa';
-
-const userMock = {
-  id: '1',
-  nome: 'John Doe',
-  apelido: 'John',
-  senha: '123456',
-  tipo: 'ALUNO',
-  pontos: 0,
-  imagemPerfil: '',
-  cursoIds: [],
-  medalhas: [],
-} as Usuario;
+import { useAuthUser } from '@/providers/UserProvider';
 
 export const Home = () => {
-  if (userMock.tipo === 'MONITOR') return <Navigate to="/cursos" replace />;
-
+  const { isMonitor } = useAuthUser();
+  if (isMonitor) return <Navigate to="/cursos" replace />;
   return <Map />;
 };

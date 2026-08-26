@@ -11,6 +11,7 @@
     "prepare": "husky"
   },
   "dependencies": {
+    "@base-ui/react": "^1.7.0",
     "@custom-react-hooks/use-media-query": "^1.5.1",
     "@google/genai": "^1.28.0",
     "@hookform/resolvers": "^5.2.2",
