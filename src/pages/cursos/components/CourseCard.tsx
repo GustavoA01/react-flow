@@ -1,17 +1,24 @@
 import { Separator } from '@/components/ui/separator';
-import { Badge } from '../../../components/ui/badge';
-import { Card } from '../../../components/ui/card';
+import { Card } from '@/components/ui/card';
 import { Folder, Notebook } from 'lucide-react';
 import { DescriptionCircle } from '@/components/DescriptionCircle';
 import type { Curso } from '@/data/types/api';
 import { contarAtividadesDoCurso } from '@/data/temporaryMocks/cursos';
+import { cn } from '@/lib/utils';
 
-type CourseCardProps = {
+type CourseCardPropsType = {
   curso: Curso;
+  monitorNome: string;
+  locked?: boolean;
   onClick: () => void;
 };
 
-export const CourseCard = ({ curso, onClick }: CourseCardProps) => {
+export const CourseCard = ({
+  curso,
+  monitorNome,
+  locked = false,
+  onClick,
+}: CourseCardPropsType) => {
   const atividadesCount = contarAtividadesDoCurso(curso);
   const modulosLabel = `${curso.modulos.length} ${curso.modulos.length === 1 ? 'módulo' : 'módulos'}`;
   const atividadesLabel = `${atividadesCount} Ativ.`;
@@ -19,18 +26,18 @@ export const CourseCard = ({ curso, onClick }: CourseCardProps) => {
   return (
     <Card
       onClick={onClick}
-      className="group flex flex-col gap-4 p-4 w-full md:max-w-68 max-md:h-40 cursor-pointer shadow-md hover:shadow-lg hover:-translate-y-1 hover:border-blue-300 transition-all ease-in"
+      className={cn('group flex flex-col gap-4 p-4 w-full md:max-w-68 cursor-pointer shadow-md hover:shadow-lg hover:-translate-y-1 hover:border-blue-300 transition-all ease-in', {
+        'opacity-50': locked
+      })}
     >
       <header>
-        <Badge className="mb-3 bg-primary-light/20 text-primary-dark">
-          {curso.codigoAcesso}
-        </Badge>
-
         <h1 className="font-bold text-lg group-hover:text-primary">
           {curso.nome}
         </h1>
+        <p className="text-sm text-zinc-500 mt-1 truncate">{monitorNome}</p>
 
         <DescriptionCircle
+          className="mt-3"
           left={modulosLabel}
           right={atividadesLabel}
           fill="gray"

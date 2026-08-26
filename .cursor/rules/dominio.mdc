@@ -22,3 +22,5 @@ Lista de atividades vem do módulo; o status cruza com as tentativas do aluno lo
 Nomes do diagrama em `api.ts` (`Curso`, `Modulo`, `Atividade`). `position` do ranking é derivada na ordenação, não no mock. Date da API é `string` ISO.
 
 `nome` é o nome institucional (monitor, lista da turma). `apelido` só existe em `Aluno` e é o que aparece no ranking, mapa e header do jogador.
+
+`cursoIds` fica em `Usuario`: no aluno é inscrição, no monitor é o que ele ministra. Um curso tem um `monitorId`. O nome do monitor só entra na UI do card em `/cursos`. `codigoAcesso` fica no `Curso` e só o monitor vê.

@@ -1,13 +1,40 @@
+import { useState } from 'react';
 import { CourseCard } from '@/pages/cursos/components/CourseCard';
 import { CoursesHeader } from './components/CoursesHeader';
+import { CodeDialog } from './components/CodeDialog';
 import { useNavigate } from 'react-router-dom';
 import { useMediaDevice } from '@/hooks/useMediaDevice';
 import { motion } from 'framer-motion';
 import { temporaryCursos } from '@/data/temporaryMocks/cursos';
+import { getMonitorById } from '@/data/temporaryMocks/monitores';
+import type { Curso } from '@/data/types/api';
+
+const enrolledCourseIds = ['curso-calculo-1'];
 
 export const CoursesPage = () => {
-  const { containerClassName } = useMediaDevice();
   const navigate = useNavigate();
+  const { containerClassName } = useMediaDevice();
+  const [openCodeDialog, setOpenCodeDialog] = useState(false);
+  const [selectedCourse, setSelectedCourse] = useState<Curso | null>(null);
+
+  const openCourse = (curso: Curso) => navigate(`/cursos/${curso.id}`);
+
+  const handleCourseClick = (curso: Curso) => {
+    if (enrolledCourseIds.includes(curso.id)) {
+      openCourse(curso);
+      return;
+    }
+    setSelectedCourse(curso);
+    setOpenCodeDialog(true);
+  };
+
+  const handleCodeSubmit = (code: string) => {
+    if (!selectedCourse) return 'Curso não encontrado';
+    if (code.toUpperCase() !== selectedCourse.codigoAcesso.toUpperCase()) {
+      return 'Código inválido';
+    }
+    openCourse(selectedCourse);
+  };
 
   return (
     <div
@@ -25,11 +52,19 @@ export const CoursesPage = () => {
           >
             <CourseCard
               curso={curso}
-              onClick={() => navigate(`/cursos/${curso.id}`)}
+              locked={!enrolledCourseIds.includes(curso.id)}
+              onClick={() => handleCourseClick(curso)}
+              monitorNome={getMonitorById(curso.monitorId)?.nome ?? 'Monitor'}
             />
           </motion.div>
         ))}
       </div>
+
+      <CodeDialog
+        open={openCodeDialog}
+        onOpenChange={setOpenCodeDialog}
+        onSubmit={handleCodeSubmit}
+      />
     </div>
   );
 };

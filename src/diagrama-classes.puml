@@ -15,6 +15,7 @@ class Usuario {
   - nome: string
   - senha: string
   - tipo: TipoUsuario
+  - cursoIds: string[]
 }
 
 class Aluno {
@@ -35,6 +36,7 @@ class Curso {
   - id: string
   - nome: string
   - codigoAcesso: string
+  - monitorId: string
 }
 
 class Modulo {
@@ -76,7 +78,7 @@ Usuario <|-- Monitor
 Usuario --> TipoUsuario
 
 Usuario "0..*" -- "0..*" Curso : inscrito
-Monitor "0..*" -- "0..*" Curso : ministra
+Monitor "1" -- "0..*" Curso : ministra
 Aluno "0..*" -- "0..*" Medalha : conquista
 
 Curso "1" *-- "0..*" Modulo

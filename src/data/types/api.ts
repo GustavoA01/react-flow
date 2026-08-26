@@ -2,6 +2,7 @@ interface UsuarioBase {
   id: string;
   nome: string;
   senha: string;
+  cursoIds: string[];
 }
 
 export interface Aluno extends UsuarioBase {
@@ -9,13 +10,11 @@ export interface Aluno extends UsuarioBase {
   apelido: string;
   pontos: number;
   imagemPerfil: string;
-  cursoIds: string[];
   medalhas: Medalha[];
 }
 
 export interface Monitor extends UsuarioBase {
   tipo: 'MONITOR';
-  cursoIds: string[];
 }
 
 export type Usuario = Aluno | Monitor;
@@ -30,6 +29,7 @@ export interface Curso {
   id: string;
   nome: string;
   codigoAcesso: string;
+  monitorId: string;
   modulos: Modulo[];
 }
 

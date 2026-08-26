@@ -387,24 +387,28 @@ export const temporaryCursos: Curso[] = [
     id: 'curso-calculo-1',
     nome: 'Cálculo I',
     codigoAcesso: 'CALC-2026-A',
+    monitorId: 'monitor-1',
     modulos: [moduloLimites, moduloDerivadas, moduloIntegrais],
   },
   {
     id: 'curso-prog-1',
     nome: 'Programação I',
     codigoAcesso: 'PROG-2026-A',
+    monitorId: 'monitor-2',
     modulos: [moduloVariaveis, moduloFuncoes, moduloArrays],
   },
   {
     id: 'curso-fisica-1',
     nome: 'Física I',
     codigoAcesso: 'FIS-2026-A',
+    monitorId: 'monitor-3',
     modulos: [moduloCinematica, moduloDinamica],
   },
   {
     id: 'curso-bd-1',
     nome: 'Banco de Dados',
     codigoAcesso: 'BD-2026-A',
+    monitorId: 'monitor-4',
     modulos: [moduloModeloRelacional, moduloSql],
   },
 ];
