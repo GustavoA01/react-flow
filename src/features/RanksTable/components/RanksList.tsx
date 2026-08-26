@@ -1,12 +1,12 @@
 import { Table, TableBody, TableCell, TableRow } from '@/components/ui/table';
 import { Crown, Medal } from 'lucide-react';
 import { ChessQueen } from './ChessQueen';
-import { Avatar, AvatarFallback } from '@/components/ui/avatar';
+import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 import { cn } from '@/lib/utils';
 import type { AlunoType } from '@/data/types/api';
 import { useEffect, useRef } from 'react';
 
-type RankItem = Pick<AlunoType, 'id' | 'apelido' | 'pontos'> & {
+type RankItem = Pick<AlunoType, 'id' | 'apelido' | 'pontos' | 'imagemPerfil'> & {
   position: number;
 };
 
@@ -31,7 +31,7 @@ export const RanksList = ({ ranks, loggedAlunoId }: RanksListProps) => {
   return (
     <Table>
       <TableBody>
-        {ranks.map(({ id, apelido, pontos, position }) => {
+        {ranks.map(({ id, apelido, pontos, position, imagemPerfil }) => {
           const isTopRanks = [1, 2, 3].includes(position);
           const isLoggedAluno = id === loggedAlunoId;
           const iniciais = apelido.slice(0, 2).toUpperCase();
@@ -51,6 +51,7 @@ export const RanksList = ({ ranks, loggedAlunoId }: RanksListProps) => {
 
               <TableCell>
                 <Avatar>
+                  <AvatarImage src={imagemPerfil} />
                   <AvatarFallback>{iniciais}</AvatarFallback>
                 </Avatar>
               </TableCell>
