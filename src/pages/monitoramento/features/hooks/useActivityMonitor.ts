@@ -1,8 +1,9 @@
 import type { AtividadeType } from '@/data/types/api';
 import {
   alunosDaTurma,
-  ultimaTentativaPorAluno,
+  temporaryTentativas,
 } from '@/data/temporaryMocks/tentativas';
+import { ultimaTentativaPorAluno } from '@/data/tentativas';
 import { xpDaAtividade } from '@/data/temporaryMocks/cursos';
 import type {
   AlternativeStatType,
@@ -14,7 +15,7 @@ export const alternativeLetter = (index: number) =>
   String.fromCharCode(65 + index);
 
 export const useActivityMonitor = (activity: AtividadeType) => {
-  const attempts = ultimaTentativaPorAluno(activity.id);
+  const attempts = ultimaTentativaPorAluno(temporaryTentativas, activity.id);
   const submissions = attempts.length;
   const classSize = alunosDaTurma.length;
   const totalXp = xpDaAtividade(activity);

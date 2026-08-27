@@ -1,25 +1,25 @@
 import { Circle } from 'lucide-react';
+import { cn } from '@/lib/utils';
 
-type DescriptionCircleProps = {
+type DescriptionCirclePropsType = {
   right: string;
   left: string;
   className?: string;
-  textColor?: string;
-  fill?: string;
 };
 
 export const DescriptionCircle = ({
   right,
   left,
   className,
-  textColor = 'zinc-500',
-  fill = 'gray',
-}: DescriptionCircleProps) => (
+}: DescriptionCirclePropsType) => (
   <p
-    className={`flex items-center text-${textColor} text-xs sm:text-sm gap-2 ${className}`}
+    className={cn(
+      'flex items-center gap-2 text-xs text-zinc-500 sm:text-sm',
+      className
+    )}
   >
     <span className="line-clamp-1">{left}</span>
-    <Circle className={`fill-${fill}`} fill={fill} size={4} />
+    <Circle fill="currentColor" size={4} />
     <span className="line-clamp-1">{right}</span>
   </p>
 );

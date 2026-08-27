@@ -61,39 +61,20 @@ export const temporaryTentativas: TentativaType[] = [
   ]),
 ];
 
-export const contarTentativasDoAluno = (
+export const registrarTentativa = (
+  alunoId: string,
   atividadeId: string,
-  idAluno = alunoId
-) =>
-  temporaryTentativas.filter(
-    (item) => item.alunoId === idAluno && item.atividadeId === atividadeId
-  ).length;
-
-export const melhorPontuacaoDoAluno = (
-  atividadeId: string,
-  idAluno = alunoId
+  pontuacaoObtida: number,
+  respostas: RespostaType[]
 ) => {
-  const pontuacoes = temporaryTentativas
-    .filter(
-      (item) => item.alunoId === idAluno && item.atividadeId === atividadeId
-    )
-    .map((item) => item.pontuacaoObtida);
-
-  return pontuacoes.length ? Math.max(...pontuacoes) : 0;
-};
-
-export const tentativasDaAtividade = (atividadeId: string) =>
-  temporaryTentativas.filter((item) => item.atividadeId === atividadeId);
-
-export const ultimaTentativaPorAluno = (atividadeId: string) => {
-  const porAluno = new Map<string, TentativaType>();
-
-  tentativasDaAtividade(atividadeId).forEach((item) => {
-    const atual = porAluno.get(item.alunoId);
-    if (!atual || item.dataEnvio >= atual.dataEnvio) {
-      porAluno.set(item.alunoId, item);
-    }
-  });
-
-  return [...porAluno.values()];
+  const item: TentativaType = {
+    id: crypto.randomUUID(),
+    alunoId,
+    atividadeId,
+    pontuacaoObtida,
+    dataEnvio: new Date().toISOString(),
+    respostas,
+  };
+  temporaryTentativas.push(item);
+  return item;
 };

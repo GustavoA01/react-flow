@@ -23,7 +23,6 @@ export const LogoutDialog = ({
     <DialogContent>
       <DialogHeader>
         <DialogTitle>Deseja mesmo sair da sua conta?</DialogTitle>
-
         <DialogDescription>
           Você será redirecionado para a tela de login.
         </DialogDescription>
@@ -33,9 +32,7 @@ export const LogoutDialog = ({
         <DialogClose asChild>
           <Button variant="outline">Cancelar</Button>
         </DialogClose>
-        <DialogClose asChild>
-          <Button variant="destructive">Sair</Button>
-        </DialogClose>
+        <Button variant="destructive">Sair</Button>
       </DialogFooter>
     </DialogContent>
   </Dialog>

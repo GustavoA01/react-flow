@@ -11,7 +11,7 @@ O mapa do **monitor** fica em `/mapa` (nav “Mapa”). Ele vê o ranking dos al
 
 Rotas privadas são filhas de `RequireAuth` (`src/components/layouts`). Sem `user`, redireciona para `/login`. `/login` e `/cadastro` ficam fora da guarda.
 
-URLs: `/cursos/:cursoId`, `/cursos/:cursoId/modulos/:moduloId`, `.../nova-atividade`. A pasta `curso` é o detalhe de um curso; `modulo` é o detalhe de um módulo (lista atividades).
+URLs: `/cursos/:cursoId`, `/cursos/:cursoId/modulos/:moduloId`, `.../nova-atividade`, `.../atividades/:atividadeId` (jogo do aluno). A pasta `curso` é o detalhe de um curso; `modulo` é o detalhe de um módulo (lista atividades). O aluno responde uma questão por vez; o índice fica no estado da tela, não em `/:questaoId`. Monitor abre `.../monitoramento/:atividadeId`.
 
 ## Tentativas
 

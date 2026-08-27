@@ -26,8 +26,7 @@ export const MonitorHeader = ({
         <DescriptionCircle
           left={questionsLabel}
           right={`${totalXp} XP`}
-          fill="blue-onSurface"
-          textColor="blue-onSurface"
+          className="text-blue-onSurface"
         />
       </div>
     </header>

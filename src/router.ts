@@ -15,6 +15,7 @@ import { RankingsPage } from './pages/rankings';
 import { EditAccountPage } from './pages/auth/editAccount';
 import { RegisterPage } from './pages/auth/register';
 import { LoginPage } from './pages/auth/login';
+import { ActivityPage } from './pages/atividade';
 
 export const Router = createBrowserRouter([
   {
@@ -76,6 +77,10 @@ export const Router = createBrowserRouter([
           {
             path: '/cursos/:cursoId/modulos/:moduloId/nova-atividade',
             Component: NewActivityPage,
+          },
+          {
+            path: '/cursos/:cursoId/modulos/:moduloId/atividade/:atividadeId',
+            Component: ActivityPage,
           },
           {
             path: '/cursos/:cursoId/modulos/:moduloId/monitoramento/:atividadeId',

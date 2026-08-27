@@ -32,8 +32,7 @@ export const ModuloHeader = ({
 
         <div className="flex justify-between items-center">
           <DescriptionCircle
-            fill="blue-onSurface"
-            textColor="blue-onSurface"
+            className="text-blue-onSurface"
             left={atividadesLabel}
             right={`${xpDoModulo(modulo)} XP`}
           />

@@ -5,16 +5,17 @@ import { useState } from 'react';
 import { NewActivityDialog } from './features/NewActivityDialog/container/NewActivityDialog';
 import { useNavigate, useParams } from 'react-router-dom';
 import { getModuloById } from '@/data/temporaryMocks/cursos';
+import { temporaryTentativas } from '@/data/temporaryMocks/tentativas';
 import {
   contarTentativasDoAluno,
   melhorPontuacaoDoAluno,
-} from '@/data/temporaryMocks/tentativas';
+} from '@/data/tentativas';
 import { CourseSharedHeader } from '@/components/Header/CourseSharedHeader';
 import { useAuthUser } from '@/providers/UserProvider';
 import { cn } from '@/lib/utils';
 
 export const ModulePage = () => {
-  const { isAluno, isMonitor } = useAuthUser();
+  const { isAluno, isMonitor, user } = useAuthUser();
   const { containerClassName } = useMediaDevice();
   const [openActivityDialog, setOpenActivityDialog] = useState(false);
   const navigate = useNavigate();
@@ -26,6 +27,10 @@ export const ModulePage = () => {
     if (isMonitor) {
       navigate(
         `/cursos/${cursoId}/modulos/${moduloId}/monitoramento/${activityId}`
+      );
+    } else {
+      navigate(
+        `/cursos/${cursoId}/modulos/${moduloId}/atividade/${activityId}`
       );
     }
   };
@@ -64,8 +69,16 @@ export const ModulePage = () => {
               key={atividade.id}
               atividade={atividade}
               onClick={() => onClickActivity(atividade.id)}
-              tentativasUsadas={contarTentativasDoAluno(atividade.id)}
-              melhorPontuacao={melhorPontuacaoDoAluno(atividade.id)}
+              tentativasUsadas={contarTentativasDoAluno(
+                temporaryTentativas,
+                user.id,
+                atividade.id
+              )}
+              melhorPontuacao={melhorPontuacaoDoAluno(
+                temporaryTentativas,
+                user.id,
+                atividade.id
+              )}
             />
           ))}
         </div>

@@ -50,7 +50,6 @@ export const CourseCard = ({
           className="mt-3"
           left={modulosLabel}
           right={atividadesLabel}
-          fill="gray"
         />
       </header>
 
