@@ -1,13 +1,13 @@
 import { Link } from 'react-router-dom';
 import { ChevronDown, LogOut, Pencil } from 'lucide-react';
-import { Avatar, AvatarFallback, AvatarImage } from './ui/avatar';
+import { Avatar, AvatarFallback, AvatarImage } from '../ui/avatar';
 import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
   DropdownMenuSeparator,
   DropdownMenuTrigger,
-} from './ui/dropdown-menu';
+} from '../ui/dropdown-menu';
 import { useUserProvider } from '@/providers/UserProvider';
 
 type HeaderUserMenuPropsType = {
@@ -40,7 +40,7 @@ export const HeaderUserMenu = ({ onLogout }: HeaderUserMenuPropsType) => {
             }
             alt="Foto de perfil"
           />
-          <AvatarFallback className='text-primary'>{initials}</AvatarFallback>
+          <AvatarFallback className="text-primary">{initials}</AvatarFallback>
         </Avatar>
         <p>Olá, {greetingName}</p>
         <ChevronDown
@@ -63,8 +63,8 @@ export const HeaderUserMenu = ({ onLogout }: HeaderUserMenuPropsType) => {
           variant="destructive"
           className="font-montserrat cursor-pointer"
         >
-            <LogOut size={16} />
-            Sair
+          <LogOut size={16} />
+          Sair
         </DropdownMenuItem>
       </DropdownMenuContent>
     </DropdownMenu>

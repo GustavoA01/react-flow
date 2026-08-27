@@ -1,7 +1,7 @@
 import { Users, Percent, Zap, CircleAlert } from 'lucide-react';
 import { StatCard } from './StatCard';
 
-type SummaryCardsPropsType = {
+type SummaryCardsProps = {
   submissions: number;
   classSize: number;
   averageAccuracy: number;
@@ -15,7 +15,7 @@ export const SummaryCards = ({
   averageAccuracy,
   averageScore,
   hardestQuestion,
-}: SummaryCardsPropsType) => (
+}: SummaryCardsProps) => (
   <div className="grid grid-cols-2 gap-3 lg:grid-cols-4">
     <StatCard
       icon={Users}

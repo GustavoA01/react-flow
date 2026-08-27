@@ -8,7 +8,7 @@ import {
 } from '@/components/ui/table';
 import { cn } from '@/lib/utils';
 import type { AtividadeType } from '@/data/types/api';
-import type { StudentRowType } from '../features/hooks/useActivityMonitor';
+import type { StudentRowType } from '../features/types';
 
 type StudentsTablePropsType = {
   activity: AtividadeType;
@@ -46,12 +46,22 @@ export const StudentsTable = ({
                   <button
                     type="button"
                     onClick={() => onSelectStudent(row)}
-                    className="font-semibold text-primary hover:underline"
+                    className="flex flex-col items-start text-left hover:underline transition-all duration-100"
                   >
-                    {row.student.nome}
+                    <span className="font-semibold text-primary">
+                      {row.student.nome}
+                    </span>
+                    <span className="text-xs text-muted-foreground">
+                      {row.student.apelido}
+                    </span>
                   </button>
                 ) : (
-                  <span className="text-zinc-400">{row.student.nome}</span>
+                  <span className="flex flex-col">
+                    <span className="text-zinc-400">{row.student.nome}</span>
+                    <span className="text-xs text-zinc-400">
+                      {row.student.apelido}
+                    </span>
+                  </span>
                 )}
               </TableCell>
               {row.answersByQuestion.map((letter, index) => {

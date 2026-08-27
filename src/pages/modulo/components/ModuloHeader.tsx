@@ -1,4 +1,4 @@
-import { CourseSharedHeader } from '@/components/CourseSharedHeader';
+import { CourseSharedHeader } from '@/components/Header/CourseSharedHeader';
 import { DescriptionCircle } from '@/components/DescriptionCircle';
 import { NewButtonFloat } from '@/components/NewButtonFloat';
 import { Progress } from '@/components/ui/progress';

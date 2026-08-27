@@ -4,16 +4,7 @@ import { ChessQueen } from './ChessQueen';
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 import { cn } from '@/lib/utils';
 import type { AlunoType } from '@/data/types/api';
-import { useEffect, useRef } from 'react';
-
-type RankItem = Pick<AlunoType, 'id' | 'apelido' | 'pontos' | 'imagemPerfil'> & {
-  position: number;
-};
-
-type RanksListProps = {
-  ranks: RankItem[];
-  loggedAlunoId?: string;
-};
+import { forwardRef } from 'react';
 
 const topRanksIcons = [
   <Crown className="text-emerald-500 fill-emerald-500" />,
@@ -21,25 +12,29 @@ const topRanksIcons = [
   <Medal className="text-amber-700" />,
 ];
 
-export const RanksList = ({ ranks, loggedAlunoId }: RanksListProps) => {
-  const loggedRowRef = useRef<HTMLTableRowElement>(null);
+type RankItemType = Omit<AlunoType, 'tipo' | 'senha' | 'cursoIds'> & {
+  position: number;
+};
 
-  useEffect(() => {
-    loggedRowRef.current?.scrollIntoView({ block: 'nearest', behavior: 'smooth' });
-  }, [loggedAlunoId]);
+type RanksListProps = {
+  ranks: RankItemType[];
+  loggedAlunoId?: string;
+  showName: boolean;
+};
 
-  return (
+export const RanksList = forwardRef<HTMLTableRowElement, RanksListProps>(
+  ({ ranks, loggedAlunoId, showName }, ref) => (
     <Table>
       <TableBody>
-        {ranks.map(({ id, apelido, pontos, position, imagemPerfil }) => {
+        {ranks.map(({ id, nome, apelido, pontos, position, imagemPerfil }) => {
           const isTopRanks = [1, 2, 3].includes(position);
           const isLoggedAluno = id === loggedAlunoId;
-          const iniciais = apelido.slice(0, 2).toUpperCase();
+          const initials = apelido.slice(0, 2).toUpperCase();
 
           return (
             <TableRow
               key={id}
-              ref={isLoggedAluno ? loggedRowRef : undefined}
+              ref={isLoggedAluno ? ref : undefined}
               className={cn(
                 'h-12 font-montserrat',
                 isLoggedAluno && 'bg-primary/10 hover:bg-primary/15'
@@ -52,7 +47,7 @@ export const RanksList = ({ ranks, loggedAlunoId }: RanksListProps) => {
               <TableCell>
                 <Avatar>
                   <AvatarImage src={imagemPerfil} />
-                  <AvatarFallback>{iniciais}</AvatarFallback>
+                  <AvatarFallback>{initials}</AvatarFallback>
                 </Avatar>
               </TableCell>
 
@@ -62,8 +57,13 @@ export const RanksList = ({ ranks, loggedAlunoId }: RanksListProps) => {
                   isTopRanks || isLoggedAluno ? 'text-black' : 'text-zinc-600'
                 )}
               >
-                <span className="flex items-center gap-2 min-w-0">
+                <span className="flex flex-col min-w-0">
                   <span className="truncate">{apelido}</span>
+                  {showName && (
+                    <span className="truncate text-xs font-medium text-muted-foreground">
+                      {nome}
+                    </span>
+                  )}
                 </span>
               </TableCell>
 
@@ -83,5 +83,8 @@ export const RanksList = ({ ranks, loggedAlunoId }: RanksListProps) => {
         })}
       </TableBody>
     </Table>
-  );
-};
+  )
+);
+
+RanksList.displayName = 'RanksList';
+

@@ -1,7 +1,19 @@
+import { useState } from 'react';
+import { Button } from '@/components/ui/button';
 import { UnknownMedal } from './components/UnknownMedal';
 import { WonMedal } from './components/WonMedal';
+import { AddMedalDialog } from './components/AddMedalDialog';
 import { motion } from 'framer-motion';
+
 export const MedalsPage = () => {
+  const [openDialog, setOpenDialog] = useState(false);
+  const [openDeleteMenu, setOpenDeleteMenu] = useState(false);
+  const canManageMedals = true;
+
+  const handleOpenDeleteMenu = (open: boolean) => {
+    setOpenDeleteMenu(canManageMedals && open);
+  };
+
   return (
     <div className="container mx-auto mt-8 px-4 sm:px-8 flex flex-col items-center overflow-y-auto custom-bar">
       <h1 className="font-bold font-fredoka text-3xl text-primary-dark">
@@ -12,12 +24,22 @@ export const MedalsPage = () => {
         Selecione uma medalha alcançada para usar como foto de perfil
       </h2>
 
+      {canManageMedals && (
+        <Button className="my-4" onClick={() => setOpenDialog(true)}>
+          Adicionar medalha
+        </Button>
+      )}
+
       <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-8 mt-4 pb-6 mx-auto">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
         >
-          <WonMedal />
+          <WonMedal
+            open={openDeleteMenu}
+            onOpenChange={handleOpenDeleteMenu}
+            onDelete={() => console.log('delete medal')}
+          />
         </motion.div>
 
         {[...Array(14)].map((_, index) => (
@@ -31,6 +53,8 @@ export const MedalsPage = () => {
           </motion.div>
         ))}
       </div>
+
+      <AddMedalDialog open={openDialog} onOpenChange={setOpenDialog} />
     </div>
   );
 };

@@ -1,5 +1,5 @@
 import { Link, useLocation } from 'react-router-dom';
-import { buttonVariants } from './ui/button';
+import { buttonVariants } from '../ui/button';
 import { getHeaderItems } from '@/data/constants';
 import { cn } from '@/lib/utils';
 import { HeaderUserMenu } from './HeaderUserMenu';

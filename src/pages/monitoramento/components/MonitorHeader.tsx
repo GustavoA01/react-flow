@@ -1,4 +1,4 @@
-import { CourseSharedHeader } from '@/components/CourseSharedHeader';
+import { CourseSharedHeader } from '@/components/Header/CourseSharedHeader';
 import { DescriptionCircle } from '@/components/DescriptionCircle';
 import type { AtividadeType } from '@/data/types/api';
 
@@ -17,7 +17,6 @@ export const MonitorHeader = ({
     <header className="bg-blue-puc rounded-b-4xl pb-10">
       <div className="container mx-auto px-4 pt-4 sm:px-8 sm:pt-8">
         <CourseSharedHeader />
-
         <p className="mt-4 text-xs font-semibold tracking-wide text-blue-onSurface uppercase">
           Análise da turma
         </p>

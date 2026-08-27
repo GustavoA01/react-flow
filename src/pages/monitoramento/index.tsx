@@ -1,5 +1,5 @@
 import { useParams } from 'react-router-dom';
-import { CourseSharedHeader } from '@/components/CourseSharedHeader';
+import { CourseSharedHeader } from '@/components/Header/CourseSharedHeader';
 import { getAtividadeById } from '@/data/temporaryMocks/cursos';
 import { MonitoramentoContent } from './features/container/MonitoramentoContent';
 

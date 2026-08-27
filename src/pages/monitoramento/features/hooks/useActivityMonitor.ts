@@ -1,36 +1,14 @@
-import type {
-  AlternativaType,
-  AtividadeType,
-  QuestaoType,
-  TentativaType,
-} from '@/data/types/api';
+import type { AtividadeType } from '@/data/types/api';
 import {
   alunosDaTurma,
   ultimaTentativaPorAluno,
 } from '@/data/temporaryMocks/tentativas';
 import { xpDaAtividade } from '@/data/temporaryMocks/cursos';
-import type { RankAluno } from '@/data/temporaryMocks/ranks';
-
-export type AlternativeStatType = {
-  alternative: AlternativaType;
-  letter: string;
-  votes: number;
-  percent: number;
-  isDistractor: boolean;
-};
-
-export type QuestionStatType = {
-  question: QuestaoType;
-  number: number;
-  accuracyPercent: number;
-  alternativeStats: AlternativeStatType[];
-};
-
-export type StudentRowType = {
-  student: RankAluno;
-  attempt?: TentativaType;
-  answersByQuestion: (string | null)[];
-};
+import type {
+  AlternativeStatType,
+  QuestionStatType,
+  StudentRowType,
+} from '../types';
 
 export const alternativeLetter = (index: number) =>
   String.fromCharCode(65 + index);
@@ -82,7 +60,7 @@ export const useActivityMonitor = (activity: AtividadeType) => {
         },
         0
       );
-      
+
       const accuracyPercent =
         submissions === 0
           ? 0

@@ -9,7 +9,7 @@ import {
   contarTentativasDoAluno,
   melhorPontuacaoDoAluno,
 } from '@/data/temporaryMocks/tentativas';
-import { CourseSharedHeader } from '@/components/CourseSharedHeader';
+import { CourseSharedHeader } from '@/components/Header/CourseSharedHeader';
 import { useAuthUser } from '@/providers/UserProvider';
 import { cn } from '@/lib/utils';
 
@@ -21,6 +21,14 @@ export const ModulePage = () => {
   const { cursoId, moduloId } = useParams();
   const modulo =
     cursoId && moduloId ? getModuloById(cursoId, moduloId) : undefined;
+
+  const onClickActivity = (activityId: string) => {
+    if (isMonitor) {
+      navigate(
+        `/cursos/${cursoId}/modulos/${moduloId}/monitoramento/${activityId}`
+      );
+    }
+  };
 
   if (!modulo) {
     return (
@@ -55,13 +63,9 @@ export const ModulePage = () => {
             <ActivityCard
               key={atividade.id}
               atividade={atividade}
+              onClick={() => onClickActivity(atividade.id)}
               tentativasUsadas={contarTentativasDoAluno(atividade.id)}
               melhorPontuacao={melhorPontuacaoDoAluno(atividade.id)}
-              onClick={() =>
-                navigate(
-                  `/cursos/${cursoId}/modulos/${moduloId}/monitoramento/${atividade.id}`
-                )
-              }
             />
           ))}
         </div>

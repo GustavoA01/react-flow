@@ -2,7 +2,6 @@ import { useMediaDevice } from '@/hooks/useMediaDevice';
 import { useState } from 'react';
 import {
   useActivityMonitor,
-  type StudentRowType,
 } from '../hooks/useActivityMonitor';
 import type { AtividadeType } from '@/data/types/api';
 import { MonitorHeader } from '../../components/MonitorHeader';
@@ -10,6 +9,7 @@ import { SummaryCards } from '../../components/SummaryCards';
 import { QuestionsAccordion } from '../../components/QuestionsAccordion';
 import { StudentsTable } from '../../components/StudentsTable';
 import { AttemptDialog } from '../../components/AttemptDialog';
+import type { StudentRowType } from '../types';
 
 type MonitoramentoContentPropsType = {
   activity: AtividadeType;

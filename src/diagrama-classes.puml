@@ -28,6 +28,7 @@ class Monitor
 
 class Medalha {
   - id: string
+  - nome: string
   - imagemUrl: string
   - pontosMin: int
 }

@@ -20,6 +20,7 @@ export type UsuarioType = AlunoType | MonitorType;
 
 export interface MedalhaType {
   id: string;
+  nome: string;
   imagemUrl: string;
   pontosMin: number;
 };

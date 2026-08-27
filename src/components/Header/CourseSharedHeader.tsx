@@ -1,7 +1,7 @@
 import { HeaderDesktopNav } from './HeaderDesktopNav';
-import { GoBack } from './GoBack';
+import { GoBack } from '../GoBack';
 import { DrawerNavButton } from '@/features/DrawerNavigation/container/DrawerNavButton';
-import { LogoutDialog } from './LogoutDialog';
+import { LogoutDialog } from '../LogoutDialog';
 import { useState } from 'react';
 
 export const CourseSharedHeader = () => {

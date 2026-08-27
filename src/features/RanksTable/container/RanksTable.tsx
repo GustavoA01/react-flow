@@ -8,13 +8,24 @@ import { RankTableHeader } from '@/features/RanksTable/components/RankTableHeade
 import { RanksList } from '@/features/RanksTable/components/RanksList';
 import { useMediaDevice } from '@/hooks/useMediaDevice';
 import { useAuthUser } from '@/providers/UserProvider';
-import { useState } from 'react';
+import { useCallback, useState } from 'react';
 
 export const RankTable = () => {
   const { isDesktop } = useMediaDevice();
   const auth = useAuthUser();
-  const loggedAlunoId = auth.isAluno ? auth.user.id : undefined;
   const [selected, setSelected] = useState('Geral');
+  const loggedAlunoId = auth.isAluno ? auth.user.id : undefined;
+
+  const scrollToLoggedRow = useCallback((node: HTMLTableRowElement | null) => {
+    if (!node) return;
+    requestAnimationFrame(() => {
+      node.scrollIntoView({
+        block: 'nearest',
+        behavior: 'smooth',
+      });
+    });
+  }, []);
+
   const ranks = [...temporaryRanks]
     .sort((a, b) => b.pontos - a.pontos)
     .map((rank, index) => ({
@@ -30,7 +41,12 @@ export const RankTable = () => {
       >
         <RankTableHeader selected={selected} setSelected={setSelected} />
         <div className="flex-1 scrollbar-hidden overflow-y-auto min-h-0 bg-white rounded-b-md">
-          <RanksList ranks={ranks} loggedAlunoId={loggedAlunoId} />
+          <RanksList
+            ranks={ranks}
+            ref={scrollToLoggedRow}
+            loggedAlunoId={loggedAlunoId}
+            showName={auth.isMonitor}
+          />
         </div>
       </div>
     );
@@ -50,7 +66,12 @@ export const RankTable = () => {
           />
           <AccordionContent className="p-0">
             <div className="max-h-56 overflow-y-auto custom-bar min-h-0 bg-white border rounded-b-md">
-              <RanksList ranks={ranks} loggedAlunoId={loggedAlunoId} />
+              <RanksList
+                ranks={ranks}
+                ref={scrollToLoggedRow}
+                loggedAlunoId={loggedAlunoId}
+                showName={auth.isMonitor}
+              />
             </div>
           </AccordionContent>
         </AccordionItem>

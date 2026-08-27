@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom';
 import { DrawerNavButton } from '@/features/DrawerNavigation/container/DrawerNavButton';
 import { HeaderDesktopNav } from './HeaderDesktopNav';
-import { LogoutDialog } from './LogoutDialog';
+import { LogoutDialog } from '../LogoutDialog';
 import { useState } from 'react';
 
 export const Header = () => {

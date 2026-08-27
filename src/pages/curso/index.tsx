@@ -3,7 +3,7 @@ import { ModuleCard } from './components/ModuleCard';
 import { motion } from 'motion/react';
 import { useNavigate, useParams } from 'react-router-dom';
 import { getCursoById } from '@/data/temporaryMocks/cursos';
-import { CourseSharedHeader } from '@/components/CourseSharedHeader';
+import { CourseSharedHeader } from '@/components/Header/CourseSharedHeader';
 import { useAuthUser } from '@/providers/UserProvider';
 
 const containerVariants = {
@@ -42,7 +42,7 @@ export const CoursePage = () => {
 
   return (
     <div className="flex flex-col h-dvh overflow-hidden">
-      <CourseHeader curso={curso} isAluno={isAluno} isMonitor={isMonitor}/>
+      <CourseHeader curso={curso} isAluno={isAluno} isMonitor={isMonitor} />
       <motion.div
         initial="hidden"
         animate="show"

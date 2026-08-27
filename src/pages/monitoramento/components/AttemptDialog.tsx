@@ -7,7 +7,7 @@ import {
 } from '@/components/ui/dialog';
 import { cn } from '@/lib/utils';
 import type { AtividadeType } from '@/data/types/api';
-import type { StudentRowType } from '../features/hooks/useActivityMonitor';
+import type { StudentRowType } from '../features/types';
 import { alternativeLetter } from '../features/hooks/useActivityMonitor';
 
 type AttemptDialogPropsType = {
