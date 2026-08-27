@@ -6,7 +6,8 @@ import {
   type ReactNode,
 } from 'react';
 import type { AlunoType, MonitorType, UsuarioType } from '@/data/types/api';
-import { mockLoggedAluno } from '@/data/temporaryMocks/usuario';
+import { mockLoggedAluno} from '@/data/temporaryMocks/usuario';
+import { mockLoggedMonitor } from '@/data/temporaryMocks/monitores';
 
 type SetUserType = (user: UsuarioType | null) => void;
 
