@@ -7,7 +7,7 @@ import {
 } from '@/components/ui/dialog';
 import { cn } from '@/lib/utils';
 import type { AtividadeType } from '@/data/types/api';
-import type { StudentRowType } from '../features/types';
+import type { StudentRowType } from '../types';
 import { alternativeLetter } from '../features/hooks/useActivityMonitor';
 
 type AttemptDialogPropsType = {
@@ -48,7 +48,8 @@ export const AttemptDialog = ({
               <ul className="space-y-1">
                 {question.alternativas.map((alternative, alternativeIndex) => {
                   const letter = alternativeLetter(alternativeIndex);
-                  const isChosen = selectedAnswer?.alternativaId === alternative.id;
+                  const isChosen =
+                    selectedAnswer?.alternativaId === alternative.id;
 
                   return (
                     <li

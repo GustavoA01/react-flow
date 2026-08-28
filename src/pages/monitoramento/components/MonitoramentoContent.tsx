@@ -1,15 +1,13 @@
 import { useMediaDevice } from '@/hooks/useMediaDevice';
 import { useState } from 'react';
-import {
-  useActivityMonitor,
-} from '../hooks/useActivityMonitor';
 import type { AtividadeType } from '@/data/types/api';
-import { MonitorHeader } from '../../components/MonitorHeader';
-import { SummaryCards } from '../../components/SummaryCards';
-import { QuestionsAccordion } from '../../components/QuestionsAccordion';
-import { StudentsTable } from '../../components/StudentsTable';
-import { AttemptDialog } from '../../components/AttemptDialog';
+import { MonitorHeader } from './MonitorHeader';
+import { SummaryCards } from './SummaryCards';
+import { QuestionsAccordion } from './QuestionsAccordion';
+import { StudentsTable } from './StudentsTable';
+import { AttemptDialog } from './AttemptDialog';
 import type { StudentRowType } from '../types';
+import { useActivityMonitor } from '../hooks/useActivityMonitor';
 
 type MonitoramentoContentPropsType = {
   activity: AtividadeType;
@@ -19,8 +17,9 @@ export const MonitoramentoContent = ({
   activity,
 }: MonitoramentoContentPropsType) => {
   const { containerClassName } = useMediaDevice();
-  const [selectedStudent, setSelectedStudent] =
-    useState<StudentRowType | null>(null);
+  const [selectedStudent, setSelectedStudent] = useState<StudentRowType | null>(
+    null
+  );
   const {
     classSize,
     submissions,

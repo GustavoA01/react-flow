@@ -30,22 +30,22 @@ export const ActivityPage = () => {
 
   if (!activity) return <ResourceNotFound label="Atividade não encontrada" />;
 
-  const alunoId = auth.user.id;
-  const tentativasUsadas = contarTentativasDoAluno(
+  const studentId = auth.user.id;
+  const usedAttempts = contarTentativasDoAluno(
     temporaryTentativas,
-    alunoId,
+    studentId,
     activity.id
   );
   const bestScore = melhorPontuacaoDoAluno(
     temporaryTentativas,
-    alunoId,
+    studentId,
     activity.id
   );
   const totalXp = xpDaAtividade(activity);
-  const hasBoasted = tentativasUsadas > 0 && bestScore >= totalXp;
-  const concluded = tentativasUsadas === MAX_TENTATIVAS || hasBoasted;
+  const hasBoasted = usedAttempts > 0 && bestScore >= totalXp;
+  const hasConcluded = usedAttempts === MAX_TENTATIVAS || hasBoasted;
 
-  if (concluded) {
+  if (hasConcluded) {
     return (
       <ActivityConcluded
         activity={activity}

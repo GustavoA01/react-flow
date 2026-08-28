@@ -8,7 +8,7 @@ import {
 } from '@/components/ui/table';
 import { cn } from '@/lib/utils';
 import type { AtividadeType } from '@/data/types/api';
-import type { StudentRowType } from '../features/types';
+import type { StudentRowType } from '../types';
 
 type StudentsTablePropsType = {
   activity: AtividadeType;

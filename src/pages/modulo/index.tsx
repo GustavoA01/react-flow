@@ -10,43 +10,26 @@ import {
   contarTentativasDoAluno,
   melhorPontuacaoDoAluno,
 } from '@/data/tentativas';
-import { CourseSharedHeader } from '@/components/Header/CourseSharedHeader';
 import { useAuthUser } from '@/providers/UserProvider';
 import { cn } from '@/lib/utils';
+import { ResourceNotFound } from '@/components/ResourceNotFound';
 
 export const ModulePage = () => {
+  const navigate = useNavigate();
+  const { cursoId, moduloId } = useParams();
   const { isAluno, isMonitor, user } = useAuthUser();
   const { containerClassName } = useMediaDevice();
   const [openActivityDialog, setOpenActivityDialog] = useState(false);
-  const navigate = useNavigate();
-  const { cursoId, moduloId } = useParams();
   const modulo =
     cursoId && moduloId ? getModuloById(cursoId, moduloId) : undefined;
 
   const onClickActivity = (activityId: string) => {
-    if (isMonitor) {
-      navigate(
-        `/cursos/${cursoId}/modulos/${moduloId}/monitoramento/${activityId}`
-      );
-    } else {
-      navigate(
-        `/cursos/${cursoId}/modulos/${moduloId}/atividade/${activityId}`
-      );
-    }
+    const basePath = `/cursos/${cursoId}/modulos/${moduloId}`;
+    if (isMonitor) navigate(`${basePath}/monitoramento/${activityId}`);
+    else navigate(`${basePath}/atividade/${activityId}`);
   };
 
-  if (!modulo) {
-    return (
-      <div className="flex flex-col h-dvh">
-        <header className="bg-blue-puc px-4 pt-4 sm:px-8 sm:pt-8 pb-8">
-          <CourseSharedHeader />
-        </header>
-        <p className="mt-8 text-center font-semibold text-zinc-500">
-          Módulo não encontrado
-        </p>
-      </div>
-    );
-  }
+  if (!modulo) return <ResourceNotFound label="Módulo não encontrado" />;
 
   return (
     <>
@@ -67,14 +50,14 @@ export const ModulePage = () => {
           {modulo.atividades.map((atividade) => (
             <ActivityCard
               key={atividade.id}
-              atividade={atividade}
+              activity={atividade}
               onClick={() => onClickActivity(atividade.id)}
-              tentativasUsadas={contarTentativasDoAluno(
+              usedAttempts={contarTentativasDoAluno(
                 temporaryTentativas,
                 user.id,
                 atividade.id
               )}
-              melhorPontuacao={melhorPontuacaoDoAluno(
+              bestScore={melhorPontuacaoDoAluno(
                 temporaryTentativas,
                 user.id,
                 atividade.id

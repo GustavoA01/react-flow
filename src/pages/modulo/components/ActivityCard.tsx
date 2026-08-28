@@ -14,23 +14,23 @@ import { cn } from '@/lib/utils';
 import { MAX_TENTATIVAS } from '@/data/constants';
 
 type ActivityCardProps = {
-  atividade: AtividadeType;
-  tentativasUsadas: number;
-  melhorPontuacao: number;
+  activity: AtividadeType;
+  usedAttempts: number;
+  bestScore: number;
   onClick: () => void;
 };
 
 export const ActivityCard = ({
-  atividade,
-  tentativasUsadas,
-  melhorPontuacao,
+  activity,
+  usedAttempts,
+  bestScore,
   onClick,
 }: ActivityCardProps) => {
   const xpTotal = xpDaAtividade(atividade);
-  const perguntasLabel = `${atividade.quantQuestoes} ${atividade.quantQuestoes === 1 ? 'PERGUNTA' : 'PERGUNTAS'}`;
-  const tentativasLabel = `${tentativasUsadas}/${MAX_TENTATIVAS} tentativas`;
-  const gabaritou = tentativasUsadas > 0 && melhorPontuacao >= xpTotal;
-  const concluded = tentativasUsadas === MAX_TENTATIVAS || gabaritou;
+  const questionsLabel = `${activity.quantQuestoes} ${activity.quantQuestoes === 1 ? 'PERGUNTA' : 'PERGUNTAS'}`;
+  const attemptsLabel = `${usedAttempts}/${MAX_TENTATIVAS} tentativas`;
+  const hasBoasted = usedAttempts > 0 && bestScore >= xpTotal;
+  const concluded = usedAttempts === MAX_TENTATIVAS || hasBoasted;
 
   return (
     <Item
@@ -51,12 +51,12 @@ export const ActivityCard = ({
 
       <ItemContent className="min-w-0">
         <ItemTitle className="font-semibold sm:text-lg text-zinc-600 truncate max-w-full">
-          {atividade.titulo}
+          {activity.titulo}
         </ItemTitle>
         <ItemDescription className="flex flex-wrap items-center gap-x-1.5 font-semibold text-xs text-zinc-400">
-          <span>{perguntasLabel}</span>
+          <span>{questionsLabel}</span>
           <span aria-hidden>·</span>
-          <span>{tentativasLabel}</span>
+          <span>{attemptsLabel}</span>
         </ItemDescription>
       </ItemContent>
 

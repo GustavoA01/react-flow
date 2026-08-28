@@ -4,7 +4,7 @@ import {
   type GeneratedQuestionType,
 } from './schemas';
 
-const extractJson = (text: string): unknown => {
+const extractJson = (text: string) => {
   const trimmed = text.trim();
   const fenced = trimmed.match(/```(?:json)?\s*([\s\S]*?)```/);
   const raw = fenced?.[1] ?? trimmed;

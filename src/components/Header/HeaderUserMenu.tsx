@@ -28,18 +28,14 @@ export const HeaderUserMenu = ({ onLogout }: HeaderUserMenuPropsType) => {
     .join('')
     .toUpperCase();
 
+  const src =
+    auth.isAluno && auth.user.imagemPerfil ? auth.user.imagemPerfil : '';
+
   return (
     <DropdownMenu>
       <DropdownMenuTrigger className="group flex items-center gap-2 rounded-md py-1 pl-1 pr-2 outline-none font-montserrat hover:bg-primary-dark/50 transition-all ease-in">
         <Avatar className="size-8">
-          <AvatarImage
-            src={
-              auth.isAluno && auth.user.imagemPerfil
-                ? auth.user.imagemPerfil
-                : ''
-            }
-            alt="Foto de perfil"
-          />
+          <AvatarImage src={src} alt="Foto de perfil" />
           <AvatarFallback className="text-primary">{initials}</AvatarFallback>
         </Avatar>
         <p>Olá, {greetingName}</p>

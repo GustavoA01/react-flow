@@ -1,5 +1,5 @@
 import { Progress } from '@/components/ui/progress';
-import type { AlternativeStatType } from '../features/types';
+import type { AlternativeStatType } from '../types';
 import { cn } from '@/lib/utils';
 
 export const IncorrectsPercent = ({ stat }: { stat: AlternativeStatType }) => (

@@ -12,6 +12,9 @@ export type ChatMessageType = {
   questions?: QuestionFormType['questions'];
 };
 
+const appliedKey = (messageIndex: number, questionIndex: number) =>
+  `${messageIndex}-${questionIndex}`;
+
 export const useChat = () => {
   const {
     register,
@@ -20,13 +23,15 @@ export const useChat = () => {
   } = useForm<{
     message: string;
   }>();
-  const { reset: resetQuestions, getValues } =
-    useFormContext<QuestionFormType>();
+  const { getValues, setValue, watch } = useFormContext<QuestionFormType>();
   const [isLoading, setIsLoading] = useState(false);
   const [messages, setMessages] = useState<ChatMessageType[]>([]);
-  const [appliedMessageIndex, setAppliedMessageIndex] = useState<number | null>(
-    null
-  );
+  const [appliedQuestionKeys, setAppliedQuestionKeys] = useState<string[]>([]);
+
+  const formQuestions = watch('questions');
+  const formFull =
+    !!formQuestions?.length &&
+    formQuestions.every((question) => question.statement.trim() !== '');
 
   const onSubmit = handleSubmit(async (data: { message: string }) => {
     const userMessage = data.message;
@@ -60,17 +65,31 @@ export const useChat = () => {
     }
   });
 
-  const applyQuestions = (
-    questions: QuestionFormType['questions'],
-    messageIndex: number
+  const applyQuestion = (
+    question: QuestionFormType['questions'][number],
+    messageIndex: number,
+    questionIndex: number
   ) => {
-    resetQuestions({ questions });
-    setAppliedMessageIndex(messageIndex);
+    const slots = getValues('questions') ?? [];
+    const emptyIndex = slots.findIndex((slot) => !slot.statement.trim());
+    if (emptyIndex === -1) return;
+
+    setValue(`questions.${emptyIndex}`, question, {
+      shouldDirty: true,
+      shouldValidate: true,
+    });
+    setAppliedQuestionKeys((prev) => [
+      ...prev,
+      appliedKey(messageIndex, questionIndex),
+    ]);
   };
+
+  const isQuestionApplied = (messageIndex: number, questionIndex: number) =>
+    appliedQuestionKeys.includes(appliedKey(messageIndex, questionIndex));
 
   const clearMessages = () => {
     setMessages([]);
-    setAppliedMessageIndex(null);
+    setAppliedQuestionKeys([]);
   };
 
   return {
@@ -78,8 +97,9 @@ export const useChat = () => {
     isLoading,
     onSubmit,
     register,
-    applyQuestions,
-    appliedMessageIndex,
+    applyQuestion,
+    isQuestionApplied,
+    formFull,
     clearMessages,
   };
 };

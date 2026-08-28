@@ -9,8 +9,9 @@ export const Chat = () => {
     messages,
     onSubmit,
     register,
-    applyQuestions,
-    appliedMessageIndex,
+    applyQuestion,
+    isQuestionApplied,
+    formFull,
     clearMessages,
   } = useChat();
 
@@ -20,8 +21,9 @@ export const Chat = () => {
       <ChatContent
         messages={messages}
         isLoading={isLoading}
-        appliedMessageIndex={appliedMessageIndex}
-        onApplyQuestions={applyQuestions}
+        formFull={formFull}
+        isQuestionApplied={isQuestionApplied}
+        onApplyQuestion={applyQuestion}
       />
       <ChatForm onSubmit={onSubmit} register={register} isLoading={isLoading} />
     </div>
