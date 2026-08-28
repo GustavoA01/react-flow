@@ -10,14 +10,12 @@ import { InputOptions } from '../components/InputOptions';
 type AlternativesProps = {
   isTwoAlternatives: boolean;
   correctALternative: string;
-  setCorrectAlternative: (val: string) => void;
   questionNumber: number;
 };
 
 export const Alternatives = ({
   isTwoAlternatives,
   correctALternative,
-  setCorrectAlternative,
   questionNumber,
 }: AlternativesProps) => {
   const {
@@ -27,8 +25,6 @@ export const Alternatives = ({
   } = useFormContext<QuestionFormType>();
 
   const onChangeAlternative = (val: string) => {
-    setCorrectAlternative(val);
-
     const index = Number(val.split('-').at(-1));
     const questionIdx = questionNumber - 1;
     const alternatives = getValues(`questions.${questionIdx}.alternatives`);

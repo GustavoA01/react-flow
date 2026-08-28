@@ -13,11 +13,12 @@ export const useNewActivity = () => {
 
   const methods = useForm<QuestionFormType>({
     resolver: zodResolver(questionFormSchema),
+    defaultValues: { questions: [] },
   });
-  const { reset } = methods;
+  const { reset, control } = methods;
 
   const { fields } = useFieldArray({
-    control: methods.control,
+    control,
     name: 'questions',
   });
 
@@ -38,6 +39,7 @@ export const useNewActivity = () => {
           length: newActivityData.qtdQuestions ?? 0,
         }).map(() => ({
           statement: '',
+          xp: 1,
           alternatives: [
             { text: '', isCorrect: false },
             { text: '', isCorrect: false },

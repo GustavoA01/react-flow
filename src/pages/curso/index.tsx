@@ -1,5 +1,7 @@
+import { useState } from 'react';
 import { CourseHeader } from './components/CourseHeader';
 import { ModuleCard } from './components/ModuleCard';
+import { NewModuleDialog } from './components/NewModuleDialog';
 import { motion } from 'motion/react';
 import { useNavigate, useParams } from 'react-router-dom';
 import { getCursoById } from '@/data/temporaryMocks/cursos';
@@ -26,6 +28,7 @@ export const CoursePage = () => {
   const { cursoId } = useParams();
   const curso = cursoId ? getCursoById(cursoId) : undefined;
   const { isAluno, isMonitor } = useAuthUser();
+  const [openModuleDialog, setOpenModuleDialog] = useState(false);
 
   if (!curso) {
     return (
@@ -41,30 +44,42 @@ export const CoursePage = () => {
   }
 
   return (
-    <div className="flex flex-col h-dvh overflow-hidden">
-      <CourseHeader curso={curso} isAluno={isAluno} isMonitor={isMonitor} />
-      <motion.div
-        initial="hidden"
-        animate="show"
-        variants={containerVariants}
-        className="flex-1 min-h-0 custom-bar sm:large-bar -mt-10 overflow-y-auto pb-4 container mx-auto px-4 sm:px-6 lg:px-8"
-      >
-        <div className="flex flex-col  pb-20">
-          {curso.modulos.map((modulo) => (
-            <motion.div key={modulo.id} variants={itemVariants}>
-              <ModuleCard
-                modulo={modulo}
-                isMonitor={isMonitor}
-                onEdit={() => {}}
-                onDelete={() => {}}
-                onClick={() =>
-                  navigate(`/cursos/${curso.id}/modulos/${modulo.id}`)
-                }
-              />
-            </motion.div>
-          ))}
-        </div>
-      </motion.div>
-    </div>
+    <>
+      <div className="flex flex-col h-dvh overflow-hidden">
+        <CourseHeader
+          curso={curso}
+          isAluno={isAluno}
+          isMonitor={isMonitor}
+          handleNewModule={() => setOpenModuleDialog(true)}
+        />
+        <motion.div
+          initial="hidden"
+          animate="show"
+          variants={containerVariants}
+          className="flex-1 min-h-0 custom-bar sm:large-bar -mt-10 overflow-y-auto pb-4 container mx-auto px-4 sm:px-6 lg:px-8"
+        >
+          <div className="flex flex-col  pb-20">
+            {curso.modulos.map((modulo) => (
+              <motion.div key={modulo.id} variants={itemVariants}>
+                <ModuleCard
+                  modulo={modulo}
+                  isMonitor={isMonitor}
+                  onEdit={() => {}}
+                  onDelete={() => {}}
+                  onClick={() =>
+                    navigate(`/cursos/${curso.id}/modulos/${modulo.id}`)
+                  }
+                />
+              </motion.div>
+            ))}
+          </div>
+        </motion.div>
+      </div>
+
+      <NewModuleDialog
+        open={openModuleDialog}
+        onOpenChange={setOpenModuleDialog}
+      />
+    </>
   );
 };

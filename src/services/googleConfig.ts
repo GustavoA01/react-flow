@@ -5,11 +5,18 @@ const ai = new GoogleGenAI({
   apiKey: import.meta.env.VITE_GEMINI_API_KEY,
 });
 
-export async function generateContent(content: string) {
+export async function generateContent(
+  content: string,
+  systemInstruction?: string
+) {
   const response = await ai.models.generateContent({
     model: 'gemini-2.5-flash',
     contents: content,
     config: {
+      ...(systemInstruction && {
+        systemInstruction,
+        responseMimeType: 'application/json',
+      }),
       thinkingConfig: {
         thinkingBudget: 0,
       },

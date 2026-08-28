@@ -15,11 +15,10 @@ export const QuestionCard = ({
   const {
     toggleAlternatives,
     isTwoAlternatives,
-    setCorrectAlternative,
     correctALternative,
     errors,
     register,
-  } = useQuestionCard();
+  } = useQuestionCard(questionNumber);
 
   return (
     <Card className="px-4 text-zinc-500 font-semibold pt-0">
@@ -56,7 +55,6 @@ export const QuestionCard = ({
       <Alternatives
         isTwoAlternatives={isTwoAlternatives}
         correctALternative={correctALternative}
-        setCorrectAlternative={setCorrectAlternative}
         questionNumber={questionNumber}
       />
     </Card>

@@ -9,14 +9,14 @@ export const NewActivityPage = () => {
     useNewActivity();
 
   return (
-    <div className="flex flex-col h-dvh">
-      <Header
-        activityName={
-          localStorageActivityData?.activityName ?? 'Atividade não encontrada'
-        }
-      />
+    <FormProvider {...methods}>
+      <div className="flex flex-col h-dvh">
+        <Header
+          activityName={
+            localStorageActivityData?.activityName ?? 'Atividade não encontrada'
+          }
+        />
 
-      <FormProvider {...methods}>
         <form
           onSubmit={methods.handleSubmit(handleCreateActivity)}
           className="p-4 space-y-4 overflow-y-auto min-h-0 custom-bar sm:large-bar container mx-auto"
@@ -34,7 +34,7 @@ export const NewActivityPage = () => {
             </p>
           )}
         </form>
-      </FormProvider>
-    </div>
+      </div>
+    </FormProvider>
   );
 };

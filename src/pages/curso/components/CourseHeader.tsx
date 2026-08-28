@@ -8,12 +8,14 @@ type CourseHeaderProps = {
   curso: CursoType;
   isAluno: boolean;
   isMonitor: boolean;
+  handleNewModule: () => void;
 };
 
 export const CourseHeader = ({
   curso,
   isAluno,
   isMonitor,
+  handleNewModule,
 }: CourseHeaderProps) => (
   <header className={` bg-blue-puc rounded-b-4xl pb-14`}>
     <div className="px-4 pt-4 sm:px-8 sm:pt-8 container mx-auto">
@@ -28,7 +30,7 @@ export const CourseHeader = ({
           <p className="text-blue-onSurface max-sm:text-sm">
             Código {curso.codigoAcesso}
           </p>
-          <NewButtonFloat text="Novo Módulo" onClick={() => {}} />
+          <NewButtonFloat text="Novo Módulo" onClick={handleNewModule} />
         </div>
       )}
 
