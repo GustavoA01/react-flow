@@ -3,7 +3,7 @@ import type { UsuarioType } from '@/data/types/api';
 import { Plus } from 'lucide-react';
 
 type CoursesHeaderProps = {
-  role:UsuarioType['tipo'],
+  role: UsuarioType['tipo'];
   isAdmin: boolean;
   onAddCourse: () => void;
 };
@@ -12,7 +12,7 @@ const labels = {
   ADMIN: 'Selecione o curso para editar ou acompanhar',
   MONITOR: 'Selecione a disciplina que você monitora para adicionar atividades',
   ALUNO: 'Selecione o curso que você deseja acessar',
-}
+};
 
 export const CoursesHeader = ({
   role,

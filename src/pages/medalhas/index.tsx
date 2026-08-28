@@ -7,7 +7,7 @@ import { motion } from 'framer-motion';
 import { useAuthUser } from '@/providers/UserProvider';
 
 export const MedalsPage = () => {
-  const {isAdmin} = useAuthUser()
+  const { isAdmin } = useAuthUser();
   const [openDialog, setOpenDialog] = useState(false);
   const [openDeleteMenu, setOpenDeleteMenu] = useState(false);
 

@@ -12,6 +12,8 @@ import type {
   UsuarioType,
 } from '@/data/types/api';
 import { mockLoggedAluno } from '@/data/temporaryMocks/usuario';
+import { mockLoggedMonitor } from '@/data/temporaryMocks/monitores';
+import { mockLoggedAdmin } from '@/data/temporaryMocks/admins';
 
 type SetUserType = (user: UsuarioType | null) => void;
 
@@ -48,7 +50,7 @@ type UserContextType =
 const UserContext = createContext<UserContextType | null>(null);
 
 export const UserProvider = ({ children }: { children: ReactNode }) => {
-  const [user, setUser] = useState<UsuarioType | null>(mockLoggedAluno);
+  const [user, setUser] = useState<UsuarioType | null>(mockLoggedMonitor);
 
   const value = useMemo((): UserContextType => {
     if (user?.tipo === 'ALUNO') {
@@ -60,7 +62,13 @@ export const UserProvider = ({ children }: { children: ReactNode }) => {
     if (user?.tipo === 'ADMIN') {
       return { user, setUser, isAluno: false, isMonitor: false, isAdmin: true };
     }
-    return { user: null, setUser, isAluno: false, isMonitor: false, isAdmin: false };
+    return {
+      user: null,
+      setUser,
+      isAluno: false,
+      isMonitor: false,
+      isAdmin: false,
+    };
   }, [user]);
 
   return <UserContext.Provider value={value}>{children}</UserContext.Provider>;

@@ -8,7 +8,7 @@ import {
 import { cn } from '@/lib/utils';
 import type { AtividadeType } from '@/data/types/api';
 import type { StudentRowType } from '../types';
-import { alternativeLetter } from '../features/hooks/useActivityMonitor';
+import { alternativeLetter } from '../hooks/useActivityMonitor';
 
 type AttemptDialogPropsType = {
   activity: AtividadeType;

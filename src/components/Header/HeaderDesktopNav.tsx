@@ -24,8 +24,8 @@ export const HeaderDesktopNav = ({ onLogout }: HeaderDesktopNavPropsType) => {
     <div className="hidden sm:flex items-center gap-2">
       {getHeaderItems(isMonitor).map(({ name, path }) => (
         <Link
-          key={name + path}
           to={path}
+          key={name + path}
           className={navLinkClass(pathname === path)}
         >
           {name}

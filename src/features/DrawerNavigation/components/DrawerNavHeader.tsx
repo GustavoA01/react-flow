@@ -24,7 +24,7 @@ export const DrawerNavHeader = () => {
 
   return (
     <DrawerHeader ref={scope} className="flex flex-col bg-primary gap-4 p-4">
-      <Avatar className="w-20 h-20">
+      <Avatar className="size-30">
         <AvatarImage
           alt="Foto de perfil"
           src={isAluno ? user.imagemPerfil : ''}

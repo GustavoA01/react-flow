@@ -34,9 +34,11 @@ export const HeaderUserMenu = ({ onLogout }: HeaderUserMenuPropsType) => {
   return (
     <DropdownMenu>
       <DropdownMenuTrigger className="group flex items-center gap-2 rounded-md py-1 pl-1 pr-2 outline-none font-montserrat hover:bg-primary-dark/50 transition-all ease-in">
-        <Avatar className="size-8">
+        <Avatar className="size-10 ring-2 ring-white/90">
           <AvatarImage src={src} alt="Foto de perfil" />
-          <AvatarFallback className="text-primary">{initials}</AvatarFallback>
+          <AvatarFallback className="bg-white text-primary text-xs font-semibold">
+            {initials}
+          </AvatarFallback>
         </Avatar>
         <p>Olá, {greetingName}</p>
         <ChevronDown

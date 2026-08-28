@@ -45,14 +45,16 @@ export const RankTable = ({ floating = true }: RankTableProps) => {
     floating ? 'fixed m-5 z-50' : 'relative max-h-full'
   );
 
-  const maxHeight = floating
-    ? 'calc(100dvh - 180px)'
-    : 'calc(100dvh - 14rem)';
+  const maxHeight = floating ? 'calc(100dvh - 180px)' : 'calc(100dvh - 14rem)';
 
   if (!isDesktop) {
     return (
       <div style={{ maxHeight }} className={shellClassName}>
-        <RankTableHeader selected={selected} setSelected={setSelected} items={mockItens} />
+        <RankTableHeader
+          selected={selected}
+          setSelected={setSelected}
+          items={mockItens}
+        />
         <div className="flex-1 scrollbar-hidden overflow-y-auto min-h-0 bg-white rounded-b-md">
           <RanksList
             ranks={ranks}

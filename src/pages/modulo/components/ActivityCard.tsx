@@ -26,7 +26,7 @@ export const ActivityCard = ({
   bestScore,
   onClick,
 }: ActivityCardProps) => {
-  const xpTotal = xpDaAtividade(atividade);
+  const xpTotal = xpDaAtividade(activity);
   const questionsLabel = `${activity.quantQuestoes} ${activity.quantQuestoes === 1 ? 'PERGUNTA' : 'PERGUNTAS'}`;
   const attemptsLabel = `${usedAttempts}/${MAX_TENTATIVAS} tentativas`;
   const hasBoasted = usedAttempts > 0 && bestScore >= xpTotal;
@@ -43,7 +43,9 @@ export const ActivityCard = ({
       <ItemMedia
         className={cn(
           'rounded-lg p-2',
-          concluded ? 'bg-green-100 text-green-600' : 'bg-zinc-100 text-zinc-400'
+          concluded
+            ? 'bg-green-100 text-green-600'
+            : 'bg-zinc-100 text-zinc-400'
         )}
       >
         <Check />

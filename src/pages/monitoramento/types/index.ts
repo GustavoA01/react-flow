@@ -1,5 +1,9 @@
-import type { RankAluno } from "@/data/temporaryMocks/ranks";
-import type { AlternativaType, QuestaoType, TentativaType } from "@/data/types/api";
+import type { RankAluno } from '@/data/temporaryMocks/ranks';
+import type {
+  AlternativaType,
+  QuestaoType,
+  TentativaType,
+} from '@/data/types/api';
 
 export type AlternativeStatType = {
   alternative: AlternativaType;

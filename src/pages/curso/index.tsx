@@ -44,7 +44,9 @@ export const CoursePage = () => {
           isAdmin={isAdmin}
           handleNewModule={() => setOpenModuleDialog(true)}
           handleEditCourse={() => setOpenEditCourseDialog(true)}
-          handleDeleteCourse={() => console.log({ action: 'delete-course', id: curso.id })}
+          handleDeleteCourse={() =>
+            console.log({ action: 'delete-course', id: curso.id })
+          }
         />
         <motion.div
           initial="hidden"

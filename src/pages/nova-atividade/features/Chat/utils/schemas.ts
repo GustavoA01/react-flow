@@ -1,4 +1,4 @@
-import z from "zod";
+import z from 'zod';
 
 const generatedAlternativeSchema = z.object({
   text: z.string().trim().min(1),

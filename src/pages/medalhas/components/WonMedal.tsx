@@ -13,7 +13,11 @@ type WonMedalPropsType = {
   onDelete: () => void;
 };
 
-export const WonMedal = ({ open, onOpenChange, onDelete }: WonMedalPropsType) => (
+export const WonMedal = ({
+  open,
+  onOpenChange,
+  onDelete,
+}: WonMedalPropsType) => (
   <ContextMenu open={open} onOpenChange={onOpenChange}>
     <ContextMenuTrigger>
       <Card className="group cursor-pointer hover:scale-105 hover:shadow-primary transition-all duration-300">

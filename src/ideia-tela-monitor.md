@@ -16,20 +16,20 @@ Para cada questão, uma barra mostra quantos alunos marcaram cada opção. Assim
 
 Exemplo ilustrativo (Q2 — derivada do produto, 18 envios):
 
-| Alternativa | Alunos | Situação |
-| --- | --- | --- |
-| sen(x) + x·cos(x) | 5 | correta |
-| x·cos(x) | 8 | distratora mais marcada |
-| sen(x) · cos(x) | 4 | |
-| cos(x) | 1 | |
+| Alternativa       | Alunos | Situação                |
+| ----------------- | ------ | ----------------------- |
+| sen(x) + x·cos(x) | 5      | correta                 |
+| x·cos(x)          | 8      | distratora mais marcada |
+| sen(x) · cos(x)   | 4      |                         |
+| cos(x)            | 1      |                         |
 
 ## Lista por aluno na mesma tela
 
-| Aluno | Q1 | Q2 | Q3 | Q4 | Q5 | Pontos |
-| --- | --- | --- | --- | --- | --- | --- |
-| Ana Souza | A | A | C | B | A | 12 |
-| Bruno Lima | A | B | C | B | D | 6 |
-| Carla Nunes | A | A | A | B | A | 15 |
+| Aluno       | Q1  | Q2  | Q3  | Q4  | Q5  | Pontos |
+| ----------- | --- | --- | --- | --- | --- | ------ |
+| Ana Souza   | A   | A   | C   | B   | A   | 12     |
+| Bruno Lima  | A   | B   | C   | B   | D   | 6      |
+| Carla Nunes | A   | A   | A   | B   | A   | 15     |
 
 Cada célula é a alternativa marcada. Clicar no nome abre o detalhe da tentativa: enunciado, o que ele marcou e o gabarito lado a lado.
 

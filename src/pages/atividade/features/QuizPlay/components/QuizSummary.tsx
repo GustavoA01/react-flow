@@ -109,9 +109,7 @@ export const QuizSummary = ({
             size="lg"
             variant={canRetry ? 'outline' : 'default'}
             className="h-12 font-bold"
-            onClick={() =>
-              navigate(`/cursos/${cursoId}/modulos/${moduloId}`)
-            }
+            onClick={() => navigate(`/cursos/${cursoId}/modulos/${moduloId}`)}
           >
             Voltar ao módulo
           </Button>

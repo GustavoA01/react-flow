@@ -1,7 +1,4 @@
-import {
-  newModuleSchema,
-  type NewModuleFormType,
-} from '@/data/schemas/module';
+import { newModuleSchema, type NewModuleFormType } from '@/data/schemas/module';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useForm } from 'react-hook-form';
 

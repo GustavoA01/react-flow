@@ -36,4 +36,4 @@ export const useCursos = (user: UsuarioType) => {
     handleCourseClick,
     handleCodeSubmit,
   };
-}
+};

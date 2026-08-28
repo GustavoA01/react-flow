@@ -87,4 +87,3 @@ export const RanksList = forwardRef<HTMLTableRowElement, RanksListProps>(
 );
 
 RanksList.displayName = 'RanksList';
-

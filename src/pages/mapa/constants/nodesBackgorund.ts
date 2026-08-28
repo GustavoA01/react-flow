@@ -2,6 +2,7 @@ import img1Puc from '@/assets/map-background/fundo1-puc.webp';
 import img1SaoGabriel from '@/assets/map-background/fundo1-estacao-sao-gabriel.webp';
 import img2OuroMinas from '@/assets/map-background/fundo2-ouro-minas.webp';
 import img2MinasShopping from '@/assets/map-background/fundo2-minas-shopping.webp';
+import img3PracaEstacao from '@/assets/map-background/funde3-praca-estacao.webp';
 import type { BackgroundNodeType } from '../../../data/types/reactFlow';
 
 export const backgroundNodes: BackgroundNodeType[] = [
@@ -58,6 +59,21 @@ export const backgroundNodes: BackgroundNodeType[] = [
       id: '1',
       alt: 'Imagem de fundo Ouro Minas',
       image: img2OuroMinas,
+      width: 1920,
+      height: 2800,
+    },
+    zIndex: -10,
+    draggable: false,
+    selectable: false,
+  },
+  {
+    id: 'bg-img3-praca-estacao',
+    type: 'background',
+    position: { x: 78, y: -7398 },
+    data: {
+      id: '3',
+      alt: 'Imagem de fundo Praça da Estação',
+      image: img3PracaEstacao,
       width: 1920,
       height: 2800,
     },

@@ -39,7 +39,7 @@ export const CourseCard = ({
         <h1 className="font-bold text-lg group-hover:text-primary">
           {curso.nome}
         </h1>
-        
+
         <p className="text-sm text-zinc-500 mt-1 truncate">
           {isMonitor ? codCurso : monitorNome}
         </p>

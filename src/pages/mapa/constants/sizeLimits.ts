@@ -1,5 +1,5 @@
-import type { CoordinateExtent } from "@xyflow/react";
-import { nodesLastPosition } from "./nodesPhases";
+import type { CoordinateExtent } from '@xyflow/react';
+import { nodesLastPosition } from './nodesPhases';
 
 const horizontalLimit = 1500;
 const verticalBottomLimit = 500;
