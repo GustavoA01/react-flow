@@ -1,16 +1,18 @@
 import { ChevronDown, Trophy } from 'lucide-react';
-import { RankFilters } from '../container/RankFilters';
+import { RankFilters } from './RankFilters';
 import { AccordionTrigger } from '@/components/ui/accordion';
 
 type RankTableHeaderProps = {
   selected: string;
   setSelected: (value: string) => void;
+  items: string[];
   isDesktop?: boolean;
 };
 
 export const RankTableHeader = ({
   selected,
   setSelected,
+  items,
   isDesktop,
 }: RankTableHeaderProps) => (
   <header className="flex items-center justify-between select-none pl-2 pr-4 pt-2 pb-2 bg-primary-light rounded-md shrink-0">
@@ -26,7 +28,12 @@ export const RankTableHeader = ({
     </div>
 
     <div className="flex items-center gap-1">
-      <RankFilters selected={selected} setSelected={setSelected} />
+      <RankFilters
+        items={items}
+        selected={selected}
+        isDesktop={isDesktop}
+        setSelected={setSelected}
+      />
 
       {isDesktop && (
         <AccordionTrigger

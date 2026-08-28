@@ -1,6 +1,6 @@
 import { RadioGroupItem } from '@/components/ui/radio-group';
 import { Textarea } from '@/components/ui/textarea';
-import type { QuestionFormType } from '@/data/schemas/activities';
+import type { QuestionFormType } from '@/data/schemas/activity';
 import { useFormContext } from 'react-hook-form';
 
 type InputOptionsProps = {

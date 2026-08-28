@@ -1,7 +1,7 @@
 import {
   courseCodeSchema,
   type CourseCodeFormType,
-} from '@/data/schemas/cursos';
+} from '@/data/schemas/course';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useForm } from 'react-hook-form';
 

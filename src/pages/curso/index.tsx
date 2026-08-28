@@ -5,8 +5,9 @@ import { NewModuleDialog } from './components/NewModuleDialog';
 import { motion } from 'motion/react';
 import { useNavigate, useParams } from 'react-router-dom';
 import { getCursoById } from '@/data/temporaryMocks/cursos';
-import { CourseSharedHeader } from '@/components/Header/CourseSharedHeader';
 import { useAuthUser } from '@/providers/UserProvider';
+import { ResourceNotFound } from '@/components/ResourceNotFound';
+import { NewCourseDialog } from '@/pages/cursos/components/NewCourseDialog';
 
 const containerVariants = {
   hidden: { opacity: 0 },
@@ -27,21 +28,11 @@ export const CoursePage = () => {
   const navigate = useNavigate();
   const { cursoId } = useParams();
   const curso = cursoId ? getCursoById(cursoId) : undefined;
-  const { isAluno, isMonitor } = useAuthUser();
+  const { isAluno, isMonitor, isAdmin } = useAuthUser();
   const [openModuleDialog, setOpenModuleDialog] = useState(false);
+  const [openEditCourseDialog, setOpenEditCourseDialog] = useState(false);
 
-  if (!curso) {
-    return (
-      <div className="flex flex-col h-dvh">
-        <header className="bg-blue-puc px-4 pt-4 sm:px-8 sm:pt-8 pb-8">
-          <CourseSharedHeader />
-        </header>
-        <p className="mt-8 text-center font-semibold text-zinc-500">
-          Curso não encontrado
-        </p>
-      </div>
-    );
-  }
+  if (!curso) return <ResourceNotFound label="Curso não encontrado" />;
 
   return (
     <>
@@ -50,7 +41,10 @@ export const CoursePage = () => {
           curso={curso}
           isAluno={isAluno}
           isMonitor={isMonitor}
+          isAdmin={isAdmin}
           handleNewModule={() => setOpenModuleDialog(true)}
+          handleEditCourse={() => setOpenEditCourseDialog(true)}
+          handleDeleteCourse={() => console.log({ action: 'delete-course', id: curso.id })}
         />
         <motion.div
           initial="hidden"
@@ -79,6 +73,11 @@ export const CoursePage = () => {
       <NewModuleDialog
         open={openModuleDialog}
         onOpenChange={setOpenModuleDialog}
+      />
+      <NewCourseDialog
+        open={openEditCourseDialog}
+        onOpenChange={setOpenEditCourseDialog}
+        curso={curso}
       />
     </>
   );

@@ -1,6 +1,4 @@
 import { Button } from '@/components/ui/button';
-import { Input } from '@/components/ui/input';
-import { Label } from '@/components/ui/label';
 import {
   Dialog,
   DialogClose,
@@ -10,7 +8,7 @@ import {
   DialogHeader,
   DialogTitle,
 } from '@/components/ui/dialog';
-import { ErrorFormMessage } from '@/components/ErrorFormMessage';
+import { LabelInput } from '@/components/LabelInput';
 import { useNewModuleDialog } from '../hooks/useNewModuleDialog';
 
 type NewModuleDialogPropsType = {
@@ -36,19 +34,14 @@ export const NewModuleDialog = ({
         </DialogHeader>
 
         <form className="space-y-4" onSubmit={onSubmit}>
-          <div>
-            <Label htmlFor="nome">Nome</Label>
-            <Input
-              id="nome"
-              autoFocus
-              className="mt-1.5"
-              placeholder="Ex.: Derivadas"
-              {...register('nome')}
-            />
-            {errors.nome?.message && (
-              <ErrorFormMessage message={errors.nome.message} />
-            )}
-          </div>
+          <LabelInput
+            label="Nome"
+            id="nome"
+            autoFocus
+            placeholder="Ex.: Derivadas"
+            error={errors.nome?.message}
+            register={register}
+          />
 
           <DialogFooter>
             <DialogClose asChild>

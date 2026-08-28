@@ -1,6 +1,6 @@
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
-import type { QuestionFormType } from '@/data/schemas/activities';
+import type { QuestionFormType } from '@/data/schemas/activity';
 import { Zap } from 'lucide-react';
 import { useFormContext } from 'react-hook-form';
 

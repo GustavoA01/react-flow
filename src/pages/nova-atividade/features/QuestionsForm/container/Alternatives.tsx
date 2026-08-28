@@ -2,7 +2,7 @@ import { ErrorFormMessage } from '@/components/ErrorFormMessage';
 import { Badge } from '@/components/ui/badge';
 import { Label } from '@/components/ui/label';
 import { RadioGroup } from '@/components/ui/radio-group';
-import type { QuestionFormType } from '@/data/schemas/activities';
+import type { QuestionFormType } from '@/data/schemas/activity';
 import { useFormContext } from 'react-hook-form';
 import { motion } from 'framer-motion';
 import { InputOptions } from '../components/InputOptions';

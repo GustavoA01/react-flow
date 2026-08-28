@@ -11,7 +11,7 @@ export const BottomNavigation = () => {
     <motion.nav
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
-      className="fixed bottom-6 items-center w-50 left-1/2 -translate-x-1/2 rounded-full gap-6 bg-white shadow-md py-2 flex justify-center sm:hidden"
+      className="fixed bottom-6 z-40 items-center w-50 left-1/2 -translate-x-1/2 rounded-full gap-6 bg-white shadow-md py-2 flex justify-center sm:hidden"
     >
       {getBottomNavigateButtons(isMonitor).map((button) => {
         const selected = pathname === button.to;

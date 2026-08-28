@@ -8,6 +8,7 @@ hide circle
 enum TipoUsuario {
   ALUNO
   MONITOR
+  ADMIN
 }
 
 class Usuario {
@@ -25,6 +26,8 @@ class Aluno {
 }
 
 class Monitor
+
+class Admin
 
 class Medalha {
   - id: string
@@ -76,6 +79,7 @@ class Resposta {
 
 Usuario <|-- Aluno
 Usuario <|-- Monitor
+Usuario <|-- Admin
 Usuario --> TipoUsuario
 
 Usuario "0..*" -- "0..*" Curso : inscrito

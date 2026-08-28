@@ -1,6 +1,7 @@
 import { CourseCard } from '@/pages/cursos/components/CourseCard';
 import { CoursesHeader } from './components/CoursesHeader';
 import { CodeDialog } from './components/CodeDialog';
+import { NewCourseDialog } from './components/NewCourseDialog';
 import { useMediaDevice } from '@/hooks/useMediaDevice';
 import { motion } from 'framer-motion';
 import { temporaryCursos } from '@/data/temporaryMocks/cursos';
@@ -8,17 +9,19 @@ import { getMonitorById } from '@/data/temporaryMocks/monitores';
 import { useCursos } from './hooks/useCursos';
 import { useAuthUser } from '@/providers/UserProvider';
 import { cn } from '@/lib/utils';
+import { useState } from 'react';
 
 export const CoursesPage = () => {
   const { containerClassName } = useMediaDevice();
-  const { user, isAluno, isMonitor } = useAuthUser();
+  const { user, isMonitor, isAdmin } = useAuthUser();
   const {
     openCodeDialog,
     setOpenCodeDialog,
     isLocked,
     handleCourseClick,
     handleCodeSubmit,
-  } = useCursos(isAluno, user);
+  } = useCursos(user);
+  const [openCourseDialog, setOpenCourseDialog] = useState(false);
 
   return (
     <div
@@ -27,7 +30,11 @@ export const CoursesPage = () => {
         containerClassName
       )}
     >
-      <CoursesHeader isMonitor={isMonitor} />
+      <CoursesHeader
+        role={user.tipo}
+        isAdmin={isAdmin}
+        onAddCourse={() => setOpenCourseDialog(true)}
+      />
 
       <div className="flex flex-col scrollbar-hidden overflow-y-auto md:grid md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-6 mt-4 sm:mt-8 pb-18 pt-2 gap-4">
         {temporaryCursos.map((curso, index) => (
@@ -53,6 +60,10 @@ export const CoursesPage = () => {
         open={openCodeDialog}
         onOpenChange={setOpenCodeDialog}
         onSubmit={handleCodeSubmit}
+      />
+      <NewCourseDialog
+        open={openCourseDialog}
+        onOpenChange={setOpenCourseDialog}
       />
     </div>
   );

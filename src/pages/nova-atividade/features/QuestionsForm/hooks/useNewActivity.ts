@@ -2,7 +2,7 @@ import {
   questionFormSchema,
   type NewActivityFormType,
   type QuestionFormType,
-} from '@/data/schemas/activities';
+} from '@/data/schemas/activity';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useEffect, useState } from 'react';
 import { useFieldArray, useForm } from 'react-hook-form';

@@ -2,7 +2,7 @@ import { ErrorFormMessage } from '@/components/ErrorFormMessage';
 import { Input } from '@/components/ui/input';
 import { Footer } from './Footer';
 import { useFormContext } from 'react-hook-form';
-import { type NewActivityFormType } from '@/data/schemas/activities';
+import { type NewActivityFormType } from '@/data/schemas/activity';
 
 type FormProps = {
   onSubmit: () => void;

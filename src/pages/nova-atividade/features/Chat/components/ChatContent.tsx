@@ -1,6 +1,6 @@
 import { Button } from '@/components/ui/button';
 import { Skeleton } from '@/components/ui/skeleton';
-import type { QuestionFormType } from '@/data/schemas/activities';
+import type { QuestionFormType } from '@/data/schemas/activity';
 import { ListChecks } from 'lucide-react';
 import ReactMarkdown from 'react-markdown';
 import type { ChatMessageType } from '../hooks/useChat';

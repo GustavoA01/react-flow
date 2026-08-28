@@ -1,27 +1,39 @@
 import { Button } from '@/components/ui/button';
+import type { UsuarioType } from '@/data/types/api';
 import { Plus } from 'lucide-react';
 
 type CoursesHeaderProps = {
-  isMonitor: boolean;
+  role:UsuarioType['tipo'],
+  isAdmin: boolean;
+  onAddCourse: () => void;
 };
 
-export const CoursesHeader = ({ isMonitor }: CoursesHeaderProps) => (
+const labels = {
+  ADMIN: 'Selecione o curso para editar ou acompanhar',
+  MONITOR: 'Selecione a disciplina que você monitora para adicionar atividades',
+  ALUNO: 'Selecione o curso que você deseja acessar',
+}
+
+export const CoursesHeader = ({
+  role,
+  isAdmin,
+  onAddCourse,
+}: CoursesHeaderProps) => (
   <header className="flex justify-between items-center gap-4">
     <div>
       <h1 className="font-fredoka text-primary-dark font-semibold md:text-2xl text-xl">
         Cursos
       </h1>
-
       <p className="text-zinc-500 text-sm sm:text-base select-none">
-        {isMonitor
-          ? 'Selecione a disciplina que você monitora para adicionar atividades'
-          : 'Selecione o curso que você deseja acessar'}
+        {labels[role]}
       </p>
     </div>
 
-    <Button className="max-sm:w-10 ">
-      <Plus />
-      <p className="max-sm:hidden">Adicionar Curso</p>
-    </Button>
+    {isAdmin && (
+      <Button className="max-sm:w-10" onClick={onAddCourse}>
+        <Plus />
+        <p className="max-sm:hidden">Adicionar Curso</p>
+      </Button>
+    )}
   </header>
 );

@@ -26,8 +26,8 @@ export const DrawerNavHeader = () => {
     <DrawerHeader ref={scope} className="flex flex-col bg-primary gap-4 p-4">
       <Avatar className="w-20 h-20">
         <AvatarImage
-          src={isAluno ? user.imagemPerfil : ''}
           alt="Foto de perfil"
+          src={isAluno ? user.imagemPerfil : ''}
         />
         <AvatarFallback>{initials || '?'}</AvatarFallback>
       </Avatar>
@@ -37,7 +37,7 @@ export const DrawerNavHeader = () => {
           {title}
         </DrawerTitle>
         {isAluno && (
-          <DrawerDescription className="text-muted-foreground text-sm">
+          <DrawerDescription className="text-white/70 text-sm">
             {subtitle}
           </DrawerDescription>
         )}

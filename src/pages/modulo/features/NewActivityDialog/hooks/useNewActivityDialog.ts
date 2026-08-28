@@ -1,7 +1,10 @@
-import { newActivitySchema, type NewActivityFormType } from "@/data/schemas/activities";
-import { zodResolver } from "@hookform/resolvers/zod";
-import { useForm } from "react-hook-form";
-import { useNavigate, useParams } from "react-router-dom";
+import {
+  newActivitySchema,
+  type NewActivityFormType,
+} from '@/data/schemas/activity';
+import { zodResolver } from '@hookform/resolvers/zod';
+import { useForm } from 'react-hook-form';
+import { useNavigate, useParams } from 'react-router-dom';
 
 export const useNewActivityDialog = () => {
   const navigate = useNavigate();

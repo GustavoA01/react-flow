@@ -1,35 +1,48 @@
 import { Card, CardContent, CardFooter } from '@/components/ui/card';
 import { CircleQuestionMark } from 'lucide-react';
 import { motion } from 'framer-motion';
+import type { MedalhaType } from '@/data/types/api';
 
-export const UnknownMedal = () => (
-  <Card className="group opacity-70 border-dashed border-2 border-zinc-200 select-none cursor-pointer">
+type UnknownMedalProps = {
+  minPoints: MedalhaType['pontosMin'];
+};
+
+const MARKS = ['?', '?', '?'];
+
+export const UnknownMedal = ({ minPoints }: UnknownMedalProps) => (
+  <Card className="group border-dashed border-2 border-zinc-200 select-none cursor-pointer">
     <CardContent className="flex flex-col flex-1 items-center justify-center gap-2">
       <CircleQuestionMark className="w-20 h-20 sm:w-15 sm:h-15 text-zinc-400 group-hover:text-red-900 transition-colors duration-300" />
-      <motion.p
-        className="text-2xl font-bold"
-        style={{
-          backgroundImage:
-            'linear-gradient(90deg, #9CA3AF 0%, #10B981 50%, #9CA3AF 100%)',
-          backgroundSize: '200% 100%',
-          WebkitBackgroundClip: 'text',
-          backgroundClip: 'text',
-          WebkitTextFillColor: 'transparent',
-        }}
-        initial={{ backgroundPosition: '100% 0%' }}
-        animate={{ backgroundPosition: '-100% 0%' }}
-        transition={{
-          repeat: Infinity,
-          duration: 2,
-          ease: 'linear',
-          repeatDelay: 1,
-        }}
-      >
-        ???
-      </motion.p>
+      <p className="text-2xl font-bold flex" aria-hidden>
+        {MARKS.map((mark, index) => (
+          <motion.span
+            key={index}
+            className="inline-block"
+            animate={{
+              color: ['#a1a1aa', '#f59e0b', '#a1a1aa'],
+              scale: [1, 1.3, 1],
+              textShadow: [
+                '0 0 0px rgba(245, 158, 11, 0)',
+                '0 0 10px rgba(245, 158, 11, 0.85)',
+                '0 0 0px rgba(245, 158, 11, 0)',
+              ],
+            }}
+            transition={{
+              duration: 1.5,
+              delay: index * 0.28,
+              repeat: Infinity,
+              ease: 'easeInOut',
+            }}
+          >
+            {mark}
+          </motion.span>
+        ))}
+      </p>
     </CardContent>
     <CardFooter className="flex justify-center">
-      <p className="text-muted-foreground text-center text-sm">20 xp</p>
+      <p className="text-muted-foreground text-center text-sm">
+        {minPoints} xp
+      </p>
     </CardFooter>
   </Card>
 );

@@ -1,4 +1,4 @@
-import { addMedalSchema, type AddMedalFormType } from '@/data/schemas/medalhas';
+import { addMedalSchema, type AddMedalFormType } from '@/data/schemas/medal';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useForm } from 'react-hook-form';
 

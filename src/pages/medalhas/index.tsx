@@ -4,14 +4,15 @@ import { UnknownMedal } from './components/UnknownMedal';
 import { WonMedal } from './components/WonMedal';
 import { AddMedalDialog } from './components/AddMedalDialog';
 import { motion } from 'framer-motion';
+import { useAuthUser } from '@/providers/UserProvider';
 
 export const MedalsPage = () => {
+  const {isAdmin} = useAuthUser()
   const [openDialog, setOpenDialog] = useState(false);
   const [openDeleteMenu, setOpenDeleteMenu] = useState(false);
-  const canManageMedals = true;
 
   const handleOpenDeleteMenu = (open: boolean) => {
-    setOpenDeleteMenu(canManageMedals && open);
+    setOpenDeleteMenu(isAdmin && open);
   };
 
   return (
@@ -24,7 +25,7 @@ export const MedalsPage = () => {
         Selecione uma medalha alcançada para usar como foto de perfil
       </h2>
 
-      {canManageMedals && (
+      {isAdmin && (
         <Button className="my-4" onClick={() => setOpenDialog(true)}>
           Adicionar medalha
         </Button>
@@ -49,7 +50,7 @@ export const MedalsPage = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: index * 0.1, duration: 0.3 }}
           >
-            <UnknownMedal />
+            <UnknownMedal minPoints={20} />
           </motion.div>
         ))}
       </div>

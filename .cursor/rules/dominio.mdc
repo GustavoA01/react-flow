@@ -5,7 +5,7 @@ alwaysApply: true
 
 # Rotas e domínio
 
-`Home` é a rota `index` (`/`), filha do `HeaderLayout`. Não existe `/home`. Ela redireciona o **monitor** para `/cursos` e mostra o **mapa** para o **aluno**. Provider de usuário envolve o app (`App.tsx`), não o array do router.
+`Home` é a rota `index` (`/`), filha do `HeaderLayout`. Não existe `/home`. Ela redireciona o **monitor** e o **admin** para `/cursos` e mostra o **mapa** para o **aluno**. Provider de usuário envolve o app (`App.tsx`), não o array do router.
 
 O mapa do **monitor** fica em `/mapa` (nav “Mapa”). Ele vê o ranking dos alunos, sem pontos e sem clicar nas fases. O aluno continua no mapa em `/`.
 
@@ -28,3 +28,5 @@ Nomes do diagrama em `api.ts` (`CursoType`, `ModuloType`, `AtividadeType`). `pos
 `nome` é o nome institucional. `apelido` só existe em `AlunoType` e é o que o jogador vê no ranking, mapa e header. Na UI do **monitor** (turma e ranking) os dois aparecem: `nome` para identificar, `apelido` para cruzar com o que o aluno escolheu.
 
 `cursoIds` fica em `UsuarioType`: no aluno é inscrição, no monitor é o que ele ministra. Um curso tem um `monitorId`. O nome do monitor só entra na UI do card em `/cursos`. `codigoAcesso` fica no `CursoType` e só o monitor vê.
+
+O **admin** (`AdminType`, `tipo: 'ADMIN'`) cria, edita e exclui curso. Criar fica na lista `/cursos`; editar e excluir ficam no header do detalhe `/cursos/:cursoId`.

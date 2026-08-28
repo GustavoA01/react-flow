@@ -16,7 +16,11 @@ export interface MonitorType extends UsuarioBaseType {
   tipo: 'MONITOR';
 };
 
-export type UsuarioType = AlunoType | MonitorType;
+export interface AdminType extends Omit<UsuarioBaseType, 'cursoIds'> {
+  tipo: 'ADMIN';
+};
+
+export type UsuarioType = AlunoType | MonitorType | AdminType;
 
 export interface MedalhaType {
   id: string;

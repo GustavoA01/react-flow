@@ -1,4 +1,4 @@
-import type { QuestionFormType } from '@/data/schemas/activities';
+import type { QuestionFormType } from '@/data/schemas/activity';
 import { generateContent } from '@/services/googleConfig';
 import { useState } from 'react';
 import { useForm, useFormContext } from 'react-hook-form';
@@ -13,7 +13,11 @@ export type ChatMessageType = {
 };
 
 export const useChat = () => {
-  const { register, handleSubmit, reset: resetInput } = useForm<{
+  const {
+    register,
+    handleSubmit,
+    reset: resetInput,
+  } = useForm<{
     message: string;
   }>();
   const { reset: resetQuestions, getValues } =
@@ -37,10 +41,7 @@ export const useChat = () => {
           ? `${userMessage}\n\n(A atividade atual tem ${qtdQuestions} pergunta(s). Se o usuário não pedir outra quantidade, gere exatamente ${qtdQuestions}.)`
           : userMessage;
 
-      const response = await generateContent(
-        prompt,
-        CHAT_SYSTEM_INSTRUCTION
-      );
+      const response = await generateContent(prompt, CHAT_SYSTEM_INSTRUCTION);
       const questions = parseGeneratedQuestions(response || '');
       const content = questions
         ? formatQuestionsMessage(questions)

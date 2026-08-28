@@ -1,4 +1,4 @@
-import type { QuestionFormType } from '@/data/schemas/activities';
+import type { QuestionFormType } from '@/data/schemas/activity';
 import { useFormContext } from 'react-hook-form';
 
 const radioValueFor = (questionNumber: number, alternativeIndex: number) =>

@@ -1,6 +1,4 @@
 import { Button } from '@/components/ui/button';
-import { Input } from '@/components/ui/input';
-import { Label } from '@/components/ui/label';
 import {
   Dialog,
   DialogClose,
@@ -10,7 +8,7 @@ import {
   DialogHeader,
   DialogTitle,
 } from '@/components/ui/dialog';
-import { ErrorFormMessage } from '@/components/ErrorFormMessage';
+import { LabelInput } from '@/components/LabelInput';
 import { useAddMedalDialog } from '../hooks/useAddMedalDialog';
 
 type AddMedalDialogPropsType = {
@@ -36,49 +34,31 @@ export const AddMedalDialog = ({
         </DialogHeader>
 
         <form className="space-y-4" onSubmit={onSubmit}>
-          <div>
-            <Label htmlFor="nome">Nome</Label>
-            <Input
-              id="nome"
-              autoFocus
-              className="mt-1.5"
-              placeholder="Ex.: PUC Minas"
-              {...register('nome')}
-            />
-            {errors.nome?.message && (
-              <ErrorFormMessage message={errors.nome.message} />
-            )}
-          </div>
-
-          <div>
-            <Label htmlFor="pontosMin">Pontos mínimos</Label>
-            <Input
-              id="pontosMin"
-              type="number"
-              min={0}
-              className="mt-1.5"
-              placeholder="0"
-              {...register('pontosMin', {
-                setValueAs: (value) => Number(value),
-              })}
-            />
-            {errors.pontosMin?.message && (
-              <ErrorFormMessage message={errors.pontosMin.message} />
-            )}
-          </div>
-
-          <div>
-            <Label htmlFor="imagemUrl">URL da imagem</Label>
-            <Input
-              id="imagemUrl"
-              className="mt-1.5"
-              placeholder="https://"
-              {...register('imagemUrl')}
-            />
-            {errors.imagemUrl?.message && (
-              <ErrorFormMessage message={errors.imagemUrl.message} />
-            )}
-          </div>
+          <LabelInput
+            label="Nome"
+            id="nome"
+            autoFocus
+            placeholder="Ex.: PUC Minas"
+            error={errors.nome?.message}
+            register={register}
+          />
+          <LabelInput
+            label="Pontos mínimos"
+            id="pontosMin"
+            type="number"
+            min={0}
+            placeholder="0"
+            error={errors.pontosMin?.message}
+            register={register}
+            registerOptions={{ setValueAs: Number }}
+          />
+          <LabelInput
+            label="URL da imagem"
+            id="imagemUrl"
+            placeholder="https://"
+            error={errors.imagemUrl?.message}
+            register={register}
+          />
 
           <DialogFooter>
             <DialogClose asChild>

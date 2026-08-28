@@ -1,4 +1,4 @@
-import type { QuestionFormType } from '@/data/schemas/activities';
+import type { QuestionFormType } from '@/data/schemas/activity';
 
 export const formatQuestionsMessage = (
   questions: QuestionFormType['questions']
