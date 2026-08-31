@@ -27,8 +27,8 @@ export const useChat = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [messages, setMessages] = useState<ChatMessageType[]>([]);
   const [appliedQuestionKeys, setAppliedQuestionKeys] = useState<string[]>([]);
-
   const formQuestions = watch('questions');
+
   const formFull =
     !!formQuestions?.length &&
     formQuestions.every((question) => question.statement.trim() !== '');
@@ -65,14 +65,16 @@ export const useChat = () => {
     }
   });
 
+  const emptySlotIndexes = (slots: QuestionFormType['questions']) =>
+    slots.flatMap((slot, index) => (slot.statement.trim() ? [] : [index]));
+
   const applyQuestion = (
     question: QuestionFormType['questions'][number],
     messageIndex: number,
     questionIndex: number
   ) => {
-    const slots = getValues('questions') ?? [];
-    const emptyIndex = slots.findIndex((slot) => !slot.statement.trim());
-    if (emptyIndex === -1) return;
+    const emptyIndex = emptySlotIndexes(getValues('questions') ?? [])[0];
+    if (emptyIndex === undefined) return;
 
     setValue(`questions.${emptyIndex}`, question, {
       shouldDirty: true,
@@ -82,6 +84,37 @@ export const useChat = () => {
       ...prev,
       appliedKey(messageIndex, questionIndex),
     ]);
+  };
+
+  const applyAllQuestions = (
+    questions: QuestionFormType['questions'],
+    messageIndex: number
+  ) => {
+    const emptyIndexes = emptySlotIndexes(getValues('questions') ?? []);
+    const pending = questions.flatMap((question, questionIndex) =>
+      appliedQuestionKeys.includes(appliedKey(messageIndex, questionIndex))
+        ? []
+        : [{ question, questionIndex }]
+    );
+    const pairs = emptyIndexes
+      .slice(0, pending.length)
+      .map((slotIndex, i) => ({ slotIndex, ...pending[i] }));
+
+    pairs.forEach(({ slotIndex, question }) => {
+      setValue(`questions.${slotIndex}`, question, {
+        shouldDirty: true,
+        shouldValidate: true,
+      });
+    });
+
+    if (pairs.length) {
+      setAppliedQuestionKeys((prev) => [
+        ...prev,
+        ...pairs.map(({ questionIndex }) =>
+          appliedKey(messageIndex, questionIndex)
+        ),
+      ]);
+    }
   };
 
   const isQuestionApplied = (messageIndex: number, questionIndex: number) =>
@@ -98,6 +131,7 @@ export const useChat = () => {
     onSubmit,
     register,
     applyQuestion,
+    applyAllQuestions,
     isQuestionApplied,
     formFull,
     clearMessages,

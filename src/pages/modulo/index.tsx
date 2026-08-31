@@ -51,7 +51,14 @@ export const ModulePage = () => {
             <ActivityCard
               key={atividade.id}
               activity={atividade}
+              isMonitor={isMonitor}
               onClick={() => onClickActivity(atividade.id)}
+              onEdit={() =>
+                console.log({ action: 'edit-activity', id: atividade.id })
+              }
+              onDelete={() =>
+                console.log({ action: 'delete-activity', id: atividade.id })
+              }
               usedAttempts={contarTentativasDoAluno(
                 temporaryTentativas,
                 user.id,

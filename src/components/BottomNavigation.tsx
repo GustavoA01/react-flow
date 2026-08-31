@@ -2,6 +2,7 @@ import { Link, useLocation } from 'react-router-dom';
 import { motion } from 'motion/react';
 import { getBottomNavigateButtons } from '@/data/constants';
 import { useAuthUser } from '@/providers/UserProvider';
+import { cn } from '@/lib/utils';
 
 export const BottomNavigation = () => {
   const { pathname } = useLocation();
@@ -20,7 +21,7 @@ export const BottomNavigation = () => {
           <Link key={button.to} to={button.to} className="relative">
             <motion.div
               initial={false}
-              className={`rounded-full ${selected && 'text-white p-3'}`}
+              className={cn('rounded-full', selected && 'text-white p-3')}
               animate={{
                 backgroundColor: selected ? '#2d5586' : '#ffffff',
                 transition: { stiffness: 300, damping: 20, type: 'spring' },

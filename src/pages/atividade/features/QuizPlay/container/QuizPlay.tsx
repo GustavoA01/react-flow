@@ -4,7 +4,7 @@ import { useQuizPlay } from '../hooks/useQuizPlay';
 import { QuizHeader } from '../components/QuizHeader';
 import { QuestionStep } from '../components/QuestionStep';
 import { QuizFooter } from '../components/QuizFooter';
-import { QuizSummary } from '../components/QuizSummary';
+import { QuizSummary } from './QuizSummary';
 
 type QuizPlayPropsType = {
   activity: AtividadeType;

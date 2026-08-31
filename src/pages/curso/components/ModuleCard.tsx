@@ -1,7 +1,7 @@
 import { DescriptionCircle } from '@/components/DescriptionCircle';
-import { Button } from '@/components/ui/button';
+import { EditDeleteActions } from '@/components/EditDeleteActions';
 import { Card } from '@/components/ui/card';
-import { Check, ChevronRight, Pencil, Trash2 } from 'lucide-react';
+import { Check, ChevronRight } from 'lucide-react';
 import { motion } from 'motion/react';
 import type { ModuloType } from '@/data/types/api';
 import { xpDoModulo } from '@/data/temporaryMocks/cursos';
@@ -53,34 +53,11 @@ export const ModuleCard = ({
 
         <div className="flex items-center gap-0.5 shrink-0 ml-2">
           {isMonitor ? (
-            <>
-              <Button
-                type="button"
-                variant="ghost"
-                size="icon-sm"
-                aria-label="Editar módulo"
-                className="rounded-full text-zinc-400 hover:text-primary hover:bg-primary/10"
-                onClick={(event) => {
-                  event.stopPropagation();
-                  onEdit();
-                }}
-              >
-                <Pencil />
-              </Button>
-              <Button
-                type="button"
-                variant="ghost"
-                size="icon-sm"
-                aria-label="Excluir módulo"
-                className="rounded-full text-zinc-400 hover:text-destructive hover:bg-destructive/10"
-                onClick={(event) => {
-                  event.stopPropagation();
-                  onDelete();
-                }}
-              >
-                <Trash2 />
-              </Button>
-            </>
+            <EditDeleteActions
+              label="módulo"
+              onEdit={onEdit}
+              onDelete={onDelete}
+            />
           ) : (
             <ChevronRight size={16} className="text-zinc-400" />
           )}

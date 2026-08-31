@@ -10,23 +10,23 @@ export const FormFooter = () => {
     <div className="flex flex-col sm:flex-row w-full sm:justify-end gap-2">
       <Button
         type="button"
+        onClick={goBack}
         variant="outline"
         className="max-sm:hidden"
-        onClick={goBack}
       >
         Cancelar
       </Button>
 
       <Button type="submit">
-        Salvar
         <Save className="max-sm:hidden" />
+        Salvar
       </Button>
 
       <Button
         type="button"
+        onClick={goBack}
         variant="outline"
         className="sm:hidden"
-        onClick={goBack}
       >
         Cancelar
       </Button>

@@ -19,6 +19,11 @@ export const ChatForm = ({ onSubmit, register, isLoading }: ChatFormProps) => (
   >
     <Textarea
       disabled={isLoading}
+      onKeyDown={(e) => {
+        if (e.key !== 'Enter' || e.shiftKey || e.nativeEvent.isComposing) return;
+        e.preventDefault();
+        e.currentTarget.form?.requestSubmit();
+      }}
       {...register('message')}
       className="resize-none focus:ring-0 min-h-10 border-0 focus:outline-none shadow-none"
       placeholder={
@@ -27,7 +32,11 @@ export const ChatForm = ({ onSubmit, register, isLoading }: ChatFormProps) => (
           : 'Crie perguntas de três níveis sobre...'
       }
     />
-    <Button className="mt-auto rounded-full w-10 h-10 " type="submit">
+    <Button
+      type="submit"
+      disabled={isLoading}
+      className="mt-auto rounded-full w-10 h-10"
+    >
       {isLoading ? <Spinner /> : <SendHorizonal />}
     </Button>
   </form>

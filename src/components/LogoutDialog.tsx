@@ -27,7 +27,6 @@ export const LogoutDialog = ({
           Você será redirecionado para a tela de login.
         </DialogDescription>
       </DialogHeader>
-
       <DialogFooter>
         <DialogClose asChild>
           <Button variant="outline">Cancelar</Button>

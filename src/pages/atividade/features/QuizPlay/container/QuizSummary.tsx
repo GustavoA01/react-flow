@@ -1,9 +1,8 @@
 import { Button } from '@/components/ui/button';
 import type { QuestaoType } from '@/data/types/api';
-import { cn } from '@/lib/utils';
-import { Check, X } from 'lucide-react';
 import { useNavigate, useParams } from 'react-router-dom';
 import type { QuizAnswerType } from '../hooks/useQuizPlay';
+import { SummaryItem } from '../components/SummaryItem';
 
 type QuizSummaryPropsType = {
   questions: QuestaoType[];
@@ -55,46 +54,15 @@ export const QuizSummary = ({
             const correct = question.alternativas.find((item) => item.correta);
 
             return (
-              <li
+              <SummaryItem
                 key={question.id}
-                className={cn(
-                  'rounded-2xl border-2 p-4',
-                  answer?.correta
-                    ? 'border-emerald-200 bg-emerald-50/60'
-                    : 'border-red-200 bg-red-50/60'
-                )}
-              >
-                <div className="flex items-start gap-3">
-                  <span
-                    className={cn(
-                      'mt-0.5 flex size-7 shrink-0 items-center justify-center rounded-full text-white',
-                      answer?.correta ? 'bg-emerald-500' : 'bg-red-500'
-                    )}
-                  >
-                    {answer?.correta ? (
-                      <Check className="size-4" />
-                    ) : (
-                      <X className="size-4" />
-                    )}
-                  </span>
-                  <div className="min-w-0">
-                    <p className="text-xs font-semibold text-zinc-400">
-                      Pergunta {index + 1}
-                    </p>
-                    <p className="font-medium text-zinc-800">
-                      {question.enunciado}
-                    </p>
-                    <p className="mt-1 text-sm text-zinc-600">
-                      Sua resposta: {chosen?.descricao ?? '—'}
-                    </p>
-                    {revealCorrect && !answer?.correta && correct && (
-                      <p className="mt-1 text-sm font-medium text-emerald-800">
-                        Gabarito: {correct.descricao}
-                      </p>
-                    )}
-                  </div>
-                </div>
-              </li>
+                index={index}
+                enunciado={question.enunciado}
+                answerCorrect={answer?.correta}
+                chosenDescription={chosen?.descricao}
+                correctDescription={correct?.descricao}
+                revealCorrect={revealCorrect}
+              />
             );
           })}
         </ul>
@@ -107,8 +75,8 @@ export const QuizSummary = ({
           )}
           <Button
             size="lg"
-            variant={canRetry ? 'outline' : 'default'}
             className="h-12 font-bold"
+            variant={canRetry ? 'outline' : 'default'}
             onClick={() => navigate(`/cursos/${cursoId}/modulos/${moduloId}`)}
           >
             Voltar ao módulo

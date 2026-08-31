@@ -1,7 +1,7 @@
 import { Button } from '@/components/ui/button';
 import { Skeleton } from '@/components/ui/skeleton';
 import type { QuestionFormType } from '@/data/schemas/activity';
-import { Plus } from 'lucide-react';
+import { ListChecks, Plus } from 'lucide-react';
 import ReactMarkdown from 'react-markdown';
 import { formatQuestionMessage } from '../utils/formatQuestionsMessage';
 import type { ChatMessageType } from '../hooks/useChat';
@@ -16,6 +16,10 @@ type ChatContentProps = {
     messageIndex: number,
     questionIndex: number
   ) => void;
+  onApplyAllQuestions: (
+    questions: QuestionFormType['questions'],
+    messageIndex: number
+  ) => void;
 };
 
 export const ChatContent = ({
@@ -24,6 +28,7 @@ export const ChatContent = ({
   formFull,
   isQuestionApplied,
   onApplyQuestion,
+  onApplyAllQuestions,
 }: ChatContentProps) => (
   <div className="flex-1 space-y-4 py-4 overflow-y-auto overflow-x-hidden flex flex-col px-4 ">
     {messages.length === 0 && (
@@ -37,74 +42,70 @@ export const ChatContent = ({
     {messages.map((message, index) => {
       if (message.role === 'user') {
         return (
-          <div key={index} className="self-end bg-gray-200 p-2 rounded-md">
-            <p className="">{message.content}</p>
+          <div key={index} className="self-end bg-gray-200 p-2 rounded-md rounded-tr-none">
+            <p>{message.content}</p>
           </div>
         );
       }
 
       const questions = message.questions;
+      const allApplied = questions
+        ? questions.every((_, questionIndex) =>
+            isQuestionApplied(index, questionIndex)
+          )
+        : false;
 
       return (
         <div
           key={index}
-          className="self-start bg-gray-100 p-2 rounded-md select-text space-y-3"
+          className="self-start bg-gray-100 p-2 rounded-md rounded-tl-none select-text space-y-3"
         >
           {questions ? (
-            questions.map((question, questionIndex) => {
-              const applied = isQuestionApplied(index, questionIndex);
-
-              return (
-                <div
-                  key={questionIndex}
-                  className="space-y-2 not-first:border-t not-first:border-gray-200 not-first:pt-3"
+            <>
+              {questions.length > 1 && (
+                <Button
+                  size="sm"
+                  type="button"
+                  variant="outline"
+                  disabled={formFull || allApplied}
+                  onClick={() => onApplyAllQuestions(questions, index)}
                 >
-                  <ReactMarkdown
-                    components={{
-                      code(props) {
-                        const { children, ...rest } = props;
-                        return (
-                          <code
-                            {...rest}
-                            className={'prose prose-sm max-w-none'}
-                          >
-                            {children}
-                          </code>
-                        );
-                      },
-                    }}
-                  >
-                    {formatQuestionMessage(question, questionIndex)}
-                  </ReactMarkdown>
-                  <Button
-                    size="sm"
-                    type="button"
-                    disabled={applied || formFull}
-                    onClick={() =>
-                      onApplyQuestion(question, index, questionIndex)
+                  <ListChecks />
+                  {allApplied ? 'Adicionadas' : 'Adicionar todas'}
+                </Button>
+              )}
+              {questions.map((question, questionIndex) => {
+                const applied = isQuestionApplied(index, questionIndex);
+
+                return (
+                  <div
+                    key={questionIndex}
+                    className={
+                      questions.length > 1
+                        ? 'space-y-2 border-t border-gray-200 pt-3'
+                        : 'space-y-2'
                     }
                   >
-                    <Plus />
-                    {applied ? 'Adicionada' : 'Adicionar'}
-                  </Button>
-                </div>
-              );
-            })
+                    <ReactMarkdown>
+                      {formatQuestionMessage(question, questionIndex)}
+                    </ReactMarkdown>
+                    <Button
+                      size="sm"
+                      type="button"
+                      disabled={applied || formFull}
+                      onClick={() =>
+                        onApplyQuestion(question, index, questionIndex)
+                      }
+                    >
+                      <Plus />
+                      {applied ? 'Adicionada' : 'Adicionar'}
+                    </Button>
+                  </div>
+                );
+              })}
+            </>
           ) : (
-            <ReactMarkdown
-              components={{
-                code(props) {
-                  const { children, ...rest } = props;
-                  return (
-                    <code {...rest} className={'prose prose-sm max-w-none'}>
-                      {children}
-                    </code>
-                  );
-                },
-              }}
-            >
-              {message.content}
-            </ReactMarkdown>
+            <ReactMarkdown>{message.content}</ReactMarkdown>
           )}
         </div>
       );

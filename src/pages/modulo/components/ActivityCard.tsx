@@ -7,6 +7,7 @@ import {
   ItemTitle,
 } from '@/components/ui/item';
 import { Badge } from '@/components/ui/badge';
+import { EditDeleteActions } from '@/components/EditDeleteActions';
 import { Check } from 'lucide-react';
 import type { AtividadeType } from '@/data/types/api';
 import { xpDaAtividade } from '@/data/temporaryMocks/cursos';
@@ -17,14 +18,20 @@ type ActivityCardProps = {
   activity: AtividadeType;
   usedAttempts: number;
   bestScore: number;
+  isMonitor: boolean;
   onClick: () => void;
+  onEdit: () => void;
+  onDelete: () => void;
 };
 
 export const ActivityCard = ({
   activity,
   usedAttempts,
   bestScore,
+  isMonitor,
   onClick,
+  onEdit,
+  onDelete,
 }: ActivityCardProps) => {
   const xpTotal = xpDaAtividade(activity);
   const questionsLabel = `${activity.quantQuestoes} ${activity.quantQuestoes === 1 ? 'PERGUNTA' : 'PERGUNTAS'}`;
@@ -63,6 +70,13 @@ export const ActivityCard = ({
       </ItemContent>
 
       <ItemActions>
+        {isMonitor && (
+          <EditDeleteActions
+            label="atividade"
+            onEdit={onEdit}
+            onDelete={onDelete}
+          />
+        )}
         <Badge className="font-bold px-2 py-1 text-xs sm:text-sm bg-zinc-100 text-zinc-500">
           + {xpTotal} pts
         </Badge>

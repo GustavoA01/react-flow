@@ -10,6 +10,7 @@ export const Chat = () => {
     onSubmit,
     register,
     applyQuestion,
+    applyAllQuestions,
     isQuestionApplied,
     formFull,
     clearMessages,
@@ -24,6 +25,7 @@ export const Chat = () => {
         formFull={formFull}
         isQuestionApplied={isQuestionApplied}
         onApplyQuestion={applyQuestion}
+        onApplyAllQuestions={applyAllQuestions}
       />
       <ChatForm onSubmit={onSubmit} register={register} isLoading={isLoading} />
     </div>
