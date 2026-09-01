@@ -3,7 +3,7 @@ import userEvent from '@testing-library/user-event';
 import { EditDeleteActions } from '@/components/EditDeleteActions';
 
 describe('EditDeleteActions', () => {
-  it('chama onEdit e onDelete sem propagar o clique', async () => {
+  it('calls onEdit and onDelete without propagating the click', async () => {
     const user = userEvent.setup();
     const onEdit = jest.fn();
     const onDelete = jest.fn();

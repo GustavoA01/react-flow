@@ -14,6 +14,7 @@ export interface AlunoType extends UsuarioBaseType {
 
 export interface MonitorType extends UsuarioBaseType {
   tipo: 'MONITOR';
+  email: string;
 }
 
 export interface AdminType extends Omit<UsuarioBaseType, 'cursoIds'> {

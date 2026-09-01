@@ -3,7 +3,7 @@ import { HeaderDesktopNav } from '@/components/Header/HeaderDesktopNav';
 import { renderWithProviders } from './renderWithProviders';
 
 describe('HeaderDesktopNav', () => {
-  it('mostra os itens do header do monitor', () => {
+  it('shows the monitor header items', () => {
     renderWithProviders(<HeaderDesktopNav onLogout={jest.fn()} />, {
       route: '/cursos',
     });

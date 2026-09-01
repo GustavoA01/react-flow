@@ -19,13 +19,13 @@ const Harness = ({ error }: { error?: string }) => {
 };
 
 describe('LabelInput', () => {
-  it('liga o label ao input', () => {
+  it('associates the label with the input', () => {
     render(<Harness />);
 
     expect(screen.getByLabelText('Nome')).toHaveAttribute('id', 'nome');
   });
 
-  it('mostra a mensagem de erro quando houver', () => {
+  it('shows the error message when present', () => {
     render(<Harness error="Informe o nome do curso" />);
 
     expect(screen.getByText('Informe o nome do curso')).toBeInTheDocument();

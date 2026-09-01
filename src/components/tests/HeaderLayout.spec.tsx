@@ -20,7 +20,7 @@ const renderLayout = (route: string) =>
   );
 
 describe('HeaderLayout', () => {
-  it('mostra o conteúdo da rota e a navegação inferior em /cursos', () => {
+  it('shows the route content and bottom navigation on /cursos', () => {
     renderLayout('/cursos');
 
     expect(screen.getByText('Lista de cursos')).toBeInTheDocument();
@@ -28,7 +28,7 @@ describe('HeaderLayout', () => {
     expect(screen.getAllByRole('navigation')).toHaveLength(2);
   });
 
-  it('esconde a navegação inferior fora das rotas dela', () => {
+  it('hides the bottom navigation outside its routes', () => {
     renderLayout('/outra');
 
     expect(screen.getByText('Outra página')).toBeInTheDocument();

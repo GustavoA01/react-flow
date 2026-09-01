@@ -10,7 +10,7 @@ jest.mock('react-router-dom', () => ({
 }));
 
 describe('GoBack', () => {
-  it('volta uma página no histórico', async () => {
+  it('goes back one page in history', async () => {
     const user = userEvent.setup();
     render(<GoBack />);
 

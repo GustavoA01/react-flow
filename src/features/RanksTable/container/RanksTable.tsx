@@ -3,13 +3,10 @@ import {
   AccordionContent,
   AccordionItem,
 } from '@/components/ui/accordion';
-import { temporaryRanks } from '@/data/temporaryMocks/ranks';
 import { RankTableHeader } from '@/features/RanksTable/components/RankTableHeader';
 import { RanksList } from '@/features/RanksTable/components/RanksList';
 import { useMediaDevice } from '@/hooks/useMediaDevice';
-import { useAuthUser } from '@/providers/UserProvider';
-import { useCallback, useState } from 'react';
-import { cn } from '@/lib/utils';
+import { useRanksTable } from '../hooks/useRanksTable';
 
 type RankTableProps = {
   floating?: boolean;
@@ -19,33 +16,16 @@ const mockItens = ['Geral', 'Programação', 'Matemática e programação avanç
 
 export const RankTable = ({ floating = true }: RankTableProps) => {
   const { isDesktop } = useMediaDevice();
-  const auth = useAuthUser();
-  const [selected, setSelected] = useState('Geral');
-  const loggedAlunoId = auth.isAluno ? auth.user.id : undefined;
-
-  const scrollToLoggedRow = useCallback((node: HTMLTableRowElement | null) => {
-    if (!node) return;
-    requestAnimationFrame(() => {
-      node.scrollIntoView({
-        block: 'nearest',
-        behavior: 'smooth',
-      });
-    });
-  }, []);
-
-  const ranks = [...temporaryRanks]
-    .sort((a, b) => b.pontos - a.pontos)
-    .map((rank, index) => ({
-      ...rank,
-      position: index + 1,
-    }));
-
-  const shellClassName = cn(
-    'flex flex-col w-80 bg-white border rounded-md shadow-lg',
-    floating ? 'fixed m-5 z-50' : 'relative max-h-full'
-  );
-
-  const maxHeight = floating ? 'calc(100dvh - 180px)' : 'calc(100dvh - 14rem)';
+  const {
+    isMonitor,
+    selected,
+    setSelected,
+    loggedAlunoId,
+    scrollToLoggedRow,
+    ranks,
+    shellClassName,
+    maxHeight,
+  } = useRanksTable({ floating });
 
   if (!isDesktop) {
     return (
@@ -60,7 +40,7 @@ export const RankTable = ({ floating = true }: RankTableProps) => {
             ranks={ranks}
             ref={scrollToLoggedRow}
             loggedAlunoId={loggedAlunoId}
-            showName={auth.isMonitor}
+            showName={isMonitor}
           />
         </div>
       </div>
@@ -83,7 +63,7 @@ export const RankTable = ({ floating = true }: RankTableProps) => {
                 ranks={ranks}
                 ref={scrollToLoggedRow}
                 loggedAlunoId={loggedAlunoId}
-                showName={auth.isMonitor}
+                showName={isMonitor}
               />
             </div>
           </AccordionContent>

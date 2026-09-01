@@ -18,7 +18,7 @@ const mockedUseAuthUser = useAuthUser as jest.MockedFunction<
 >;
 
 describe('MedalsPage', () => {
-  it('mostra a galeria para o aluno, sem o botão de adicionar', () => {
+  it('shows the gallery to the student without the add button', () => {
     mockedUseAuthUser.mockReturnValue({
       user: mockLoggedAluno,
       setUser: jest.fn(),
@@ -39,7 +39,7 @@ describe('MedalsPage', () => {
     ).not.toBeInTheDocument();
   });
 
-  it('abre o diálogo de cadastro quando o admin adiciona medalha', async () => {
+  it('opens the create dialog when the admin adds a medal', async () => {
     const user = userEvent.setup();
     mockedUseAuthUser.mockReturnValue({
       user: mockLoggedAdmin,

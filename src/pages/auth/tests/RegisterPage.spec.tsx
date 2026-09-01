@@ -1,0 +1,145 @@
+import { render, screen } from '@testing-library/react';
+import userEvent from '@testing-library/user-event';
+import { MemoryRouter, Route, Routes } from 'react-router-dom';
+import { UserProvider } from '@/providers/UserProvider';
+import { RegisterPage } from '../register';
+
+jest.mock('@/assets/logo-menu.png', () => 'logo.png');
+
+const renderPage = () =>
+  render(
+    <MemoryRouter initialEntries={['/cadastro']}>
+      <UserProvider>
+        <Routes>
+          <Route path="/cadastro" element={<RegisterPage />} />
+          <Route path="/" element={<p>Mapa do aluno</p>} />
+          <Route path="/cursos" element={<p>Lista de cursos</p>} />
+          <Route path="/login" element={<p>Tela de login</p>} />
+        </Routes>
+      </UserProvider>
+    </MemoryRouter>
+  );
+
+describe('RegisterPage', () => {
+  it('shows the student form by default', () => {
+    renderPage();
+
+    expect(
+      screen.getByRole('heading', { name: 'Cadastre-se' })
+    ).toBeInTheDocument();
+    expect(screen.getByLabelText('Nome')).toBeInTheDocument();
+    expect(screen.getByLabelText('Apelido')).toBeInTheDocument();
+    expect(screen.queryByLabelText('E-mail')).not.toBeInTheDocument();
+    expect(screen.getByLabelText('Senha')).toBeInTheDocument();
+    expect(screen.getByLabelText('Confirmar senha')).toBeInTheDocument();
+  });
+
+  it('swaps nickname for email when entering as monitor', async () => {
+    const user = userEvent.setup();
+    renderPage();
+
+    await user.click(
+      screen.getByRole('button', { name: 'Entrar como monitor' })
+    );
+
+    expect(screen.getByLabelText('E-mail')).toBeInTheDocument();
+    expect(screen.queryByLabelText('Apelido')).not.toBeInTheDocument();
+    expect(screen.getByText('Cadastre-se')).toBeInTheDocument();
+  });
+
+  it('restores nickname when entering as student', async () => {
+    const user = userEvent.setup();
+    renderPage();
+
+    await user.click(
+      screen.getByRole('button', { name: 'Entrar como monitor' })
+    );
+    await user.click(screen.getByRole('button', { name: 'Entrar como aluno' }));
+
+    expect(screen.getByLabelText('Apelido')).toBeInTheDocument();
+    expect(screen.queryByLabelText('E-mail')).not.toBeInTheDocument();
+  });
+
+  it('validates required student fields', async () => {
+    const user = userEvent.setup();
+    renderPage();
+
+    await user.click(screen.getByRole('button', { name: 'Cadastrar' }));
+
+    expect(await screen.findByText('Informe o nome')).toBeInTheDocument();
+    expect(screen.getByText('Informe o apelido')).toBeInTheDocument();
+    expect(
+      screen.getByText('A senha deve ter pelo menos 6 caracteres')
+    ).toBeInTheDocument();
+  });
+
+  it('validates the monitor email', async () => {
+    const user = userEvent.setup();
+    renderPage();
+
+    await user.click(
+      screen.getByRole('button', { name: 'Entrar como monitor' })
+    );
+    await user.type(screen.getByLabelText('Nome'), 'Maria Souza');
+    await user.type(screen.getByLabelText('Senha'), '123456');
+    await user.type(screen.getByLabelText('Confirmar senha'), '123456');
+    await user.click(screen.getByRole('button', { name: 'Cadastrar' }));
+
+    expect(
+      await screen.findByText('Informe um e-mail válido')
+    ).toBeInTheDocument();
+  });
+
+  it('warns when passwords do not match', async () => {
+    const user = userEvent.setup();
+    renderPage();
+
+    await user.type(screen.getByLabelText('Nome'), 'Gustavo Aguiar');
+    await user.type(screen.getByLabelText('Apelido'), 'Gu');
+    await user.type(screen.getByLabelText('Senha'), '123456');
+    await user.type(screen.getByLabelText('Confirmar senha'), 'abcdef');
+    await user.click(screen.getByRole('button', { name: 'Cadastrar' }));
+
+    expect(
+      await screen.findByText('As senhas não coincidem')
+    ).toBeInTheDocument();
+  });
+
+  it('registers the student and goes to the map', async () => {
+    const user = userEvent.setup();
+    renderPage();
+
+    await user.type(screen.getByLabelText('Nome'), 'Gustavo Aguiar');
+    await user.type(screen.getByLabelText('Apelido'), 'Gu');
+    await user.type(screen.getByLabelText('Senha'), '123456');
+    await user.type(screen.getByLabelText('Confirmar senha'), '123456');
+    await user.click(screen.getByRole('button', { name: 'Cadastrar' }));
+
+    expect(await screen.findByText('Mapa do aluno')).toBeInTheDocument();
+  });
+
+  it('registers the monitor and goes to courses', async () => {
+    const user = userEvent.setup();
+    renderPage();
+
+    await user.click(
+      screen.getByRole('button', { name: 'Entrar como monitor' })
+    );
+    await user.type(screen.getByLabelText('Nome'), 'Maria Souza');
+    await user.type(screen.getByLabelText('E-mail'), 'maria.souza@pucminas.br');
+    await user.type(screen.getByLabelText('Senha'), '123456');
+    await user.type(screen.getByLabelText('Confirmar senha'), '123456');
+    await user.click(screen.getByRole('button', { name: 'Cadastrar' }));
+
+    expect(await screen.findByText('Lista de cursos')).toBeInTheDocument();
+  });
+
+  it('navigates to login', async () => {
+    const user = userEvent.setup();
+    renderPage();
+
+    await user.click(screen.getByRole('link', { name: 'Entrar' }));
+
+    expect(screen.getByText('Tela de login')).toBeInTheDocument();
+  });
+});

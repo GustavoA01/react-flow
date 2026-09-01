@@ -3,7 +3,7 @@ import userEvent from '@testing-library/user-event';
 import { LogoutDialog } from '@/components/LogoutDialog';
 
 describe('LogoutDialog', () => {
-  it('mostra o diálogo quando aberto', () => {
+  it('shows the dialog when open', () => {
     render(<LogoutDialog openDialog setOpenDialog={jest.fn()} />);
 
     expect(
@@ -14,7 +14,7 @@ describe('LogoutDialog', () => {
     ).toBeInTheDocument();
   });
 
-  it('fecha ao cancelar', async () => {
+  it('closes when cancelled', async () => {
     const user = userEvent.setup();
     const setOpenDialog = jest.fn();
 

@@ -14,7 +14,7 @@ export const ErrorPage = () => (
     </div>
 
     <h1 className="font-fredoka text-2xl sm:text-3xl text-primary-dark">
-      Algo deu errado
+      Ops! Algo deu errado.
     </h1>
     <p className="font-montserrat text-zinc-500 mt-3 max-w-sm">
       Não foi possível carregar essa tela. Tente de novo ou volte ao início.

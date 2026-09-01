@@ -3,7 +3,7 @@ import { CourseSharedHeader } from '@/components/Header/CourseSharedHeader';
 import { renderWithProviders } from './renderWithProviders';
 
 describe('CourseSharedHeader', () => {
-  it('mostra o voltar', () => {
+  it('shows the back control', () => {
     renderWithProviders(<CourseSharedHeader />);
 
     expect(screen.getByText('Voltar')).toBeInTheDocument();

@@ -25,7 +25,7 @@ describe('AddMedalDialog', () => {
     mockedToastAdd.mockReset();
   });
 
-  it('mostra o formulário quando aberto', () => {
+  it('shows the form when open', () => {
     render(<AddMedalDialog open onOpenChange={jest.fn()} />);
 
     expect(
@@ -36,7 +36,7 @@ describe('AddMedalDialog', () => {
     expect(screen.getByLabelText('Imagem')).toBeInTheDocument();
   });
 
-  it('não renderiza o conteúdo quando fechado', () => {
+  it('does not render the content when closed', () => {
     render(<AddMedalDialog open={false} onOpenChange={jest.fn()} />);
 
     expect(
@@ -44,7 +44,7 @@ describe('AddMedalDialog', () => {
     ).not.toBeInTheDocument();
   });
 
-  it('valida nome e imagem obrigatórios', async () => {
+  it('validates required name and image', async () => {
     const user = userEvent.setup();
 
     render(<AddMedalDialog open onOpenChange={jest.fn()} />);
@@ -58,7 +58,7 @@ describe('AddMedalDialog', () => {
     expect(mockedUploadImage).not.toHaveBeenCalled();
   });
 
-  it('fecha ao cancelar', async () => {
+  it('closes when cancelled', async () => {
     const user = userEvent.setup();
     const onOpenChange = jest.fn();
 
@@ -68,7 +68,7 @@ describe('AddMedalDialog', () => {
     expect(onOpenChange).toHaveBeenCalledWith(false);
   });
 
-  it('envia a imagem ao Cloudinary ao cadastrar a medalha', async () => {
+  it('uploads the image to Cloudinary when creating the medal', async () => {
     const user = userEvent.setup();
     const onOpenChange = jest.fn();
     mockedUploadImage.mockResolvedValue(
@@ -100,7 +100,7 @@ describe('AddMedalDialog', () => {
     logSpy.mockRestore();
   });
 
-  it('mostra erro quando o envio da imagem falha', async () => {
+  it('shows an error when the image upload fails', async () => {
     const user = userEvent.setup();
     const onOpenChange = jest.fn();
     mockedUploadImage.mockRejectedValue(new Error('Falha ao enviar a imagem'));

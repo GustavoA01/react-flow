@@ -3,7 +3,7 @@ import userEvent from '@testing-library/user-event';
 import { NewButtonFloat } from '@/components/NewButtonFloat';
 
 describe('NewButtonFloat', () => {
-  it('mostra o texto e dispara o clique', async () => {
+  it('shows the text and fires the click', async () => {
     const user = userEvent.setup();
     const onClick = jest.fn();
 

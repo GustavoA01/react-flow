@@ -3,7 +3,7 @@ import { BottomNavigation } from '@/components/BottomNavigation';
 import { renderWithProviders } from './renderWithProviders';
 
 describe('BottomNavigation', () => {
-  it('monta os atalhos do monitor', () => {
+  it('renders the monitor shortcuts', () => {
     renderWithProviders(<BottomNavigation />, { route: '/cursos' });
 
     const hrefs = screen

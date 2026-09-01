@@ -24,7 +24,7 @@ const renderGuard = () =>
   );
 
 describe('RequireAuth', () => {
-  it('redireciona para login sem usuário', () => {
+  it('redirects to login when there is no user', () => {
     mockedUseUserProvider.mockReturnValue({
       user: null,
       setUser: jest.fn(),
@@ -37,13 +37,14 @@ describe('RequireAuth', () => {
     expect(screen.getByText('Login')).toBeInTheDocument();
   });
 
-  it('libera a rota quando há usuário', () => {
+  it('allows the route when there is a user', () => {
     mockedUseUserProvider.mockReturnValue({
       user: {
         id: 'monitor-1',
         nome: 'Maria Souza',
         senha: '123456',
         tipo: 'MONITOR',
+        email: 'maria.souza@pucminas.br',
         cursoIds: ['curso-calculo-1'],
       },
       setUser: jest.fn(),
