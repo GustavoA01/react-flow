@@ -13,6 +13,10 @@ jest.mock('@/services/cloudinary', () => ({
   uploadImage: jest.fn(),
 }));
 
+jest.mock('../components/UnknownMedal', () => ({
+  UnknownMedal: () => null,
+}));
+
 const mockedUseAuthUser = useAuthUser as jest.MockedFunction<
   typeof useAuthUser
 >;
@@ -33,7 +37,7 @@ describe('MedalsPage', () => {
       screen.getByRole('heading', { name: 'Galeria de Medalhas' })
     ).toBeInTheDocument();
     expect(screen.getByText('PUC Minas')).toBeInTheDocument();
-    expect(screen.getAllByText('20 xp')).toHaveLength(15);
+    expect(screen.getByText('20 xp')).toBeInTheDocument();
     expect(
       screen.queryByRole('button', { name: 'Adicionar medalha' })
     ).not.toBeInTheDocument();

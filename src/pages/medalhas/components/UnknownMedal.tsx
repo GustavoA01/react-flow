@@ -13,7 +13,7 @@ export const UnknownMedal = ({ minPoints }: UnknownMedalProps) => (
   <Card className="group border-dashed border-2 border-zinc-200 select-none cursor-pointer">
     <CardContent className="flex flex-col flex-1 items-center justify-center gap-2">
       <CircleQuestionMark className="w-20 h-20 sm:w-15 sm:h-15 text-zinc-400 group-hover:text-red-900 transition-colors duration-300" />
-      <p className="text-2xl font-bold flex" aria-hidden>
+      <p aria-hidden className="text-2xl font-bold flex">
         {MARKS.map((mark, index) => (
           <motion.span
             key={index}
