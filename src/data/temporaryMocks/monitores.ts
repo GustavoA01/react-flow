@@ -38,4 +38,11 @@ export const temporaryMonitores: MonitorType[] = [
 export const getMonitorById = (id: string) =>
   temporaryMonitores.find((monitor) => monitor.id === id);
 
+export const findMonitorByCredentials = (email: string, senha: string) =>
+  temporaryMonitores.find(
+    (monitor) =>
+      monitor.email.toLowerCase() === email.toLowerCase() &&
+      monitor.senha === senha
+  );
+
 export const mockLoggedMonitor: MonitorType = temporaryMonitores[0];

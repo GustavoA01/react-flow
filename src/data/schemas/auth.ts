@@ -35,5 +35,33 @@ export const registerSchema = z
     }
   });
 
+export const loginSchema = z
+  .object({
+    tipo: z.enum(['ALUNO', 'MONITOR']),
+    apelido: z.string().trim(),
+    email: z.string().trim(),
+    senha: z.string().min(1, 'Informe a senha'),
+  })
+  .superRefine((data, ctx) => {
+    if (data.tipo === 'ALUNO' && data.apelido.length === 0) {
+      ctx.addIssue({
+        code: 'custom',
+        message: 'Informe o apelido',
+        path: ['apelido'],
+      });
+    }
+
+    if (data.tipo === 'MONITOR' && !z.email().safeParse(data.email).success) {
+      ctx.addIssue({
+        code: 'custom',
+        message: 'Informe um e-mail válido',
+        path: ['email'],
+      });
+    }
+  });
+
+export type LoginFormType = z.infer<typeof loginSchema>;
+export type LoginRoleType = LoginFormType['tipo'];
+
 export type RegisterFormType = z.infer<typeof registerSchema>;
 export type RegisterRoleType = RegisterFormType['tipo'];

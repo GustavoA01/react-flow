@@ -30,7 +30,6 @@ export const useRegister = () => {
   const tipo = methods.watch('tipo');
   const isAluno = tipo === 'ALUNO';
 
-
   const enterAs = (nextTipo: RegisterRoleType) => {
     methods.setValue('tipo', nextTipo);
     methods.clearErrors(['apelido', 'email']);
