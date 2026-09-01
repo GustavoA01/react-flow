@@ -9,6 +9,7 @@ import {
   DialogTitle,
 } from '@/components/ui/dialog';
 import { LabelInput } from '@/components/LabelInput';
+import { Spinner } from '@/components/ui/spinner';
 import { useAddMedalDialog } from '../hooks/useAddMedalDialog';
 
 type AddMedalDialogPropsType = {
@@ -20,7 +21,7 @@ export const AddMedalDialog = ({
   open,
   onOpenChange,
 }: AddMedalDialogPropsType) => {
-  const { register, onSubmit, errors, handleOpenChange } =
+  const { register, onSubmit, errors, isSubmitting, handleOpenChange } =
     useAddMedalDialog(onOpenChange);
 
   return (
@@ -41,6 +42,7 @@ export const AddMedalDialog = ({
             placeholder="Ex.: PUC Minas"
             error={errors.nome?.message}
             register={register}
+            disabled={isSubmitting}
           />
           <LabelInput
             label="Pontos mínimos"
@@ -51,22 +53,27 @@ export const AddMedalDialog = ({
             error={errors.pontosMin?.message}
             register={register}
             registerOptions={{ setValueAs: Number }}
+            disabled={isSubmitting}
           />
           <LabelInput
-            label="URL da imagem"
-            id="imagemUrl"
-            placeholder="https://"
-            error={errors.imagemUrl?.message}
+            label="Imagem"
+            id="imagem"
+            type="file"
+            accept="image/*"
+            error={errors.imagem?.message}
             register={register}
+            disabled={isSubmitting}
           />
 
           <DialogFooter>
             <DialogClose asChild>
-              <Button type="button" variant="outline">
+              <Button type="button" variant="outline" disabled={isSubmitting}>
                 Cancelar
               </Button>
             </DialogClose>
-            <Button type="submit">Adicionar</Button>
+            <Button type="submit" disabled={isSubmitting}>
+              {isSubmitting ? <Spinner /> : 'Adicionar'}
+            </Button>
           </DialogFooter>
         </form>
       </DialogContent>

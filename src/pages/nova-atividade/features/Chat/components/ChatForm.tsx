@@ -20,7 +20,8 @@ export const ChatForm = ({ onSubmit, register, isLoading }: ChatFormProps) => (
     <Textarea
       disabled={isLoading}
       onKeyDown={(e) => {
-        if (e.key !== 'Enter' || e.shiftKey || e.nativeEvent.isComposing) return;
+        if (e.key !== 'Enter' || e.shiftKey || e.nativeEvent.isComposing)
+          return;
         e.preventDefault();
         e.currentTarget.form?.requestSubmit();
       }}

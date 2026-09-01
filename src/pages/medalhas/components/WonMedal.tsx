@@ -38,7 +38,6 @@ export const WonMedal = ({
         </CardFooter>
       </Card>
     </ContextMenuTrigger>
-
     <ContextMenuContent>
       <ContextMenuItem
         variant="destructive"

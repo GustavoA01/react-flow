@@ -6,7 +6,14 @@ export const addMedalSchema = z.object({
     .number({ error: 'Informe os pontos mínimos' })
     .int('Use um número inteiro')
     .min(0, 'Os pontos mínimos não podem ser negativos'),
-  imagemUrl: z.url('Informe uma URL válida'),
+  imagem: z
+    .custom<FileList>(
+      (value) => value instanceof FileList && value.length > 0,
+      { error: 'Selecione uma imagem' }
+    )
+    .refine((files) => files[0].type.startsWith('image/'), {
+      error: 'Envie um arquivo de imagem',
+    }),
 });
 
 export type AddMedalFormType = z.infer<typeof addMedalSchema>;

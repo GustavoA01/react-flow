@@ -42,7 +42,10 @@ export const ChatContent = ({
     {messages.map((message, index) => {
       if (message.role === 'user') {
         return (
-          <div key={index} className="self-end bg-gray-200 p-2 rounded-md rounded-tr-none">
+          <div
+            key={index}
+            className="self-end bg-gray-200 p-2 rounded-md rounded-tr-none"
+          >
             <p>{message.content}</p>
           </div>
         );
