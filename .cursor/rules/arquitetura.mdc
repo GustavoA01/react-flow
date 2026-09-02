@@ -31,5 +31,3 @@ alwaysApply: true
 - Só numa tela, peça solta → `pages/<tela>/components/`
 - Só numa tela, bloco com estado → `pages/<tela>/features/<Nome>/`
 - Botão, dialog, layout genérico → `src/components`
-
-Hoje: `Chat` e `QuestionsForm` em `pages/nova-atividade/features`. `NewActivityDialog` em `pages/modulo/features`. Monitoramento: UI em `pages/monitoramento/components`, `MonitoramentoContent` + hook em `pages/monitoramento/features`. `RanksTable` e `DrawerNavigation` em `src/features`.

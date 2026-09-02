@@ -5,7 +5,7 @@ export const newActivitySchema = z.object({
     .string()
     .trim()
     .min(1, 'O nome da atividade é obrigatório')
-    .min(5, 'A atividade deve ter pelo menos 5 letras'),
+    .min(3, 'A atividade deve ter pelo menos 3 letras'),
   qtdQuestions: z
     .number()
     .min(1, 'Defina o número de perguntas')

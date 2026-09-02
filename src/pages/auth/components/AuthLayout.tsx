@@ -11,11 +11,11 @@ import { EnterAsButtons } from './EnterAsButtons';
 type AuthLayoutPropsType = {
   title: string;
   description: string;
-  isAluno: boolean;
-  onEnterAsStudent: () => void;
-  onEnterAsMonitor: () => void;
   children: ReactNode;
-  footer: ReactNode;
+  footer?: ReactNode;
+  isAluno?: boolean;
+  onEnterAsStudent?: () => void;
+  onEnterAsMonitor?: () => void;
 };
 
 export const AuthLayout = ({
@@ -45,15 +45,19 @@ export const AuthLayout = ({
         </CardDescription>
       </CardHeader>
       <CardContent className="space-y-6">
-        <EnterAsButtons
-          isAluno={isAluno}
-          onEnterAsStudent={onEnterAsStudent}
-          onEnterAsMonitor={onEnterAsMonitor}
-        />
+        {onEnterAsStudent && onEnterAsMonitor && (
+          <EnterAsButtons
+            isAluno={Boolean(isAluno)}
+            onEnterAsStudent={onEnterAsStudent}
+            onEnterAsMonitor={onEnterAsMonitor}
+          />
+        )}
         {children}
-        <p className="text-center text-sm text-muted-foreground font-montserrat">
-          {footer}
-        </p>
+        {footer && (
+          <p className="text-center text-sm text-muted-foreground font-montserrat">
+            {footer}
+          </p>
+        )}
       </CardContent>
     </Card>
   </div>

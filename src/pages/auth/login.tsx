@@ -36,10 +36,10 @@ export const LoginPage = () => {
     >
       <form className="space-y-4" onSubmit={onSubmit}>
         <AuthFields
-          isAluno={isAluno}
-          errors={errors}
-          register={register}
           autoFocus
+          errors={errors}
+          isAluno={isAluno}
+          register={register}
         />
         {errors.root?.message && (
           <ErrorFormMessage message={errors.root.message} />

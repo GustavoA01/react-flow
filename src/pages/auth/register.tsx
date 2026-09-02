@@ -32,11 +32,11 @@ export const RegisterPage = () => {
     >
       <form className="space-y-4" onSubmit={onSubmit}>
         <LabelInput
-          label="Nome"
           id="nome"
           autoFocus
+          label="Nome"
           autoComplete="name"
-          placeholder="Ex.: Gustavo Aguiar"
+          placeholder="Ex.: João da Silva"
           error={errors.nome?.message}
           register={register}
         />
