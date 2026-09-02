@@ -35,7 +35,7 @@ export const AuthFields = <T extends FieldValues & AuthFieldsValues>({
         id={'apelido' as Path<T>}
         autoFocus={autoFocus}
         autoComplete="nickname"
-        placeholder="Ex.: Gu"
+        placeholder="Ex.: Joãozinho"
         error={errors.apelido?.message}
         register={register}
       />
