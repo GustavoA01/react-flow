@@ -9,9 +9,10 @@ import { ChevronRight, Eraser } from 'lucide-react';
 
 type ChatHeaderProps = {
   onClear: () => void;
+  messagesLength: number;
 };
 
-export const ChatHeader = ({ onClear }: ChatHeaderProps) => (
+export const ChatHeader = ({ onClear, messagesLength }: ChatHeaderProps) => (
   <DrawerHeader className="shadow-[0_4px_8px_-4px_rgba(0,0,0,0.2)]">
     <div className="grid grid-cols-[2.5rem_1fr_2.5rem] items-start gap-1">
       <DrawerClose asChild>
@@ -31,15 +32,17 @@ export const ChatHeader = ({ onClear }: ChatHeaderProps) => (
           Crie atividades rapidamente usando IA
         </DrawerDescription>
       </div>
-      <Button
-        size="icon"
-        variant="outline"
-        onClick={onClear}
-        title="Limpar conversa"
-        className="justify-self-end rounded-full"
-      >
-        <Eraser />
-      </Button>
+      {messagesLength > 0 && (
+        <Button
+          size="icon"
+          variant="outline"
+          onClick={onClear}
+          title="Limpar conversa"
+          className="justify-self-end rounded-full"
+        >
+          <Eraser />
+        </Button>
+      )}
     </div>
   </DrawerHeader>
 );

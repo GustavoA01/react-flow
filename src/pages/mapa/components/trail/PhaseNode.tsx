@@ -28,18 +28,24 @@ export const PhaseNode = ({ id, data: { minPoints } }: PhaseNodeProps) => {
             'transition-all ease-in hover:scale-105 cursor-pointer'
         )}
       >
-        <div className={`absolute inset-0 rounded-full ${baseBgClass}`} />
+        <div className={cn('absolute inset-0 rounded-full', baseBgClass)} />
 
         <div
-          className={`absolute inset-0 bottom-[3px] rounded-full ${overlayGradientClass}`}
+          className={cn(
+            'absolute inset-0 bottom-[3px] rounded-full',
+            overlayGradientClass
+          )}
         />
 
         <div
-          className={`pointer-events-none absolute inset-0 rounded-full ${shineClass}`}
+          className={cn(
+            'pointer-events-none absolute inset-0 rounded-full',
+            shineClass
+          )}
         />
 
         <div className="absolute inset-0 flex items-center justify-center">
-          <Icon size={32} className={`${iconClassName} drop-shadow-sm`} />
+          <Icon size={32} className={cn('drop-shadow-sm', iconClassName)} />
         </div>
 
         <Handle

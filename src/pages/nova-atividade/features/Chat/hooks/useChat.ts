@@ -1,6 +1,6 @@
 import type { QuestionFormType } from '@/data/schemas/activity';
 import { generateContent } from '@/services/googleConfig';
-import { useState } from 'react';
+import { useState, type KeyboardEvent } from 'react';
 import { useForm, useFormContext } from 'react-hook-form';
 import { CHAT_SYSTEM_INSTRUCTION } from '../utils/constants';
 import { formatQuestionsMessage } from '../utils/formatQuestionsMessage';
@@ -125,6 +125,12 @@ export const useChat = () => {
     setAppliedQuestionKeys([]);
   };
 
+  const handleOnKeyDown = (e: KeyboardEvent<HTMLTextAreaElement>) => {
+    if (e.key !== 'Enter' || e.shiftKey || e.nativeEvent.isComposing) return;
+    e.preventDefault();
+    e.currentTarget.form?.requestSubmit();
+  };
+
   return {
     messages,
     isLoading,
@@ -135,5 +141,6 @@ export const useChat = () => {
     isQuestionApplied,
     formFull,
     clearMessages,
+    handleOnKeyDown,
   };
 };

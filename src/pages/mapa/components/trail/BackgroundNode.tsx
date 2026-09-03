@@ -11,7 +11,6 @@ const BackgroundNode = ({
     style={{ width: width, height: height, pointerEvents: 'none' }}
   >
     <img src={image} alt={alt} className="w-full h-full object-cover" />
-
     <Handle
       id={`${id}-top`}
       type="source"

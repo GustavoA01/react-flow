@@ -14,11 +14,12 @@ export const Chat = () => {
     isQuestionApplied,
     formFull,
     clearMessages,
+    handleOnKeyDown,
   } = useChat();
 
   return (
     <div className="flex flex-col w-full h-full min-h-0 flex-1 pb-6">
-      <ChatHeader onClear={clearMessages} />
+      <ChatHeader onClear={clearMessages} messagesLength={messages.length} />
       <ChatContent
         messages={messages}
         isLoading={isLoading}
@@ -27,7 +28,12 @@ export const Chat = () => {
         onApplyQuestion={applyQuestion}
         onApplyAllQuestions={applyAllQuestions}
       />
-      <ChatForm onSubmit={onSubmit} register={register} isLoading={isLoading} />
+      <ChatForm
+        onSubmit={onSubmit}
+        register={register}
+        isLoading={isLoading}
+        handleOnKeyDown={handleOnKeyDown}
+      />
     </div>
   );
 };
