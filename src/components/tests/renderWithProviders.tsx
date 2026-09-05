@@ -2,13 +2,14 @@ import type { ReactElement } from 'react';
 import { render } from '@testing-library/react';
 import { MemoryRouter } from 'react-router-dom';
 import { UserProvider } from '@/providers/UserProvider';
+import type { UsuarioType } from '@/data/types/api';
 
 export const renderWithProviders = (
   ui: ReactElement,
-  { route = '/' }: { route?: string } = {}
+  { route = '/', user }: { route?: string; user?: UsuarioType | null } = {}
 ) =>
   render(
     <MemoryRouter initialEntries={[route]}>
-      <UserProvider>{ui}</UserProvider>
+      <UserProvider initialUser={user}>{ui}</UserProvider>
     </MemoryRouter>
   );

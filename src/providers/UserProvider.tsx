@@ -49,8 +49,14 @@ type UserContextType =
 
 const UserContext = createContext<UserContextType | null>(null);
 
-export const UserProvider = ({ children }: { children: ReactNode }) => {
-  const [user, setUser] = useState<UsuarioType | null>(mockLoggedMonitor);
+export const UserProvider = ({
+  children,
+  initialUser = mockLoggedAluno,
+}: {
+  children: ReactNode;
+  initialUser?: UsuarioType | null;
+}) => {
+  const [user, setUser] = useState<UsuarioType | null>(initialUser);
 
   const value = useMemo((): UserContextType => {
     if (user?.tipo === 'ALUNO') {

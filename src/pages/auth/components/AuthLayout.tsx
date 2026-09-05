@@ -1,5 +1,5 @@
 import type { ReactNode } from 'react';
-import logoMenu from '@/assets/logo-menu.png';
+import logoBeiraLinha from '@/assets/logo-beira-linha.png';
 import {
   Card,
   CardContent,
@@ -8,7 +8,7 @@ import {
 } from '@/components/ui/card';
 import { EnterAsButtons } from './EnterAsButtons';
 
-type AuthLayoutPropsType = {
+type AuthLayoutProps = {
   title: string;
   description: string;
   children: ReactNode;
@@ -26,17 +26,23 @@ export const AuthLayout = ({
   onEnterAsMonitor,
   children,
   footer,
-}: AuthLayoutPropsType) => (
-  <div className="flex min-h-dvh items-center justify-center bg-primary px-4 py-8">
+}: AuthLayoutProps) => (
+  <div className="flex min-h-dvh flex-col items-center justify-center bg-primary px-4 py-8">
+    <div className="mb-6 flex items-center gap-3">
+      <div className="h-10 w-20 shrink-0 overflow-hidden rounded-md bg-white">
+        <img
+          src={logoBeiraLinha}
+          alt="logo"
+          className="size-full object-contain"
+        />
+      </div>
+      <p className="select-none font-montserrat text-lg font-semibold text-white sm:text-2xl">
+        Beira Linha Play
+      </p>
+    </div>
+
     <Card className="w-full max-w-md">
       <CardHeader className="items-center text-center">
-        <div className="mb-2 h-12 w-24 overflow-hidden rounded-md bg-white">
-          <img
-            src={logoMenu}
-            alt="Beira Linha Play"
-            className="size-full object-contain"
-          />
-        </div>
         <h1 className="font-fredoka text-2xl font-semibold text-primary-dark">
           {title}
         </h1>

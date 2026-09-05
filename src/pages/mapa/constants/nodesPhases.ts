@@ -126,37 +126,37 @@ export const nodesPhases: PhaseNodeType[] = [
   {
     id: '20',
     type: 'phase',
-    position: { x: 0, y: -4500 },
+    position: { x: 20, y: -4500 },
     data: { id: '20', minPoints: 60 },
   },
   {
     id: '21',
     type: 'phase',
-    position: { x: 80, y: -4750 },
+    position: { x: -180, y: -4750 },
     data: { id: '21', minPoints: 63 },
   },
   {
     id: '22',
     type: 'phase',
-    position: { x: -80, y: -5000 },
+    position: { x: -280, y: -5000 },
     data: { id: '22', minPoints: 66 },
   },
   {
     id: '23',
     type: 'phase',
-    position: { x: 160, y: -5250 },
+    position: { x: -40, y: -5250 },
     data: { id: '23', minPoints: 69 },
   },
   {
     id: '24',
     type: 'phase',
-    position: { x: 80, y: -5500 },
+    position: { x: 220, y: -5500 },
     data: { id: '24', minPoints: 72 },
   },
   {
     id: '25',
     type: 'phase',
-    position: { x: -80, y: -5750 },
+    position: { x: 300, y: -5750 },
     data: { id: '25', minPoints: 75 },
   },
   {
@@ -168,25 +168,25 @@ export const nodesPhases: PhaseNodeType[] = [
   {
     id: '27',
     type: 'phase',
-    position: { x: 0, y: -6250 },
+    position: { x: -50, y: -6250 },
     data: { id: '27', minPoints: 81 },
   },
   {
     id: '28',
     type: 'phase',
-    position: { x: 80, y: -6500 },
+    position: { x: -220, y: -6500 },
     data: { id: '28', minPoints: 84 },
   },
   {
     id: '29',
     type: 'phase',
-    position: { x: -80, y: -6750 },
+    position: { x: -300, y: -6750 },
     data: { id: '29', minPoints: 87 },
   },
   {
     id: '30',
     type: 'phase',
-    position: { x: 0, y: -7000 },
+    position: { x: -90, y: -7000 },
     data: { id: '30', minPoints: 90 },
   },
 ];

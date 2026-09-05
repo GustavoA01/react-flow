@@ -3,7 +3,7 @@ import { MemoryRouter, Route, Routes } from 'react-router-dom';
 import { HeaderLayout } from '@/components/layouts/HeaderLayout';
 import { UserProvider } from '@/providers/UserProvider';
 
-jest.mock('@/assets/logo-menu.png', () => 'logo.png');
+jest.mock('@/assets/logo-beira-linha.png', () => 'logo.png');
 
 const renderLayout = (route: string) =>
   render(

@@ -4,7 +4,7 @@ import { MemoryRouter, Route, Routes } from 'react-router-dom';
 import { UserProvider } from '@/providers/UserProvider';
 import { LoginPage } from '../login';
 
-jest.mock('@/assets/logo-menu.png', () => 'logo.png');
+jest.mock('@/assets/logo-beira-linha.png', () => 'logo.png');
 
 const renderPage = () =>
   render(

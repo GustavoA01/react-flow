@@ -8,7 +8,7 @@ import { mockLoggedAluno } from '@/data/temporaryMocks/usuario';
 import { EditAccountPage } from '../editAccount';
 import type { UsuarioType } from '@/data/types/api';
 
-jest.mock('@/assets/logo-menu.png', () => 'logo.png');
+jest.mock('@/assets/logo-beira-linha.png', () => 'logo.png');
 
 jest.mock('@/providers/UserProvider', () => ({
   useAuthUser: jest.fn(),
